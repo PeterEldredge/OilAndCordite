@@ -525,9 +525,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4a469187dcf1244be4fbe4948dde41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  igniteThrust: 100
-  turnTorque: {x: 45, y: 25, z: 45}
-  forceMult: 10
+  igniteThrust: 30
+  turnTorque: {x: 60, y: 25, z: 45}
+  forceMult: 5
   GravMult: 5
   invertY: 0
   _pitch: 0
@@ -565,7 +565,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ship: {fileID: 655246409}
   springBias: 0.96
-  distanceFromShip: 30
+  distanceFromShip: 15
+  upFromShip: 15
+  lookingPointFromShip: 20
 --- !u!81 &1794237659
 AudioListener:
   m_ObjectHideFlags: 0
@@ -598,7 +600,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 2000
   field of view: 60
   orthographic: 0
   orthographic size: 5
