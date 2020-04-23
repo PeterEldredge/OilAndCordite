@@ -6,15 +6,15 @@ public class FlightCamBasic : MonoBehaviour
 {
 
     public Transform ship;
-    public float springBias = .98f;
-    public float distanceFromShip = 15f;
+    public float springBias = .96f;
+    public float distanceFromShip = 30f;
     public float upFromShip = 15f;
     public float lookingPointFromShip = 15f;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     // Update is called once per frame

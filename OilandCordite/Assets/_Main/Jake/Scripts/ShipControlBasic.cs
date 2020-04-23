@@ -30,15 +30,22 @@ public class ShipControlBasic : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();   
+        rb = GetComponent<Rigidbody>();
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
+    }
+
+    private void FixedUpdate()
+    {
         _igniting = Input.GetKey(KeyCode.LeftShift);
 
-        if (invertY){ _invertYControl = -1; }
+        if (invertY) { _invertYControl = -1; }
         else { _invertYControl = 1; }
 
         _pitch = Input.GetAxis("Vertical") * _invertYControl;
@@ -46,11 +53,11 @@ public class ShipControlBasic : MonoBehaviour
 
         if (_igniting)
         {
-            rb.velocity += transform.forward * igniteThrust * forceMult * Time.deltaTime;
+            rb.velocity += transform.forward * igniteThrust * forceMult * Time.fixedDeltaTime;
         }
 
-        transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, -turnTorque.z * _roll) * forceMult * Time.deltaTime, Space.Self);
-        
+        transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, -turnTorque.z * _roll) * forceMult * Time.fixedDeltaTime, Space.Self);
+
         //transform.Rotate(new Vector3( 1f, 0, 0) * forceMult * Time.deltaTime, Space.World);
 
         float RotationMult = Mathf.Abs(transform.forward.y);
@@ -60,10 +67,6 @@ public class ShipControlBasic : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
-    }
-
-    private void FixedUpdate()
-    {
     }
 
     private float CalculateVelocity()
