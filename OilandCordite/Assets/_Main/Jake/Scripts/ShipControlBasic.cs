@@ -74,10 +74,10 @@ public class ShipControlBasic : MonoBehaviour
 
         PlayerStats.Speed = (int)rb.velocity.magnitude;
 
-        //if (transform.position.y <= 0)
-        //{
-        //    transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        //}
+        if (transform.position.y <= 0)
+        {
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        }
 
     }
 
