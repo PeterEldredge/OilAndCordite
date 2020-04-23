@@ -9,7 +9,7 @@ public class ShipControlBasic : MonoBehaviour
     [Tooltip("Force to push plane forwards with")] public float igniteThrust = 200f;
     [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(60f, 25f, 45f);
     [Tooltip("Multiplier for all forces")] public float rotateMult = 3f;
-    [Tooltip("Increase gravity")]public float gravMult = 3.0f;
+    [Tooltip("Increase gravity")] public float gravMult = 3.0f;
     public float maxAcceleration = 250f;
     public float minAcceleration = -125;
 
@@ -25,7 +25,8 @@ public class ShipControlBasic : MonoBehaviour
     private bool _overheating = false;
 
     private Rigidbody rb;
-    [SerializeField] private AnimationCurve ac;
+    [SerializeField] private AnimationCurve _positiveAccelerationCurve;
+    [SerializeField] private AnimationCurve _negativeAccelerationCurve;
 
     //-1 or 1, depending on whether invertY is true or false
     private int _invertYControl = 1;
@@ -38,12 +39,6 @@ public class ShipControlBasic : MonoBehaviour
         Application.targetFrameRate = 60;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void FixedUpdate()
     {
         _igniting = Input.GetMouseButton(0);
@@ -53,29 +48,36 @@ public class ShipControlBasic : MonoBehaviour
         _pitch = Input.GetAxis("Vertical") * _invertYControl;
         _roll = Input.GetAxis("Horizontal");
 
-        transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
+        transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);     
 
-        float RotationMult = (transform.forward.y + 1)/2;
-        //Debug.Log(RotationMult);
-        
         rb.velocity = Mathf.Clamp(rb.velocity.magnitude, 60, 300) * transform.forward;
-        //rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.magnitude, 20, 200), rb.velocity.y, rb.velocity.z);
 
-        //Mapping RotationMult to AnimationCurve
-        float acceleration = (ac.Evaluate(RotationMult) * (maxAcceleration - minAcceleration)) + minAcceleration;
+        float forwardAngle = transform.forward.y;
+        AnimationCurve accelerationCurve;
+        float acceleration;
 
-        //Gravity
-        //rb.velocity += (-Vector3.up * 9.8f) * gravMult * Time.fixedDeltaTime;
-        rb.velocity += (transform.forward * acceleration) * Time.fixedDeltaTime;
+        if (forwardAngle < 0)
+        {
+            accelerationCurve = _positiveAccelerationCurve;
+            forwardAngle *= -1;
 
-        //rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, 0, 10f), rb.velocity.y, rb.velocity.z);
+            acceleration = (accelerationCurve.Evaluate(forwardAngle) * maxAcceleration);
+        }
+        else
+        {
+            accelerationCurve = _negativeAccelerationCurve;
+
+            acceleration = (accelerationCurve.Evaluate(forwardAngle) * minAcceleration);
+        }
+
+        rb.velocity += transform.forward * acceleration * Time.fixedDeltaTime;
 
         PlayerStats.Speed = (int)rb.velocity.magnitude;
 
-        if (transform.position.y <= 0)
-        {
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        }
+        //if (transform.position.y <= 0)
+        //{
+        //    transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        //}
 
     }
 
@@ -83,9 +85,8 @@ public class ShipControlBasic : MonoBehaviour
     {
         if (_igniting)
         {
-            //Debug.Log(_igniting);
-            //Debug.Log(other.tag);
-            if (other.tag == "Smog") {
+            if (other.tag == "Smog")
+            {
                 rb.velocity += transform.forward * igniteThrust * ((PlayerStats.heat / 100) + 20) * Time.fixedDeltaTime;
             }
         }
