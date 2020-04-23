@@ -6,13 +6,15 @@ public abstract class AttackBehaviour : ScriptableObject
 {
     public float CoolDown;
 
-    [SerializeField] protected float _range;
-    [SerializeField] protected GameObject _projectile;
+    [SerializeField] protected float _minRange;
+    [SerializeField] protected float _maxRange;
 
     public virtual bool UsageCondition(PlayerData playerData, EnemyData enemyData)
     {
-        return Vector3.Distance(playerData.WorldSpacePosition, enemyData.WorldSpacePosition) <= _range;
+        float distance = Vector3.Distance(playerData.WorldSpacePosition, enemyData.WorldSpacePosition);
+
+        return  distance >= _minRange && distance <= _maxRange;
     }
 
-    public abstract void Attack();
+    public abstract void Attack(EnemyData enemyData);
 }

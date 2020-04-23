@@ -31,7 +31,7 @@ public class Enemy : MonoBehaviour
                 {
                     if (attack.UsageCondition(Player.Instance.PlayerData, _enemyData))
                     {
-                        attack.Attack();
+                        attack.Attack(_enemyData);
                         _coolDown = attack.CoolDown;
 
                         break;
