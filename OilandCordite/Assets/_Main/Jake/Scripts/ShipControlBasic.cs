@@ -10,7 +10,7 @@ public class ShipControlBasic : MonoBehaviour
     [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(60f, 25f, 45f);
     [Tooltip("Multiplier for all forces")] public float rotateMult = 3f;
     [Tooltip("Increase gravity")] public float gravMult = 3.0f;
-    public float maxAcceleration = 250f;
+    public float maxAcceleration = 150;
     public float minAcceleration = -125;
 
     [Header("Options")]
@@ -42,6 +42,16 @@ public class ShipControlBasic : MonoBehaviour
     private void FixedUpdate()
     {
         _igniting = Input.GetMouseButton(0);
+
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if(invertY == true)
+            {
+                invertY = false;
+            }
+            else { invertY = true; }
+        }
+
         if (invertY) { _invertYControl = -1; }
         else { _invertYControl = 1; }
 
