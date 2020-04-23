@@ -46,6 +46,6 @@ public class UITextUpdate : MonoBehaviour
 
     void UpdateSpeed()
     {
-        SpeedText.text = "Speed:" + PlayerStats.Speed.ToString();
+        SpeedText.text = "Speed: " + PlayerStats.Speed.ToString();
     }
 }
