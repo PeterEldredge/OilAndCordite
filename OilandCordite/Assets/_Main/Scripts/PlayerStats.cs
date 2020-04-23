@@ -7,6 +7,7 @@ public class PlayerStats : MonoBehaviour
     static public float health = 100;
     static public float heat = 0;
     static public bool invincible = false;
+    static public int Speed = 0;
 
     private void Start()
     {

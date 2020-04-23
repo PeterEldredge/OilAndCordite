@@ -66,9 +66,11 @@ public class ShipControlBasic : MonoBehaviour
 
         //Gravity
         //rb.velocity += (-Vector3.up * 9.8f) * gravMult * Time.fixedDeltaTime;
-        rb.velocity += (transform.forward * acceleration ) * Time.fixedDeltaTime;
+        rb.velocity += (transform.forward * acceleration) * Time.fixedDeltaTime;
 
         //rb.velocity = new Vector3(Mathf.Clamp(rb.velocity.x, 0, 10f), rb.velocity.y, rb.velocity.z);
+
+        PlayerStats.Speed = (int)rb.velocity.magnitude;
 
         if (transform.position.y <= 0)
         {
@@ -117,11 +119,6 @@ public class ShipControlBasic : MonoBehaviour
             }
             StartCoroutine(invincibleTimer());
         }
-    }
-
-    private float CalculateVelocity()
-    {
-        return 0f;
     }
 
 }
