@@ -21,11 +21,11 @@ public class UITextUpdate : MonoBehaviour
     {
         if (Input.GetMouseButton(0)&&PlayerStats.heat<99.9)
         {
-            PlayerStats.changeHeat(.1f);
+            PlayerStats.changeHeat(1.5f);
         }
         else if (PlayerStats.heat>.1)
         {
-            PlayerStats.changeHeat(-.1f);
+            PlayerStats.changeHeat(-4.5f);
         }
     }
     void updateHealth()

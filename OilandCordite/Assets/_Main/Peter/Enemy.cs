@@ -20,6 +20,15 @@ public class Enemy : MonoBehaviour
         StartCoroutine(Attack());
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        //Debug.Log(collision.collider.attachedRigidbody.velocity.magnitude);
+        if (collision.collider.attachedRigidbody.velocity.magnitude >= 40)
+        {
+            this.gameObject.SetActive(false);
+        }
+    }
+
     private IEnumerator Attack()
     {
         while(true)

@@ -7,34 +7,28 @@ public class PlayerStats : MonoBehaviour
     static public float health = 100;
     static public float heat = 0;
     static public bool invincible = false;
+
+    private void Start()
+    {
+        health = 100;
+        heat = 0;
+    }
+
     public static void setHealth(float newHealth)
     {
-        health = newHealth;
+        health = Mathf.Clamp(newHealth, 0, 100);
     }
     public static void changeHealth(float change)
     {
-        health += change;
+        health = Mathf.Clamp(health + change, 0, 100);
     }
     public static void setHeat(float newHeat)
     {
-        heat = newHeat;
+        heat = Mathf.Clamp(newHeat, 0, 99.9f);
     }
     public static void changeHeat(float change)
     {
-        heat += change;
+        heat = Mathf.Clamp(heat + change, 0, 99.9f);
     }
-    void OnCollisionStay(Collision collision)
-    {
-        if (!invincible)
-        {
-            changeHealth(-10);
-            StartCoroutine(invincibleTimer());
-        }
-    }
-    IEnumerator invincibleTimer()
-    {
-        invincible = true;
-        yield return new WaitForSecondsRealtime(.5f);
-        invincible = false;
-    }
+    
 }
