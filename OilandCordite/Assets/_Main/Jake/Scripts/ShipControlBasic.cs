@@ -16,10 +16,9 @@ public class ShipControlBasic : MonoBehaviour
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
 
     [Header("Options")]
-    [Tooltip("Invert the pitching of the ship to avoid \"normal\" plane controls")] public bool invertY = false;
+    [SerializeField] private bool _startInverted = false;
 
     [Header("Input")]
-    [SerializeField] private bool _startingInversion = false;
     [SerializeField] private bool _mouseMovement = false;
     [SerializeField] [Range(-1f, 1f)] private float _pitch = 0f;
     [SerializeField] [Range(-1f, 1f)] private float _roll = 0f;
@@ -90,7 +89,7 @@ public class ShipControlBasic : MonoBehaviour
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
 
-        _invertYControl = _startingInversion ? 1 : -1;
+        _invertYControl = _startInverted ? 1 : -1;
 
         SetInputType();
     }
