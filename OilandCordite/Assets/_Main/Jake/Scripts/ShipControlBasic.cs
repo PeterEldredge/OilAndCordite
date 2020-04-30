@@ -59,8 +59,8 @@ public class ShipControlBasic : MonoBehaviour
 
     private void MouseCalculation()
     {
-        _xMousePosition += Input.GetAxisRaw("Mouse X") * Time.deltaTime * _xSensitivity;
-        _yMousePosition += Input.GetAxisRaw("Mouse Y") * Time.deltaTime * _ySensitivity * _invertYControl;
+        _xMousePosition += Input.GetAxisRaw("Mouse X") / 100f * _xSensitivity;
+        _yMousePosition += Input.GetAxisRaw("Mouse Y") / 100f * _ySensitivity * _invertYControl;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
