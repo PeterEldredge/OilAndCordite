@@ -2097,9 +2097,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ship: {fileID: 4563114451573410}
   springBias: 0.96
-  distanceFromShip: 15
+  distanceFromShip: 10
   upFromShip: 15
   lookingPointFromShip: 20
+  rotateSpeed: 10
+  damping: 4
 --- !u!81 &1794237659
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2159,7 +2161,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1794237657}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.7914252, y: 287.37054, z: 1.9351187}
+  m_LocalPosition: {x: 3.7914252, y: 592.4, z: 1.9351187}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
