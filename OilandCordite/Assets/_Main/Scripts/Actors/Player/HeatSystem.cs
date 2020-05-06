@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct OverheatedEventArgs : IGameEvent { }
+
 public class HeatSystem : MonoBehaviour
 {
     [SerializeField] private float _maxHeat = 100f;
@@ -42,6 +44,7 @@ public class HeatSystem : MonoBehaviour
                 if (timer > _timeToOverheat)
                 {
                     OverHeated = true;
+                    EventManager.Instance.TriggerEvent(new OverheatedEventArgs());
 
                     Heat = _maxHeat;
                 }

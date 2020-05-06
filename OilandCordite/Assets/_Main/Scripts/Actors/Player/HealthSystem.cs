@@ -2,20 +2,34 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthSystem : MonoBehaviour
+public class HealthSystem : GameEventUserObject
 {
     [SerializeField] private float _maxHealth = 100f;
     [SerializeField] private float _invincibilityWindow = 1f;
+
+    [SerializeField] private float _overheatDamage = 5f;
+    [SerializeField] private float _overheatDamageRate = 1f;
 
     //Public
     public float Health { get; private set; }
 
     //Private
+    private HeatSystem _heatSystem;
+
     private bool _invincible  = false;
 
     private void Awake()
     {
         Health = _maxHealth;
+
+        _heatSystem = GetComponent<HeatSystem>();
+    }
+
+    private void OnOverheat(OverheatedEventArgs args) => StartCoroutine(OverheatRoutine());
+
+    public override void Subscribe()
+    {
+        EventManager.Instance.AddListener<OverheatedEventArgs>(this, OnOverheat);
     }
 
     private void AddHealth(float amount)
@@ -23,15 +37,18 @@ public class HealthSystem : MonoBehaviour
         Health = Mathf.Min(_maxHealth, Health + amount);
     }
 
-    private void TakeDamage(float amount)
+    private void TakeDamage(float amount, bool ignoreInvincibility = false)
     {
-        if (_invincible) return;
+        if (_invincible && !ignoreInvincibility) return;
 
         Health -= amount;
 
         //Trigger PlayerDestroyedEvent
         if (Health < 0) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-        else StartCoroutine(InvincibilityRoutine());
+        else
+        {
+            if(!ignoreInvincibility) StartCoroutine(InvincibilityRoutine());
+        }
     }
 
     private IEnumerator InvincibilityRoutine()
@@ -41,6 +58,16 @@ public class HealthSystem : MonoBehaviour
         yield return new WaitForSeconds(_invincibilityWindow);
 
         _invincible = false;
+    }
+
+    private IEnumerator OverheatRoutine()
+    {
+        while(_heatSystem.OverHeated)
+        {
+            TakeDamage(_overheatDamage, true);
+
+            yield return new WaitForSeconds(_overheatDamageRate);
+        }
     }
 
 }
