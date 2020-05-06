@@ -15,7 +15,7 @@ public class Laser : MonoBehaviour
 
     private void Start()
     {
-        _rigidbody.velocity = (Player.Instance.PlayerData.WorldSpacePosition - transform.position) * _speed;
+        _rigidbody.velocity = (PlayerData.Instance.WorldSpacePosition - transform.position) * _speed;
 
         Destroy(gameObject, 5);
     }

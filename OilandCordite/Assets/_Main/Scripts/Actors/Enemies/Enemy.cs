@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
             {
                 foreach (AttackBehaviour attack in _attackBehaviours)
                 {
-                    if (attack.UsageCondition(Player.Instance.PlayerData, _enemyData))
+                    if (attack.UsageCondition(PlayerData.Instance, _enemyData))
                     {
                         attack.Attack(_enemyData);
                         _coolDown = attack.CoolDown;

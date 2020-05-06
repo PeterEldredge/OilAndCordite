@@ -28,7 +28,10 @@ public class ShipControlBasic : MonoBehaviour
     [SerializeField] private float _xSensitivity = .4f;
     [SerializeField] private float _ySensitivity = .6f;
 
-    //States
+    //Public
+    public int Speed { get; private set; }
+
+    //Private
     private Rigidbody _rb;
 
     private Action _inputCalculation;
@@ -42,7 +45,7 @@ public class ShipControlBasic : MonoBehaviour
     private float _yMousePosition;
 
     #region Input Calculations 
-        
+
     private void SetInputType()
     {
         ResetVirtualJoystick();
@@ -82,10 +85,13 @@ public class ShipControlBasic : MonoBehaviour
 
     #endregion
 
-    void Start()
+    private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
+    }
 
+    private void Start()
+    {
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
 
@@ -139,7 +145,7 @@ public class ShipControlBasic : MonoBehaviour
 
         _rb.velocity += transform.forward * acceleration * Time.fixedDeltaTime;
 
-        PlayerStats.Speed = (int)_rb.velocity.magnitude;
+        Speed = (int)_rb.velocity.magnitude;
 
         if (transform.position.y <= 0)
         {
@@ -157,36 +163,5 @@ public class ShipControlBasic : MonoBehaviour
                 _rb.velocity += transform.forward * igniteThrust * ((PlayerStats.heat / 100) + 20) * Time.fixedDeltaTime;
             }
         }
-
-        if (other.tag == "Attack")
-        {
-            TakeDamage();
-        }
     }
-
-    void OnCollisionStay(Collision collision)
-    {
-        TakeDamage();
-    }
-
-    IEnumerator invincibleTimer()
-    {
-        PlayerStats.invincible = true;
-        yield return new WaitForSecondsRealtime(1f);
-        PlayerStats.invincible = false;
-    }
-
-    public void TakeDamage()
-    {
-        if (!PlayerStats.invincible)
-        {
-            PlayerStats.changeHealth(-10);
-            if (PlayerStats.health == 0)
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(0);
-            }
-            StartCoroutine(invincibleTimer());
-        }
-    }
-
 }

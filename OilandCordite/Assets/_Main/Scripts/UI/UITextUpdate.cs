@@ -5,47 +5,34 @@ using UnityEngine.UI;
 
 public class UITextUpdate : MonoBehaviour
 {
-    [SerializeField] private Text HealthText;
-    [SerializeField] private Text HeatText;
-    [SerializeField] private Slider HealthBar;
-    [SerializeField] private Slider HeatBar;
-    [SerializeField] private Text SpeedText;
+    [SerializeField] private Text _healthText;
+    [SerializeField] private Text _heatText;
+    [SerializeField] private Slider _healthBar;
+    [SerializeField] private Slider _heatBar;
+    [SerializeField] private Text _speedText;
 
     // Update is called once per frame
     void Update()
     {
-        generateHeat();
-        updateHealth();
-        updateHeat();
+        UpdateHealth();
+        UpdateHeat();
         UpdateSpeed();
     }
 
-    void generateHeat()
+    void UpdateHealth()
     {
-        if (Input.GetMouseButton(0)&&PlayerStats.heat<99.9)
-        {
-            PlayerStats.changeHeat(1.5f);
-        }
-        else if (PlayerStats.heat>.1)
-        {
-            PlayerStats.changeHeat(-4.5f);
-        }
+        _healthText.text = "Health:" + PlayerData.Instance.Health.ToString("F0");
+        _healthBar.value = PlayerData.Instance.Health;
     }
 
-    void updateHealth()
+    void UpdateHeat()
     {
-        HealthText.text = "Health:" + PlayerStats.health.ToString("F0");
-        HealthBar.value = PlayerStats.health;
-    }
-
-    void updateHeat()
-    {
-        HeatText.text = "Heat:" + PlayerStats.heat.ToString("F1");
-        HeatBar.value = PlayerStats.heat;
+        _heatText.text = "Heat:" + PlayerData.Instance.Heat.ToString("F1");
+        _heatBar.value = PlayerData.Instance.Heat;
     }
 
     void UpdateSpeed()
     {
-        SpeedText.text = "Speed: " + PlayerStats.Speed.ToString();
+        _speedText.text = "Speed: " + PlayerData.Instance.Speed.ToString();
     }
 }
