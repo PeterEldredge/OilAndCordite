@@ -6,7 +6,8 @@ public class HeatSystem : MonoBehaviour
 {
     [SerializeField] private float _maxHeat = 100f;
     [SerializeField] private float _timeToOverheat = 5f;
-    [SerializeField] private float _timeToResetFromOverHeat = 3f;
+    [SerializeField] private float _timeToResetFromMax = 3f;
+    [SerializeField] private float _overheatedTimePenalty = 2f;
     [SerializeField] private AnimationCurve _heatCurve;
 
     //Public
@@ -28,7 +29,7 @@ public class HeatSystem : MonoBehaviour
     {
         float timer = 0f;
         float heatingPercentage = 0f;
-        float coolingSpeed = _maxHeat / _timeToResetFromOverHeat;
+        float coolingSpeed = _maxHeat / _timeToResetFromMax;
 
         _heating = true;
 
@@ -55,7 +56,14 @@ public class HeatSystem : MonoBehaviour
             yield return null;
         }
 
-        while(Heat > 0)
+        if(OverHeated)
+        {
+            yield return new WaitForSeconds(_overheatedTimePenalty);
+        }
+
+        OverHeated = false;
+
+        while (Heat > 0)
         {
             Heat = Mathf.Max(0, Heat - coolingSpeed * Time.deltaTime);
 
@@ -63,7 +71,6 @@ public class HeatSystem : MonoBehaviour
         }
 
         Heat = 0;
-        OverHeated = false;
 
         _heating = false;
     }
