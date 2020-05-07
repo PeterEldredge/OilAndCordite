@@ -31,7 +31,7 @@ public class HealthSystem : GameEventUserObject
     private void OnOverheat(OverheatedEventArgs args) => StartCoroutine(OverheatRoutine());
     private void OnAttacked(PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
     private void OnPlayerDefeatedEnemy(PlayerDefeatedEnemyEvent args) => AddHealth(args.HealthGain);
-    private void OnObstacleHit(ObstacleHitEventArgs args) => TakeDamage(_damageOnCollision);
+    private void OnObstacleHit(ObstacleHitEventArgs args) => TakeDamage(_damageOnCollision, true);
 
     public override void Subscribe()
     {
