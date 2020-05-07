@@ -14,6 +14,12 @@ public class LaserAttack : AttackBehaviour
 
     public override void Attack(EnemyData enemyData)
     {
-        Instantiate(_laser, enemyData.WorldSpacePosition, Quaternion.Euler(Vector3.zero));
+        Instantiate(_laser, enemyData.WorldSpacePosition, enemyData.WorldSpaceRotation);
+    }
+
+    public override void Track(EnemyData enemyData)
+    {
+        Quaternion lookRotation = Quaternion.LookRotation(PlayerData.Instance.WorldSpacePosition - enemyData.WorldSpacePosition);
+        enemyData.Object.transform.rotation = Quaternion.Lerp(enemyData.WorldSpaceRotation, lookRotation, _lookSpeed);
     }
 }
