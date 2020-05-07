@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField] private Slider _heatBar;
     [SerializeField] private Text _speedText;
     [SerializeField] private GameObject _pauseMenuUI;
+    [SerializeField] private string _mainMenuName = "Main Menu";
 
     private bool _paused =  false;
 
@@ -70,6 +71,8 @@ public class UIController : MonoBehaviour
 
     public void ToMainMenu()
     {
+        Time.timeScale = 1f;
+        SceneController.Instance.SwitchScene(_mainMenuName);
 
     }
 }

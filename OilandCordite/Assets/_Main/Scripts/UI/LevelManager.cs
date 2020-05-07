@@ -53,6 +53,6 @@ public class LevelManager : MonoBehaviour
     public void loadScene()
     {
         string temp = spawnedLevel.name.Replace("(Clone)","");
-        SceneManager.LoadScene(temp, LoadSceneMode.Single);
+        SceneController.Instance.SwitchScene(temp);
     }
 }
