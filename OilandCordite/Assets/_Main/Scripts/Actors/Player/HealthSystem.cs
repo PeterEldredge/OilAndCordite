@@ -46,7 +46,7 @@ public class HealthSystem : GameEventUserObject
         Health -= amount;
 
         //Trigger PlayerDestroyedEvent
-        if (Health =< 0) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        if (Health <= 0) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
         else
         {
             if(!ignoreInvincibility) StartCoroutine(InvincibilityRoutine());

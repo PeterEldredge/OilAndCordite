@@ -10,8 +10,12 @@ public class ShipControlBasic : MonoBehaviour
     [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(60f, 25f, 45f);
     [Tooltip("Multiplier for all forces")] public float rotateMult = 3f;
     [Tooltip("Increase gravity")] public float gravMult = 3.0f;
-    [SerializeField] private float _maxAcceleration = 150;
-    [SerializeField] private float _minAcceleration = -125;
+    [SerializeField] private float _maxAcceleration = 150f;
+    [SerializeField] private float _minAcceleration = -125f;
+    [SerializeField] private float _minSmogMomentum = 0f;
+    [SerializeField] private float _minAirMomentum = 10f;
+    [SerializeField] private float _minSmogIgnitionHeat = 0f;
+    [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")] [SerializeField] private float _minGasIgnitionHeat = 20f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
 
@@ -118,7 +122,11 @@ public class ShipControlBasic : MonoBehaviour
     {
         transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
 
-        _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, 60, 300) * transform.forward;
+        float minMomentum = _minSmogMomentum;
+        if (!PlayerData.Instance.InSmog)
+            minMomentum = _minAirMomentum;
+            
+        _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward;
 
         float forwardAngle = transform.forward.y;
         float acceleration;
@@ -142,11 +150,11 @@ public class ShipControlBasic : MonoBehaviour
 
         if (PlayerData.Instance.InGas)
         {
-            _rb.velocity += transform.forward * igniteThrust * ((PlayerData.Instance.Heat / 100) + 20) * Time.fixedDeltaTime;
+            _rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minGasIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
         }
         else if (PlayerData.Instance.InSmog)
         {
-            _rb.velocity += transform.forward * igniteThrust * ((PlayerData.Instance.Heat / 100) + 20) * Time.fixedDeltaTime;
+            _rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
         }
 
         if (transform.position.y <= 0)
