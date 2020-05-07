@@ -9,6 +9,8 @@ public abstract class AttackBehaviour : ScriptableObject
     [SerializeField] protected float _minRange;
     [SerializeField] protected float _maxRange;
 
+    [SerializeField] protected float _lookSpeed = 10f;
+
     public virtual bool UsageCondition(PlayerData playerData, EnemyData enemyData)
     {
         float distance = Vector3.Distance(playerData.WorldSpacePosition, enemyData.WorldSpacePosition);
@@ -17,4 +19,5 @@ public abstract class AttackBehaviour : ScriptableObject
     }
 
     public abstract void Attack(EnemyData enemyData);
+    public abstract void Track(EnemyData enemyData);
 }

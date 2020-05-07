@@ -2,8 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public struct PlayerDefeatedEnemyEvent : IGameEvent 
+{
+    public float HealthGain { get; }
+    
+    public PlayerDefeatedEnemyEvent(float healthGain)
+    {
+        HealthGain = healthGain;
+    }
+}
+
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private float _piercingSpeed;
+    [SerializeField] private float _healthGain = 30f;
     [SerializeField] private List<AttackBehaviour> _attackBehaviours;
 
     private EnemyData _enemyData;
@@ -22,11 +34,19 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log(collision.collider.attachedRigidbody.velocity.magnitude);
-        if (collision.collider.attachedRigidbody.velocity.magnitude >= 40)
+        if (collision.collider.CompareTag(Tags.PLAYER))
         {
-            this.gameObject.SetActive(false);
+            if(collision.collider.attachedRigidbody.velocity.magnitude > _piercingSpeed)
+            {
+                EventManager.Instance.TriggerEvent(new PlayerDefeatedEnemyEvent(_healthGain));
+                Defeated();
+            }
         }
+    }
+
+    private void Defeated()
+    {
+        Destroy(gameObject);
     }
 
     private IEnumerator Attack()
@@ -34,17 +54,19 @@ public class Enemy : MonoBehaviour
         while(true)
         {
             if (_coolDown > 0) _coolDown -= Time.deltaTime;
-            else
+            foreach (AttackBehaviour attack in _attackBehaviours)
             {
-                foreach (AttackBehaviour attack in _attackBehaviours)
+                if (attack.UsageCondition(PlayerData.Instance, _enemyData))
                 {
-                    if (attack.UsageCondition(PlayerData.Instance, _enemyData))
+                    if(_coolDown <= 0)
                     {
                         attack.Attack(_enemyData);
                         _coolDown = attack.CoolDown;
-
-                        break;
                     }
+
+                    attack.Track(_enemyData);
+
+                    break;
                 }
             }
 

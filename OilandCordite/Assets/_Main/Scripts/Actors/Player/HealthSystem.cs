@@ -27,11 +27,13 @@ public class HealthSystem : GameEventUserObject
 
     private void OnOverheat(OverheatedEventArgs args) => StartCoroutine(OverheatRoutine());
     private void OnAttacked(PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
+    private void OnPlayerDefeatedEnemy(PlayerDefeatedEnemyEvent args) => AddHealth(args.HealthGain);
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<OverheatedEventArgs>(this, OnOverheat);
         EventManager.Instance.AddListener<PlayerAttackedEventArgs>(this, OnAttacked);
+        EventManager.Instance.AddListener<PlayerDefeatedEnemyEvent>(this, OnPlayerDefeatedEnemy);
     }
 
     private void AddHealth(float amount)

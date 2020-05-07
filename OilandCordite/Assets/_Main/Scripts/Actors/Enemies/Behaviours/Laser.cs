@@ -16,7 +16,7 @@ public class Laser : Attack
 
     private void Start()
     {
-        _rigidbody.velocity = (PlayerData.Instance.WorldSpacePosition - transform.position) * _speed;
+        _rigidbody.velocity = transform.forward * _speed;
 
         Destroy(gameObject, _aliveTime);
     }
