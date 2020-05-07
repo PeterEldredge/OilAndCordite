@@ -151,8 +151,9 @@ GameObject:
   - component: {fileID: 5395220422457520691}
   - component: {fileID: 2124465045146850034}
   - component: {fileID: 1399422045548960347}
+  - component: {fileID: 1846104171}
   m_Layer: 0
-  m_Name: lowPolyPlayer
+  m_Name: Colliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -170,7 +171,7 @@ Transform:
   m_LocalScale: {x: 292.8754, y: 204.25127, z: 1889.8555}
   m_Children: []
   m_Father: {fileID: 6743252425538831296}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1177545540547028511
 MeshFilter:
@@ -259,6 +260,18 @@ CapsuleCollider:
   m_Height: 0.01060308
   m_Direction: 2
   m_Center: {x: 0.0001890902, y: 0.003576343, z: -0.0009305545}
+--- !u!114 &1846104171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6581769005164359226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41645608059f6b847b59131de6a8f9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6737706917059100710
 GameObject:
   m_ObjectHideFlags: 0
@@ -291,9 +304,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 591.1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 7857793787360812073}
   - {fileID: 6740376657749484180}
   - {fileID: 6740300392572260438}
-  - {fileID: 7857793787360812073}
   - {fileID: 4324193097999879660}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -428,6 +441,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHealth: 100
   _invincibilityWindow: 1
+  _overheatDamage: 5
+  _overheatDamageRate: 1
 --- !u!114 &6737706917059100711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -442,7 +457,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _maxHeat: 100
   _timeToOverheat: 5
-  _timeToResetFromOverHeat: 3
+  _timeToResetFromMax: 3
+  _overheatedTimePenalty: 2
   _heatCurve:
     serializedVersion: 2
     m_Curve:
@@ -508,7 +524,7 @@ Transform:
   m_LocalScale: {x: 5.5627, y: 5.5627, z: 5.5627}
   m_Children: []
   m_Father: {fileID: 6743252425538831296}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &6688427596935417828
 TrailRenderer:
@@ -645,7 +661,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 6743252425538831296}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -28.966002, z: 0}
 --- !u!96 &6688636951282527956
 TrailRenderer:

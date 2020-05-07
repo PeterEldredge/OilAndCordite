@@ -19,10 +19,10 @@ public class PlayerData : ActorData
     private HealthSystem _healthSystem;
     private HeatSystem _heatSystem;
 
-
     private void Awake()
     {
         if (Instance == null) Instance = this;
+        else Destroy(this);
 
         _shipControl = GetComponent<ShipControlBasic>();
         _healthSystem = GetComponent<HealthSystem>();

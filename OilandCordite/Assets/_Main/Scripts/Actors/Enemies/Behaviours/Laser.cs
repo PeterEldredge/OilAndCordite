@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Laser : MonoBehaviour
+public class Laser : Attack
 {
-    private Rigidbody _rigidbody;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _aliveTime = 5f;
 
-    [SerializeField] float _speed;
+    private Rigidbody _rigidbody;
 
     private void Awake()
     {
@@ -17,6 +18,6 @@ public class Laser : MonoBehaviour
     {
         _rigidbody.velocity = (PlayerData.Instance.WorldSpacePosition - transform.position) * _speed;
 
-        Destroy(gameObject, 5);
+        Destroy(gameObject, _aliveTime);
     }
 }
