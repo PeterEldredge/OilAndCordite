@@ -20,4 +20,12 @@ public class Laser : Attack
 
         Destroy(gameObject, _aliveTime);
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(!other.CompareTag(Tags.PLAYER) && !other.CompareTag(Tags.ENEMY))
+        {
+            Destroy(gameObject);
+        }
+    }
 }
