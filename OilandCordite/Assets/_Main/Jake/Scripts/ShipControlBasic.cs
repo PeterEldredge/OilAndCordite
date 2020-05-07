@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShipControlBasic : MonoBehaviour
+public class ShipControlBasic : GameEventUserObject
 {
     [Header("Physics")]
     [Tooltip("Force to push plane forwards with")] public float igniteThrust = 1000f;
@@ -99,6 +99,12 @@ public class ShipControlBasic : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
     }
 
+    private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
+    public override void Subscribe()
+    {
+        EventManager.Instance.AddListener<ObstacleHitEventArgs>(this, OnObstacleHit);
+    }
+
     private void Start()
     {
         QualitySettings.vSyncCount = 0;
@@ -141,12 +147,10 @@ public class ShipControlBasic : MonoBehaviour
         if (Input.GetButtonDown("Spinout") && !_spinningOut)
         {
             //_rb.velocity = new Vector3(0,0,0);
-            _spinningOut = true;
-            _anim.SetBool("spinningOut", _spinningOut);
-            StartCoroutine("Spinout");
+            StartCoroutine(SpinoutRoutine());
         }
 
-        if (!_spinningOut)
+        if (!_spinningOut && !_bouncing)
         {
             if (!PlayerData.Instance.InSmog && forwardAngle < 0)
             {
@@ -187,8 +191,10 @@ public class ShipControlBasic : MonoBehaviour
         Speed = (int)_rb.velocity.magnitude;
     }
 
-    private IEnumerator Spinout()
+    private IEnumerator SpinoutRoutine()
     {
+        _spinningOut = true;
+        _anim.SetBool("spinningOut", _spinningOut);
         var targetVelocity = PlayerData.Instance.InSmog ? _minSmogMomentum : _minAirMomentum;
         
         //Without the +1 here, the ship will get stuck in the Smog Sea for a reason I haven't figured out yet.
@@ -201,5 +207,25 @@ public class ShipControlBasic : MonoBehaviour
         yield return null;
         _spinningOut = false; 
         _anim.SetBool("spinningOut", _spinningOut);
+    }
+
+    private IEnumerator BounceBackRoutine(ObstacleHitEventArgs args)
+    {
+        _bouncing = true;
+
+        float timer = 0;
+
+        Vector3 bounceVelocity = args.ContactPoint.normal * 200f;
+        Vector3 endVelocity = args.ContactPoint.normal * _minAirMomentum;
+
+        while (timer < .75f)
+        {
+            timer += Time.deltaTime;
+            _rb.velocity = Vector3.Lerp(bounceVelocity, endVelocity,  timer/.75f);
+            yield return null;
+        }
+
+        _rb.velocity = endVelocity;
+        _bouncing = false;
     }
 }

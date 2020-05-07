@@ -31,14 +31,14 @@ public class HealthSystem : GameEventUserObject
     private void OnOverheat(OverheatedEventArgs args) => StartCoroutine(OverheatRoutine());
     private void OnAttacked(PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
     private void OnPlayerDefeatedEnemy(PlayerDefeatedEnemyEvent args) => AddHealth(args.HealthGain);
-    private void OnObstacleHit(ObstacleHitEvent args) => TakeDamage(_damageOnCollision);
+    private void OnObstacleHit(ObstacleHitEventArgs args) => TakeDamage(_damageOnCollision);
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<OverheatedEventArgs>(this, OnOverheat);
         EventManager.Instance.AddListener<PlayerAttackedEventArgs>(this, OnAttacked);
         EventManager.Instance.AddListener<PlayerDefeatedEnemyEvent>(this, OnPlayerDefeatedEnemy);
-        EventManager.Instance.AddListener<ObstacleHitEvent>(this, OnObstacleHit);
+        EventManager.Instance.AddListener<ObstacleHitEventArgs>(this, OnObstacleHit);
     }
 
     private void AddHealth(float amount)
