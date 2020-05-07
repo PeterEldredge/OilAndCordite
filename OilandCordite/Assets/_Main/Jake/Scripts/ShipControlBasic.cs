@@ -125,8 +125,6 @@ public class ShipControlBasic : MonoBehaviour
         float minMomentum = _minSmogMomentum;
         if (!PlayerData.Instance.InSmog)
             minMomentum = _minAirMomentum;
-            
-        _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward;
 
         float forwardAngle = transform.forward.y;
         float acceleration;
@@ -161,6 +159,8 @@ public class ShipControlBasic : MonoBehaviour
         {
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
+
+        _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward;
 
         Speed = (int)_rb.velocity.magnitude;
     }
