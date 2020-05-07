@@ -148,7 +148,6 @@ public class ShipControlBasic : MonoBehaviour
 
         if (!_spinningOut)
         {
-
             if (!PlayerData.Instance.InSmog && forwardAngle < 0)
             {
                 accelerationCurve = _positiveAccelerationCurve;
