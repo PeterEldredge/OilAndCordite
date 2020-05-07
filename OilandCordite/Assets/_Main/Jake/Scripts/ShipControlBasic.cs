@@ -15,9 +15,11 @@ public class ShipControlBasic : MonoBehaviour
     [SerializeField] private float _minSmogMomentum = 0f;
     [SerializeField] private float _minAirMomentum = 10f;
     [SerializeField] private float _minSmogIgnitionHeat = 0f;
+    [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")] [SerializeField] private float _minGasIgnitionHeat = 20f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
+    [SerializeField] private AnimationCurve _gravityAccelerationCurve;
 
     [Header("Options")]
     [SerializeField] private bool _startInverted = false;
@@ -130,7 +132,7 @@ public class ShipControlBasic : MonoBehaviour
         float acceleration;
         AnimationCurve accelerationCurve;
 
-        if (forwardAngle < 0)
+        if (!PlayerData.Instance.InSmog && forwardAngle < 0)
         {
             accelerationCurve = _positiveAccelerationCurve;
             forwardAngle *= -1;
@@ -160,7 +162,8 @@ public class ShipControlBasic : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
 
-        _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward;
+        float gravity = -9.8f * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f));
+        _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward + new Vector3(0, gravity, 0);
 
         Speed = (int)_rb.velocity.magnitude;
     }
