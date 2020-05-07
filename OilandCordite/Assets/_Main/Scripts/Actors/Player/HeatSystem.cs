@@ -35,7 +35,7 @@ public class HeatSystem : MonoBehaviour
 
         _heating = true;
 
-        while(Input.GetMouseButtonDown(0) || Input.GetAxis("Ignition") > 0)
+        while(Input.GetMouseButton(0) || Input.GetAxis("Ignition") > 0)
         {
             if (!OverHeated)
             {
