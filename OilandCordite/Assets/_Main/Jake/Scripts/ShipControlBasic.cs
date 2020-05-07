@@ -140,13 +140,6 @@ public class ShipControlBasic : MonoBehaviour
 
         _rb.velocity += transform.forward * acceleration * Time.fixedDeltaTime;
 
-        Speed = (int)_rb.velocity.magnitude;
-
-        if (transform.position.y <= 0)
-        {
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        }
-
         if (PlayerData.Instance.InGas)
         {
             _rb.velocity += transform.forward * igniteThrust * ((PlayerData.Instance.Heat / 100) + 20) * Time.fixedDeltaTime;
@@ -156,5 +149,11 @@ public class ShipControlBasic : MonoBehaviour
             _rb.velocity += transform.forward * igniteThrust * ((PlayerData.Instance.Heat / 100) + 20) * Time.fixedDeltaTime;
         }
 
+        if (transform.position.y <= 0)
+        {
+            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+        }
+
+        Speed = (int)_rb.velocity.magnitude;
     }
 }
