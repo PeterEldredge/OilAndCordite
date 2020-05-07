@@ -21,7 +21,7 @@ public class HeatSystem : MonoBehaviour
 
     private void Update()
     {
-        if (!_heating && Input.GetMouseButtonDown(0)) StartHeating();
+        if (!_heating && (Input.GetMouseButtonDown(0) || Input.GetButton("Ignition"))) StartHeating();
     }
 
     private void StartHeating() => StartCoroutine(HeatRoutine());
