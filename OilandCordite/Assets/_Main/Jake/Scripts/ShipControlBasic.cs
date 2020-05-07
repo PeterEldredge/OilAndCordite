@@ -123,12 +123,6 @@ public class ShipControlBasic : MonoBehaviour
             SetInputType();
         }
 
-        if (Input.GetButtonDown("Spinout"))
-        {
-            //_rb.velocity = new Vector3(0,0,0);
-            StartCoroutine("Spinout");
-        }
-
         _inputCalculation.Invoke();
     }
 
@@ -144,7 +138,7 @@ public class ShipControlBasic : MonoBehaviour
         float acceleration;
         AnimationCurve accelerationCurve;
 
-        if (Input.GetButtonDown("Spinout"))
+        if (Input.GetButtonDown("Spinout") && !_spinningOut)
         {
             //_rb.velocity = new Vector3(0,0,0);
             _spinningOut = true;
@@ -187,7 +181,6 @@ public class ShipControlBasic : MonoBehaviour
 
             float gravity = -_gravityMultiplier * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f)) * Time.fixedDeltaTime;
         
-        
             transform.Translate(new Vector3(0, gravity, 0), Space.World);
             _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward;
         }
@@ -197,12 +190,16 @@ public class ShipControlBasic : MonoBehaviour
 
     private IEnumerator Spinout()
     {
-        Debug.Log("Here");
-        while (_rb.velocity.magnitude > 20f)
+        var targetVelocity = PlayerData.Instance.InSmog ? _minSmogMomentum : _minAirMomentum;
+        
+        //Without the +1 here, the ship will get stuck in the Smog Sea for a reason I haven't figured out yet.
+        while (_rb.velocity.magnitude > targetVelocity + 1)
         {
-            _rb.velocity = Vector3.Lerp(_rb.velocity, new Vector3(0, 0, 0), .9f * Time.fixedDeltaTime);
+            _rb.velocity = Vector3.Lerp(_rb.velocity, new Vector3(0, 0, 0), .1f);
             yield return null;
+            targetVelocity = PlayerData.Instance.InSmog ? _minSmogMomentum : _minAirMomentum;
         }
+        yield return null;
         _spinningOut = false; 
         _anim.SetBool("spinningOut", _spinningOut);
     }
