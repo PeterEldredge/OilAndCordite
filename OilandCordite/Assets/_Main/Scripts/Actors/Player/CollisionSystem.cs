@@ -2,7 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct ObstacleHitEvent : IGameEvent { }
+public struct ObstacleHitEvent : IGameEvent 
+{
+    public Vector3 ContactNormal { get; }
+
+    public ObstacleHitEvent(Vector3 contactNormal)
+    {
+        ContactNormal = contactNormal;
+    }
+}
 
 public class CollisionSystem : MonoBehaviour
 {
@@ -13,7 +21,7 @@ public class CollisionSystem : MonoBehaviour
     {
         if(collision.collider.CompareTag(Tags.OBSTACLE))
         {
-            EventManager.Instance.TriggerEvent(new ObstacleHitEvent());
+            EventManager.Instance.TriggerEvent(new ObstacleHitEvent(collision.contacts[0].normal));
         }
     }
 
