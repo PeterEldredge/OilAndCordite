@@ -3,13 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UITextUpdate : MonoBehaviour
+public class UIController : MonoBehaviour
 {
     [SerializeField] private Text _healthText;
     [SerializeField] private Text _heatText;
     [SerializeField] private Slider _healthBar;
     [SerializeField] private Slider _heatBar;
     [SerializeField] private Text _speedText;
+    [SerializeField] private GameObject _pauseMenuUI;
+
+    private bool _paused =  false;
 
     // Update is called once per frame
     void Update()
@@ -17,6 +20,14 @@ public class UITextUpdate : MonoBehaviour
         UpdateHealth();
         UpdateHeat();
         UpdateSpeed();
+
+        if (Input.GetButtonDown("Pause")) {
+            if (!_paused)
+                Pause();
+            else
+                Resume();
+        }
+        
     }
 
     void UpdateHealth()
@@ -34,5 +45,31 @@ public class UITextUpdate : MonoBehaviour
     void UpdateSpeed()
     {
         _speedText.text = "Speed: " + PlayerData.Instance.Speed.ToString();
+    }
+
+    private void Pause()
+    {
+        _pauseMenuUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
+        _paused = true;
+    }
+
+    public void Resume()
+    {
+        _pauseMenuUI.SetActive(false);
+        Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
+        _paused = false;
+    }
+
+    public void Controls()
+    {
+
+    }
+
+    public void ToMainMenu()
+    {
+
     }
 }
