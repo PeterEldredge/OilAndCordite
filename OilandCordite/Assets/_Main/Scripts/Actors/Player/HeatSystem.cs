@@ -21,7 +21,7 @@ public class HeatSystem : MonoBehaviour
 
     private void Update()
     {
-        if (!_heating && (Input.GetMouseButtonDown(0) || Input.GetButton("Ignition"))) StartHeating();
+        if (!_heating && (Input.GetMouseButtonDown(0) || Input.GetAxis("Ignition") > 0)) StartHeating();
     }
 
     private void StartHeating() => StartCoroutine(HeatRoutine());
@@ -35,7 +35,7 @@ public class HeatSystem : MonoBehaviour
 
         _heating = true;
 
-        while(Input.GetMouseButton(0))
+        while(Input.GetMouseButtonDown(0) || Input.GetAxis("Ignition") > 0)
         {
             if (!OverHeated)
             {
