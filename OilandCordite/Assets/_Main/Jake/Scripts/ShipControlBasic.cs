@@ -36,9 +36,6 @@ public class ShipControlBasic : MonoBehaviour
 
     private Action _inputCalculation;
 
-    private bool _igniting = false;
-    private bool _overheating = false;
-
     private int _invertYControl;
 
     private float _xMousePosition;
@@ -102,8 +99,6 @@ public class ShipControlBasic : MonoBehaviour
 
     private void Update()
     {
-        _igniting = Input.GetMouseButton(0);
-
         if (Input.GetKeyDown(KeyCode.Return))
         {
             _invertYControl *= -1;
@@ -126,8 +121,8 @@ public class ShipControlBasic : MonoBehaviour
         _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, 60, 300) * transform.forward;
 
         float forwardAngle = transform.forward.y;
-        AnimationCurve accelerationCurve;
         float acceleration;
+        AnimationCurve accelerationCurve;
 
         if (forwardAngle < 0)
         {
@@ -152,16 +147,14 @@ public class ShipControlBasic : MonoBehaviour
             transform.position = new Vector3(transform.position.x, 0, transform.position.z);
         }
 
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (_igniting)
+        if (PlayerData.Instance.InGas)
         {
-            if (other.tag == "Smog")
-            {
-                _rb.velocity += transform.forward * igniteThrust * ((PlayerStats.heat / 100) + 20) * Time.fixedDeltaTime;
-            }
+            _rb.velocity += transform.forward * igniteThrust * ((PlayerData.Instance.Heat / 100) + 20) * Time.fixedDeltaTime;
         }
+        else if (PlayerData.Instance.InSmog)
+        {
+            _rb.velocity += transform.forward * igniteThrust * ((PlayerData.Instance.Heat / 100) + 20) * Time.fixedDeltaTime;
+        }
+
     }
 }

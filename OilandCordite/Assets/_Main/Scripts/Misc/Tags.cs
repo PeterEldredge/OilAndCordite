@@ -6,5 +6,7 @@ public static class Tags
 {
     public const string ATTACK = "Attack";
     public const string PLAYER = "Player";
+    public const string SMOG = "Smog";
+    public const string GAS_CLOUD = "GasCloud";
 }
 

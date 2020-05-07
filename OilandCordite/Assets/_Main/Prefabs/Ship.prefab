@@ -151,10 +151,9 @@ GameObject:
   - component: {fileID: 5395220422457520691}
   - component: {fileID: 2124465045146850034}
   - component: {fileID: 1399422045548960347}
-  - component: {fileID: 1846104171}
   m_Layer: 0
   m_Name: Colliders
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -260,18 +259,6 @@ CapsuleCollider:
   m_Height: 0.01060308
   m_Direction: 2
   m_Center: {x: 0.0001890902, y: 0.003576343, z: -0.0009305545}
---- !u!114 &1846104171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6581769005164359226}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41645608059f6b847b59131de6a8f9f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6737706917059100710
 GameObject:
   m_ObjectHideFlags: 0
@@ -285,6 +272,7 @@ GameObject:
   - component: {fileID: 6738773150691459918}
   - component: {fileID: 6737706917059100708}
   - component: {fileID: 6737706917059100711}
+  - component: {fileID: 2903080340521991290}
   - component: {fileID: 6738773150691459919}
   m_Layer: 0
   m_Name: Ship
@@ -483,6 +471,18 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2903080340521991290
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6737706917059100710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41645608059f6b847b59131de6a8f9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &6738773150691459919
 MonoBehaviour:
   m_ObjectHideFlags: 0

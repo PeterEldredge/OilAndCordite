@@ -14,10 +14,14 @@ public class PlayerData : ActorData
     public float Heat => _heatSystem.Heat;
     public bool OverHeated => _heatSystem.OverHeated;
 
+    public bool InSmog => _collisionSystem.InSmog;
+    public bool InGas => _collisionSystem.InGas;
+
     //Private
     private ShipControlBasic _shipControl;
     private HealthSystem _healthSystem;
     private HeatSystem _heatSystem;
+    private CollisionSystem _collisionSystem;
 
     private void Awake()
     {
@@ -27,6 +31,7 @@ public class PlayerData : ActorData
         _shipControl = GetComponent<ShipControlBasic>();
         _healthSystem = GetComponent<HealthSystem>();
         _heatSystem = GetComponent<HeatSystem>();
+        _collisionSystem = GetComponentInChildren<CollisionSystem>();
     }
 
 }
