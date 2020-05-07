@@ -18,13 +18,13 @@ public class FlightCam : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         Vector3 moveCamTo = ship.position - ship.forward * distanceFromShip + Vector3.up * upFromShip;
         transform.position = transform.position * springBias + moveCamTo * (1f - springBias);
 
-        var newRotation = Quaternion.LookRotation((ship.position + ship.forward * lookingPointFromShip) - transform.position);
-        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * damping);
+        //var newRotation = Quaternion.LookRotation((ship.position + ship.forward * lookingPointFromShip) - transform.position);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.fixedDeltaTime * damping);
+        transform.rotation = Quaternion.Slerp(transform.rotation, ship.rotation, Time.fixedDeltaTime * damping);
     }
 }
