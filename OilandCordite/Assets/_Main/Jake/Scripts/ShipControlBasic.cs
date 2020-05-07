@@ -6,15 +6,16 @@ using UnityEngine;
 public class ShipControlBasic : MonoBehaviour
 {
     [Header("Physics")]
-    [Tooltip("Force to push plane forwards with")] public float igniteThrust = 200f;
+    [Tooltip("Force to push plane forwards with")] public float igniteThrust = 1000f;
     [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(60f, 25f, 45f);
     [Tooltip("Multiplier for all forces")] public float rotateMult = 3f;
     [Tooltip("Increase gravity")] public float gravMult = 3.0f;
     [SerializeField] private float _maxAcceleration = 150f;
     [SerializeField] private float _minAcceleration = -125f;
     [SerializeField] private float _minSmogMomentum = 0f;
-    [SerializeField] private float _minAirMomentum = 10f;
+    [SerializeField] private float _minAirMomentum = 30f;
     [SerializeField] private float _minSmogIgnitionHeat = 0f;
+    [SerializeField] private float _gravityMultiplier = 50f;
     [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")] [SerializeField] private float _minGasIgnitionHeat = 20f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
@@ -34,6 +35,8 @@ public class ShipControlBasic : MonoBehaviour
     [SerializeField] private float _xSensitivity = .4f;
     [SerializeField] private float _ySensitivity = .6f;
 
+    [Header("Animation")]
+    [SerializeField] private Animator _anim;
     //Public
     public int Speed { get; private set; }
 
@@ -46,6 +49,9 @@ public class ShipControlBasic : MonoBehaviour
 
     private float _xMousePosition;
     private float _yMousePosition;
+
+    private bool _spinningOut = false;
+    private bool _bouncing = false;
 
     #region Input Calculations 
 
@@ -117,6 +123,12 @@ public class ShipControlBasic : MonoBehaviour
             SetInputType();
         }
 
+        if (Input.GetButtonDown("Spinout"))
+        {
+            //_rb.velocity = new Vector3(0,0,0);
+            StartCoroutine("Spinout");
+        }
+
         _inputCalculation.Invoke();
     }
 
@@ -132,39 +144,66 @@ public class ShipControlBasic : MonoBehaviour
         float acceleration;
         AnimationCurve accelerationCurve;
 
-        if (!PlayerData.Instance.InSmog && forwardAngle < 0)
+        if (Input.GetButtonDown("Spinout"))
         {
-            accelerationCurve = _positiveAccelerationCurve;
-            forwardAngle *= -1;
-
-            acceleration = (accelerationCurve.Evaluate(forwardAngle) * _maxAcceleration);
-        }
-        else
-        {
-            accelerationCurve = _negativeAccelerationCurve;
-
-            acceleration = (accelerationCurve.Evaluate(forwardAngle) * _minAcceleration);
+            //_rb.velocity = new Vector3(0,0,0);
+            _spinningOut = true;
+            _anim.SetBool("spinningOut", _spinningOut);
+            StartCoroutine("Spinout");
         }
 
-        _rb.velocity += transform.forward * acceleration * Time.fixedDeltaTime;
-
-        if (PlayerData.Instance.InGas)
+        if (!_spinningOut)
         {
-            _rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minGasIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
-        }
-        else if (PlayerData.Instance.InSmog)
-        {
-            _rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
-        }
 
-        if (transform.position.y <= 0)
-        {
-            transform.position = new Vector3(transform.position.x, 0, transform.position.z);
-        }
+            if (!PlayerData.Instance.InSmog && forwardAngle < 0)
+            {
+                accelerationCurve = _positiveAccelerationCurve;
+                forwardAngle *= -1;
 
-        float gravity = -9.8f * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f));
-        _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward + new Vector3(0, gravity, 0);
+                acceleration = (accelerationCurve.Evaluate(forwardAngle) * _maxAcceleration);
+            }
+            else
+            {
+                accelerationCurve = _negativeAccelerationCurve;
+
+                acceleration = (accelerationCurve.Evaluate(forwardAngle) * _minAcceleration);
+            }
+
+            _rb.velocity += transform.forward * acceleration * Time.fixedDeltaTime;
+
+            if (PlayerData.Instance.InGas)
+            {
+                _rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minGasIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
+            }
+            else if (PlayerData.Instance.InSmog)
+            {
+                _rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
+            }
+
+            if (transform.position.y <= 0)
+            {
+                transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+            }
+
+            float gravity = -_gravityMultiplier * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f)) * Time.fixedDeltaTime;
+        
+        
+            transform.Translate(new Vector3(0, gravity, 0), Space.World);
+            _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward;
+        }
 
         Speed = (int)_rb.velocity.magnitude;
+    }
+
+    private IEnumerator Spinout()
+    {
+        Debug.Log("Here");
+        while (_rb.velocity.magnitude > 20f)
+        {
+            _rb.velocity = Vector3.Lerp(_rb.velocity, new Vector3(0, 0, 0), .9f * Time.fixedDeltaTime);
+            yield return null;
+        }
+        _spinningOut = false; 
+        _anim.SetBool("spinningOut", _spinningOut);
     }
 }
