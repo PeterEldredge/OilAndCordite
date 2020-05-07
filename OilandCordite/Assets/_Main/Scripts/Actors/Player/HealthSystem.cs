@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HealthSystem : GameEventUserObject
 {
@@ -52,7 +53,7 @@ public class HealthSystem : GameEventUserObject
         Health -= amount;
 
         //Trigger PlayerDestroyedEvent
-        if (Health <= 0) UnityEngine.SceneManagement.SceneManager.LoadScene(0);
+        if (Health <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         else
         {
             if(!ignoreInvincibility) StartCoroutine(InvincibilityRoutine());
