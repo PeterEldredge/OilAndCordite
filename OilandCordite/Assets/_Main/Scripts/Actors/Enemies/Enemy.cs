@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _piercingSpeed;
     [SerializeField] private float _healthGain = 30f;
     [SerializeField] private List<AttackBehaviour> _attackBehaviours;
+    [SerializeField] private List<Transform> _attackPoints;
 
     private EnemyData _enemyData;
 
@@ -25,6 +26,8 @@ public class Enemy : MonoBehaviour
     private void Awake()
     {
         _enemyData = GetComponent<EnemyData>();
+
+        _enemyData.AttackPoints = _attackPoints;
     }
 
     private void Start()

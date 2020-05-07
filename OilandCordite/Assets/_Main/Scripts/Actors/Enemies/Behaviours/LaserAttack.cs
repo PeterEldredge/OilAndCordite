@@ -14,7 +14,17 @@ public class LaserAttack : AttackBehaviour
 
     public override void Attack(EnemyData enemyData)
     {
-        Instantiate(_laser, enemyData.WorldSpacePosition, enemyData.WorldSpaceRotation);
+        if(enemyData.AttackPoints.Count > 0)
+        {
+            foreach(Transform attackPoint in enemyData.AttackPoints)
+            {
+                Instantiate(_laser, attackPoint.position, Quaternion.LookRotation(PlayerData.Instance.WorldSpacePosition - attackPoint.position));
+            }
+        }
+        else
+        {
+            Instantiate(_laser, enemyData.WorldSpacePosition, enemyData.WorldSpaceRotation);
+        }
     }
 
     public override void Track(EnemyData enemyData)

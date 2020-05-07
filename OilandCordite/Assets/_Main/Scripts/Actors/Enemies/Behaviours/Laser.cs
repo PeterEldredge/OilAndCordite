@@ -23,7 +23,7 @@ public class Laser : Attack
 
     private void OnTriggerEnter(Collider other)
     {
-        if(!other.CompareTag(Tags.PLAYER) && !other.CompareTag(Tags.ENEMY))
+        if(other.CompareTag(Tags.PLAYER))
         {
             Destroy(gameObject);
         }
