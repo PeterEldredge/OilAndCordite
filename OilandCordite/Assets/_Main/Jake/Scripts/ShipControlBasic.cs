@@ -177,9 +177,9 @@ public class ShipControlBasic : GameEventUserObject
                 _rb.velocity += transform.forward * igniteThrust * .2f * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
             }
 
-            if (transform.position.y <= 0)
+            if (transform.position.y <= 15)
             {
-                transform.position = new Vector3(transform.position.x, 0, transform.position.z);
+                transform.position = new Vector3(transform.position.x, 15, transform.position.z);
             }
 
             float gravity = -_gravityMultiplier * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f)) * Time.fixedDeltaTime;
