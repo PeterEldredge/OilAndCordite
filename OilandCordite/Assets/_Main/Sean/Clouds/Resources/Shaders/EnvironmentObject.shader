@@ -9,20 +9,27 @@
         _yOffset ("yOffset", float) = 0.0
         _yFade ("Fade Distance", float) = 0.0
         _GradientColor ("Gradient Color", Color) = (1,1,1,1)
+        _MinFadeOffDistance ("Minimum Fadeoff Distance", float) = 5
+        _MaxFadeOffDistance ("Maximum Fadeoff Distance", float) = 100
+        _FadeNoise ("Fade Noise Texture", 2D) = "white" {}
     }
     SubShader
     {
-        Tags { "RenderType"="Opaque" }
+        Tags { "Queue"="Transparent" "RenderType"="Fade" }
         LOD 200
+        ZWrite Off
+        ZTest Always
+        Cull Back
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
-        #pragma surface surf Standard fullforwardshadows
+        #pragma surface surf Standard fullforwardshadows alpha
 
         // Use shader model 3.0 target, to get nicer looking lighting
         #pragma target 3.0
 
         sampler2D _MainTex;
+        sampler2D _FadeNoise;
 
         struct Input
         {
@@ -33,6 +40,8 @@
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
+        float _MinFadeOffDistance;
+        float _MaxFadeOffDistance;
 
         float _yOffset;
         float _yFade;
@@ -49,13 +58,30 @@
         {
             // Albedo comes from a texture tinted by color
             fixed4 c = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            float distance = min(0, IN.worldPos.y - _yOffset);
+            float dis = min(0, IN.worldPos.y - _yOffset);
             //o.Albedo = c.rgb + (_GradientColor / (IN.worldPos.y + _yOffset));
-            o.Albedo = c.rgb - (_GradientColor * distance * _yFade);
+            o.Albedo = c.rgb - (_GradientColor * dis * _yFade);
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             o.Smoothness = _Glossiness;
-            o.Alpha = c.a;
+            o.Alpha = 1.0;
+            float dist = distance(IN.worldPos, _WorldSpaceCameraPos);
+            if (dist < _MaxFadeOffDistance) {
+                dist = dist - _MinFadeOffDistance;
+                float f = _MaxFadeOffDistance - _MinFadeOffDistance;
+                float p = dist / f;
+                float3 col = lerp(c.rgb, _GradientColor, p);
+                float cl = lerp(0, 1, p);
+                cl = min(1, cl);
+                cl = max(0, cl);
+                float disc = tex2D(_FadeNoise, IN.uv_MainTex);
+                if(cl < disc) {
+                    discard;
+                }
+                else {
+                    o.Alpha = cl;
+                }
+            }
         }
         ENDCG
     }
