@@ -67,10 +67,10 @@
             o.Alpha = 1.0;
             float dist = distance(IN.worldPos, _WorldSpaceCameraPos);
             if (dist < _MaxFadeOffDistance) {
-                o.Albedo = c.rgb - (_GradientColor * dis * _yFade);
                 dist = dist - _MinFadeOffDistance;
                 float f = _MaxFadeOffDistance - _MinFadeOffDistance;
                 float p = dist / f;
+                float3 col = lerp(c.rgb, _GradientColor, p);
                 float cl = lerp(0, 1, p);
                 cl = min(1, cl);
                 cl = max(0, cl);
