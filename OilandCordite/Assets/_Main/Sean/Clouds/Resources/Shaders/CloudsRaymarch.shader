@@ -10,6 +10,7 @@ Shader "Hidden/CloudsRaymarch"
     SubShader
     {
         // No culling or depth
+        Tags { "Queue"="Background" }
         Cull Off ZWrite Off ZTest Always
 
         Pass
@@ -146,7 +147,7 @@ Shader "Hidden/CloudsRaymarch"
                 float randomOffset = _OffsetNoise.SampleLevel(sampler_OffsetNoise, i.uv, 0);
                 float distanceTraveled = randomOffset;
                 float maxDistance = min(linearDepth- distanceToVolume, distanceToVolumeInner);
-                float3 ambientLight = (0.0, 0.0, 0.0);
+                float3 ambientLight = float3(0.0, 0.0, 0.0);
 
                 while(distanceTraveled < maxDistance) 
                 {

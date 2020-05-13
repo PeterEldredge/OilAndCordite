@@ -507,7 +507,7 @@ PrefabInstance:
     - target: {fileID: 1538363420119181901, guid: 5d7c84624eafcb64abb6d9072d9c56b3,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.43
+      value: 8.6
       objectReference: {fileID: 0}
     - target: {fileID: 1538363420119181901, guid: 5d7c84624eafcb64abb6d9072d9c56b3,
         type: 3}
@@ -962,13 +962,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075406996}
-  m_LocalRotation: {x: 0.2521591, y: -0, z: -0, w: 0.96768576}
-  m_LocalPosition: {x: 8.14, y: 13.8, z: -12.32}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 14.55, y: 14.67, z: -8.03}
   m_LocalScale: {x: 1, y: 1.9687, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 29.211, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2075407000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -986,14 +986,14 @@ MonoBehaviour:
   noiseMap: {fileID: 11700000, guid: b7dd4dd7f9f5cb648b822f39c7374a6d, type: 2}
   weatherMap: {fileID: 2800000, guid: dbe99f3f3c8e3d94185a276415ac4be0, type: 3}
   OffsetNoiseMap: {fileID: 2800000, guid: 06019f91fb868284a9b333fd11079548, type: 2}
-  upperGradient: {r: 0.98039216, g: 0.7546743, b: 0.6901961, a: 1}
-  lowerGradient: {r: 1, g: 0.60909176, b: 0.495283, a: 1}
-  internalWindSpeed: 4
-  windSpeed: 0.2
-  densityOffset: 5.2
-  raySteps: 43
-  cloudScale: 3
-  lightAbsorptionThroughCloud: 0.85
+  upperGradient: {r: 0.9292453, g: 0.95696366, b: 1, a: 1}
+  lowerGradient: {r: 0.85882354, g: 0.5992829, b: 0.5882353, a: 1}
+  internalWindSpeed: 4.4
+  windSpeed: -0.84
+  densityOffset: 2.6
+  raySteps: 40
+  cloudScale: 2.98
+  lightAbsorptionThroughCloud: 0.94
 --- !u!114 &2075407001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1001,7 +1001,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2075406996}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 679668bbebcfe684fae52b83300a1ceb, type: 3}
   m_Name: 
