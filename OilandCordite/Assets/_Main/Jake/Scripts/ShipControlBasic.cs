@@ -146,7 +146,6 @@ public class ShipControlBasic : GameEventUserObject
 
         if (Input.GetButtonDown("Spinout") && !_spinningOut)
         {
-            //_rb.velocity = new Vector3(0,0,0);
             StartCoroutine(SpinoutRoutine());
         }
 
