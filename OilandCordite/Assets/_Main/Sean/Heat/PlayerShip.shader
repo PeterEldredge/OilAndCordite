@@ -16,6 +16,8 @@
         _FalloffAmount("Fall off Amount", float) = 1.0
         _Temperature("Temperature", float) = 0.0
         _Amount("Vert Jiggle amount", float) = 0.0
+        _GradientFade("Heat Gradient Fade", float) = 0.5
+        _LowerGradientFade("Lower Gradient Fade", float) = 0.9
 
         // individual wave settings 
         _Amplitude ("Wave Size", Range(0,1)) = 0.4
@@ -24,7 +26,6 @@
     }
     SubShader
     {
-        ColorMask RGB
         LOD 200
 
         CGPROGRAM
@@ -42,6 +43,7 @@
         {
             float2 uv_MainTex;
             float3 worldPos;
+            float3 objPos;
         };
         
         const float PI_OVR_2 = 1.57079632679489661923;
@@ -59,6 +61,8 @@
         fixed4 _HotColor;
         fixed4 _VeryHotColor;
         fixed4 _NuclearColor;
+        float _GradientFade;
+        float _LowerGradientFade;
 
         float _Amplitude;
         float _Frequency;
@@ -72,31 +76,33 @@
         UNITY_INSTANCING_BUFFER_START(Props)
             // put more per-instance properties here
         UNITY_INSTANCING_BUFFER_END(Props)
-        void vert (inout appdata_full v) 
+        void vert (inout appdata_full v, out Input o) 
         {
+            UNITY_INITIALIZE_OUTPUT(Input,o);
             fixed3 jiggleSample = tex2Dlod(_VertexNoise, v.vertex);
-           v.vertex.x *= (1 - (_Temperature * cos(_Time.x * 100) * jiggleSample * _Amount));
-		   v.vertex.z *= (1 - (_Temperature * sin(_Time.x * 100) * jiggleSample * _Amount));
+            v.vertex.x *= (1 - (_Temperature * cos(_Time.x * 100) * jiggleSample * _Amount));
+		    v.vertex.z *= (1 - (_Temperature * sin(_Time.x * 100) * jiggleSample * _Amount));
+            o.objPos = v.vertex;
 
-           //float k = 2 * UNITY_PI / _Wavelength;
-			//p.y = _Amplitude * sin(k * (p.x - _Speed * _Time.y));
-            float period = 0.1 * _TwoPi / 5;
-            //v.vertex.y *= 1 - sin(period * (10 * _Time.y));
-            // if(v.vertex.z < _Offset) 
-            // {
-            //     v.vertex.y *= (1 - sin(period * (v.vertex.z * _Frequency + _SinTime.w * 5)) * _Amplitude * v.normal.y);
-            // }
+        //    //float k = 2 * UNITY_PI / _Wavelength;
+		// 	//p.y = _Amplitude * sin(k * (p.x - _Speed * _Time.y));
+        //     float period = 0.1 * _TwoPi / 5;
+        //     //v.vertex.y *= 1 - sin(period * (10 * _Time.y));
+        //     // if(v.vertex.z < _Offset) 
+        //     // {
+        //     //     v.vertex.y *= (1 - sin(period * (v.vertex.z * _Frequency + _SinTime.w * 5)) * _Amplitude * v.normal.y);
+        //     // }
             
         }
 
         // code to swap from a 2 color gradient to a 3 color gradient depending on temperature
         float3 buildHeatGradient(float3 localCoords) {
-            float3 nuclearColor = float3(0.0, 0.0, 0.0);
+            float4 nuclearColor = float4(0.0, 0.0, 0.0, 0.0);
             float baseColor = 0.0;
             float4 heatColor = float4(0.0, 0.0, 0.0, 0.0);
-            baseColor = lerp(heatColor, _HotColor, localCoords.z / 0.9) * step(localCoords.z, 0.9 * _Time.x);
-            nuclearColor = lerp(_HotColor, _VeryHotColor, localCoords.z / 0.5) * step(localCoords.z, 0.5);
-            nuclearColor += lerp(_VeryHotColor, _NuclearColor, (localCoords.z - 0.5) / (1 - 0.5)) * step(0.5, localCoords.z);
+            baseColor = lerp(heatColor, _HotColor, localCoords.z / _GradientFade * 0.5) * step(localCoords.z, _GradientFade * 0.5 * _Time.x);
+            nuclearColor = lerp(_HotColor, _VeryHotColor, localCoords.z / _GradientFade * _Temperature) * step(localCoords.z, _GradientFade * _Temperature);
+            nuclearColor += lerp(_VeryHotColor, _NuclearColor, (localCoords.z - _GradientFade * _Temperature) / (1 - _GradientFade * _Temperature)) * step(_GradientFade * _Temperature, localCoords.z);
             return _Temperature * (baseColor + nuclearColor);
         }
 
@@ -104,14 +110,14 @@
         {
             // Albedo comes from a texture tinted by color
             fixed3 col = tex2D (_MainTex, IN.uv_MainTex) * _Color;
-            float3 localPos = IN.worldPos -  mul(unity_ObjectToWorld, float4(0,0,0,1)).xyz;
+            float3 localPos = IN.objPos;
             float heatAmout = (_HeatPoint * (1 / _HeatRadius) * _FalloffAmount * _Temperature);
            // col += lerp(col, _HotColor, heatAmout);
             o.Albedo = col.rgb;
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             // o.Emission = _Temperature * lerp(_VeryHotColor.rgb, _HotColor.rgb, localPos.z) * tex2D(_VertexNoise, IN.uv_MainTex);
-            o.Emission = buildHeatGradient(localPos) * tex2D(_HeatNoise, IN.uv_MainTex);
+            o.Emission = buildHeatGradient(localPos);
             o.Smoothness = _Glossiness;
             o.Alpha = fixed4(col, 1);
         }
