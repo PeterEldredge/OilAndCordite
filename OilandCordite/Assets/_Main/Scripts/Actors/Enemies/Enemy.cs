@@ -22,6 +22,8 @@ public class Enemy : MonoBehaviour
     private EnemyData _enemyData;
 
     private float _coolDown = -1f;
+    
+    private bool _defeated = false;
 
     private void Awake()
     {
@@ -37,11 +39,12 @@ public class Enemy : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.CompareTag(Tags.PLAYER))
+        if (collision.collider.CompareTag(Tags.PLAYER) && !_defeated)
         {
             if(collision.collider.attachedRigidbody.velocity.magnitude > _piercingSpeed)
             {
                 EventManager.Instance.TriggerEvent(new PlayerDefeatedEnemyEvent(_healthGain));
+                
                 Defeated();
             }
         }
@@ -49,6 +52,8 @@ public class Enemy : MonoBehaviour
 
     private void Defeated()
     {
+        _defeated = true;
+
         Destroy(gameObject);
     }
 

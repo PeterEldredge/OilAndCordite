@@ -169,7 +169,7 @@ public class ShipControlBasic : GameEventUserObject
 
             if (PlayerData.Instance.InGas)
             {
-                _rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minGasIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
+                _rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minGasIgnitionHeat * (PlayerData.Instance.IsIgniting ? 1 : 0), 100) / 100) * Time.fixedDeltaTime;
             }
             else if (PlayerData.Instance.InSmog)
             {

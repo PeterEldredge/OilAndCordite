@@ -15,13 +15,11 @@ public class HeatSystem : MonoBehaviour
     //Public
     public float Heat { get; private set; }
     public bool OverHeated { get; private set; }
-
-    //Private
-    private bool _heating = false;
+    public bool IsIgniting = false;
 
     private void Update()
     {
-        if (!_heating && (Input.GetMouseButton(0) || Input.GetAxis("Ignition") > 0 || Input.GetButton("Ignition"))) StartHeating();
+        if (!IsIgniting && (Input.GetMouseButton(0) || Input.GetAxis("Ignition") > 0 || Input.GetButton("Ignition"))) StartHeating();
     }
 
     private void StartHeating() => StartCoroutine(HeatRoutine());
@@ -30,10 +28,9 @@ public class HeatSystem : MonoBehaviour
     private IEnumerator HeatRoutine()
     {
         float timer = 0f;
-        float heatingPercentage = 0f;
         float coolingSpeed = _maxHeat / _timeToResetFromMax;
 
-        _heating = true;
+        IsIgniting = true;
 
         while(Input.GetMouseButton(0) || Input.GetAxis("Ignition") > 0)
         {
@@ -50,7 +47,7 @@ public class HeatSystem : MonoBehaviour
                 }
                 else
                 {
-                    heatingPercentage = timer / _timeToOverheat;
+                    float heatingPercentage = timer / _timeToOverheat;
 
                     Heat = _heatCurve.Evaluate(heatingPercentage) * _maxHeat;
                 }
@@ -75,7 +72,7 @@ public class HeatSystem : MonoBehaviour
 
         Heat = 0;
 
-        _heating = false;
+        IsIgniting = false;
     }
 
 }

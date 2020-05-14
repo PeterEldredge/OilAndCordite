@@ -12,7 +12,8 @@ public class PlayerData : ActorData
     public float Health => _healthSystem.Health;
 
     public float Heat => _heatSystem.Heat;
-    public bool OverHeated => _heatSystem.OverHeated;
+    public bool IsOverHeated => _heatSystem.OverHeated;
+    public bool IsIgniting => _heatSystem.IsIgniting;
 
     public bool InSmog => _collisionSystem.InSmog;
     public bool InGas => _collisionSystem.InGas;
