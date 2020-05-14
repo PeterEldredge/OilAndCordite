@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Rewired;
 
 public class UIController : MonoBehaviour
 {
@@ -22,7 +23,7 @@ public class UIController : MonoBehaviour
         UpdateHeat();
         UpdateSpeed();
 
-        if (Input.GetButtonDown("Pause")) {
+        if (InputHelper.Player.GetButtonDown("Start")) {
             if (!_paused)
                 Pause();
             else

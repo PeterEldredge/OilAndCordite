@@ -88,8 +88,8 @@ public class ShipControlBasic : GameEventUserObject
 
     private void KeyboardCalculation()
     {
-        _pitch = Input.GetAxis("Vertical") * _invertYControl;
-        _roll = Input.GetAxis("Horizontal");
+        _pitch = InputHelper.Player.GetAxis("Pitch") * _invertYControl;
+        _roll = InputHelper.Player.GetAxis("Turn");
     }
 
     #endregion
@@ -144,7 +144,7 @@ public class ShipControlBasic : GameEventUserObject
         float acceleration;
         AnimationCurve accelerationCurve;
 
-        if (Input.GetButtonDown("Spinout") && !_spinningOut)
+        if (InputHelper.Player.GetButtonDown("Spin Out") && !_spinningOut)
         {
             StartCoroutine(SpinoutRoutine());
         }
