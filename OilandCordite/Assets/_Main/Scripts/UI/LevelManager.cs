@@ -2,57 +2,44 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject[] levels;
-    private GameObject spawnedLevel;
-    public int currentSelection;
-    void Start()
+    [SerializeField] private Image _levelImage;
+
+    [SerializeField] private List<Level> _levels;
+
+    private int _currentLevelIndex = 0;
+    private Level _currentLevel;
+
+    private void Start()
     {
-        currentSelection = 0;
-        if (levels.Length > 0)
-        {
-            spawnCurLevelSelect();
-        }
+        UpdateCurrentLevel(_currentLevelIndex);
     }
-    private void spawnCurLevelSelect()
+
+    private void UpdateCurrentLevel(int level)
     {
-        if (spawnedLevel != null)
-        {
-            Destroy(spawnedLevel);
-        }
-        spawnedLevel = Instantiate(levels[currentSelection]);
-        spawnedLevel.transform.SetParent(this.transform);
-        spawnedLevel.transform.localPosition = new Vector3(0, 0, 0);
+        int tempIndex = level;
+
+        if (level < 0 || level >= _levels.Count) return;
+
+        _currentLevelIndex = tempIndex;
+        _currentLevel = _levels[_currentLevelIndex];
+
+        UpdateUI();
     }
-    public void getNext()
+
+    private void UpdateUI()
     {
-        if (levels.Length-1 > currentSelection)
-        {
-            currentSelection++;
-        } else if (levels.Length > currentSelection)
-        {
-            currentSelection = 0;
-        }
-        spawnCurLevelSelect();
+        _levelImage.sprite = _currentLevel.LevelSprite;
     }
-    public void getPrev()
+
+    public void IncrementLevel() => UpdateCurrentLevel(_currentLevelIndex + 1);
+    public void DecrementLevel() => UpdateCurrentLevel(_currentLevelIndex - 1);
+
+    public void LoadLevel()
     {
-        if (levels.Length < currentSelection)
-        {
-            currentSelection=0;
-        }
-        else if (levels.Length >0)
-        {
-            currentSelection--;
-        }
-        spawnCurLevelSelect();
-    }
-    public void loadScene()
-    {
-        string temp = spawnedLevel.name.Replace("(Clone)","");
-        SceneController.Instance.SwitchScene(temp);
+        SceneController.Instance.SwitchScene(_currentLevel.SceneName);
     }
 }
