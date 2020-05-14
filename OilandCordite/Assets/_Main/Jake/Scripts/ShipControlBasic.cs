@@ -7,7 +7,7 @@ public class ShipControlBasic : GameEventUserObject
 {
     [Header("Physics")]
     [Tooltip("Force to push plane forwards with")] public float igniteThrust = 1000f;
-    [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(60f, 25f, 45f);
+    [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(60f, 45f, 90f);
     [Tooltip("Multiplier for all forces")] public float rotateMult = 3f;
     [Tooltip("Increase gravity")] public float gravMult = 3.0f;
     [SerializeField] private float _maxAcceleration = 150f;
@@ -29,6 +29,7 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private bool _mouseMovement = false;
     [SerializeField] [Range(-1f, 1f)] private float _pitch = 0f;
     [SerializeField] [Range(-1f, 1f)] private float _roll = 0f;
+    [SerializeField] [Range(-1f, 1f)] private float _turn = 0f;
 
     [Header("Mouse Input")]
     [SerializeField] private float _deadzone = .1f;
@@ -37,6 +38,7 @@ public class ShipControlBasic : GameEventUserObject
 
     [Header("Animation")]
     [SerializeField] private Animator _anim;
+
     //Public
     public int Speed { get; private set; }
 
@@ -89,7 +91,8 @@ public class ShipControlBasic : GameEventUserObject
     private void KeyboardCalculation()
     {
         _pitch = InputHelper.Player.GetAxis("Pitch") * _invertYControl;
-        _roll = InputHelper.Player.GetAxis("Turn");
+        _roll = InputHelper.Player.GetAxis("Roll Right") + InputHelper.Player.GetAxis("Roll Left");
+        _turn = InputHelper.Player.GetAxis("Turn");
     }
 
     #endregion
@@ -134,7 +137,7 @@ public class ShipControlBasic : GameEventUserObject
 
     private void FixedUpdate()
     {
-        transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
+        transform.Rotate(new Vector3(turnTorque.x * _pitch, turnTorque.y * _turn, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
 
         float minMomentum = _minSmogMomentum;
         if (!PlayerData.Instance.InSmog)
