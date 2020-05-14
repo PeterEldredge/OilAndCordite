@@ -9,12 +9,13 @@ Shader "Hidden/CloudsRaymarch"
     }
     SubShader
     {
-        // No culling or depth
-        Tags { "Queue"="Background" }
-        Cull Off ZWrite Off ZTest Always
-
+        Tags
+        {
+            "Queue" = "Transparent" "RenderType" = "Transparent" "IgnoreProjector" = "True"
+        }
         Pass
         {
+            Tags {"Queue"="Transparent" "RenderType"="Transparent" }
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -160,8 +161,6 @@ Shader "Hidden/CloudsRaymarch"
                 }
 
                 float3 bgCol = tex2D(_MainTex,i.uv);
-                bgCol = bgCol;
-
                 float3 cloudCol = totalLight * _LightColor0 * ambientLight;
                 float3 col = bgCol * lightTransmittance + cloudCol;
                 return float4(col,0);

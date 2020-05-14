@@ -15,11 +15,7 @@
     }
     SubShader
     {
-        Tags { "Queue"="Transparent" "RenderType"="Fade" }
         LOD 200
-        ZWrite Off
-        ZTest Always
-        Cull Back
 
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types

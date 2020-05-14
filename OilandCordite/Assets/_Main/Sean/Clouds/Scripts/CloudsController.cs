@@ -25,6 +25,7 @@ public class CloudsController : MonoBehaviour
     public float cloudScale = 1;
 
     public float lightAbsorptionThroughCloud;
+    [ImageEffectOpaque]
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
         if(material == null) 
