@@ -7,6 +7,9 @@ public class GameController : GameEventUserObject
 {
     private void OnMissionCompleted(MissionCompleteEventArgs args)
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         SceneManager.LoadScene(0);        
     }
 
