@@ -353,6 +353,7 @@ GameObject:
   - component: {fileID: 1078715839685043521}
   - component: {fileID: 8876782715693177116}
   - component: {fileID: 1080182845171050025}
+  - component: {fileID: 1195797106433889523}
   m_Layer: 0
   m_Name: Ship
   m_TagString: Untagged
@@ -603,6 +604,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103b2a24990fdd148a17fa4c4f29224f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1195797106433889523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078715839685043520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cc72fbd36877e74a89bb9d298b9b8a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PlayerShipMaterial: {fileID: 2100000, guid: 49921a5718b4b6647b4f40250da7d47b, type: 2}
+  upperHeatThreshold: 0
+  minimumHeatThreshold: 0.1
+  HeatTrailObjects:
+  - {fileID: 8613300108220049443}
+  - {fileID: 945442501539181546}
+  ThrustTrailObjects:
+  - {fileID: 1129114464029960834}
+  - {fileID: 1129195381808991154}
+  - {fileID: 4844903483841831580}
+  ThrustHeatGradient:
+    serializedVersion: 2
+    key0: {r: 0, g: 0.93359566, b: 1, a: 1}
+    key1: {r: 1, g: 0.93533754, b: 0.26666665, a: 1}
+    key2: {r: 1, g: 0.536657, b: 0.16509432, a: 1}
+    key3: {r: 0, g: 0, b: 0, a: 0}
+    key4: {r: 0, g: 0, b: 0, a: 0}
+    key5: {r: 0, g: 0, b: 0, a: 0}
+    key6: {r: 0, g: 0, b: 0, a: 0}
+    key7: {r: 0, g: 0, b: 0, a: 0}
+    ctime0: 0
+    ctime1: 17540
+    ctime2: 65535
+    ctime3: 0
+    ctime4: 0
+    ctime5: 0
+    ctime6: 0
+    ctime7: 0
+    atime0: 0
+    atime1: 65535
+    atime2: 65535
+    atime3: 0
+    atime4: 0
+    atime5: 0
+    atime6: 0
+    atime7: 0
+    m_Mode: 0
+    m_NumColorKeys: 3
+    m_NumAlphaKeys: 2
 --- !u!1 &1078840574220937832
 GameObject:
   m_ObjectHideFlags: 0
