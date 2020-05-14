@@ -24,7 +24,7 @@ public class FlightCam : MonoBehaviour
         Vector3 moveCamTo = ship.position - ship.forward * distanceFromShip + Vector3.up * upFromShip;
         transform.position = transform.position * springBias + moveCamTo * (1f - springBias);
 
-        var newRotation = Quaternion.LookRotation((ship.position + (Quaternion.Euler(new Vector3(InputHelper.Player.GetAxis("Camera Pan Horizontal")*180, InputHelper.Player.GetAxis("Camera Pan Vertical")*180, 0)) * ship.forward) * lookingPointFromShip) - transform.position);
+        var newRotation = Quaternion.LookRotation((ship.position + (Quaternion.Euler(new Vector3(-InputHelper.Player.GetAxis("Camera Pan Vertical") * 90, InputHelper.Player.GetAxis("Camera Pan Horizontal") * 90, 0)) * ship.forward) * (PlayerData.Instance.Speed/30) * lookingPointFromShip) - transform.position);
         transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * damping);
     }
 }
