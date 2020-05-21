@@ -54,14 +54,14 @@ public class Enemy : MonoBehaviour
         _renderer.enabled = false;
         _colliders.SetActive(false);
 
-        Instantiate(_particles, transform);
+        Instantiate(_particles, transform.position, Quaternion.Euler(Vector3.zero));
 
         Destroy(gameObject, 5f);
     }
 
     private IEnumerator Attack()
     {
-        while(true)
+        while(!_defeated)
         {
             if (_coolDown > 0) _coolDown -= Time.deltaTime;
             foreach (AttackBehaviour attack in _attackBehaviours)
