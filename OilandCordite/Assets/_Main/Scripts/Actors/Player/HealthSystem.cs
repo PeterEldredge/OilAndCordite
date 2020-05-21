@@ -52,11 +52,10 @@ public class HealthSystem : GameEventUserObject
 
     private void TakeDamage(float amount, bool ignoreInvincibility = false)
     {
-        if (_invincible && !ignoreInvincibility) return;
+        if ((_invincible && !ignoreInvincibility) || IsDead) return;
 
         Health -= amount;
 
-        //Trigger PlayerDestroyedEvent
         if (Health <= 0)
         {
             IsDead = true;

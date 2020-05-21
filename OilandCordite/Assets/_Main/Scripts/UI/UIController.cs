@@ -15,6 +15,9 @@ public class UIController : GameEventUserObject
     [SerializeField] private Text _comboText;
     [SerializeField] private GameObject _pauseMenuUI;
     [SerializeField] private GameObject _deathMenuUI;
+    [SerializeField] private GameObject _controlsUI;
+
+    private GameObject _currentMenu;
 
     private bool _paused =  false;
 
@@ -45,7 +48,7 @@ public class UIController : GameEventUserObject
         UpdateScore();
         UpdateCombo();
 
-        if (InputHelper.Player.GetButtonDown("Start")) {
+        if (InputHelper.Player.GetButtonDown("Start") || InputHelper.Player.GetButtonDown("UICancel")) {
             if (!_paused)
                 Pause();
             else
@@ -75,9 +78,14 @@ public class UIController : GameEventUserObject
         _comboText.text = "Combo: " + MissionControllerData.Instance.MissionController.Combo.ToString();
     }
 
-    private void Pause()
+    public void Pause()
     {
+        if (_currentMenu != null)
+        {
+            _currentMenu.SetActive(false);
+        }
         _pauseMenuUI.SetActive(true);
+        _currentMenu = _pauseMenuUI;
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         _paused = true;
@@ -85,7 +93,8 @@ public class UIController : GameEventUserObject
 
     public void Resume()
     {
-        _pauseMenuUI.SetActive(false);
+        _currentMenu.SetActive(false);
+        _currentMenu = null;
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
         _paused = false;
@@ -100,7 +109,9 @@ public class UIController : GameEventUserObject
 
     public void Controls()
     {
-
+        _currentMenu.SetActive(false);
+        _controlsUI.SetActive(true);
+        _currentMenu = _controlsUI;
     }
 
     public void ToMainMenu()
@@ -111,6 +122,7 @@ public class UIController : GameEventUserObject
 
     public void ReloadScene()
     {
+        Time.timeScale = 1f;
         SceneController.ReloadScene();
     }
 }
