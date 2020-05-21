@@ -49,6 +49,7 @@ public class ShipControlBasic : GameEventUserObject
     private Action _inputCalculation;
 
     private int _invertYControl;
+    bool _shipFlipped = false;
 
     private float _xMousePosition;
     private float _yMousePosition;
@@ -139,12 +140,10 @@ private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBa
 
     private void FixedUpdate()
     {
-        //transform.Rotate(new Vector3(turnTorque.x * _pitch, turnTorque.y * _turn, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
         
         transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, 0) * rotateMult * Time.fixedDeltaTime, Space.Self);
         transform.rotation = Quaternion.Euler(new Vector3(0, turnTorque.y * _turn, 0) * rotateMult * Time.fixedDeltaTime) * transform.rotation;
         _shipForRotation.Rotate(new Vector3(0, 0, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
-
 
         float minMomentum = _minSmogMomentum;
         if (!PlayerData.Instance.InSmog)
@@ -196,6 +195,27 @@ private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBa
             transform.Translate(new Vector3(0, gravity, 0), Space.World);
             _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward;
         }
+
+        if (InputHelper.Player.GetAxis("Pitch") == 0)
+        {
+            if (transform.rotation.x <= -.5 || transform.rotation.x >= .5)
+            {
+                if (!_shipFlipped)
+                {
+                    _invertYControl *= -1;
+                    _shipFlipped = true;
+                }
+
+            }
+            else
+            {
+                if (_shipFlipped)
+                {
+                    _invertYControl *= -1;
+                    _shipFlipped = false;
+                }
+            }
+        } 
 
         Speed = (int)_rb.velocity.magnitude;
     }
