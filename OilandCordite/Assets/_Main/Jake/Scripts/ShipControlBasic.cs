@@ -196,16 +196,16 @@ private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBa
             _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward;
         }
 
+        Debug.Log(transform.rotation.eulerAngles.x);
         if (InputHelper.Player.GetAxis("Pitch") == 0)
         {
-            if (transform.rotation.x <= -.5 || transform.rotation.x >= .5)
+            if (transform.rotation.eulerAngles.x >= 90 && transform.rotation.eulerAngles.x <= 270)
             {
                 if (!_shipFlipped)
                 {
                     _invertYControl *= -1;
                     _shipFlipped = true;
                 }
-
             }
             else
             {
