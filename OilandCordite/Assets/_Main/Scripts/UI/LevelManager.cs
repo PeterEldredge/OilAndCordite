@@ -10,6 +10,7 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private Image _levelImage;
     [SerializeField] private TextMeshProUGUI _levelDescription;
     [SerializeField] private TextMeshProUGUI _missionObjective;
+    [SerializeField] private TextMeshProUGUI _rankRequirements;
 
     [SerializeField] private List<Level> _levels;
 
@@ -51,6 +52,14 @@ public class LevelManager : MonoBehaviour
                 _missionObjective.text = _RACE_TO_THE_FINISH_MISSION;
                 break;
         }
+
+        //Update Later
+        _rankRequirements.text =
+            $"Par Time - {_currentLevel.ParTime} seconds {System.Environment.NewLine}{System.Environment.NewLine}" +
+            $"Platinum - {_currentLevel.ScoreRequirements[0]}{System.Environment.NewLine}" +
+            $"Gold - {_currentLevel.ScoreRequirements[1]}{System.Environment.NewLine}" +
+            $"Silver - {_currentLevel.ScoreRequirements[2]}{System.Environment.NewLine}" +
+            $"Bronze - {_currentLevel.ScoreRequirements[3]}{System.Environment.NewLine}";
     }
 
     public void IncrementLevel() => UpdateCurrentLevel(_currentLevelIndex + 1);
