@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Rewired;
+using System;
 
-public class UIController : MonoBehaviour
+public class UIController : GameEventUserObject
 {
     [SerializeField] private Text _healthText;
     [SerializeField] private Text _heatText;
@@ -13,9 +14,28 @@ public class UIController : MonoBehaviour
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _comboText;
     [SerializeField] private GameObject _pauseMenuUI;
-    [SerializeField] private string _mainMenuName = "Main Menu";
+    [SerializeField] private GameObject _deathMenuUI;
 
     private bool _paused =  false;
+
+    private IEnumerator ActionOnDelay(float delay, Action action)
+    {
+        yield return new WaitForSeconds(delay);
+
+        action.Invoke();
+    }
+
+    private void OnPlayerDeath(PlayerDeathEventArgs args) => StartCoroutine(ActionOnDelay(3f, () => OpenDeathScreen()));
+
+    public override void Subscribe()
+    {
+        EventManager.Instance.AddListener<PlayerDeathEventArgs>(this, OnPlayerDeath);
+    }
+
+    public override void Unsubscribe()
+    {
+        EventManager.Instance.RemoveListener<PlayerDeathEventArgs>(this, OnPlayerDeath);
+    }
 
     // Update is called once per frame
     void Update()
@@ -71,6 +91,13 @@ public class UIController : MonoBehaviour
         _paused = false;
     }
 
+    public void OpenDeathScreen()
+    {
+        _deathMenuUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
+    }
+
     public void Controls()
     {
 
@@ -79,6 +106,11 @@ public class UIController : MonoBehaviour
     public void ToMainMenu()
     {
         Time.timeScale = 1f;
-        SceneController.Instance.SwitchScene(_mainMenuName);
+        SceneController.SwitchScene(0);
+    }
+
+    public void ReloadScene()
+    {
+        SceneController.ReloadScene();
     }
 }

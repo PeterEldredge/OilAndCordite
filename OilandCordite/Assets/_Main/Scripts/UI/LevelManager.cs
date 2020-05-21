@@ -58,6 +58,6 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneController.Instance.SwitchScene(_currentLevel.SceneName);
+        SceneController.SwitchScene(_currentLevel.SceneName);
     }
 }

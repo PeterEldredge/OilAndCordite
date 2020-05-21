@@ -34,7 +34,6 @@ public class HealthSystem : GameEventUserObject
     private void OnAttacked(PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
     private void OnPlayerDefeatedEnemy(PlayerDefeatedEnemyEventArgs args) => AddHealth(args.HealthGain);
     private void OnObstacleHit(ObstacleHitEventArgs args) => TakeDamage(_damageOnCollision, true);
-    private void OnDeath(PlayerDeathEventArgs args) => StartCoroutine(DeathDelay(1f));
 
     public override void Subscribe()
     {
@@ -42,7 +41,6 @@ public class HealthSystem : GameEventUserObject
         EventManager.Instance.AddListener<PlayerAttackedEventArgs>(this, OnAttacked);
         EventManager.Instance.AddListener<PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
         EventManager.Instance.AddListener<ObstacleHitEventArgs>(this, OnObstacleHit);
-        EventManager.Instance.AddListener<PlayerDeathEventArgs>(this, OnDeath);
     }
 
     private void AddHealth(float amount)
@@ -65,23 +63,6 @@ public class HealthSystem : GameEventUserObject
         {
             if (!ignoreInvincibility) StartCoroutine(InvincibilityRoutine());
         }
-    }
-
-    private IEnumerator DeathDelay(float time)
-    {
-        //Still got to mess around with values but adds a slow down
-        while (Time.timeScale > .1f)
-        {
-            Time.timeScale -= .1f;
-            Time.fixedDeltaTime = 0.02f * Time.timeScale;
-            yield return new WaitForSecondsRealtime(.5f);
-        }
-        Time.timeScale = 0f;
-        Time.fixedDeltaTime = 0f;
-        yield return new WaitForSecondsRealtime(time);
-        Time.timeScale = 1f;
-        Time.fixedDeltaTime = 0.02f * Time.timeScale;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     private IEnumerator InvincibilityRoutine()
