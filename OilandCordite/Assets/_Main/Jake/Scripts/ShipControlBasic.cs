@@ -101,7 +101,7 @@ public class ShipControlBasic : GameEventUserObject
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _shipForRotation = GetComponentInChildren<Transform>();
+        _shipForRotation = GetComponentsInChildren<Transform>()[1];
 }
 
 private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
