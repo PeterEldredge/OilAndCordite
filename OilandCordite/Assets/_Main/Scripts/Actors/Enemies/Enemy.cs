@@ -63,7 +63,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        while(!Defeated)
+        while(!Defeated && !PlayerData.Instance.IsDead)
         {
             if (_coolDown > 0) _coolDown -= Time.deltaTime;
             foreach (AttackBehaviour attack in _attackBehaviours)

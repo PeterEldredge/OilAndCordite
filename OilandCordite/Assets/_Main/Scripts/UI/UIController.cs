@@ -56,7 +56,7 @@ public class UIController : GameEventUserObject
     void UpdateHealth()
     {
         _healthText.text = "Health:" + PlayerData.Instance.Health.ToString("F0");
-        _healthBar.value = PlayerData.Instance.Health;
+        _healthBar.value = PlayerData.Instance.Health > 0f ? PlayerData.Instance.Health : 0f;
     }
 
     void UpdateHeat()

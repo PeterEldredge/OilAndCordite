@@ -17,6 +17,7 @@ public class HealthSystem : GameEventUserObject
 
     //Public
     public float Health { get; private set; }
+    public bool IsDead { get; private set; }
 
     //Private
     private HeatSystem _heatSystem;
@@ -26,6 +27,7 @@ public class HealthSystem : GameEventUserObject
     private void Awake()
     {
         Health = _maxHealth;
+        IsDead = false;
 
         _heatSystem = GetComponent<HeatSystem>();
     }
@@ -57,6 +59,7 @@ public class HealthSystem : GameEventUserObject
         //Trigger PlayerDestroyedEvent
         if (Health <= 0)
         {
+            IsDead = true;
             EventManager.Instance.TriggerEvent(new PlayerDeathEventArgs());
         }
         else

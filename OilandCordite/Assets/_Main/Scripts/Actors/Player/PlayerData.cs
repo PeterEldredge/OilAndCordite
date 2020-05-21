@@ -10,6 +10,7 @@ public class PlayerData : ActorData
     public float Speed => _shipControl.Speed;
 
     public float Health => _healthSystem.Health;
+    public bool IsDead => _healthSystem.IsDead;
 
     public float Heat => _heatSystem.Heat;
     public bool IsOverHeated => _heatSystem.OverHeated;

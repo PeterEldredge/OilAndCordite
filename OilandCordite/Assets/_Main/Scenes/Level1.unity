@@ -6206,6 +6206,34 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 49921a5718b4b6647b4f40250da7d47b, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b141dff0bdd94934ba2ce03849824cd1, type: 3}
+--- !u!1 &1080182846179490821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 589512921096964956, guid: b141dff0bdd94934ba2ce03849824cd1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080182846179490820}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1080182846179490822 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1078715839685043520, guid: b141dff0bdd94934ba2ce03849824cd1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080182846179490820}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1080182846179490823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1080182846179490822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89035b7987cd88c4ab0b8a93b5c3c7ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shipObject: {fileID: 1080182846179490821}
+  _particles: {fileID: 8577053942079436274, guid: de80f5969c2dd004b9059a2224ffa33e,
+    type: 3}
+  _flightCam: {fileID: 1794237658}
 --- !u!1001 &4526026131445930334
 PrefabInstance:
   m_ObjectHideFlags: 0
