@@ -354,6 +354,8 @@ GameObject:
   - component: {fileID: 8876782715693177116}
   - component: {fileID: 1080182845171050025}
   - component: {fileID: 1195797106433889523}
+  - component: {fileID: 1080182846179490823}
+  - component: {fileID: 1080182846179490824}
   m_Layer: 0
   m_Name: Ship Holder
   m_TagString: Untagged
@@ -410,7 +412,7 @@ MonoBehaviour:
   gravMult: 3
   _maxAcceleration: 150
   _minAcceleration: -100
-  _maxSpeed: 500
+  _maxSpeed: 400
   _minSmogSpeed: 0
   _minAirSpeed: 50
   _minSmogIgnitionHeat: 0
@@ -658,9 +660,39 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
-  maxThrusterWidthScale: 0
-  minThrusterWidthScale: 0
+  maxThrusterWidthScale: 2
+  minThrusterWidthScale: 1
   ignitionTimer: 1
+--- !u!114 &1080182846179490823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078715839685043520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89035b7987cd88c4ab0b8a93b5c3c7ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _shipObject: {fileID: 589512921096964956}
+  _particles: {fileID: 8577053942079436274, guid: de80f5969c2dd004b9059a2224ffa33e,
+    type: 3}
+  _flightCam: {fileID: 0}
+--- !u!114 &1080182846179490824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078715839685043520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07d1de8069387942ae7c782819377c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCues:
+  - {fileID: 11400000, guid: cafb5c0c54f92c848b3ded02b4124b85, type: 2}
 --- !u!1 &1078840574220937832
 GameObject:
   m_ObjectHideFlags: 0
