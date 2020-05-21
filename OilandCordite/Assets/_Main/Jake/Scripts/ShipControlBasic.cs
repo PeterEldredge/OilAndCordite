@@ -12,11 +12,12 @@ public class ShipControlBasic : GameEventUserObject
     [Tooltip("Increase gravity")] public float gravMult = 3.0f;
     [SerializeField] private float _maxAcceleration = 150f;
     [SerializeField] private float _minAcceleration = -125f;
-    [SerializeField] private float _minSmogMomentum = 0f;
-    [SerializeField] private float _minAirMomentum = 30f;
+    [SerializeField] private float _maxSpeed = 500f;
+    [SerializeField] private float _minSmogSpeed = 0f;
+    [SerializeField] private float _minAirSpeed = 50f;
     [SerializeField] private float _minSmogIgnitionHeat = 0f;
     [SerializeField] private float _gravityMultiplier = 50f;
-    [Tooltip("The speed at which gravity stops affecting the ship")] [SerializeField] private float _noGravitySpeed = 200f;
+    [Tooltip("The speed at which gravity stops affecting the ship")] [SerializeField] private float _noGravitySpeed = 300f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")] [SerializeField] private float _minGasIgnitionHeat = 20f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
@@ -145,9 +146,9 @@ private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBa
         transform.rotation = Quaternion.Euler(new Vector3(0, turnTorque.y * _turn, 0) * rotateMult * Time.fixedDeltaTime) * transform.rotation;
         _shipForRotation.Rotate(new Vector3(0, 0, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
 
-        float minMomentum = _minSmogMomentum;
+        float minMomentum = _minSmogSpeed;
         if (!PlayerData.Instance.InSmog)
-            minMomentum = _minAirMomentum;
+            minMomentum = _minAirSpeed;
 
         float forwardAngle = transform.forward.y;
         float acceleration;
@@ -193,7 +194,7 @@ private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBa
             float gravity = -_gravityMultiplier * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f)) * Time.fixedDeltaTime;
         
             transform.Translate(new Vector3(0, gravity, 0), Space.World);
-            _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, 300) * transform.forward;
+            _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, _maxSpeed) * transform.forward;
         }
 
         if (InputHelper.Player.GetAxis("Pitch") == 0)
@@ -223,14 +224,14 @@ private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBa
     {
         _spinningOut = true;
         _anim.SetBool("spinningOut", _spinningOut);
-        var targetVelocity = PlayerData.Instance.InSmog ? _minSmogMomentum : _minAirMomentum;
+        var targetVelocity = PlayerData.Instance.InSmog ? _minSmogSpeed : _minAirSpeed;
         
         //Without the +1 here, the ship will get stuck in the Smog Sea for a reason I haven't figured out yet.
         while (_rb.velocity.magnitude > targetVelocity + 1)
         {
             _rb.velocity = Vector3.Lerp(_rb.velocity, new Vector3(0, 0, 0), .1f);
             yield return null;
-            targetVelocity = PlayerData.Instance.InSmog ? _minSmogMomentum : _minAirMomentum;
+            targetVelocity = PlayerData.Instance.InSmog ? _minSmogSpeed : _minAirSpeed;
         }
         yield return null;
         _spinningOut = false; 
@@ -244,7 +245,7 @@ private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBa
         float timer = 0;
 
         Vector3 bounceVelocity = args.ContactPoint.normal * 200f;
-        Vector3 endVelocity = args.ContactPoint.normal * _minAirMomentum;
+        Vector3 endVelocity = args.ContactPoint.normal * _minAirSpeed;
 
         while (timer < .75f)
         {
