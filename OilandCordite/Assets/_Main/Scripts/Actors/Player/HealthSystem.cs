@@ -7,18 +7,13 @@ public struct PlayerDeathEventArgs : IGameEvent { }
 
 public class HealthSystem : GameEventUserObject
 {
-    [SerializeField]
-    private float _maxHealth = 100f;
-    [SerializeField]
-    private float _invincibilityWindow = 1f;
+    [SerializeField] private float _maxHealth = 100f;
+    [SerializeField] private float _invincibilityWindow = 1f;
 
-    [SerializeField]
-    private float _overheatDamage = 5f;
-    [SerializeField]
-    private float _overheatDamageRate = 1f;
+    [SerializeField] private float _overheatDamage = 5f;
+    [SerializeField] private float _overheatDamageRate = 1f;
 
-    [SerializeField]
-    private float _damageOnCollision = 20f;
+    [SerializeField] private float _damageOnCollision = 20f;
 
     //Public
     public float Health { get; private set; }
@@ -37,7 +32,7 @@ public class HealthSystem : GameEventUserObject
 
     private void OnOverheat(OverheatedEventArgs args) => StartCoroutine(OverheatRoutine());
     private void OnAttacked(PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
-    private void OnPlayerDefeatedEnemy(PlayerDefeatedEnemyEvent args) => AddHealth(args.HealthGain);
+    private void OnPlayerDefeatedEnemy(PlayerDefeatedEnemyEventArgs args) => AddHealth(args.HealthGain);
     private void OnObstacleHit(ObstacleHitEventArgs args) => TakeDamage(_damageOnCollision, true);
     private void OnDeath(PlayerDeathEventArgs args) => StartCoroutine(DeathDelay(1f));
 
@@ -45,7 +40,7 @@ public class HealthSystem : GameEventUserObject
     {
         EventManager.Instance.AddListener<OverheatedEventArgs>(this, OnOverheat);
         EventManager.Instance.AddListener<PlayerAttackedEventArgs>(this, OnAttacked);
-        EventManager.Instance.AddListener<PlayerDefeatedEnemyEvent>(this, OnPlayerDefeatedEnemy);
+        EventManager.Instance.AddListener<PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
         EventManager.Instance.AddListener<ObstacleHitEventArgs>(this, OnObstacleHit);
         EventManager.Instance.AddListener<PlayerDeathEventArgs>(this, OnDeath);
     }
@@ -71,6 +66,7 @@ public class HealthSystem : GameEventUserObject
             if (!ignoreInvincibility) StartCoroutine(InvincibilityRoutine());
         }
     }
+
     private IEnumerator DeathDelay(float time)
     {
         //Still got to mess around with values but adds a slow down
@@ -87,6 +83,7 @@ public class HealthSystem : GameEventUserObject
         Time.fixedDeltaTime = 0.02f * Time.timeScale;
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
+
     private IEnumerator InvincibilityRoutine()
     {
         _invincible = true;

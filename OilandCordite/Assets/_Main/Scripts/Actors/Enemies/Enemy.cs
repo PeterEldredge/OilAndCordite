@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct PlayerDefeatedEnemyEvent : IGameEvent 
+public struct PlayerDefeatedEnemyEventArgs : IGameEvent 
 {
     public float HealthGain { get; }
+    public int Score { get; }
     
-    public PlayerDefeatedEnemyEvent(float healthGain)
+    public PlayerDefeatedEnemyEventArgs(float healthGain, int score)
     {
         HealthGain = healthGain;
+        Score = score;
     }
 }
 
@@ -16,6 +18,7 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _piercingSpeed;
     [SerializeField] private float _healthGain = 30f;
+    [SerializeField] private int _baseScore = 250;
     [SerializeField] private GameObject _colliders;
     [SerializeField] private GameObject _particles;
     [SerializeField] private List<AttackBehaviour> _attackBehaviours;
@@ -26,13 +29,12 @@ public class Enemy : MonoBehaviour
     private MeshRenderer _renderer;
 
     private float _coolDown = -1f;
-    
-    private bool _defeated = false;
 
     //Properties
     public float PiercingSpeed => _piercingSpeed;
     public float HealthGain => _healthGain;
-    public bool Defeated => _defeated;
+    public int BaseScore => _baseScore;
+    public bool Defeated { get; private set; } = false;
 
     private void Awake()
     {
@@ -49,7 +51,7 @@ public class Enemy : MonoBehaviour
 
     public void OnDefeated()
     {
-        _defeated = true;
+        Defeated = true;
 
         _renderer.enabled = false;
         _colliders.SetActive(false);
@@ -61,7 +63,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        while(!_defeated)
+        while(!Defeated)
         {
             if (_coolDown > 0) _coolDown -= Time.deltaTime;
             foreach (AttackBehaviour attack in _attackBehaviours)

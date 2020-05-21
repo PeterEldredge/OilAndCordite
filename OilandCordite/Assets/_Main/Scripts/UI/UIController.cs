@@ -10,7 +10,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private Text _heatText;
     [SerializeField] private Slider _healthBar;
     [SerializeField] private Slider _heatBar;
-    [SerializeField] private Text _speedText;
+    [SerializeField] private Text _scoreText;
+    [SerializeField] private Text _comboText;
     [SerializeField] private GameObject _pauseMenuUI;
     [SerializeField] private string _mainMenuName = "Main Menu";
 
@@ -21,15 +22,15 @@ public class UIController : MonoBehaviour
     {
         UpdateHealth();
         UpdateHeat();
-        UpdateSpeed();
+        UpdateScore();
+        UpdateCombo();
 
         if (InputHelper.Player.GetButtonDown("Start")) {
             if (!_paused)
                 Pause();
             else
                 Resume();
-        }
-        
+        }  
     }
 
     void UpdateHealth()
@@ -44,9 +45,14 @@ public class UIController : MonoBehaviour
         _heatBar.value = PlayerData.Instance.Heat;
     }
 
-    void UpdateSpeed()
+    void UpdateScore()
     {
-        _speedText.text = "Speed: " + PlayerData.Instance.Speed.ToString();
+        _scoreText.text = "Score: " + MissionControllerData.Instance.MissionController.Score.ToString();
+    }
+
+    void UpdateCombo()
+    {
+        _comboText.text = "Combo: " + MissionControllerData.Instance.MissionController.Combo.ToString();
     }
 
     private void Pause()
@@ -74,6 +80,5 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = 1f;
         SceneController.Instance.SwitchScene(_mainMenuName);
-
     }
 }

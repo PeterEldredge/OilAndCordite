@@ -23,5 +23,11 @@ public class Level : ScriptableObject
     public Sprite LevelSprite => _levelSprite;
 
     [SerializeField, TextArea(4, 8)] private string _levelDescription;
-    public string LevelDescription => _levelDescription; 
+    public string LevelDescription => _levelDescription;
+
+    [SerializeField] private float _parTime;
+    public float ParTime => _parTime;
+
+    [SerializeField] private int[] _scoreRequirements = new int[4];
+    public int[] ScoreRequirements => _scoreRequirements;
 }

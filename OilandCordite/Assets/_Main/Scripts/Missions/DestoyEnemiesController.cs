@@ -2,26 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DestoyEnemiesController : MonoBehaviour
+public class DestoyEnemiesController : MissionController
 {
     [SerializeField] private int _enemiesToBeKilled = 0;
 
     private int _childrenToWin;
 
-    public void Start()
+    private void Awake()
     {
         _childrenToWin = _enemiesToBeKilled == 0 ? 0 : transform.childCount - _enemiesToBeKilled;
 
         StartCoroutine(CheckMissionComplete());
     }
 
-    public IEnumerator CheckMissionComplete()
+    private IEnumerator CheckMissionComplete()
     {
         while(true)
         {
             if (transform.childCount <= _childrenToWin)
             {
-                EventManager.Instance.TriggerEvent(new MissionCompleteEventArgs());
+                MissionCompelete();
 
                 break;
             }
