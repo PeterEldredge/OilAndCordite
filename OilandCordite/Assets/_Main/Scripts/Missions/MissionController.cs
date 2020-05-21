@@ -21,7 +21,7 @@ public abstract class MissionController : GameEventUserObject
 
     private void AddScore(PlayerDefeatedEnemyEventArgs args)
     {
-        _score += args.Score + _combo * Mathf.Clamp(_combo, 0, BaseScoring.MAX_COMBO);
+        _score += args.Score + BaseScoring.COMBO_BONUS * Mathf.Clamp(_combo, 0, BaseScoring.MAX_COMBO);
         _combo += 1;
 
         _comboTimer = BaseScoring.COMBO_TIME;
