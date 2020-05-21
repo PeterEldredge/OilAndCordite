@@ -284,17 +284,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 2855000408891751751}
-        m_MethodName: PlayRandomSound
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Menu_Item_Select
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &267387801
 GameObject:
   m_ObjectHideFlags: 0
@@ -2495,17 +2484,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2855000408891751751}
-        m_MethodName: PlayRandomSound
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Menu_Item_Select
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 8167415155802938421}
         m_MethodName: ToMainMenu
         m_Mode: 1
@@ -2839,17 +2817,6 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2855000408891751751}
-        m_MethodName: PlayRandomSound
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: Menu_Item_Select
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!1 &1065572369
@@ -8388,7 +8355,6 @@ GameObject:
   - component: {fileID: 8167415155802938422}
   - component: {fileID: 8167415155802938421}
   - component: {fileID: 2017697260}
-  - component: {fileID: 2855000408891751751}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -8507,22 +8473,6 @@ MonoBehaviour:
   _deathMenuUI: {fileID: 876993624}
   _controlsUI: {fileID: 2029952282}
 --- !u!114 &2017697260
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8167415155802938420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e07d1de8069387942ae7c782819377c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _audioCues:
-  - {fileID: 11400000, guid: 42103c8f354abc443934dbddb259a12a, type: 2}
-  - {fileID: 11400000, guid: 0316c7b5d1475154bb7045b13081d347, type: 2}
-  - {fileID: 11400000, guid: 4807a5d568e22f6488ec069f213e9e88, type: 2}
---- !u!114 &2855000408891751751
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

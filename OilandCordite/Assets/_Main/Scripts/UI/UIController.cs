@@ -108,6 +108,8 @@ public class UIController : GameEventUserObject
 
     public void Resume()
     {
+        _acp.PlaySound("Menu_Item_Select");
+
         AudioListener.pause = false;
         _currentMenu.SetActive(false);
         _currentMenu = null;
@@ -133,6 +135,9 @@ public class UIController : GameEventUserObject
 
     public void Controls()
     {
+
+        _acp.PlaySound("Menu_Item_Select");
+
         _currentMenu.SetActive(false);
         _controlsUI.SetActive(true);
         _currentMenu = _controlsUI;
