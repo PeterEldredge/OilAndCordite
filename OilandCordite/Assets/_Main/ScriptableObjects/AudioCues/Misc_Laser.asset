@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8b33cf0a3abd8d47aed6a6470ba32eb, type: 3}
   m_Name: Misc_Laser
   m_EditorClassIdentifier: 
+  cueName: Misc_Laser
   clips:
   - {fileID: 8300000, guid: 71a100efba9c63649b21ffca7222c8ef, type: 3}
   priority: 128
@@ -20,6 +21,12 @@ MonoBehaviour:
   stereoPan: 0
   spatialBlend: 0
   reverbZoneMix: 1
+  dopplerLevel: 1
+  minDistance: 1
+  maxDistance: 20
   loop: 0
   isOneShot: 0
+  playOnAwake: 0
+  playRandom: 0
+  rolloffMode: 0
   source: {fileID: 0}

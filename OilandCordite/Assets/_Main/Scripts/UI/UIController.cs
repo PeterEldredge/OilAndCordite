@@ -20,6 +20,14 @@ public class UIController : GameEventUserObject
     private GameObject _currentMenu;
 
     private bool _paused =  false;
+    private bool _dead = false;
+
+    private AudioCuePlayer _acp;
+
+    private void Awake()
+    {
+        _acp = gameObject.GetComponent<AudioCuePlayer>();
+    }
 
     private IEnumerator ActionOnDelay(float delay, Action action)
     {
@@ -48,7 +56,7 @@ public class UIController : GameEventUserObject
         UpdateScore();
         UpdateCombo();
 
-        if (InputHelper.Player.GetButtonDown("Start") || InputHelper.Player.GetButtonDown("UICancel")) {
+        if ((InputHelper.Player.GetButtonDown("Start") || InputHelper.Player.GetButtonDown("UICancel")) && !_dead) {
             if (!_paused)
                 Pause();
             else
@@ -102,6 +110,7 @@ public class UIController : GameEventUserObject
 
     public void OpenDeathScreen()
     {
+        _dead = true;
         _deathMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;

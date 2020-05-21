@@ -28,6 +28,8 @@ public class Enemy : MonoBehaviour
 
     private MeshRenderer _renderer;
 
+    private AudioCuePlayer _acp;
+
     private float _coolDown = -1f;
 
     //Properties
@@ -40,6 +42,7 @@ public class Enemy : MonoBehaviour
     {
         _enemyData = GetComponent<EnemyData>();
         _renderer = GetComponentInChildren<MeshRenderer>();
+        _acp = GetComponent<AudioCuePlayer>();
 
         _enemyData.AttackPoints = _attackPoints;
     }
@@ -55,6 +58,7 @@ public class Enemy : MonoBehaviour
 
         _renderer.enabled = false;
         _colliders.SetActive(false);
+        _acp.PlaySound("Laserbot_Defeat");
 
         Instantiate(_particles, transform.position, Quaternion.Euler(Vector3.zero));
 
@@ -73,6 +77,7 @@ public class Enemy : MonoBehaviour
                     if(_coolDown <= 0)
                     {
                         attack.Attack(_enemyData);
+                        _acp.PlaySound("Laserbot_Attack");
                         _coolDown = attack.CoolDown;
                     }
 

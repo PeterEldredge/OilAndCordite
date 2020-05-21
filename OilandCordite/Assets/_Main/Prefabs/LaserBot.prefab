@@ -145,6 +145,7 @@ GameObject:
   - component: {fileID: 5691272156240179817}
   - component: {fileID: 5691272156240179831}
   - component: {fileID: 5691272156240179816}
+  - component: {fileID: 766721871}
   m_Layer: 0
   m_Name: LaserBot
   m_TagString: Enemy
@@ -184,6 +185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _piercingSpeed: 0
   _healthGain: 30
+  _baseScore: 250
   _colliders: {fileID: 2996464564004443566}
   _particles: {fileID: 8577053942079436274, guid: de80f5969c2dd004b9059a2224ffa33e,
     type: 3}
@@ -206,6 +208,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AttackPoints: []
+--- !u!114 &766721871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691272156240179821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e07d1de8069387942ae7c782819377c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _audioCues:
+  - {fileID: 11400000, guid: 2c47c4c61ac0c3b4f8725691849fe5be, type: 2}
+  - {fileID: 11400000, guid: 39186c40153f8f94eafc06d4fb33c89d, type: 2}
 --- !u!1 &7094360462761638352
 GameObject:
   m_ObjectHideFlags: 0
