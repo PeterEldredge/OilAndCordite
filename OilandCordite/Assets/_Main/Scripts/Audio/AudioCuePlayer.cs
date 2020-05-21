@@ -7,28 +7,33 @@ public class AudioCuePlayer : MonoBehaviour
 {
 
     [SerializeField] private AudioCue[] _audioCues;
+
+    private Dictionary<string, AudioSource> _audioSourceDictionary;
     
     // Start is called before the first frame update
     void Awake()
     {
+        _audioSourceDictionary = new Dictionary<string, AudioSource>();
+
         foreach(AudioCue cue in _audioCues)
         {
-            cue.source = gameObject.AddComponent<AudioSource>();
+            _audioSourceDictionary.Add(cue.cueName, gameObject.AddComponent<AudioSource>());
 
-            cue.source.clip = cue.clips[0];
-            cue.source.priority = cue.priority;
-            cue.source.volume = cue.volume;
-            cue.source.pitch = cue.pitch;
-            cue.source.panStereo = cue.stereoPan;
-            cue.source.spatialBlend = cue.spatialBlend;
-            //cue.source.dopplerLevel = cue.dopplerLevel;
-            cue.source.minDistance = cue.minDistance;
-            cue.source.maxDistance = cue.maxDistance;
-            cue.source.rolloffMode = cue.rolloffMode;
-            cue.source.playOnAwake = cue.playOnAwake;
-            cue.source.ignoreListenerPause = cue.ignoreListenerPause;
+            _audioSourceDictionary[cue.cueName] = gameObject.AddComponent<AudioSource>();
 
-            cue.source.loop = cue.loop;
+            _audioSourceDictionary[cue.cueName].clip = cue.clips[0];
+            _audioSourceDictionary[cue.cueName].priority = cue.priority;
+            _audioSourceDictionary[cue.cueName].volume = cue.volume;
+            _audioSourceDictionary[cue.cueName].pitch = cue.pitch;
+            _audioSourceDictionary[cue.cueName].panStereo = cue.stereoPan;
+            _audioSourceDictionary[cue.cueName].spatialBlend = cue.spatialBlend;
+            _audioSourceDictionary[cue.cueName].minDistance = cue.minDistance;
+            _audioSourceDictionary[cue.cueName].maxDistance = cue.maxDistance;
+            _audioSourceDictionary[cue.cueName].rolloffMode = cue.rolloffMode;
+            _audioSourceDictionary[cue.cueName].playOnAwake = cue.playOnAwake;
+            _audioSourceDictionary[cue.cueName].ignoreListenerPause = cue.ignoreListenerPause;
+            _audioSourceDictionary[cue.cueName].loop = cue.loop;
+
             if (cue.playOnAwake)
             {
                 if (cue.playRandom)
@@ -54,11 +59,11 @@ public class AudioCuePlayer : MonoBehaviour
         {
             if (cue.isOneShot)
             {
-                cue.source.PlayOneShot(cue.clips[audioIndex]);
+                _audioSourceDictionary[cue.cueName].PlayOneShot(cue.clips[audioIndex]);
             }
             else
             {
-                cue.source.Play();
+                _audioSourceDictionary[cue.cueName].Play();
             }
         }
     }
@@ -74,11 +79,11 @@ public class AudioCuePlayer : MonoBehaviour
         {
             if (cue.isOneShot)
             {
-                cue.source.PlayOneShot(cue.clips[UnityEngine.Random.Range(0, cue.clips.Length)]);
+                _audioSourceDictionary[cue.cueName].PlayOneShot(cue.clips[UnityEngine.Random.Range(0, cue.clips.Length)]);
             }
             else
             {
-                cue.source.Play();
+                _audioSourceDictionary[cue.cueName].Play();
             }
         }
     }
@@ -92,7 +97,7 @@ public class AudioCuePlayer : MonoBehaviour
         }
         else
         {
-            cue.source.Stop();
+            _audioSourceDictionary[cue.cueName].Stop();
         }
     }
 }

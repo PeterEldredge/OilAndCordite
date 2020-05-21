@@ -47,8 +47,4 @@ public class AudioCue : ScriptableObject
     public bool ignoreListenerPause = false;
 
     [Tooltip("Decides how distance from the audio source affects the volume. For 3D Audio Only.")]public AudioRolloffMode rolloffMode = AudioRolloffMode.Logarithmic;
-
-    [HideInInspector]
-    public AudioSource source;
-
 }
