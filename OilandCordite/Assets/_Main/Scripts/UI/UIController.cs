@@ -38,7 +38,7 @@ public class UIController : GameEventUserObject
     }
 
     private void OnPlayerDeath(PlayerDeathEventArgs args) => StartCoroutine(ActionOnDelay(3f, () => OpenDeathScreen()));
-    private void OnMissionCompleted(MissionCompleteEventArgs args) => StartCoroutine(ActionOnDelay(2f, () => OpenVictoryScreen()));
+    private void OnMissionCompleted(MissionCompleteEventArgs args) => StartCoroutine(ActionOnDelay(.5f, () => OpenVictoryScreen()));
 
     public override void Subscribe()
     {

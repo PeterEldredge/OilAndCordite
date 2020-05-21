@@ -12,7 +12,7 @@ public abstract class MissionController : GameEventUserObject
     protected int _score = 0;
     public int Score => _score;
 
-    protected BaseScoring.Rank _rank;
+    protected BaseScoring.Rank _rank = BaseScoring.Rank.None;
     public BaseScoring.Rank Rank => _rank;
 
     protected int _combo = 0;
