@@ -3,15 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public struct PlayerDeathEventArgs : IGameEvent { }
+
 public class HealthSystem : GameEventUserObject
 {
-    [SerializeField] private float _maxHealth = 100f;
-    [SerializeField] private float _invincibilityWindow = 1f;
+    [SerializeField]
+    private float _maxHealth = 100f;
+    [SerializeField]
+    private float _invincibilityWindow = 1f;
 
-    [SerializeField] private float _overheatDamage = 5f;
-    [SerializeField] private float _overheatDamageRate = 1f;
+    [SerializeField]
+    private float _overheatDamage = 5f;
+    [SerializeField]
+    private float _overheatDamageRate = 1f;
 
-    [SerializeField] private float _damageOnCollision = 20f;
+    [SerializeField]
+    private float _damageOnCollision = 20f;
 
     //Public
     public float Health { get; private set; }
@@ -19,7 +26,7 @@ public class HealthSystem : GameEventUserObject
     //Private
     private HeatSystem _heatSystem;
 
-    private bool _invincible  = false;
+    private bool _invincible = false;
 
     private void Awake()
     {
@@ -32,6 +39,7 @@ public class HealthSystem : GameEventUserObject
     private void OnAttacked(PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
     private void OnPlayerDefeatedEnemy(PlayerDefeatedEnemyEvent args) => AddHealth(args.HealthGain);
     private void OnObstacleHit(ObstacleHitEventArgs args) => TakeDamage(_damageOnCollision, true);
+    private void OnDeath(PlayerDeathEventArgs args) => StartCoroutine(DeathDelay(1f));
 
     public override void Subscribe()
     {
@@ -39,6 +47,7 @@ public class HealthSystem : GameEventUserObject
         EventManager.Instance.AddListener<PlayerAttackedEventArgs>(this, OnAttacked);
         EventManager.Instance.AddListener<PlayerDefeatedEnemyEvent>(this, OnPlayerDefeatedEnemy);
         EventManager.Instance.AddListener<ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.AddListener<PlayerDeathEventArgs>(this, OnDeath);
     }
 
     private void AddHealth(float amount)
@@ -53,13 +62,31 @@ public class HealthSystem : GameEventUserObject
         Health -= amount;
 
         //Trigger PlayerDestroyedEvent
-        if (Health <= 0) SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        if (Health <= 0)
+        {
+            EventManager.Instance.TriggerEvent(new PlayerDeathEventArgs());
+        }
         else
         {
-            if(!ignoreInvincibility) StartCoroutine(InvincibilityRoutine());
+            if (!ignoreInvincibility) StartCoroutine(InvincibilityRoutine());
         }
     }
-
+    private IEnumerator DeathDelay(float time)
+    {
+        //Still got to mess around with values but adds a slow down
+        while (Time.timeScale > .1f)
+        {
+            Time.timeScale -= .1f;
+            Time.fixedDeltaTime = 0.02f * Time.timeScale;
+            yield return new WaitForSecondsRealtime(.5f);
+        }
+        Time.timeScale = 0f;
+        Time.fixedDeltaTime = 0f;
+        yield return new WaitForSecondsRealtime(time);
+        Time.timeScale = 1f;
+        Time.fixedDeltaTime = 0.02f * Time.timeScale;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
     private IEnumerator InvincibilityRoutine()
     {
         _invincible = true;
@@ -71,7 +98,7 @@ public class HealthSystem : GameEventUserObject
 
     private IEnumerator OverheatRoutine()
     {
-        while(_heatSystem.OverHeated)
+        while (_heatSystem.OverHeated)
         {
             TakeDamage(_overheatDamage, true);
 
