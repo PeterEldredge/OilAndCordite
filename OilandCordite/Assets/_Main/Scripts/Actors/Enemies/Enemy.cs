@@ -61,7 +61,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator Attack()
     {
-        while(true)
+        while(!_defeated)
         {
             if (_coolDown > 0) _coolDown -= Time.deltaTime;
             foreach (AttackBehaviour attack in _attackBehaviours)
