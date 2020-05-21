@@ -12,6 +12,9 @@ public abstract class MissionController : GameEventUserObject
     protected int _score = 0;
     public int Score => _score;
 
+    protected BaseScoring.Rank _rank;
+    public BaseScoring.Rank Rank => _rank;
+
     protected int _combo = 0;
     public int Combo => _combo;
 
@@ -47,7 +50,38 @@ public abstract class MissionController : GameEventUserObject
     {
         _missionComplete = true;
 
+        CalculateScore();
+
         EventManager.Instance.TriggerEvent(new MissionCompleteEventArgs());
+    }
+
+    protected void CalculateScore()
+    {
+        _score += CalculateTimeScore();
+        
+        //This sucks dick, refactor later with Rank class
+        for(int i = 0; i < Level.NUMBER_OF_RANKS; i++)
+        {
+            if (_levelData.ScoreRequirements[i] > _score) continue;
+
+            switch(i)
+            {
+                case 0:
+                    _rank = BaseScoring.Rank.Platnum;
+                    break;
+                case 1:
+                    _rank = BaseScoring.Rank.Gold;
+                    break;
+                case 2:
+                    _rank = BaseScoring.Rank.Silver;
+                    break;
+                case 3:
+                    _rank = BaseScoring.Rank.Bronze;
+                    break;
+            }
+
+            break;
+        }
     }
 
     protected int CalculateTimeScore() => Mathf.RoundToInt(BaseScoring.PAR_TIME_SCORE * (_levelData.ParTime / _timer));        

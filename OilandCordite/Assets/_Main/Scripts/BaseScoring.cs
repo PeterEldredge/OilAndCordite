@@ -8,4 +8,14 @@ public class BaseScoring
     //Score Parameters
     public const float COMBO_TIME = 4f;
     public const int MAX_COMBO = 10;
+
+    //Ranks (replace later)
+    public enum Rank
+    {
+        Platnum = 0,
+        Gold = 1,
+        Silver = 2,
+        Bronze = 3,
+        None = 4,
+    }
 }

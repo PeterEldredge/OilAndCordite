@@ -14,6 +14,7 @@ public class UIController : GameEventUserObject
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _comboText;
     [SerializeField] private GameObject _pauseMenuUI;
+    [SerializeField] private GameObject _victoryMenuUI;
     [SerializeField] private GameObject _deathMenuUI;
     [SerializeField] private GameObject _controlsUI;
 
@@ -37,10 +38,12 @@ public class UIController : GameEventUserObject
     }
 
     private void OnPlayerDeath(PlayerDeathEventArgs args) => StartCoroutine(ActionOnDelay(3f, () => OpenDeathScreen()));
+    private void OnMissionCompleted(MissionCompleteEventArgs args) => StartCoroutine(ActionOnDelay(2f, () => OpenVictoryScreen()));
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<PlayerDeathEventArgs>(this, OnPlayerDeath);
+        EventManager.Instance.AddListener<MissionCompleteEventArgs>(this, OnMissionCompleted);
     }
 
     public override void Unsubscribe()
@@ -111,6 +114,13 @@ public class UIController : GameEventUserObject
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
         _paused = false;
+    }
+
+    public void OpenVictoryScreen()
+    {
+        _victoryMenuUI.SetActive(true);
+        Cursor.lockState = CursorLockMode.None;
+        Time.timeScale = 0f;
     }
 
     public void OpenDeathScreen()

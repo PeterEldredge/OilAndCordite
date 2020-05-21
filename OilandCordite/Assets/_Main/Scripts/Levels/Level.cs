@@ -7,6 +7,8 @@ using UnityEngine.UI;
 [CreateAssetMenu(menuName = "Level")]
 public class Level : ScriptableObject
 {
+    public const int NUMBER_OF_RANKS = 4;
+
     public enum LevelType
     {
         DestroyEnemies,
@@ -28,6 +30,6 @@ public class Level : ScriptableObject
     [SerializeField] private float _parTime;
     public float ParTime => _parTime;
 
-    [SerializeField] private int[] _scoreRequirements = new int[4];
+    [SerializeField] private int[] _scoreRequirements = new int[NUMBER_OF_RANKS];
     public int[] ScoreRequirements => _scoreRequirements;
 }
