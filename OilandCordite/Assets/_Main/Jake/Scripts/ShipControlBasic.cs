@@ -198,7 +198,7 @@ private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBa
 
         if (InputHelper.Player.GetAxis("Pitch") == 0)
         {
-            if (transform.rotation.eulerAngles.x >= 90 && transform.rotation.eulerAngles.x <= 270)
+            if (Vector3.Dot(transform.up, Vector3.down) > 0)
             {
                 if (!_shipFlipped)
                 {
