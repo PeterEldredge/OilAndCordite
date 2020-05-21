@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
         _renderer.enabled = false;
         _colliders.SetActive(false);
 
-        Instantiate(_particles, transform);
+        Instantiate(_particles, transform.position, Quaternion.Euler(Vector3.zero));
 
         Destroy(gameObject, 5f);
     }
