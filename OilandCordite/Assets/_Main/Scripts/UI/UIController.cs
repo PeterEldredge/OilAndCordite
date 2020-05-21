@@ -88,6 +88,10 @@ public class UIController : GameEventUserObject
 
     public void Pause()
     {
+        AudioListener.pause = true;
+
+        _acp.PlaySound("Pause");
+
         if (_currentMenu != null)
         {
             _currentMenu.SetActive(false);
@@ -101,6 +105,7 @@ public class UIController : GameEventUserObject
 
     public void Resume()
     {
+        AudioListener.pause = false;
         _currentMenu.SetActive(false);
         _currentMenu = null;
         Cursor.lockState = CursorLockMode.Locked;

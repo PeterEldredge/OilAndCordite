@@ -26,6 +26,7 @@ public class AudioCuePlayer : MonoBehaviour
             cue.source.maxDistance = cue.maxDistance;
             cue.source.rolloffMode = cue.rolloffMode;
             cue.source.playOnAwake = cue.playOnAwake;
+            cue.source.ignoreListenerPause = cue.ignoreListenerPause;
 
             cue.source.loop = cue.loop;
             if (cue.playOnAwake)
