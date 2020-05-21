@@ -16,7 +16,7 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _minAirMomentum = 30f;
     [SerializeField] private float _minSmogIgnitionHeat = 0f;
     [SerializeField] private float _gravityMultiplier = 50f;
-    [SerializeField] private float _noGravitySpeed = 200f;
+    [Tooltip("The speed at which gravity stops affecting the ship")] [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")] [SerializeField] private float _minGasIgnitionHeat = 20f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
@@ -38,6 +38,9 @@ public class ShipControlBasic : GameEventUserObject
 
     [Header("Animation")]
     [SerializeField] private Animator _anim;
+
+    [Header("Ship Rotation")]
+    [SerializeField] private Transform _shipForRotation;
 
     //Public
     public int Speed { get; private set; }
@@ -137,7 +140,12 @@ public class ShipControlBasic : GameEventUserObject
 
     private void FixedUpdate()
     {
-        transform.Rotate(new Vector3(turnTorque.x * _pitch, turnTorque.y * _turn, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
+        //transform.Rotate(new Vector3(turnTorque.x * _pitch, turnTorque.y * _turn, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
+        
+        transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, 0) * rotateMult * Time.fixedDeltaTime, Space.Self);
+        transform.rotation = Quaternion.Euler(new Vector3(0, turnTorque.y * _turn, 0) * rotateMult * Time.fixedDeltaTime) * transform.rotation;
+        _shipForRotation.Rotate(new Vector3(0, 0, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
+
 
         float minMomentum = _minSmogMomentum;
         if (!PlayerData.Instance.InSmog)
