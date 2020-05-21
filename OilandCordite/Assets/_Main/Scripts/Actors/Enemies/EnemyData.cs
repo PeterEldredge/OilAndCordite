@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class EnemyData : ActorData
 {
-    public List<Transform> AttackPoints;
+    [HideInInspector] public List<Transform> AttackPoints;
 }

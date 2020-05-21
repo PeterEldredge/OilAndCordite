@@ -16,18 +16,28 @@ public class Enemy : MonoBehaviour
 {
     [SerializeField] private float _piercingSpeed;
     [SerializeField] private float _healthGain = 30f;
+    [SerializeField] private GameObject _colliders;
+    [SerializeField] private GameObject _particles;
     [SerializeField] private List<AttackBehaviour> _attackBehaviours;
     [SerializeField] private List<Transform> _attackPoints;
 
     private EnemyData _enemyData;
 
+    private MeshRenderer _renderer;
+
     private float _coolDown = -1f;
     
     private bool _defeated = false;
 
+    //Properties
+    public float PiercingSpeed => _piercingSpeed;
+    public float HealthGain => _healthGain;
+    public bool Defeated => _defeated;
+
     private void Awake()
     {
         _enemyData = GetComponent<EnemyData>();
+        _renderer = GetComponentInChildren<MeshRenderer>();
 
         _enemyData.AttackPoints = _attackPoints;
     }
@@ -37,24 +47,16 @@ public class Enemy : MonoBehaviour
         StartCoroutine(Attack());
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.collider.CompareTag(Tags.PLAYER) && !_defeated)
-        {
-            if(collision.collider.attachedRigidbody.velocity.magnitude > _piercingSpeed)
-            {
-                EventManager.Instance.TriggerEvent(new PlayerDefeatedEnemyEvent(_healthGain));
-                
-                Defeated();
-            }
-        }
-    }
-
-    private void Defeated()
+    public void OnDefeated()
     {
         _defeated = true;
 
-        Destroy(gameObject);
+        _renderer.enabled = false;
+        _colliders.SetActive(false);
+
+        Instantiate(_particles, transform);
+
+        Destroy(gameObject, 5f);
     }
 
     private IEnumerator Attack()
