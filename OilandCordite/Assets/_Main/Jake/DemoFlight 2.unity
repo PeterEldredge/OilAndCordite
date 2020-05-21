@@ -4741,6 +4741,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6373d5725e8276f41a15ba05512b7dbd, type: 3}
+--- !u!4 &1890641549 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5106882730391287487, guid: b141dff0bdd94934ba2ce03849824cd1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080182846179490820}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1946993073
 GameObject:
   m_ObjectHideFlags: 0
@@ -5389,7 +5395,22 @@ PrefabInstance:
     - target: {fileID: 1078715839685043520, guid: b141dff0bdd94934ba2ce03849824cd1,
         type: 3}
       propertyPath: m_Name
-      value: Ship
+      value: Ship Holder
+      objectReference: {fileID: 0}
+    - target: {fileID: 1080182845171050024, guid: b141dff0bdd94934ba2ce03849824cd1,
+        type: 3}
+      propertyPath: _shipForRotation
+      value: 
+      objectReference: {fileID: 1890641549}
+    - target: {fileID: 4500511340597229903, guid: b141dff0bdd94934ba2ce03849824cd1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5106882730391287487, guid: b141dff0bdd94934ba2ce03849824cd1,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b141dff0bdd94934ba2ce03849824cd1, type: 3}
