@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// Heat Effect manager used primarily for testing
 /// Cross thresholds, update effects and shaders, etc
-public class HeatEffectSystem : MonoBehaviour
+public class HeatEffectSystem : GameEventUserObject
 {
     [SerializeField] private Material PlayerShipMaterial;
     [SerializeField] private float upperHeatThreshold;
@@ -12,12 +12,62 @@ public class HeatEffectSystem : MonoBehaviour
     [SerializeField] private List<TrailRenderer> HeatTrailObjects;
     [SerializeField] private List<TrailRenderer> ThrustTrailObjects;
     [SerializeField] private Gradient ThrustHeatGradient;
+    [SerializeField] private float maxThrusterWidthScale;
+    [SerializeField] private float minThrusterWidthScale;
+
+
+    private void OnBeginIgnition(BeginIgniteEventArgs args) => StartCoroutine(BeginIgnition());
+    private void OnEndIgnition(EndIgniteEventArgs args) => StartCoroutine(EndIgnition());
+    private bool isIgniting;
+     [SerializeField] private float ignitionTimer = 1.0f;
+    private float stepSize = 2.0f;
+
 
     private HeatSystem _hs;
+    private CameraEffectSystem _cam;
 
-    void Start()
+    private void Awake()
     {
         _hs = this.GetComponent<HeatSystem>();
+        _cam = Camera.main.GetComponent<CameraEffectSystem>();
+    }
+
+    public override void Subscribe()
+    {
+        EventManager.Instance.AddListener<BeginIgniteEventArgs>(this, OnBeginIgnition);
+        EventManager.Instance.AddListener<EndIgniteEventArgs>(this, OnEndIgnition);
+    }
+
+    private IEnumerator BeginIgnition() 
+    {
+        isIgniting = true;
+        ignitionTimer = 1.0f;
+        while(isIgniting) 
+        {
+            ignitionTimer += Time.deltaTime * stepSize;
+            float widthMultiplier = (ignitionTimer < maxThrusterWidthScale) ? ignitionTimer : maxThrusterWidthScale;
+            UpdateThrusterWidth(widthMultiplier);
+            _cam?.IncreaseIgnitionSoftness();
+            _cam?.UpdateIgitionColor();
+            _cam?.IncreaseCameraFov();
+            yield return null;
+        }        
+    }
+
+    private IEnumerator EndIgnition() 
+    {
+        this.isIgniting = false;
+        ignitionTimer = maxThrusterWidthScale;
+        while(!isIgniting) 
+        {
+            ignitionTimer -= Time.deltaTime * stepSize;
+            float widthMultiplier = (ignitionTimer > minThrusterWidthScale) ? ignitionTimer : minThrusterWidthScale;
+            UpdateThrusterWidth(widthMultiplier);
+            _cam?.DecreaseIgnitionSoftness();
+            _cam?.UpdateIgitionColor();
+            _cam?.DecreaseCameraFov();
+            yield return null;
+        }
     }
 
     private void UpdateHeat() 
@@ -36,7 +86,14 @@ public class HeatEffectSystem : MonoBehaviour
         UpdateThrustTrails(heat);
     }
 
-    // TODO sample heat value against a gradient to apply to 
+    private void UpdateThrusterWidth(float amount) 
+    {
+       foreach(TrailRenderer trail in ThrustTrailObjects) 
+        {
+            trail.widthMultiplier = amount;
+        } 
+    }
+
     private void UpdateThrustTrails(float heat) 
     {
         foreach(TrailRenderer trail in ThrustTrailObjects) 

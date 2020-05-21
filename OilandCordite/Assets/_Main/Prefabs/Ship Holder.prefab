@@ -410,8 +410,9 @@ MonoBehaviour:
   gravMult: 3
   _maxAcceleration: 150
   _minAcceleration: -100
-  _minSmogMomentum: 0
-  _minAirMomentum: 30
+  _maxSpeed: 500
+  _minSmogSpeed: 0
+  _minAirSpeed: 50
   _minSmogIgnitionHeat: 0
   _gravityMultiplier: 30
   _noGravitySpeed: 200
@@ -657,6 +658,9 @@ MonoBehaviour:
     m_Mode: 0
     m_NumColorKeys: 3
     m_NumAlphaKeys: 2
+  maxThrusterWidthScale: 0
+  minThrusterWidthScale: 0
+  ignitionTimer: 1
 --- !u!1 &1078840574220937832
 GameObject:
   m_ObjectHideFlags: 0
