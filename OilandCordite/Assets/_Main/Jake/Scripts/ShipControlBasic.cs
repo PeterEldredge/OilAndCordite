@@ -39,14 +39,12 @@ public class ShipControlBasic : GameEventUserObject
     [Header("Animation")]
     [SerializeField] private Animator _anim;
 
-    [Header("Ship Rotation")]
-    [SerializeField] private Transform _shipForRotation;
-
     //Public
     public int Speed { get; private set; }
 
     //Private
     private Rigidbody _rb;
+    private Transform _shipForRotation;
 
     private Action _inputCalculation;
 
@@ -103,9 +101,10 @@ public class ShipControlBasic : GameEventUserObject
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-    }
+        _shipForRotation = GetComponentInChildren<Transform>();
+}
 
-    private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
+private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<ObstacleHitEventArgs>(this, OnObstacleHit);
