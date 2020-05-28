@@ -52,7 +52,7 @@ public abstract class MissionController : GameEventUserObject
 
         CalculateScore();
 
-        EventManager.Instance.TriggerEvent(new MissionCompleteEventArgs());
+        EventManager.Instance.TriggerEvent(new Events.MissionCompleteEventArgs());
     }
 
     protected void CalculateScore()
