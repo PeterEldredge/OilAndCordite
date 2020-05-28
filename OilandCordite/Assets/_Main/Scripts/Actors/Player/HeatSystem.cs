@@ -16,6 +16,7 @@ public class HeatSystem : MonoBehaviour
     [SerializeField] private float _timeToResetFromMax = 3f;
     [SerializeField] private float _overheatedTimePenalty = 2f;
     [SerializeField] private AnimationCurve _heatCurve;
+    [SerializeField] private ParticleSystem _overheatingParticles;
 
     //Public
     public float Heat { get; private set; }
@@ -47,6 +48,9 @@ public class HeatSystem : MonoBehaviour
                 if (timer > _timeToOverheat)
                 {
                     OverHeated = true;
+
+                    _overheatingParticles.Play();
+
                     EventManager.Instance.TriggerEvent(new Events.OverheatedEventArgs());
 
                     Heat = _maxHeat;
@@ -70,6 +74,8 @@ public class HeatSystem : MonoBehaviour
         }
 
         OverHeated = false;
+
+        _overheatingParticles.Stop();
 
         while (Heat > 0)
         {
