@@ -3101,6 +3101,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816169675}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &842654522 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3025849136805095959, guid: fb88f9df03ff0724c8624fd383b9dd3c,
+    type: 3}
+  m_PrefabInstance: {fileID: 1679489396}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &842673637
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5067,7 +5079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10efa70eea88e69459c632aac286892d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewiredInputManager: {fileID: 0}
+  rewiredInputManager: {fileID: 842654522}
   useAllRewiredGamePlayers: 1
   useRewiredSystemPlayer: 1
   rewiredPlayerIds: 00000000

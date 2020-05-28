@@ -16,7 +16,7 @@ public class WeldedLaser : GameEventUserObject
     }
     public void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (InputHelper.Player.GetButtonDown("WeldedWeaponUse"))
         {
             useLaser();
         }
