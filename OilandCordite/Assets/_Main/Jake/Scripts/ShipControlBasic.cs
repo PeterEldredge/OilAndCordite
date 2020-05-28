@@ -102,11 +102,14 @@ public class ShipControlBasic : GameEventUserObject
 
     private void Awake()
     {
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+
         _rb = GetComponent<Rigidbody>();
         _shipForRotation = GetComponentsInChildren<Transform>()[1];
-}
+    }
 
-private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
+    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
@@ -114,9 +117,6 @@ private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(B
 
     private void Start()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
-
         _invertYControl = _startInverted ? 1 : -1;
 
         SetInputType();
@@ -134,6 +134,11 @@ private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(B
             _mouseMovement = !_mouseMovement;
 
             SetInputType();
+        }
+
+        if (Input.GetKeyDown(KeyCode.V))
+        {
+            QualitySettings.vSyncCount = 2;
         }
 
         _inputCalculation.Invoke();
@@ -196,7 +201,7 @@ private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(B
             _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, _maxSpeed) * transform.forward;
         }
 
-        if (InputHelper.Player.GetAxis("Pitch") == 0)
+        if (Mathf.Abs(InputHelper.Player.GetAxis("Pitch")) < .2)
         {
             if (Vector3.Dot(transform.up, Vector3.down) > 0)
             {

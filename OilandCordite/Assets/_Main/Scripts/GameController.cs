@@ -9,9 +9,10 @@ public class GameController : GameEventUserObject
 
     private IEnumerator ImpactTimeRoutine()
     {
-        Time.timeScale = .2f;
+        Time.timeScale = .5f;
 
-        yield return new WaitForSecondsRealtime(.04f);
+        yield return null;
+        yield return null;
 
         Time.timeScale = 1f;
     }
