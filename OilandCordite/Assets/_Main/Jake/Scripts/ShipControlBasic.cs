@@ -106,10 +106,10 @@ public class ShipControlBasic : GameEventUserObject
         _shipForRotation = GetComponentsInChildren<Transform>()[1];
 }
 
-private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
+private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
     public override void Subscribe()
     {
-        EventManager.Instance.AddListener<ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
     }
 
     private void Start()
@@ -238,7 +238,7 @@ private void OnObstacleHit(ObstacleHitEventArgs args) => StartCoroutine(BounceBa
         _anim.SetBool("spinningOut", _spinningOut);
     }
 
-    private IEnumerator BounceBackRoutine(ObstacleHitEventArgs args)
+    private IEnumerator BounceBackRoutine(Events.ObstacleHitEventArgs args)
     {
         _bouncing = true;
 

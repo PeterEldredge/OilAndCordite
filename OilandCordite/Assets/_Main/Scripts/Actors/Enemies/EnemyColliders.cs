@@ -17,7 +17,7 @@ public class EnemyColliders : MonoBehaviour
         {
             if (collider.attachedRigidbody.velocity.magnitude > _enemy.PiercingSpeed)
             {
-                EventManager.Instance.TriggerEvent(new PlayerDefeatedEnemyEventArgs(_enemy.HealthGain, _enemy.BaseScore));
+                EventManager.Instance.TriggerEvent(new Events.PlayerDefeatedEnemyEventArgs(_enemy.HealthGain, _enemy.BaseScore));
 
                 _enemy.OnDefeated();
             }

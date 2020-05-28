@@ -16,8 +16,8 @@ public class HeatEffectSystem : GameEventUserObject
     [SerializeField] private float minThrusterWidthScale;
 
 
-    private void OnBeginIgnition(BeginIgniteEventArgs args) => StartCoroutine(BeginIgnition());
-    private void OnEndIgnition(EndIgniteEventArgs args) => StartCoroutine(EndIgnition());
+    private void OnBeginIgnition(Events.BeginIgniteEventArgs args) => StartCoroutine(BeginIgnition());
+    private void OnEndIgnition(Events.EndIgniteEventArgs args) => StartCoroutine(EndIgnition());
     private bool isIgniting;
      [SerializeField] private float ignitionTimer = 1.0f;
     private float stepSize = 2.0f;
@@ -34,8 +34,8 @@ public class HeatEffectSystem : GameEventUserObject
 
     public override void Subscribe()
     {
-        EventManager.Instance.AddListener<BeginIgniteEventArgs>(this, OnBeginIgnition);
-        EventManager.Instance.AddListener<EndIgniteEventArgs>(this, OnEndIgnition);
+        EventManager.Instance.AddListener<Events.BeginIgniteEventArgs>(this, OnBeginIgnition);
+        EventManager.Instance.AddListener<Events.EndIgniteEventArgs>(this, OnEndIgnition);
     }
 
     private IEnumerator BeginIgnition() 

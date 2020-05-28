@@ -20,10 +20,10 @@ public class RumbleSystem : GameEventUserObject
 
     private void OnGamePaused(Events.GamePausedEventArgs args) => _paused = true;
     private void OnGameUnpaused(Events.GameUnpausedEventArgs args) => _paused = false;
-    private void OnPlayerDefeatedEnemy(PlayerDefeatedEnemyEventArgs args) => InputHelper.Player.SetVibration(0, _explosionLevel, _explosionRumbleTime);
-    private void OnPlayerDeath(PlayerDeathEventArgs args) => InputHelper.Player.SetVibration(0, _explosionLevel, _explosionRumbleTime);
-    private void OnPlayerAttacked(PlayerAttackedEventArgs args) => InputHelper.Player.SetVibration(0, _attackedLevel, _attackedRumbleTime);
-    private void OnObstacleHit(ObstacleHitEventArgs args) => InputHelper.Player.SetVibration(0, _obstacleHitLevel, _obstacleHitTime);
+    private void OnPlayerDefeatedEnemy(Events.PlayerDefeatedEnemyEventArgs args) => InputHelper.Player.SetVibration(0, _explosionLevel, _explosionRumbleTime);
+    private void OnPlayerDeath(Events.PlayerDeathEventArgs args) => InputHelper.Player.SetVibration(0, _explosionLevel, _explosionRumbleTime);
+    private void OnPlayerAttacked(Events.PlayerAttackedEventArgs args) => InputHelper.Player.SetVibration(0, _attackedLevel, _attackedRumbleTime);
+    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => InputHelper.Player.SetVibration(0, _obstacleHitLevel, _obstacleHitTime);
 
     protected override void OnEnable()
     {
@@ -36,20 +36,20 @@ public class RumbleSystem : GameEventUserObject
     {
         EventManager.Instance.AddListener<Events.GamePausedEventArgs>(this, OnGamePaused);
         EventManager.Instance.AddListener<Events.GameUnpausedEventArgs>(this, OnGameUnpaused);
-        EventManager.Instance.AddListener<PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
-        EventManager.Instance.AddListener<PlayerDeathEventArgs>(this, OnPlayerDeath);
-        EventManager.Instance.AddListener<PlayerAttackedEventArgs>(this, OnPlayerAttacked);
-        EventManager.Instance.AddListener<ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
+        EventManager.Instance.AddListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
+        EventManager.Instance.AddListener<Events.PlayerAttackedEventArgs>(this, OnPlayerAttacked);
+        EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
     }
 
     public override void Unsubscribe()
     {
         EventManager.Instance.RemoveListener<Events.GamePausedEventArgs>(this, OnGamePaused);
         EventManager.Instance.RemoveListener<Events.GameUnpausedEventArgs>(this, OnGameUnpaused);
-        EventManager.Instance.RemoveListener<PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
-        EventManager.Instance.RemoveListener<PlayerDeathEventArgs>(this, OnPlayerDeath);
-        EventManager.Instance.RemoveListener<PlayerAttackedEventArgs>(this, OnPlayerAttacked);
-        EventManager.Instance.RemoveListener<ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.RemoveListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
+        EventManager.Instance.RemoveListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
+        EventManager.Instance.RemoveListener<Events.PlayerAttackedEventArgs>(this, OnPlayerAttacked);
+        EventManager.Instance.RemoveListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
     }
 
     private IEnumerator RumbleRoutine()

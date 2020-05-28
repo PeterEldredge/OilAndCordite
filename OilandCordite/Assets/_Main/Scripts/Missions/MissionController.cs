@@ -22,7 +22,7 @@ public abstract class MissionController : GameEventUserObject
 
     protected bool _missionComplete = false;
 
-    private void AddScore(PlayerDefeatedEnemyEventArgs args)
+    private void AddScore(Events.PlayerDefeatedEnemyEventArgs args)
     {
         _score += args.Score + BaseScoring.COMBO_BONUS * Mathf.Clamp(_combo, 0, BaseScoring.MAX_COMBO);
         _combo += 1;
@@ -32,12 +32,12 @@ public abstract class MissionController : GameEventUserObject
 
     public override void Subscribe()
     {
-        EventManager.Instance.AddListener<PlayerDefeatedEnemyEventArgs>(this, AddScore);
+        EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, AddScore);
     }
 
     public override void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener<PlayerDefeatedEnemyEventArgs>(this, AddScore);
+        EventManager.Instance.RemoveListener<Events.PlayerDefeatedEnemyEventArgs>(this, AddScore);
     }
 
     protected void Start()

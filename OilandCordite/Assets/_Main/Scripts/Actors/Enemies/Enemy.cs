@@ -2,15 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct PlayerDefeatedEnemyEventArgs : IGameEvent 
+namespace Events
 {
-    public float HealthGain { get; }
-    public int Score { get; }
-    
-    public PlayerDefeatedEnemyEventArgs(float healthGain, int score)
+    public struct PlayerDefeatedEnemyEventArgs : IGameEvent
     {
-        HealthGain = healthGain;
-        Score = score;
+        public float HealthGain { get; }
+        public int Score { get; }
+
+        public PlayerDefeatedEnemyEventArgs(float healthGain, int score)
+        {
+            HealthGain = healthGain;
+            Score = score;
+        }
     }
 }
 

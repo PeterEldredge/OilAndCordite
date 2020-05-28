@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameController : GameEventUserObject
 {
-    private void StartImpactTimeRoutine(PlayerDefeatedEnemyEventArgs args) => StartCoroutine(ImpactTimeRoutine()); 
+    private void StartImpactTimeRoutine(Events.PlayerDefeatedEnemyEventArgs args) => StartCoroutine(ImpactTimeRoutine()); 
 
     private IEnumerator ImpactTimeRoutine()
     {
@@ -18,11 +18,11 @@ public class GameController : GameEventUserObject
 
     public override void Subscribe()
     {
-        EventManager.Instance.AddListener<PlayerDefeatedEnemyEventArgs>(this, StartImpactTimeRoutine);
+        EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, StartImpactTimeRoutine);
     }
 
     public override void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener<PlayerDefeatedEnemyEventArgs>(this, StartImpactTimeRoutine);
+        EventManager.Instance.RemoveListener<Events.PlayerDefeatedEnemyEventArgs>(this, StartImpactTimeRoutine);
     }
 }

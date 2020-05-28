@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public struct PlayerDeathEventArgs : IGameEvent { }
+namespace Events
+{
+    public struct PlayerDeathEventArgs : IGameEvent { }
+}
 
 public class HealthSystem : GameEventUserObject
 {
@@ -32,17 +35,17 @@ public class HealthSystem : GameEventUserObject
         _heatSystem = GetComponent<HeatSystem>();
     }
 
-    private void OnOverheat(OverheatedEventArgs args) => StartCoroutine(OverheatRoutine());
-    private void OnAttacked(PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
-    private void OnPlayerDefeatedEnemy(PlayerDefeatedEnemyEventArgs args) => AddHealth(args.HealthGain);
-    private void OnObstacleHit(ObstacleHitEventArgs args) => TakeDamage(_damageOnCollision, true);
+    private void OnOverheat(Events.OverheatedEventArgs args) => StartCoroutine(OverheatRoutine());
+    private void OnAttacked(Events.PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
+    private void OnPlayerDefeatedEnemy(Events.PlayerDefeatedEnemyEventArgs args) => AddHealth(args.HealthGain);
+    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => TakeDamage(_damageOnCollision, true);
 
     public override void Subscribe()
     {
-        EventManager.Instance.AddListener<OverheatedEventArgs>(this, OnOverheat);
-        EventManager.Instance.AddListener<PlayerAttackedEventArgs>(this, OnAttacked);
-        EventManager.Instance.AddListener<PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
-        EventManager.Instance.AddListener<ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.AddListener<Events.OverheatedEventArgs>(this, OnOverheat);
+        EventManager.Instance.AddListener<Events.PlayerAttackedEventArgs>(this, OnAttacked);
+        EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
+        EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
     }
 
     private void AddHealth(float amount)
@@ -59,7 +62,7 @@ public class HealthSystem : GameEventUserObject
         if (Health <= 0)
         {
             IsDead = true;
-            EventManager.Instance.TriggerEvent(new PlayerDeathEventArgs());
+            EventManager.Instance.TriggerEvent(new Events.PlayerDeathEventArgs());
         }
         else
         {

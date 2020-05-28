@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct OverheatedEventArgs : IGameEvent { }
-
-public struct BeginIgniteEventArgs : IGameEvent { }
-
-public struct EndIgniteEventArgs : IGameEvent { }
+namespace Events
+{
+    public struct OverheatedEventArgs : IGameEvent { }
+    public struct BeginIgniteEventArgs : IGameEvent { }
+    public struct EndIgniteEventArgs : IGameEvent { }
+}
 
 public class HeatSystem : MonoBehaviour
 {
@@ -35,7 +36,7 @@ public class HeatSystem : MonoBehaviour
         float coolingSpeed = _maxHeat / _timeToResetFromMax;
 
         IsIgniting = true;
-        EventManager.Instance.TriggerEvent(new BeginIgniteEventArgs());
+        EventManager.Instance.TriggerEvent(new Events.BeginIgniteEventArgs());
 
         while(InputHelper.Player.GetAxis("Ignite") > 0)
         {
@@ -46,7 +47,7 @@ public class HeatSystem : MonoBehaviour
                 if (timer > _timeToOverheat)
                 {
                     OverHeated = true;
-                    EventManager.Instance.TriggerEvent(new OverheatedEventArgs());
+                    EventManager.Instance.TriggerEvent(new Events.OverheatedEventArgs());
 
                     Heat = _maxHeat;
                 }
@@ -61,7 +62,7 @@ public class HeatSystem : MonoBehaviour
             yield return null;
         }
 
-        EventManager.Instance.TriggerEvent(new EndIgniteEventArgs());
+        EventManager.Instance.TriggerEvent(new Events.EndIgniteEventArgs());
 
         if(OverHeated)
         {

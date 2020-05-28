@@ -351,10 +351,11 @@ GameObject:
   - component: {fileID: 1080182845171050024}
   - component: {fileID: 1078715839685043522}
   - component: {fileID: 1078715839685043521}
-  - component: {fileID: 8876782715693177116}
-  - component: {fileID: 1080182845171050025}
   - component: {fileID: 1195797106433889523}
+  - component: {fileID: 8876782715693177116}
   - component: {fileID: 1080182846179490823}
+  - component: {fileID: 693241536}
+  - component: {fileID: 1080182845171050025}
   - component: {fileID: 1080182846179490824}
   m_Layer: 0
   m_Name: Ship Holder
@@ -585,30 +586,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   IsIgniting: 0
---- !u!114 &8876782715693177116
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078715839685043520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41645608059f6b847b59131de6a8f9f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1080182845171050025
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1078715839685043520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 103b2a24990fdd148a17fa4c4f29224f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1195797106433889523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -663,6 +640,18 @@ MonoBehaviour:
   maxThrusterWidthScale: 2
   minThrusterWidthScale: 1
   ignitionTimer: 1
+--- !u!114 &8876782715693177116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078715839685043520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41645608059f6b847b59131de6a8f9f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1080182846179490823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,6 +668,60 @@ MonoBehaviour:
   _particles: {fileID: 8577053942079436274, guid: de80f5969c2dd004b9059a2224ffa33e,
     type: 3}
   _flightCam: {fileID: 0}
+--- !u!114 &693241536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078715839685043520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 653c1c0ec581d6a43acb4f13da2b7560, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _heatCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 0.8
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _explosionLevel: 1
+  _explosionRumbleTime: 0.5
+  _attackedLevel: 0.5
+  _attackedRumbleTime: 0.5
+  _obstacleHitLevel: 1
+  _obstacleHitTime: 0.5
+--- !u!114 &1080182845171050025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1078715839685043520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103b2a24990fdd148a17fa4c4f29224f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1080182846179490824
 MonoBehaviour:
   m_ObjectHideFlags: 0

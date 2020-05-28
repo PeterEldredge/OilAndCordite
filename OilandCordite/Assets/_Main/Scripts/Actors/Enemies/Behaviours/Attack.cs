@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct PlayerAttackedEventArgs : IGameEvent
+namespace Events
 {
-    public float Damage { get; }
-
-    public PlayerAttackedEventArgs(float damage)
+    public struct PlayerAttackedEventArgs : IGameEvent
     {
-        Damage = damage;
+        public float Damage { get; }
+
+        public PlayerAttackedEventArgs(float damage)
+        {
+            Damage = damage;
+        }
     }
 }
 
@@ -22,7 +25,7 @@ public class Attack : MonoBehaviour
     {
         if(other.CompareTag(Tags.PLAYER))
         {
-            EventManager.Instance.TriggerEvent(new PlayerAttackedEventArgs(_damage));
+            EventManager.Instance.TriggerEvent(new Events.PlayerAttackedEventArgs(_damage));
         }
     }
 }

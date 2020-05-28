@@ -43,18 +43,18 @@ public class UIController : GameEventUserObject
         action.Invoke();
     }
 
-    private void OnPlayerDeath(PlayerDeathEventArgs args) => StartCoroutine(ActionOnDelay(3f, () => OpenDeathScreen()));
+    private void OnPlayerDeath(Events.PlayerDeathEventArgs args) => StartCoroutine(ActionOnDelay(3f, () => OpenDeathScreen()));
     private void OnMissionCompleted(MissionCompleteEventArgs args) => StartCoroutine(ActionOnDelay(.5f, () => OpenVictoryScreen()));
 
     public override void Subscribe()
     {
-        EventManager.Instance.AddListener<PlayerDeathEventArgs>(this, OnPlayerDeath);
+        EventManager.Instance.AddListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
         EventManager.Instance.AddListener<MissionCompleteEventArgs>(this, OnMissionCompleted);
     }
 
     public override void Unsubscribe()
     {
-        EventManager.Instance.RemoveListener<PlayerDeathEventArgs>(this, OnPlayerDeath);
+        EventManager.Instance.RemoveListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
     }
 
     // Update is called once per frame

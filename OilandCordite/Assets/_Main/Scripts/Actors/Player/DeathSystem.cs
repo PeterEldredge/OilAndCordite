@@ -17,7 +17,7 @@ public class DeathSystem : GameEventUserObject
         _acp = GetComponent<AudioCuePlayer>();
     }
 
-    private void OnDeath(PlayerDeathEventArgs args)
+    private void OnDeath(Events.PlayerDeathEventArgs args)
     {
         _shipControlBasic.enabled = false;
         _flightCam.enabled = false;
@@ -31,11 +31,11 @@ public class DeathSystem : GameEventUserObject
 
     public override void Subscribe()
     {
-        EventManager.Instance.AddListener<PlayerDeathEventArgs>(this, OnDeath);
+        EventManager.Instance.AddListener<Events.PlayerDeathEventArgs>(this, OnDeath);
     }
 
     public override void Unsubscribe()
     {
-        EventManager.Instance.AddListener<PlayerDeathEventArgs>(this, OnDeath);
+        EventManager.Instance.AddListener<Events.PlayerDeathEventArgs>(this, OnDeath);
     }
 }
