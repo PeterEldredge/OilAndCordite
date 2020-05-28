@@ -132,6 +132,7 @@ GameObject:
   - component: {fileID: 525464270}
   - component: {fileID: 525464269}
   - component: {fileID: 525464268}
+  - component: {fileID: 525464271}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -204,6 +205,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &525464271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 525464267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e3a0ab0ab1c6fb4daa33ab73df9db35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  material: {fileID: 2100000, guid: e502c07c9ff96a448b9bda90db7c37ce, type: 2}
 --- !u!1 &625240148
 GameObject:
   m_ObjectHideFlags: 0
@@ -6594,7 +6608,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cc72fbd36877e74a89bb9d298b9b8a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerShipMaterial: {fileID: 2100000, guid: 06ad660f3a2000000cdd660f3a200000, type: 2}
+  PlayerShipBody: {fileID: 0}
   upperHeatThreshold: 0
   minimumHeatThreshold: 0.1
   HeatTrailObjects:
