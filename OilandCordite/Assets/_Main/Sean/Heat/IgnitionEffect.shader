@@ -42,12 +42,14 @@
             }
 
             sampler2D _MainTex;
+            sampler2D _DistortionMap;
             float _VignetteRadius;
             float _VignetteSoftness;
             float4 _VignetteColor;
 
             fixed4 frag (v2f i) : SV_Target
             {
+                float2 disp = tex2D(_DistortionMap, i.uv); 
                 fixed4 col = tex2D(_MainTex, i.uv);
                 float centerDistance = distance(i.uv.xy, float2(0.5, 0.5));
                 float vignette =  1 - smoothstep(_VignetteRadius, _VignetteRadius - _VignetteSoftness, centerDistance);
