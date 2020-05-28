@@ -4058,7 +4058,7 @@ MonoBehaviour:
       outWeight: 0
     - serializedVersion: 3
       time: 1
-      value: 1
+      value: 0.8
       inSlope: 2
       outSlope: 2
       tangentMode: 0
@@ -4068,7 +4068,12 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  _explosionLevel: 1
   _explosionRumbleTime: 0.5
+  _attackedLevel: 0.5
+  _attackedRumbleTime: 0.5
+  _obstacleHitLevel: 1
+  _obstacleHitTime: 0.5
 --- !u!1 &697469475
 GameObject:
   m_ObjectHideFlags: 0
