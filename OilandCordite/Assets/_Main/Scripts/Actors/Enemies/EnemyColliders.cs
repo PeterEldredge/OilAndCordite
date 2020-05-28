@@ -11,11 +11,11 @@ public class EnemyColliders : MonoBehaviour
         _enemy = GetComponentInParent<Enemy>();
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collider)
     {
-        if (collision.collider.CompareTag(Tags.PLAYER) && !_enemy.Defeated)
+        if (collider.CompareTag(Tags.PLAYER) && !_enemy.Defeated)
         {
-            if (collision.collider.attachedRigidbody.velocity.magnitude > _enemy.PiercingSpeed)
+            if (collider.attachedRigidbody.velocity.magnitude > _enemy.PiercingSpeed)
             {
                 EventManager.Instance.TriggerEvent(new PlayerDefeatedEnemyEventArgs(_enemy.HealthGain, _enemy.BaseScore));
 
