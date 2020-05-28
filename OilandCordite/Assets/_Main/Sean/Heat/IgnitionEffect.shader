@@ -3,6 +3,7 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+        _DistortionMap ("Distortion Map", 2D) = "white" {}
         _VignetteRadius("Vignette Radius", Range(0.0, 1.0)) = 1.0
         _VignetteSoftness("Vignette Softness", Range(0.0, 1.0)) = 0.5
         _VignetteColor("Vignette Color", Color) = (1.0,1.0,1.0,1.0)

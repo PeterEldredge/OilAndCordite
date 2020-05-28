@@ -6,7 +6,7 @@ using UnityEngine;
 /// Cross thresholds, update effects and shaders, etc
 public class HeatEffectSystem : GameEventUserObject
 {
-    [SerializeField] private Material PlayerShipMaterial;
+    [SerializeField] private GameObject PlayerShipBody;
     [SerializeField] private float upperHeatThreshold;
     [SerializeField] private float minimumHeatThreshold;
     [SerializeField] private List<TrailRenderer> HeatTrailObjects;
@@ -18,9 +18,11 @@ public class HeatEffectSystem : GameEventUserObject
 
     private void OnBeginIgnition(Events.BeginIgniteEventArgs args) => StartCoroutine(BeginIgnition());
     private void OnEndIgnition(Events.EndIgniteEventArgs args) => StartCoroutine(EndIgnition());
+    
     private bool isIgniting;
      [SerializeField] private float ignitionTimer = 1.0f;
     private float stepSize = 2.0f;
+    private Material _playerShipMaterial;
 
 
     private HeatSystem _hs;
@@ -30,6 +32,8 @@ public class HeatEffectSystem : GameEventUserObject
     {
         _hs = this.GetComponent<HeatSystem>();
         _cam = Camera.main.GetComponent<CameraEffectSystem>();
+        _playerShipMaterial = this.PlayerShipBody.GetComponent<MeshRenderer>().material;
+
     }
 
     public override void Subscribe()
@@ -73,7 +77,7 @@ public class HeatEffectSystem : GameEventUserObject
     private void UpdateHeat() 
     {
         float heat = _hs != null ? ((_hs.Heat) / 50.0f) : 0.0f;
-        this.PlayerShipMaterial.SetFloat("_Temperature", heat);
+        this._playerShipMaterial.SetFloat("_Temperature", heat);
         if(heat > minimumHeatThreshold) 
         {
             EnableHeatTrails();
