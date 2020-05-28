@@ -2,4 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public struct MissionCompleteEventArgs : IGameEvent { }
+namespace Events
+{
+    public struct MissionCompleteEventArgs : IGameEvent { }
+}

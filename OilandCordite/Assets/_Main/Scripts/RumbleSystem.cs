@@ -20,6 +20,7 @@ public class RumbleSystem : GameEventUserObject
 
     private void OnGamePaused(Events.GamePausedEventArgs args) => _paused = true;
     private void OnGameUnpaused(Events.GameUnpausedEventArgs args) => _paused = false;
+    private void OnMissionComplete(Events.MissionCompleteEventArgs args) => _paused = true;
     private void OnPlayerDefeatedEnemy(Events.PlayerDefeatedEnemyEventArgs args) => InputHelper.Player.SetVibration(0, _explosionLevel, _explosionRumbleTime);
     private void OnPlayerDeath(Events.PlayerDeathEventArgs args) => InputHelper.Player.SetVibration(0, _explosionLevel, _explosionRumbleTime);
     private void OnPlayerAttacked(Events.PlayerAttackedEventArgs args) => InputHelper.Player.SetVibration(0, _attackedLevel, _attackedRumbleTime);
@@ -36,6 +37,7 @@ public class RumbleSystem : GameEventUserObject
     {
         EventManager.Instance.AddListener<Events.GamePausedEventArgs>(this, OnGamePaused);
         EventManager.Instance.AddListener<Events.GameUnpausedEventArgs>(this, OnGameUnpaused);
+        EventManager.Instance.AddListener<Events.MissionCompleteEventArgs>(this, OnMissionComplete);
         EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
         EventManager.Instance.AddListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
         EventManager.Instance.AddListener<Events.PlayerAttackedEventArgs>(this, OnPlayerAttacked);

@@ -42,12 +42,12 @@ public class UIController : GameEventUserObject
     }
 
     private void OnPlayerDeath(Events.PlayerDeathEventArgs args) => StartCoroutine(ActionOnDelay(3f, () => OpenDeathScreen()));
-    private void OnMissionCompleted(MissionCompleteEventArgs args) => StartCoroutine(ActionOnDelay(.5f, () => OpenVictoryScreen()));
+    private void OnMissionCompleted(Events.MissionCompleteEventArgs args) => StartCoroutine(ActionOnDelay(.5f, () => OpenVictoryScreen()));
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
-        EventManager.Instance.AddListener<MissionCompleteEventArgs>(this, OnMissionCompleted);
+        EventManager.Instance.AddListener<Events.MissionCompleteEventArgs>(this, OnMissionCompleted);
     }
 
     public override void Unsubscribe()
@@ -132,6 +132,7 @@ public class UIController : GameEventUserObject
     {
         _victoryMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0f;
     }
 
@@ -140,12 +141,12 @@ public class UIController : GameEventUserObject
         _dead = true;
         _deathMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0f;
     }
 
     public void Controls()
     {
-
         _acp.PlaySound("Menu_Item_Select");
 
         _currentMenu.SetActive(false);
