@@ -17,6 +17,8 @@
     {
         LOD 200
 
+        ZWrite On ZTest LEqual Cull Off
+
         CGPROGRAM
         // Physically based Standard lighting model, and enable shadows on all light types
         #pragma surface surf Standard fullforwardshadows alpha

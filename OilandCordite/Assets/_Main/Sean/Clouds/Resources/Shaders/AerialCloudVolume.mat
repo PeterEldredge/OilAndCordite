@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: AerialCloudVolume
+  m_Shader: {fileID: 4800000, guid: 53dab98083b84bb4fb322478fcb925d0, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BoundaryNoiseMap:
+        m_Texture: {fileID: 2800000, guid: 5a61261df51695147986428a579809c8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 11700000, guid: b7dd4dd7f9f5cb648b822f39c7374a6d, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTexture:
+        m_Texture: {fileID: 11700000, guid: b7dd4dd7f9f5cb648b822f39c7374a6d, type: 2}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _WeatherMap:
+        m_Texture: {fileID: 2800000, guid: 70645cfe5e260634db2304b98d22cb7c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Alpha: 9.83
+    - _CloudLightAbsorptionFactor: 1
+    - _DensityOffset: 5
+    - _NoiseMultiplier: 0
+    - _Radius: 64.9
+    - _StepSize: 9.3
+    m_Colors:
+    - _Center: {r: 0, g: 0, b: 0, a: 1}
+    - _CloudBaseColor: {r: 0.8396226, g: 0.18373656, b: 0.07524917, a: 1}
+    - _CloudPeakColor: {r: 0.9150943, g: 0.16834284, b: 0.27234742, a: 1}
+    - _Color: {r: 1, g: 0.06132078, b: 0.06132078, a: 1}
