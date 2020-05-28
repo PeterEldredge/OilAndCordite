@@ -6,8 +6,21 @@ public class Settings : MonoBehaviour
 {
     private void Awake()
     {
-        QualitySettings.vSyncCount = 1;
+        DontDestroyOnLoad(gameObject);
 
-        Screen.SetResolution(1920, 1080, true);
+        QualitySettings.vSyncCount = 0;
+        Application.targetFrameRate = 60;
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.V)) QualitySettings.vSyncCount = 1;
+        if (Input.GetKeyDown(KeyCode.B)) QualitySettings.vSyncCount = 2;
+        
+        if (Input.GetKeyDown(KeyCode.N))
+        {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
+        }
     }
 }

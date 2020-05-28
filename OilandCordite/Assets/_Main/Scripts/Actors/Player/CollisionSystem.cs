@@ -20,11 +20,15 @@ public class CollisionSystem : MonoBehaviour
     public bool InSmog { get; private set; }
     public bool InGas { get; private set; }
 
+    private bool _canHitObstacles = true;
+
     private void OnCollisionEnter(Collision collision)
     {
-        if(collision.collider.CompareTag(Tags.OBSTACLE))
+        if(collision.collider.CompareTag(Tags.OBSTACLE) && _canHitObstacles)
         {
             EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collision.contacts[0]));
+
+            StartCoroutine(PauseObstacleCollisions());
         }
     }
 
@@ -50,5 +54,21 @@ public class CollisionSystem : MonoBehaviour
         {
             InSmog = false;
         }
+    }
+
+    private IEnumerator PauseObstacleCollisions()
+    {
+        _canHitObstacles = false;
+
+        float timer = 1f;
+
+        while(timer > 0f)
+        {
+            yield return null;
+
+            timer -= Time.deltaTime;
+        }
+
+        _canHitObstacles = true;
     }
 }

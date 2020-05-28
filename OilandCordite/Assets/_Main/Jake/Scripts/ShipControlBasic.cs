@@ -102,8 +102,13 @@ public class ShipControlBasic : GameEventUserObject
 
     private void Awake()
     {
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        if(!FindObjectOfType<Settings>())
+        {
+            QualitySettings.vSyncCount = 0;
+            Application.targetFrameRate = 60;
+        }
+
+        Cursor.visible = false;
 
         _rb = GetComponent<Rigidbody>();
         _shipForRotation = GetComponentsInChildren<Transform>()[1];
