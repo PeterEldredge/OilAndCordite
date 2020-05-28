@@ -5,6 +5,12 @@ using UnityEngine.UI;
 using Rewired;
 using System;
 
+namespace Events
+{
+    public struct GamePausedEventArgs : IGameEvent { }
+    public struct GameUnpausedEventArgs : IGameEvent { }
+}
+
 public class UIController : GameEventUserObject
 {
     [SerializeField] private Text _healthText;
@@ -104,6 +110,8 @@ public class UIController : GameEventUserObject
         Cursor.lockState = CursorLockMode.None;
         Time.timeScale = 0f;
         _paused = true;
+
+        EventManager.Instance.TriggerEvent(new Events.GamePausedEventArgs());
     }
 
     public void Resume()
@@ -116,6 +124,8 @@ public class UIController : GameEventUserObject
         Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1f;
         _paused = false;
+
+        EventManager.Instance.TriggerEvent(new Events.GameUnpausedEventArgs());
     }
 
     public void OpenVictoryScreen()
