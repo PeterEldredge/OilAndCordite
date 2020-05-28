@@ -141,7 +141,6 @@ private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(B
 
     private void FixedUpdate()
     {
-        
         transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, 0) * rotateMult * Time.fixedDeltaTime, Space.Self);
         transform.rotation = Quaternion.Euler(new Vector3(0, turnTorque.y * _turn, 0) * rotateMult * Time.fixedDeltaTime) * transform.rotation;
         _shipForRotation.Rotate(new Vector3(0, 0, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
@@ -215,7 +214,9 @@ private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(B
                     _shipFlipped = false;
                 }
             }
-        } 
+        }
+
+        if(transform.localEulerAngles.z < 5) transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
 
         Speed = (int)_rb.velocity.magnitude;
     }
@@ -254,7 +255,9 @@ private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(B
             yield return null;
         }
 
-        _rb.velocity = endVelocity;
         _bouncing = false;
+        _rb.velocity = endVelocity;
+
+        yield return null;
     }
 }

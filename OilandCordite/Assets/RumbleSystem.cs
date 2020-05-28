@@ -54,6 +54,8 @@ public class RumbleSystem : GameEventUserObject
 
     private IEnumerator RumbleRoutine()
     {
+        yield return null;
+
         while(true)
         {
             _rumbleLevel = (_paused || PlayerData.Instance.IsDead) ? 0 : _heatCurve.Evaluate(PlayerData.Instance.Heat / 100);

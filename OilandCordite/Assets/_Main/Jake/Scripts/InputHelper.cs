@@ -8,10 +8,8 @@ public class InputHelper : MonoBehaviour
     public static Player Player { get; private set; }
     public int playerIndex;
 
-    // Start is called before the first frame update
-    void Awake()
+    private void Awake()
     {
         Player = ReInput.players.GetPlayer(playerIndex);
     }
-
 }
