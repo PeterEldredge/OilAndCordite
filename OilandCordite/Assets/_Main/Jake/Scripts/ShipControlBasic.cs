@@ -216,7 +216,7 @@ private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(B
             }
         }
 
-        if(transform.localEulerAngles.z < 5) transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
+        if(transform.localEulerAngles.z < 179 || transform.localEulerAngles.z > 181) transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
 
         Speed = (int)_rb.velocity.magnitude;
     }
