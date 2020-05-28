@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[ExecuteInEditMode]
+[ExecuteInEditMode, ImageEffectAllowedInSceneView]
 public class IgnitionImageEffect : MonoBehaviour
 {
     public Material material;

@@ -7,6 +7,7 @@
         _VignetteRadius("Vignette Radius", Range(0.0, 1.0)) = 1.0
         _VignetteSoftness("Vignette Softness", Range(0.0, 1.0)) = 0.5
         _VignetteColor("Vignette Color", Color) = (1.0,1.0,1.0,1.0)
+        _DistortionMultiplier("Distortion Multiplier", float) = 1.0
     }
     SubShader
     {
@@ -46,13 +47,14 @@
             float _VignetteRadius;
             float _VignetteSoftness;
             float4 _VignetteColor;
+            float _DistortionMultiplier;
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float2 disp = tex2D(_DistortionMap, i.uv); 
-                fixed4 col = tex2D(_MainTex, i.uv);
-                float centerDistance = distance(i.uv.xy, float2(0.5, 0.5));
+                float2 disp = tex2D(_DistortionMap, i.uv);
+                float centerDistance = distance(i.uv.xy, float2(0.5, 0.5)); 
                 float vignette =  1 - smoothstep(_VignetteRadius, _VignetteRadius - _VignetteSoftness, centerDistance);
+                fixed4 col = tex2D(_MainTex, i.uv + (vignette * disp * _DistortionMultiplier) * float2(cos(_Time.x * 100), sin(_Time.x * 100)));
                 fixed4 newCol = saturate(col + (vignette * _VignetteColor));
                 return newCol;
             }
