@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RaymarchMaterial
-  m_Shader: {fileID: 4800000, guid: ad5a32bfeeafe9a4092848cd6004cc23, type: 3}
+  m_Name: PrimitiveClouds
+  m_Shader: {fileID: 4800000, guid: fdbb430031a2b1d4d9397341d7bafad0, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -28,6 +28,8 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Alpha: 2.57
-    - _StepSize: 1
-    m_Colors: []
+    - _Alpha: 0.02
+    - _Radius: 5.14
+    - _StepSize: 0.14
+    m_Colors:
+    - _Center: {r: 0, g: 0.02, b: 0, a: 1}

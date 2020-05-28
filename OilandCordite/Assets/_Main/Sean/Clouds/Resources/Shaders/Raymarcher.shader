@@ -85,6 +85,7 @@
                     if(max(abs(samplePosition.x), max(abs(samplePosition.y), abs(samplePosition.z))) < 0.5f + EPSILON)
                     {
                         float4 sampledColor = tex3D(_MainTex, samplePosition + float3(0.5f, 0.5f, 0.5f));
+
                         float4 sampledWeather = tex2D(_WeatherMap, samplePosition.xz);
                         sampledColor.a *= _Alpha;
                         color = sampledColor * sampledWeather;
