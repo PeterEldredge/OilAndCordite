@@ -106,6 +106,7 @@ public class UIController : GameEventUserObject
         _pauseMenuUI.SetActive(true);
         _currentMenu = _pauseMenuUI;
         Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         Time.timeScale = 0f;
         _paused = true;
 
@@ -120,6 +121,7 @@ public class UIController : GameEventUserObject
         _currentMenu.SetActive(false);
         _currentMenu = null;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = true;
         Time.timeScale = 1f;
         _paused = false;
 
