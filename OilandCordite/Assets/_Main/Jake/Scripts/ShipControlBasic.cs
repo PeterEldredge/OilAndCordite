@@ -9,15 +9,15 @@ public class ShipControlBasic : GameEventUserObject
     [Tooltip("Force to push plane forwards with")] public float igniteThrust = 1000f;
     [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(60f, 45f, 90f);
     [Tooltip("Multiplier for all forces")] public float rotateMult = 3f;
-    [Tooltip("Increase gravity")] public float gravMult = 3.0f;
     [SerializeField] private float _maxAcceleration = 150f;
     [SerializeField] private float _minAcceleration = -125f;
     [SerializeField] private float _maxSpeed = 500f;
     [SerializeField] private float _minSmogSpeed = 0f;
     [SerializeField] private float _minAirSpeed = 50f;
+    [SerializeField] private float _airResistance = 1f;
     [SerializeField] private float _minSmogIgnitionHeat = 0f;
     [SerializeField] private float _gravityMultiplier = 50f;
-    [Tooltip("The speed at which gravity stops affecting the ship")] [SerializeField] private float _noGravitySpeed = 300f;
+    [Tooltip("The speed at which gravity stops affecting the ship")] [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")] [SerializeField] private float _minGasIgnitionHeat = 20f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
@@ -185,6 +185,7 @@ public class ShipControlBasic : GameEventUserObject
             }
 
             _rb.velocity += transform.forward * acceleration * Time.fixedDeltaTime;
+            _rb.velocity -= transform.forward * _airResistance * Time.fixedDeltaTime;
 
             if (PlayerData.Instance.InGas)
             {
@@ -204,6 +205,7 @@ public class ShipControlBasic : GameEventUserObject
         
             transform.Translate(new Vector3(0, gravity, 0), Space.World);
             _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, _maxSpeed) * transform.forward;
+
         }
 
         if (Mathf.Abs(InputHelper.Player.GetAxis("Pitch")) < .2)
