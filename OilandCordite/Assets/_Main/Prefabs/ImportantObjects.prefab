@@ -4828,6 +4828,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!225 &280224074
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135842381469260159}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &9122936524987965216
 GameObject:
   m_ObjectHideFlags: 0
@@ -5610,7 +5622,7 @@ PrefabInstance:
     - target: {fileID: 1580982561567325434, guid: 350f40a8fd9dbac42a88736ced4ab96c,
         type: 3}
       propertyPath: _airResistance
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1580982561567325434, guid: 350f40a8fd9dbac42a88736ced4ab96c,
         type: 3}
@@ -6451,6 +6463,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17ab9338568dbf14fb5eecd605fe22a3, type: 3}
+--- !u!1 &1135842381469260159 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8167415155802938420, guid: 17ab9338568dbf14fb5eecd605fe22a3,
+    type: 3}
+  m_PrefabInstance: {fileID: 9122936526366934347}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1135842381469260130 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8167415155802938409, guid: 17ab9338568dbf14fb5eecd605fe22a3,

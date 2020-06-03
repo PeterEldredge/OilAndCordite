@@ -26,12 +26,15 @@ public class UIController : GameEventUserObject
 
     private bool _paused =  false;
     private bool _dead = false;
+    private bool _uiHidden = false;
 
     private AudioCuePlayer _acp;
+    private CanvasGroup _canvasGroup;
 
     private void Awake()
     {
         _acp = gameObject.GetComponent<AudioCuePlayer>();
+        _canvasGroup = gameObject.GetComponent<CanvasGroup>();
     }
 
     private IEnumerator ActionOnDelay(float delay, Action action)
@@ -69,6 +72,20 @@ public class UIController : GameEventUserObject
             else
                 Resume();
         }  
+
+        if (InputHelper.Player.GetButtonDown("UIToggle"))
+        {
+            if (!_uiHidden)
+            {
+                HideUI();
+                _uiHidden = true;
+            }
+            else
+            {
+                ShowUI();
+                _uiHidden = false;
+            }
+        }
     }
 
     void UpdateHealth()
@@ -164,5 +181,19 @@ public class UIController : GameEventUserObject
     {
         Time.timeScale = 1f;
         SceneController.ReloadScene();
+    }
+
+    private void HideUI()
+    {
+        _canvasGroup.alpha = 0;
+        _canvasGroup.interactable = false;
+        _canvasGroup.blocksRaycasts = false;
+    }
+
+    private void ShowUI()
+    {
+        _canvasGroup.alpha = 1;
+        _canvasGroup.interactable = true;
+        _canvasGroup.blocksRaycasts = true;
     }
 }
