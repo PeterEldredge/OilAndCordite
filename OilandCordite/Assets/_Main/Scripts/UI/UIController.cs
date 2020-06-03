@@ -77,13 +77,11 @@ public class UIController : GameEventUserObject
         {
             if (!_uiHidden)
             {
-                HideUI();
-                _uiHidden = true;
+                HideUI();             
             }
             else
             {
                 ShowUI();
-                _uiHidden = false;
             }
         }
     }
@@ -188,6 +186,7 @@ public class UIController : GameEventUserObject
         _canvasGroup.alpha = 0;
         _canvasGroup.interactable = false;
         _canvasGroup.blocksRaycasts = false;
+        _uiHidden = true;
     }
 
     private void ShowUI()
@@ -195,5 +194,6 @@ public class UIController : GameEventUserObject
         _canvasGroup.alpha = 1;
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;
+        _uiHidden = false;
     }
 }

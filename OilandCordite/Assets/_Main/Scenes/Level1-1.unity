@@ -1830,24 +1830,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268159793}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &280224067 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1135842381469260159, guid: 0dca9f6178850714da20590c07aa1cf6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9122936524982349587}
-  m_PrefabAsset: {fileID: 0}
---- !u!225 &280224074
-CanvasGroup:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280224067}
-  m_Enabled: 1
-  m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
-  m_IgnoreParentGroups: 0
 --- !u!1001 &283648983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10483,11 +10465,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1135842381469260130, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3868752769072686303, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -10527,11 +10504,6 @@ PrefabInstance:
         type: 3}
       propertyPath: bMat
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: isDirty
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9122936526216339444, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -10592,11 +10564,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9122936526258959679, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: _airResistance
-      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dca9f6178850714da20590c07aa1cf6, type: 3}
