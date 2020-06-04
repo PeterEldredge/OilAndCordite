@@ -44,11 +44,13 @@ public class ShipControlBasic : GameEventUserObject
 
     //Public
     public int Speed { get; private set; }
+    public bool SpinningOut { get; private set; }
 
     //Private
     private Rigidbody _rb;
     private Transform _shipForRotation;
     private AudioCuePlayer _acp;
+    private HeatSystem _hs;
 
     private Action _inputCalculation;
 
@@ -116,6 +118,7 @@ public class ShipControlBasic : GameEventUserObject
         _rb = GetComponent<Rigidbody>();
         _shipForRotation = GetComponentsInChildren<Transform>()[1];
         _acp = GetComponent<AudioCuePlayer>();
+        _hs = GetComponent<HeatSystem>();
     }
 
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
@@ -238,6 +241,7 @@ public class ShipControlBasic : GameEventUserObject
         if(transform.localEulerAngles.z < 179 || transform.localEulerAngles.z > 181) transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
 
         Speed = (int)_rb.velocity.magnitude;
+        SpinningOut = _spinningOut;
     }
 
     private void GasExplosion(Events.GasExplosionEventArgs args)
@@ -248,18 +252,22 @@ public class ShipControlBasic : GameEventUserObject
 
     private IEnumerator SpinoutRoutine()
     {
+        //_hs.InstantCool();
         _spinningOut = true;
         _anim.SetBool("spinningOut", _spinningOut);
         var targetVelocity = PlayerData.Instance.InSmog ? _minSmogSpeed : _minAirSpeed;
-        
+        turnTorque += new Vector3(0, 30, 0);
         //Without the +1 here, the ship will get stuck in the Smog Sea for a reason I haven't figured out yet.
         while (_rb.velocity.magnitude > targetVelocity + 1)
         {
+            
             _rb.velocity = Vector3.Lerp(_rb.velocity, new Vector3(0, 0, 0), .1f);
             yield return null;
             targetVelocity = PlayerData.Instance.InSmog ? _minSmogSpeed : _minAirSpeed;
         }
         yield return null;
+        turnTorque -= new Vector3(0, 30, 0);
+        Debug.Log("Here");
         _spinningOut = false; 
         _anim.SetBool("spinningOut", _spinningOut);
     }

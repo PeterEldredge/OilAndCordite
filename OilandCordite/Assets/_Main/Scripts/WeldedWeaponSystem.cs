@@ -22,7 +22,7 @@ namespace Events
 
 public class WeldedWeaponSystem : GameEventUserObject
 {
-    [SerializeField] private Dictionary<WeldedWeaponTypes, GameObject> _weldedWeapons;
+    [SerializeField] private Dictionary<WeldedWeaponTypes, WeldedWeapon> _weldedWeapons;
 
     private void AttachWeldedWeapon(Events.WeldedWeaponPickupArgs args) => AttachWeldedWeapon(args.WeaponPickup);
 
@@ -42,6 +42,6 @@ public class WeldedWeaponSystem : GameEventUserObject
 
     private void AttachWeldedWeapon(WeldedWeaponTypes type)
     {
-        GameObject obj = Instantiate(_weldedWeapons[type], gameObject.transform, false);
+        //GameObject obj = Instantiate(_weldedWeapons[type], gameObject.transform, false);
     }
 }

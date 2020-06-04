@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeldedWeapon : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+public enum Slot { RIGHT, LEFT, TOP};
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public abstract class WeldedWeapon : ScriptableObject
+{
+
+    public List<Slot> slots;
+
+
+    public abstract void Use();
+    public abstract void Remove();
 }

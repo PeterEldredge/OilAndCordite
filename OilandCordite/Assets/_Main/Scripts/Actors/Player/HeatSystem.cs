@@ -25,10 +25,12 @@ public class HeatSystem : MonoBehaviour
 
     private void Update()
     {
-        if (!IsIgniting && InputHelper.Player.GetAxis("Ignite") > 0 ) StartHeating();
+        if (!IsIgniting && !PlayerData.Instance.SpinningOut && InputHelper.Player.GetAxis("Ignite") > 0 ) StartHeating();
     }
 
     private void StartHeating() => StartCoroutine(HeatRoutine());
+
+    public void InstantCool() => Heat = 0;
 
     //A little too nested, should look for cleaner approach
     private IEnumerator HeatRoutine()
@@ -39,7 +41,7 @@ public class HeatSystem : MonoBehaviour
         IsIgniting = true;
         EventManager.Instance.TriggerEvent(new Events.BeginIgniteEventArgs());
 
-        while(InputHelper.Player.GetAxis("Ignite") > 0)
+        while(InputHelper.Player.GetAxis("Ignite") > 0 && !PlayerData.Instance.SpinningOut)
         {
             if (!OverHeated)
             {
