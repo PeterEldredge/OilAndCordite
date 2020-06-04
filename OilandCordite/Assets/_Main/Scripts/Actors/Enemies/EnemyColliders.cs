@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyColliders : MonoBehaviour
 {
     private Enemy _enemy;
+    private bool _canHitPlayer = true;
 
     private void Awake()
     {
@@ -13,14 +14,41 @@ public class EnemyColliders : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag(Tags.PLAYER) && !_enemy.Defeated)
+        var attackData = collider.GetComponent<PlayerAttack>();
+        if (attackData != null && !_enemy.Defeated)
         {
-            if (collider.attachedRigidbody.velocity.magnitude > _enemy.PiercingSpeed)
-            {
-                EventManager.Instance.TriggerEvent(new Events.PlayerDefeatedEnemyEventArgs(_enemy.HealthGain, _enemy.BaseScore));
 
-                _enemy.OnDefeated();
+            if (collider.CompareTag(Tags.PLAYER) && collider.attachedRigidbody.velocity.magnitude < _enemy.PiercingSpeed)
+            {
+                if (_canHitPlayer)
+                {
+                    EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collider.transform.eulerAngles.normalized));
+                    StartCoroutine(PauseEnemyCollisions());
+                    return;
+                }
+
             }
+
+            EventManager.Instance.TriggerEvent(new Events.PlayerDefeatedEnemyEventArgs(_enemy.HealthGain * attackData.HealthMod, (int)(_enemy.BaseScore * attackData.ScoreMod)));
+
+            _enemy.OnDefeated();
+            
         }
+    }
+
+    private IEnumerator PauseEnemyCollisions()
+    {
+        _canHitPlayer = false;
+
+        float timer = 1f;
+
+        while (timer > 0f)
+        {
+            yield return null;
+
+            timer -= Time.deltaTime;
+        }
+
+        _canHitPlayer = true;
     }
 }

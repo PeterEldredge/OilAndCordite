@@ -257,8 +257,8 @@ public class ShipControlBasic : GameEventUserObject
 
         float timer = 0;
 
-        Vector3 bounceVelocity = args.ContactPoint.normal * 200f;
-        Vector3 endVelocity = args.ContactPoint.normal * _minAirSpeed;
+        Vector3 bounceVelocity = args.CollisionNormal * 200f;
+        Vector3 endVelocity = args.CollisionNormal * _minAirSpeed;
 
         while (timer < .75f)
         {
