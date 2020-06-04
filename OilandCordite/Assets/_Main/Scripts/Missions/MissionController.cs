@@ -6,28 +6,23 @@ public abstract class MissionController : GameEventUserObject
 {
     [SerializeField] protected Level _levelData;
 
-    protected float _timer = 0f;
-    public float Timer => _timer;
+    public float Timer { get; private set; } = 0f;
+    public float ComboTimer { get; private set; } = -1f;
 
-    protected int _score = 0;
-    public int Score => _score;
+    public int Score { get; private set; } = 0;
+    public int Combo { get; private set; } = 0;
 
-    protected BaseScoring.Rank _rank = BaseScoring.Rank.None;
-    public BaseScoring.Rank Rank => _rank;
+    public BaseScoring.Rank Rank { get; private set; } = BaseScoring.Rank.None;
 
-    protected int _combo = 0;
-    public int Combo => _combo;
-
-    protected float _comboTimer = -1f;
 
     protected bool _missionComplete = false;
 
     private void AddScore(Events.PlayerDefeatedEnemyEventArgs args)
     {
-        _score += args.Score + BaseScoring.COMBO_BONUS * Mathf.Clamp(_combo, 0, BaseScoring.MAX_COMBO);
-        _combo += 1;
+        Score += args.Score + BaseScoring.COMBO_BONUS * Mathf.Clamp(Combo, 0, BaseScoring.MAX_COMBO);
+        Combo += 1;
 
-        _comboTimer = BaseScoring.COMBO_TIME;
+        ComboTimer = BaseScoring.COMBO_TIME;
     }
 
     public override void Subscribe()
@@ -43,7 +38,7 @@ public abstract class MissionController : GameEventUserObject
     protected void Start()
     {
         StartCoroutine(MissionTimer());
-        StartCoroutine(ComboTimer());
+        StartCoroutine(ComboTimerRoutine());
     }
 
     protected void MissionCompelete()
@@ -57,26 +52,26 @@ public abstract class MissionController : GameEventUserObject
 
     protected void CalculateScore()
     {
-        _score += CalculateTimeScore();
+        Score += CalculateTimeScore();
         
         //This sucks dick, refactor later with Rank class
         for(int i = 0; i < Level.NUMBER_OF_RANKS; i++)
         {
-            if (_levelData.ScoreRequirements[i] > _score) continue;
+            if (_levelData.ScoreRequirements[i] > Score) continue;
 
             switch(i)
             {
                 case 0:
-                    _rank = BaseScoring.Rank.Platnum;
+                    Rank = BaseScoring.Rank.Platnum;
                     break;
                 case 1:
-                    _rank = BaseScoring.Rank.Gold;
+                    Rank = BaseScoring.Rank.Gold;
                     break;
                 case 2:
-                    _rank = BaseScoring.Rank.Silver;
+                    Rank = BaseScoring.Rank.Silver;
                     break;
                 case 3:
-                    _rank = BaseScoring.Rank.Bronze;
+                    Rank = BaseScoring.Rank.Bronze;
                     break;
             }
 
@@ -84,7 +79,7 @@ public abstract class MissionController : GameEventUserObject
         }
     }
 
-    protected int CalculateTimeScore() => Mathf.RoundToInt(BaseScoring.PAR_TIME_SCORE * (_levelData.ParTime / _timer));        
+    protected int CalculateTimeScore() => Mathf.RoundToInt(BaseScoring.PAR_TIME_SCORE * (_levelData.ParTime / Timer));        
 
     protected IEnumerator MissionTimer()
     {
@@ -92,23 +87,23 @@ public abstract class MissionController : GameEventUserObject
         {
             yield return null;
 
-            _timer += Time.deltaTime;
+            Timer += Time.deltaTime;
         }
     }
 
-    protected IEnumerator ComboTimer()
+    protected IEnumerator ComboTimerRoutine()
     {
         while(true)
         {
             yield return null;
 
-            if(_comboTimer >= 0f)
+            if(ComboTimer >= 0f)
             {
-                _comboTimer -= Time.deltaTime;
+                ComboTimer -= Time.deltaTime;
             }
             else
             {
-                _combo = 0;
+                Combo = 0;
             }
         }
     }

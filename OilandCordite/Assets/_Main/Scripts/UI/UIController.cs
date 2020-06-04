@@ -18,6 +18,7 @@ public class UIController : GameEventUserObject
     [SerializeField] private Slider _heatBar;
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _comboText;
+    [SerializeField] private Slider _comboSlider;
     [SerializeField] private GameObject _pauseMenuUI;
     [SerializeField] private GameObject _pauseMenuDefaultSelected;
     [SerializeField] private GameObject _victoryMenuUIDefaultSelected;
@@ -40,6 +41,8 @@ public class UIController : GameEventUserObject
     {
         _acp = gameObject.GetComponent<AudioCuePlayer>();
         _canvasGroup = gameObject.GetComponent<CanvasGroup>();
+
+        _comboSlider.maxValue = BaseScoring.COMBO_TIME; 
     }
 
     private IEnumerator ActionOnDelay(float delay, Action action)
@@ -111,6 +114,7 @@ public class UIController : GameEventUserObject
     void UpdateCombo()
     {
         _comboText.text = "Combo: " + MissionControllerData.Instance.MissionController.Combo.ToString();
+        _comboSlider.value = MissionControllerData.Instance.MissionController.ComboTimer;
     }
 
     public void Pause()
