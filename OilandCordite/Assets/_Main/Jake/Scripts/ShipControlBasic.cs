@@ -50,7 +50,6 @@ public class ShipControlBasic : GameEventUserObject
     private Rigidbody _rb;
     private Transform _shipForRotation;
     private AudioCuePlayer _acp;
-    private HeatSystem _hs;
 
     private Action _inputCalculation;
 
@@ -118,7 +117,6 @@ public class ShipControlBasic : GameEventUserObject
         _rb = GetComponent<Rigidbody>();
         _shipForRotation = GetComponentsInChildren<Transform>()[1];
         _acp = GetComponent<AudioCuePlayer>();
-        _hs = GetComponent<HeatSystem>();
     }
 
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
@@ -252,7 +250,6 @@ public class ShipControlBasic : GameEventUserObject
 
     private IEnumerator SpinoutRoutine()
     {
-        //_hs.InstantCool();
         _spinningOut = true;
         _anim.SetBool("spinningOut", _spinningOut);
         var targetVelocity = PlayerData.Instance.InSmog ? _minSmogSpeed : _minAirSpeed;
