@@ -26,12 +26,17 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject _particles;
     [SerializeField] private List<AttackBehaviour> _attackBehaviours;
     [SerializeField] private List<Transform> _attackPoints;
+    [SerializeField] private List<Transform> _spinnerTransforms;
+    [SerializeField] private string _defeatedCueName;
 
     private EnemyData _enemyData;
 
     private MeshRenderer _renderer;
 
     private AudioCuePlayer _acp;
+
+    private AttackBehaviour _previousAttackBehavior;
+    private AttackBehaviour _currentAttackBehaviour;
 
     private float _coolDown = -1f;
 
@@ -48,6 +53,7 @@ public class Enemy : MonoBehaviour
         _acp = GetComponent<AudioCuePlayer>();
 
         _enemyData.AttackPoints = _attackPoints;
+        _enemyData.SpinnerTransforms = _spinnerTransforms;
     }
 
     private void Start()
@@ -59,9 +65,14 @@ public class Enemy : MonoBehaviour
     {
         Defeated = true;
 
+        foreach(Transform tr in _spinnerTransforms)
+        {
+            Destroy(tr.gameObject); 
+        }
+
         _renderer.enabled = false;
         _colliders.SetActive(false);
-        _acp.PlaySound("Laserbot_Defeat");
+        _acp.PlaySound(_defeatedCueName);
 
         Instantiate(_particles, transform.position, Quaternion.Euler(Vector3.zero));
 
@@ -72,15 +83,31 @@ public class Enemy : MonoBehaviour
     {
         while(!Defeated && !PlayerData.Instance.IsDead)
         {
+            _previousAttackBehavior = _currentAttackBehaviour;
+
             if (_coolDown > 0) _coolDown -= Time.deltaTime;
             foreach (AttackBehaviour attack in _attackBehaviours)
             {
                 if (attack.UsageCondition(PlayerData.Instance, _enemyData))
                 {
+                    _currentAttackBehaviour = attack;
+
                     if(_coolDown <= 0)
                     {
                         attack.Attack(_enemyData);
-                        _acp.PlaySound("Laserbot_Attack");
+
+                        if(!attack.LoopAttackAudio)
+                        {
+                            _acp.PlaySound(attack.AttackAudio);
+                        }
+                        else
+                        {
+                            if(_currentAttackBehaviour != _previousAttackBehavior)
+                            {
+                                StartCoroutine(AttackSoundLoop(_currentAttackBehaviour));
+                            }
+                        }
+                        
                         _coolDown = attack.CoolDown;
                     }
 
@@ -92,5 +119,17 @@ public class Enemy : MonoBehaviour
 
             yield return null;
         }
+    }
+
+    private IEnumerator AttackSoundLoop(AttackBehaviour attack)
+    {
+        _acp.PlaySound(attack.AttackAudio);
+
+        while(_currentAttackBehaviour == attack)
+        {
+            yield return null;
+        }
+
+        _acp.StopSound(attack.AttackAudio);
     }
 }

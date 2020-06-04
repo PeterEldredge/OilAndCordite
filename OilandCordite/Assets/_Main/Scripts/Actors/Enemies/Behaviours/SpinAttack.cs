@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "AttackBehaviour/LaserAttack")]
-public class LaserAttack : AttackBehaviour
+[CreateAssetMenu(menuName = "AttackBehaviour/SpinAttack")]
+public class SpinAttack : AttackBehaviour
 {
-    [SerializeField] protected GameObject _laser;
+    [SerializeField] protected float _spinSpeed = 150f;
 
     public override bool UsageCondition(PlayerData playerData, EnemyData enemyData)
     {
@@ -14,16 +14,12 @@ public class LaserAttack : AttackBehaviour
 
     public override void Attack(EnemyData enemyData)
     {
-        if(enemyData.AttackPoints.Count > 0)
+        if (enemyData.SpinnerTransforms.Count > 0)
         {
-            foreach(Transform attackPoint in enemyData.AttackPoints)
+            foreach(Transform spinnerTransform in enemyData.SpinnerTransforms)
             {
-                Instantiate(_laser, attackPoint.position, Quaternion.LookRotation(PlayerData.Instance.WorldSpacePosition - attackPoint.position));
+                spinnerTransform.localEulerAngles += new Vector3(0, _spinSpeed * Time.deltaTime, 0);
             }
-        }
-        else
-        {
-            Instantiate(_laser, enemyData.WorldSpacePosition, enemyData.WorldSpaceRotation);
         }
     }
 

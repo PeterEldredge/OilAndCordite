@@ -9,13 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d804c0af758c744b8ec941c154e7095, type: 3}
-  m_Name: SlowLaser
+  m_Script: {fileID: 11500000, guid: c486abbdaaede444e8d0158e19f67ede, type: 3}
+  m_Name: FastSpinAttack
   m_EditorClassIdentifier: 
-  CoolDown: 0.2
-  AttackAudio: Laserbot_Attack
-  LoopAttackAudio: 0
+  CoolDown: 0
+  AttackAudio: SpinnerBot_FastSpin
+  LoopAttackAudio: 1
   _minRange: 0
-  _maxRange: 1000
-  _lookSpeed: 20
-  _laser: {fileID: 363295530575159796, guid: 028c8233cfde93249b194d06fbb6e777, type: 3}
+  _maxRange: 500
+  _lookSpeed: 0.75
+  _spinSpeed: 500

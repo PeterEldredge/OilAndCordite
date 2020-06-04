@@ -71,6 +71,7 @@ public class AudioCuePlayer : MonoBehaviour
     public void PlayRandomSound(string cueName)
     {
         AudioCue cue = Array.Find(_audioCues, cues => cues.cueName == cueName);
+
         if (cue == null)
         {
             Debug.Log(cueName + " does not exist.");
@@ -88,16 +89,8 @@ public class AudioCuePlayer : MonoBehaviour
         }
     }
 
-    public void StopSound(string cueName, int audioIndex)
+    public void StopSound(string cueName)
     {
-        AudioCue cue = Array.Find(_audioCues, cues => cues.cueName == cueName);
-        if (cue == null)
-        {
-            Debug.Log(cueName + "does not exist.");
-        }
-        else
-        {
-            _audioSourceDictionary[cue.cueName].Stop();
-        }
+        _audioSourceDictionary[cueName].Stop();
     }
 }

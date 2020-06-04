@@ -5,11 +5,13 @@ using UnityEngine;
 public abstract class AttackBehaviour : ScriptableObject
 {
     public float CoolDown;
+    public string AttackAudio;
+    public bool LoopAttackAudio;
 
     [SerializeField] protected float _minRange;
     [SerializeField] protected float _maxRange;
 
-    [SerializeField] protected float _lookSpeed = 10f;
+    [SerializeField] protected float _lookSpeed = 1f;
 
     public virtual bool UsageCondition(PlayerData playerData, EnemyData enemyData)
     {
