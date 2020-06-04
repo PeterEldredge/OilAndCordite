@@ -28,7 +28,7 @@ public class EnemyColliders : MonoBehaviour
                 }
 
             }
-            Debug.Log("Got Here");
+
             EventManager.Instance.TriggerEvent(new Events.PlayerDefeatedEnemyEventArgs(_enemy.HealthGain * attackData.HealthMod, (int)(_enemy.BaseScore * attackData.ScoreMod)));
 
             _enemy.OnDefeated();
