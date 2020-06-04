@@ -135,6 +135,7 @@ public class UIController : GameEventUserObject
             _currentMenu.SetActive(false);
         }
         _pauseMenuUI.SetActive(true);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(_pauseMenuUI);
         _currentMenu = _pauseMenuUI;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
@@ -182,9 +183,9 @@ public class UIController : GameEventUserObject
     public void Controls()
     {
         _acp.PlaySound("Menu_Item_Select");
-        EventSystem.current.SetSelectedGameObject(_controlsUIDefaultSelected);
         _currentMenu.SetActive(false);
         _controlsUI.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(_controlsUIDefaultSelected);
         _currentMenu = _controlsUI;
     }
 
