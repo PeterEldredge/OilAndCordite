@@ -26,7 +26,7 @@ public class MissionCheckpoints : MissionController
         }
         else
         {
-            MissionCompelete();
+            MissionComplete();
         }
     }
 }

@@ -785,12 +785,12 @@ MonoBehaviour:
   igniteThrust: 1000
   turnTorque: {x: 60, y: 45, z: 90}
   rotateMult: 3
-  gravMult: 3
   _maxAcceleration: 150
   _minAcceleration: -100
   _maxSpeed: 400
   _minSmogSpeed: 0
   _minAirSpeed: 50
+  _airResistance: 1
   _minSmogIgnitionHeat: 0
   _gravityMultiplier: 30
   _noGravitySpeed: 200
@@ -960,7 +960,7 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _overheatingParticles: {fileID: 0}
+  _overheatingParticles: {fileID: 6122929284298843508}
   IsIgniting: 0
 --- !u!114 &834574343328763425
 MonoBehaviour:
@@ -1028,6 +1028,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41645608059f6b847b59131de6a8f9f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gasExplosionParticles: {fileID: 0}
 --- !u!114 &1582185718479404945
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3795,6 +3796,12 @@ PrefabInstance:
 --- !u!4 &6094979017025285101 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6511938070401534595, guid: 394fb1bcedf4234429bb213a09726726,
+    type: 3}
+  m_PrefabInstance: {fileID: 1065868993436328302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &6122929284298843508 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6499742704708617242, guid: 394fb1bcedf4234429bb213a09726726,
     type: 3}
   m_PrefabInstance: {fileID: 1065868993436328302}
   m_PrefabAsset: {fileID: 0}

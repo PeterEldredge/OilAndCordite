@@ -17,6 +17,8 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _airResistance = 1f;
     [SerializeField] private float _minSmogIgnitionHeat = 0f;
     [SerializeField] private float _gravityMultiplier = 50f;
+    [SerializeField] private float _smogHeatToSpeedRatio = .4f;
+    [SerializeField] private float _baseGasBoost = 300f;
     [Tooltip("The speed at which gravity stops affecting the ship")] [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")] [SerializeField] private float _minGasIgnitionHeat = 20f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
@@ -46,6 +48,7 @@ public class ShipControlBasic : GameEventUserObject
     //Private
     private Rigidbody _rb;
     private Transform _shipForRotation;
+    private AudioCuePlayer _acp;
 
     private Action _inputCalculation;
 
@@ -112,12 +115,16 @@ public class ShipControlBasic : GameEventUserObject
 
         _rb = GetComponent<Rigidbody>();
         _shipForRotation = GetComponentsInChildren<Transform>()[1];
+        _acp = GetComponent<AudioCuePlayer>();
     }
 
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
+    private void OnGasExplosion(Events.GasExplosionEventArgs args) => GasExplosion(args);
+
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.AddListener<Events.GasExplosionEventArgs>(this, OnGasExplosion);
     }
 
     private void Start()
@@ -189,11 +196,11 @@ public class ShipControlBasic : GameEventUserObject
 
             if (PlayerData.Instance.InGas)
             {
-                _rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minGasIgnitionHeat * (PlayerData.Instance.IsIgniting ? 1 : 0), 100) / 100) * Time.fixedDeltaTime;
+                //_rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minGasIgnitionHeat * (PlayerData.Instance.IsIgniting ? 1 : 0), 100) / 100);
             }
             else if (PlayerData.Instance.InSmog)
             {
-                _rb.velocity += transform.forward * igniteThrust * .2f * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
+                _rb.velocity += transform.forward * igniteThrust * _smogHeatToSpeedRatio * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
             }
 
             if (transform.position.y <= 15)
@@ -231,6 +238,12 @@ public class ShipControlBasic : GameEventUserObject
         if(transform.localEulerAngles.z < 179 || transform.localEulerAngles.z > 181) transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
 
         Speed = (int)_rb.velocity.magnitude;
+    }
+
+    private void GasExplosion(Events.GasExplosionEventArgs args)
+    {
+        _rb.velocity += transform.forward * (_baseGasBoost + 100 * (PlayerData.Instance.Heat / 100) * args.ExplosionMagnitude);
+        _acp.PlaySound("GasExplosion");
     }
 
     private IEnumerator SpinoutRoutine()

@@ -547,6 +547,7 @@ GameObject:
   - component: {fileID: 67406369}
   - component: {fileID: 67406368}
   - component: {fileID: 67406367}
+  - component: {fileID: 67406370}
   m_Layer: 0
   m_Name: Sphere (41)
   m_TagString: GasCloud
@@ -628,6 +629,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 67406365}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &67406370
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 67406365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &85424502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -735,6 +750,7 @@ GameObject:
   - component: {fileID: 120227148}
   - component: {fileID: 120227147}
   - component: {fileID: 120227146}
+  - component: {fileID: 120227149}
   m_Layer: 0
   m_Name: Sphere (44)
   m_TagString: GasCloud
@@ -816,6 +832,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 120227144}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &120227149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 120227144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &142443610
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1373,6 +1403,7 @@ GameObject:
   - component: {fileID: 197087030}
   - component: {fileID: 197087029}
   - component: {fileID: 197087028}
+  - component: {fileID: 197087031}
   m_Layer: 0
   m_Name: Sphere (23)
   m_TagString: GasCloud
@@ -1454,6 +1485,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 197087026}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &197087031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 197087026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &236059299
 GameObject:
   m_ObjectHideFlags: 0
@@ -1466,6 +1511,7 @@ GameObject:
   - component: {fileID: 236059303}
   - component: {fileID: 236059302}
   - component: {fileID: 236059301}
+  - component: {fileID: 236059304}
   m_Layer: 0
   m_Name: Sphere (29)
   m_TagString: GasCloud
@@ -1547,6 +1593,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 236059299}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &236059304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236059299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &237982543
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1779,6 +1839,7 @@ GameObject:
   - component: {fileID: 268159797}
   - component: {fileID: 268159796}
   - component: {fileID: 268159795}
+  - component: {fileID: 268159798}
   m_Layer: 0
   m_Name: Sphere (39)
   m_TagString: GasCloud
@@ -1860,6 +1921,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268159793}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &268159798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 268159793}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &283648983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1952,6 +2027,7 @@ GameObject:
   - component: {fileID: 306507911}
   - component: {fileID: 306507910}
   - component: {fileID: 306507909}
+  - component: {fileID: 306507912}
   m_Layer: 0
   m_Name: Sphere (43)
   m_TagString: GasCloud
@@ -2033,6 +2109,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 306507907}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &306507912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306507907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &318236130
 GameObject:
   m_ObjectHideFlags: 0
@@ -2045,6 +2135,7 @@ GameObject:
   - component: {fileID: 318236134}
   - component: {fileID: 318236133}
   - component: {fileID: 318236132}
+  - component: {fileID: 318236135}
   m_Layer: 0
   m_Name: Sphere (45)
   m_TagString: GasCloud
@@ -2126,6 +2217,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318236130}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &318236135
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 318236130}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &321422943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2218,6 +2323,7 @@ GameObject:
   - component: {fileID: 331716332}
   - component: {fileID: 331716331}
   - component: {fileID: 331716330}
+  - component: {fileID: 331716333}
   m_Layer: 0
   m_Name: Sphere (37)
   m_TagString: GasCloud
@@ -2299,6 +2405,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 331716328}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &331716333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 331716328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &338060418 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 6373d5725e8276f41a15ba05512b7dbd,
@@ -2497,6 +2617,7 @@ GameObject:
   - component: {fileID: 402173924}
   - component: {fileID: 402173923}
   - component: {fileID: 402173922}
+  - component: {fileID: 402173925}
   m_Layer: 0
   m_Name: Sphere (6)
   m_TagString: GasCloud
@@ -2578,6 +2699,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 402173920}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &402173925
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402173920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &406691087
 GameObject:
   m_ObjectHideFlags: 0
@@ -2590,6 +2725,7 @@ GameObject:
   - component: {fileID: 406691091}
   - component: {fileID: 406691090}
   - component: {fileID: 406691089}
+  - component: {fileID: 406691092}
   m_Layer: 0
   m_Name: Sphere (32)
   m_TagString: GasCloud
@@ -2671,6 +2807,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 406691087}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &406691092
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 406691087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &408342103
 GameObject:
   m_ObjectHideFlags: 0
@@ -2683,6 +2833,7 @@ GameObject:
   - component: {fileID: 408342107}
   - component: {fileID: 408342106}
   - component: {fileID: 408342105}
+  - component: {fileID: 408342108}
   m_Layer: 0
   m_Name: Sphere (46)
   m_TagString: GasCloud
@@ -2764,6 +2915,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 408342103}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &408342108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 408342103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &421393667 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 6373d5725e8276f41a15ba05512b7dbd,
@@ -2796,6 +2961,7 @@ GameObject:
   - component: {fileID: 422473105}
   - component: {fileID: 422473104}
   - component: {fileID: 422473103}
+  - component: {fileID: 422473106}
   m_Layer: 0
   m_Name: Sphere (36)
   m_TagString: GasCloud
@@ -2877,6 +3043,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 422473101}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &422473106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 422473101}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &427276952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3009,6 +3189,7 @@ GameObject:
   - component: {fileID: 446837898}
   - component: {fileID: 446837897}
   - component: {fileID: 446837896}
+  - component: {fileID: 446837899}
   m_Layer: 0
   m_Name: Sphere (33)
   m_TagString: GasCloud
@@ -3090,6 +3271,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 446837894}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &446837899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 446837894}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &470690560
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3517,6 +3712,7 @@ GameObject:
   - component: {fileID: 620125849}
   - component: {fileID: 620125848}
   - component: {fileID: 620125847}
+  - component: {fileID: 620125850}
   m_Layer: 0
   m_Name: Sphere (27)
   m_TagString: GasCloud
@@ -3532,7 +3728,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620125845}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -837, y: 72, z: 1882}
+  m_LocalPosition: {x: -837, y: 158, z: 1882}
   m_LocalScale: {x: 208.29001, y: 208.29001, z: 208.29001}
   m_Children: []
   m_Father: {fileID: 938911112}
@@ -3598,6 +3794,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620125845}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &620125850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620125845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &620219397
 GameObject:
   m_ObjectHideFlags: 0
@@ -3610,6 +3820,7 @@ GameObject:
   - component: {fileID: 620219401}
   - component: {fileID: 620219400}
   - component: {fileID: 620219399}
+  - component: {fileID: 620219402}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: GasCloud
@@ -3691,6 +3902,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620219397}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &620219402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620219397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &633364654
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3903,6 +4128,7 @@ GameObject:
   - component: {fileID: 664277032}
   - component: {fileID: 664277031}
   - component: {fileID: 664277030}
+  - component: {fileID: 664277033}
   m_Layer: 0
   m_Name: Sphere (4)
   m_TagString: GasCloud
@@ -3984,6 +4210,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 664277028}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &664277033
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 664277028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &680840240
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4160,6 +4400,7 @@ GameObject:
   - component: {fileID: 698077040}
   - component: {fileID: 698077039}
   - component: {fileID: 698077038}
+  - component: {fileID: 698077041}
   m_Layer: 0
   m_Name: Sphere (17)
   m_TagString: GasCloud
@@ -4241,6 +4482,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 698077036}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &698077041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698077036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &709841269
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4348,6 +4603,7 @@ GameObject:
   - component: {fileID: 733773871}
   - component: {fileID: 733773870}
   - component: {fileID: 733773869}
+  - component: {fileID: 733773872}
   m_Layer: 0
   m_Name: Sphere (19)
   m_TagString: GasCloud
@@ -4429,6 +4685,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733773867}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &733773872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 733773867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &752498740
 GameObject:
   m_ObjectHideFlags: 0
@@ -4441,6 +4711,7 @@ GameObject:
   - component: {fileID: 752498744}
   - component: {fileID: 752498743}
   - component: {fileID: 752498742}
+  - component: {fileID: 752498745}
   m_Layer: 0
   m_Name: Sphere (14)
   m_TagString: GasCloud
@@ -4522,6 +4793,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 752498740}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &752498745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752498740}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &760743187
 GameObject:
   m_ObjectHideFlags: 0
@@ -4534,6 +4819,7 @@ GameObject:
   - component: {fileID: 760743191}
   - component: {fileID: 760743190}
   - component: {fileID: 760743189}
+  - component: {fileID: 760743192}
   m_Layer: 0
   m_Name: Sphere (30)
   m_TagString: GasCloud
@@ -4615,6 +4901,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760743187}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &760743192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 760743187}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &779609977
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4967,6 +5267,8 @@ GameObject:
   - component: {fileID: 900815994}
   - component: {fileID: 900815993}
   - component: {fileID: 900815992}
+  - component: {fileID: 900815995}
+  - component: {fileID: 900815996}
   m_Layer: 0
   m_Name: Sphere (40)
   m_TagString: GasCloud
@@ -5048,6 +5350,34 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900815990}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &900815995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900815990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
+--- !u!114 &900815996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 900815990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &938911111
 GameObject:
   m_ObjectHideFlags: 0
@@ -5285,6 +5615,7 @@ GameObject:
   - component: {fileID: 985902501}
   - component: {fileID: 985902500}
   - component: {fileID: 985902499}
+  - component: {fileID: 985902502}
   m_Layer: 0
   m_Name: Sphere (24)
   m_TagString: GasCloud
@@ -5366,6 +5697,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 985902497}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &985902502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 985902497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1001894324
 GameObject:
   m_ObjectHideFlags: 0
@@ -5378,6 +5723,7 @@ GameObject:
   - component: {fileID: 1001894328}
   - component: {fileID: 1001894327}
   - component: {fileID: 1001894326}
+  - component: {fileID: 1001894329}
   m_Layer: 0
   m_Name: Sphere (8)
   m_TagString: GasCloud
@@ -5459,6 +5805,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1001894324}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1001894329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1001894324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1089942880
 GameObject:
   m_ObjectHideFlags: 0
@@ -5471,6 +5831,7 @@ GameObject:
   - component: {fileID: 1089942884}
   - component: {fileID: 1089942883}
   - component: {fileID: 1089942882}
+  - component: {fileID: 1089942885}
   m_Layer: 0
   m_Name: Sphere (7)
   m_TagString: GasCloud
@@ -5552,6 +5913,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1089942880}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1089942885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1089942880}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1091377271
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5824,6 +6199,7 @@ GameObject:
   - component: {fileID: 1144355698}
   - component: {fileID: 1144355697}
   - component: {fileID: 1144355696}
+  - component: {fileID: 1144355699}
   m_Layer: 0
   m_Name: Sphere (26)
   m_TagString: GasCloud
@@ -5905,6 +6281,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1144355694}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1144355699
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1144355694}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1149832091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6077,6 +6467,7 @@ GameObject:
   - component: {fileID: 1209617467}
   - component: {fileID: 1209617466}
   - component: {fileID: 1209617465}
+  - component: {fileID: 1209617468}
   m_Layer: 0
   m_Name: Sphere (28)
   m_TagString: GasCloud
@@ -6158,6 +6549,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1209617463}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1209617468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1209617463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1223132662
 GameObject:
   m_ObjectHideFlags: 0
@@ -6170,6 +6575,7 @@ GameObject:
   - component: {fileID: 1223132666}
   - component: {fileID: 1223132665}
   - component: {fileID: 1223132664}
+  - component: {fileID: 1223132667}
   m_Layer: 0
   m_Name: Sphere (16)
   m_TagString: GasCloud
@@ -6251,6 +6657,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223132662}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1223132667
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223132662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1237149346
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6762,6 +7182,7 @@ GameObject:
   - component: {fileID: 1301964053}
   - component: {fileID: 1301964052}
   - component: {fileID: 1301964051}
+  - component: {fileID: 1301964054}
   m_Layer: 0
   m_Name: Sphere (21)
   m_TagString: GasCloud
@@ -6843,6 +7264,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1301964049}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1301964054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301964049}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1327804630
 GameObject:
   m_ObjectHideFlags: 0
@@ -6855,6 +7290,7 @@ GameObject:
   - component: {fileID: 1327804634}
   - component: {fileID: 1327804633}
   - component: {fileID: 1327804632}
+  - component: {fileID: 1327804635}
   m_Layer: 0
   m_Name: Sphere (11)
   m_TagString: GasCloud
@@ -6936,6 +7372,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1327804630}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1327804635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327804630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1342774988 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 6373d5725e8276f41a15ba05512b7dbd,
@@ -6974,6 +7424,7 @@ GameObject:
   - component: {fileID: 1373442040}
   - component: {fileID: 1373442039}
   - component: {fileID: 1373442038}
+  - component: {fileID: 1373442041}
   m_Layer: 0
   m_Name: Sphere (20)
   m_TagString: GasCloud
@@ -7055,6 +7506,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1373442036}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1373442041
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1373442036}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1375442531
 GameObject:
   m_ObjectHideFlags: 0
@@ -7067,6 +7532,7 @@ GameObject:
   - component: {fileID: 1375442535}
   - component: {fileID: 1375442534}
   - component: {fileID: 1375442533}
+  - component: {fileID: 1375442536}
   m_Layer: 0
   m_Name: Sphere (13)
   m_TagString: GasCloud
@@ -7148,6 +7614,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375442531}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1375442536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1375442531}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1409037506
 GameObject:
   m_ObjectHideFlags: 0
@@ -7160,6 +7640,7 @@ GameObject:
   - component: {fileID: 1409037510}
   - component: {fileID: 1409037509}
   - component: {fileID: 1409037508}
+  - component: {fileID: 1409037511}
   m_Layer: 0
   m_Name: Sphere (34)
   m_TagString: GasCloud
@@ -7241,6 +7722,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1409037506}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1409037511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1409037506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1434523254
 GameObject:
   m_ObjectHideFlags: 0
@@ -7253,6 +7748,7 @@ GameObject:
   - component: {fileID: 1434523258}
   - component: {fileID: 1434523257}
   - component: {fileID: 1434523256}
+  - component: {fileID: 1434523259}
   m_Layer: 0
   m_Name: Sphere (18)
   m_TagString: GasCloud
@@ -7268,7 +7764,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434523254}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -332, y: 50.2, z: 1827}
+  m_LocalPosition: {x: -332, y: 140, z: 1827}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 938911112}
@@ -7334,6 +7830,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1434523254}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1434523259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1434523254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!4 &1461172049 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 638705fc92077d74bac688bcb7a450a0,
@@ -7352,6 +7862,7 @@ GameObject:
   - component: {fileID: 1465548891}
   - component: {fileID: 1465548890}
   - component: {fileID: 1465548889}
+  - component: {fileID: 1465548892}
   m_Layer: 0
   m_Name: Sphere (35)
   m_TagString: GasCloud
@@ -7433,6 +7944,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1465548887}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1465548892
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1465548887}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1475693514
 GameObject:
   m_ObjectHideFlags: 0
@@ -7445,6 +7970,7 @@ GameObject:
   - component: {fileID: 1475693518}
   - component: {fileID: 1475693517}
   - component: {fileID: 1475693516}
+  - component: {fileID: 1475693519}
   m_Layer: 0
   m_Name: Sphere (31)
   m_TagString: GasCloud
@@ -7526,6 +8052,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1475693514}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1475693519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475693514}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1482206527
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7752,6 +8292,7 @@ GameObject:
   - component: {fileID: 1554429417}
   - component: {fileID: 1554429416}
   - component: {fileID: 1554429415}
+  - component: {fileID: 1554429418}
   m_Layer: 0
   m_Name: Sphere (12)
   m_TagString: GasCloud
@@ -7833,6 +8374,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1554429413}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1554429418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1554429413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1565207905
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7965,6 +8520,7 @@ GameObject:
   - component: {fileID: 1598282556}
   - component: {fileID: 1598282555}
   - component: {fileID: 1598282554}
+  - component: {fileID: 1598282557}
   m_Layer: 0
   m_Name: Sphere (42)
   m_TagString: GasCloud
@@ -7980,7 +8536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598282552}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3355, y: 53, z: 964}
+  m_LocalPosition: {x: -3355, y: 324, z: 964}
   m_LocalScale: {x: 524.9741, y: 524.9741, z: 524.9741}
   m_Children: []
   m_Father: {fileID: 938911112}
@@ -8046,6 +8602,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1598282552}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1598282557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598282552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1614656137
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8378,6 +8948,7 @@ GameObject:
   - component: {fileID: 1731987672}
   - component: {fileID: 1731987671}
   - component: {fileID: 1731987670}
+  - component: {fileID: 1731987673}
   m_Layer: 0
   m_Name: Sphere (47)
   m_TagString: GasCloud
@@ -8459,6 +9030,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1731987668}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1731987673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1731987668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1738279993
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8591,6 +9176,7 @@ GameObject:
   - component: {fileID: 1774759283}
   - component: {fileID: 1774759282}
   - component: {fileID: 1774759281}
+  - component: {fileID: 1774759284}
   m_Layer: 0
   m_Name: Sphere (9)
   m_TagString: GasCloud
@@ -8606,7 +9192,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774759279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1727, y: -2, z: 253}
+  m_LocalPosition: {x: 1727, y: 261, z: 253}
   m_LocalScale: {x: 369.98166, y: 369.98166, z: 369.98166}
   m_Children: []
   m_Father: {fileID: 938911112}
@@ -8672,6 +9258,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1774759279}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1774759284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1774759279}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1797275546
 GameObject:
   m_ObjectHideFlags: 0
@@ -8684,6 +9284,7 @@ GameObject:
   - component: {fileID: 1797275550}
   - component: {fileID: 1797275549}
   - component: {fileID: 1797275548}
+  - component: {fileID: 1797275551}
   m_Layer: 0
   m_Name: Sphere (22)
   m_TagString: GasCloud
@@ -8765,6 +9366,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1797275546}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1797275551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797275546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1825547358
 GameObject:
   m_ObjectHideFlags: 0
@@ -8777,6 +9392,7 @@ GameObject:
   - component: {fileID: 1825547362}
   - component: {fileID: 1825547361}
   - component: {fileID: 1825547360}
+  - component: {fileID: 1825547363}
   m_Layer: 0
   m_Name: Sphere (25)
   m_TagString: GasCloud
@@ -8858,6 +9474,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1825547358}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1825547363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1825547358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1843141703 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 656fa1a115cce1f41b4a89b7594568ab,
@@ -8896,6 +9526,7 @@ GameObject:
   - component: {fileID: 1844636944}
   - component: {fileID: 1844636943}
   - component: {fileID: 1844636942}
+  - component: {fileID: 1844636945}
   m_Layer: 0
   m_Name: Sphere (15)
   m_TagString: GasCloud
@@ -8977,6 +9608,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1844636940}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1844636945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1844636940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1864721916
 GameObject:
   m_ObjectHideFlags: 0
@@ -8989,6 +9634,7 @@ GameObject:
   - component: {fileID: 1864721920}
   - component: {fileID: 1864721919}
   - component: {fileID: 1864721918}
+  - component: {fileID: 1864721921}
   m_Layer: 0
   m_Name: Sphere (10)
   m_TagString: GasCloud
@@ -9070,6 +9716,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1864721916}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1864721921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864721916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1877584565
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9256,6 +9916,7 @@ GameObject:
   - component: {fileID: 1892601861}
   - component: {fileID: 1892601860}
   - component: {fileID: 1892601859}
+  - component: {fileID: 1892601862}
   m_Layer: 0
   m_Name: Sphere (2)
   m_TagString: GasCloud
@@ -9337,6 +9998,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1892601857}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1892601862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1892601857}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1894341889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9549,6 +10224,7 @@ GameObject:
   - component: {fileID: 1946993077}
   - component: {fileID: 1946993076}
   - component: {fileID: 1946993075}
+  - component: {fileID: 1946993078}
   m_Layer: 0
   m_Name: Sphere (3)
   m_TagString: GasCloud
@@ -9630,6 +10306,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1946993073}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1946993078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1946993073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1967313854
 GameObject:
   m_ObjectHideFlags: 0
@@ -9642,6 +10332,7 @@ GameObject:
   - component: {fileID: 1967313858}
   - component: {fileID: 1967313857}
   - component: {fileID: 1967313856}
+  - component: {fileID: 1967313859}
   m_Layer: 0
   m_Name: Sphere (38)
   m_TagString: GasCloud
@@ -9723,6 +10414,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1967313854}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1967313859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1967313854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1 &1972583707
 GameObject:
   m_ObjectHideFlags: 0
@@ -9735,6 +10440,7 @@ GameObject:
   - component: {fileID: 1972583711}
   - component: {fileID: 1972583710}
   - component: {fileID: 1972583709}
+  - component: {fileID: 1972583712}
   m_Layer: 0
   m_Name: Sphere (1)
   m_TagString: GasCloud
@@ -9816,6 +10522,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1972583707}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1972583712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1972583707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &1982265340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10123,6 +10843,7 @@ GameObject:
   - component: {fileID: 2040498262}
   - component: {fileID: 2040498261}
   - component: {fileID: 2040498260}
+  - component: {fileID: 2040498263}
   m_Layer: 0
   m_Name: Sphere (5)
   m_TagString: GasCloud
@@ -10204,6 +10925,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2040498258}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &2040498263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040498258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5feaab84842fca046b8f410fad5e6b77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionMagnitude: 1
+  active: 1
 --- !u!1001 &2081586465
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -10734,6 +11469,17 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9122936524982349599, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _audioCues.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936524982349599, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _audioCues.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 154037e71335d94429428ab62114cdbd,
+        type: 2}
     - target: {fileID: 9122936525271774588, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: rewiredInputManager
@@ -10753,6 +11499,11 @@ PrefabInstance:
         type: 3}
       propertyPath: bMat
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: isDirty
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9122936526216339444, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -10813,11 +11564,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9122936526258959679, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: _gravityMultiplier
-      value: 60
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0dca9f6178850714da20590c07aa1cf6, type: 3}

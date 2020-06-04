@@ -21,7 +21,7 @@ public class DestoyEnemiesController : MissionController
         {
             if (transform.childCount <= _childrenToWin)
             {
-                MissionCompelete();
+                MissionComplete();
 
                 break;
             }

@@ -41,7 +41,7 @@ public abstract class MissionController : GameEventUserObject
         StartCoroutine(ComboTimerRoutine());
     }
 
-    protected void MissionCompelete()
+    protected void MissionComplete()
     {
         _missionComplete = true;
 

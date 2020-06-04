@@ -19,7 +19,7 @@ public class AudioCue : ScriptableObject
     public float pitch = 1f;
 
     [Range(-1f, 1f)]
-    public float stereoPan = 1f;
+    public float stereoPan = 0f;
 
     [Range(0f, 1f)]
     public float spatialBlend = 0f;

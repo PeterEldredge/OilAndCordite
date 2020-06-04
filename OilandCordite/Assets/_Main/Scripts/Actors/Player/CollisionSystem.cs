@@ -11,6 +11,16 @@ namespace Events
         public ObstacleHitEventArgs(Vector3 collisionNormal)
         {
             CollisionNormal = collisionNormal;
+        }   
+    }
+
+    public struct GasExplosionEventArgs : IGameEvent
+    {
+        public float ExplosionMagnitude { get; }
+
+        public GasExplosionEventArgs(float explosionMagnitude)
+        {
+            ExplosionMagnitude = explosionMagnitude;
         }
     }
 }
@@ -19,6 +29,8 @@ public class CollisionSystem : GameEventUserObject
 {
     public bool InSmog { get; private set; }
     public bool InGas { get; private set; }
+
+    [SerializeField] private GameObject _gasExplosionParticles;
 
     private bool _canHitObstacles = true;
 
@@ -40,21 +52,41 @@ public class CollisionSystem : GameEventUserObject
         {
             InGas = true;
         }
-        else if(other.CompareTag(Tags.SMOG))
+
+        if (other.CompareTag(Tags.SMOG))
         {
             InSmog = true;
-        }
+        } 
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag(Tags.GAS_CLOUD))
+        var gasCloudData = other.GetComponent<GasCloudData>();
+        if (gasCloudData != null && other.CompareTag(Tags.GAS_CLOUD))
         {
+            StartCoroutine(WaitReactivateGas(gasCloudData));
             InGas = false;
         }
-        else if (other.CompareTag(Tags.SMOG))
+
+        if (other.CompareTag(Tags.SMOG))
         {
             InSmog = false;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        var gasCloudData = other.GetComponent<GasCloudData>();
+        if (gasCloudData != null && other.CompareTag(Tags.GAS_CLOUD))
+        {
+            if (PlayerData.Instance.IsIgniting && gasCloudData.active)
+            {
+                Instantiate(_gasExplosionParticles, transform.position, Quaternion.Euler(transform.rotation.eulerAngles));
+
+                EventManager.Instance.TriggerEventImmediate(new Events.GasExplosionEventArgs(gasCloudData.ExplosionMagnitude));
+
+                gasCloudData.SetCloudActive(false);
+            }
         }
     }
 
@@ -72,5 +104,20 @@ public class CollisionSystem : GameEventUserObject
         }
 
         _canHitObstacles = true;
+    }
+
+    private IEnumerator WaitReactivateGas(GasCloudData data)
+    {
+
+        float timer = 1.5f;
+
+        while (timer > 0f)
+        {
+            yield return null;
+
+            timer -= Time.deltaTime;
+        }
+
+        data.SetCloudActive(true);
     }
 }

@@ -32,7 +32,7 @@ public class RaceToTheFinishController : MissionController
         }
         else
         {
-            MissionCompelete();
+            MissionComplete();
         }
     }
 }

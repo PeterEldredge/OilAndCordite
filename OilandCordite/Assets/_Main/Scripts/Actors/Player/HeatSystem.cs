@@ -13,7 +13,7 @@ public class HeatSystem : MonoBehaviour
 {
     [SerializeField] private float _maxHeat = 100f;
     [SerializeField] private float _timeToOverheat = 5f;
-    [SerializeField] private float _timeToResetFromMax = 3f;
+    [SerializeField] private float _timeToResetFromMax = 1f;
     [SerializeField] private float _overheatedTimePenalty = 2f;
     [SerializeField] private AnimationCurve _heatCurve;
     [SerializeField] private ParticleSystem _overheatingParticles;

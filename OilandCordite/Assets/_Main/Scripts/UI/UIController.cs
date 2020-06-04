@@ -18,6 +18,7 @@ public class UIController : GameEventUserObject
     [SerializeField] private Slider _heatBar;
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _comboText;
+    [SerializeField] private Text _speedText;
     [SerializeField] private Slider _comboSlider;
     [SerializeField] private GameObject _pauseMenuUI;
     [SerializeField] private GameObject _pauseMenuDefaultSelected;
@@ -73,6 +74,7 @@ public class UIController : GameEventUserObject
         UpdateHeat();
         UpdateScore();
         UpdateCombo();
+        UpdateSpeed();
 
         if ((InputHelper.Player.GetButtonDown("Start") || InputHelper.Player.GetButtonDown("UICancel")) && !_dead) {
             if (!_paused)
@@ -115,6 +117,11 @@ public class UIController : GameEventUserObject
     {
         _comboText.text = "Combo: " + MissionControllerData.Instance.MissionController.Combo.ToString();
         _comboSlider.value = MissionControllerData.Instance.MissionController.ComboTimer;
+    }
+
+    void UpdateSpeed()
+    {
+        _speedText.text = "Speed: " + PlayerData.Instance.Speed;
     }
 
     public void Pause()
