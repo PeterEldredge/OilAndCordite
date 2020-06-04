@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using UnityEngine.EventSystems;
 
 namespace Events
 {
@@ -18,8 +19,12 @@ public class UIController : GameEventUserObject
     [SerializeField] private Text _scoreText;
     [SerializeField] private Text _comboText;
     [SerializeField] private GameObject _pauseMenuUI;
+    [SerializeField] private GameObject _pauseMenuDefaultSelected;
+    [SerializeField] private GameObject _victoryMenuUIDefaultSelected;
     [SerializeField] private GameObject _victoryMenuUI;
+    [SerializeField] private GameObject _deathMenuUIDefaultSelected;
     [SerializeField] private GameObject _deathMenuUI;
+    [SerializeField] private GameObject _controlsUIDefaultSelected;
     [SerializeField] private GameObject _controlsUI;
 
     private GameObject _currentMenu;
@@ -122,6 +127,7 @@ public class UIController : GameEventUserObject
         _currentMenu = _pauseMenuUI;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        EventSystem.current.SetSelectedGameObject(_pauseMenuDefaultSelected);
         Time.timeScale = 0f;
         _paused = true;
 
@@ -148,6 +154,7 @@ public class UIController : GameEventUserObject
         _victoryMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        EventSystem.current.SetSelectedGameObject(_victoryMenuUIDefaultSelected);
         Time.timeScale = 0f;
     }
 
@@ -157,13 +164,14 @@ public class UIController : GameEventUserObject
         _deathMenuUI.SetActive(true);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
+        EventSystem.current.SetSelectedGameObject(_deathMenuUIDefaultSelected);
         Time.timeScale = 0f;
     }
 
     public void Controls()
     {
         _acp.PlaySound("Menu_Item_Select");
-
+        EventSystem.current.SetSelectedGameObject(_controlsUIDefaultSelected);
         _currentMenu.SetActive(false);
         _controlsUI.SetActive(true);
         _currentMenu = _controlsUI;
