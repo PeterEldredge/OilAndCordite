@@ -17,6 +17,16 @@ public struct Slot{
         weapon = null;
     }
 
+    public void AddWeapon(WeldedWeapon wep)
+    {
+        weapon = wep;
+    }
+
+    public void SetAvailability(bool availability)
+    {
+        available = availability;
+    }
+
     public void Clear()
     {
         available = true;
@@ -52,18 +62,16 @@ public class WeldedWeaponSystem : GameEventUserObject
 
     private void AttachWeldedWeapon(Events.WeldedWeaponPickupArgs args) => AttachWeldedWeapon(args.WeaponPickup);
 
-    private void AttachWeldedWeapon(Events.PlayerDefeatedEnemyEventArgs args) => AttachWeldedWeapon(0);
-
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.WeldedWeaponPickupArgs>(this, AttachWeldedWeapon);
-        EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, AttachWeldedWeapon);
+        //EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, AttachWeldedWeapon);
     }
 
     public override void Unsubscribe()
     {
         EventManager.Instance.RemoveListener<Events.WeldedWeaponPickupArgs>(this, AttachWeldedWeapon);
-        EventManager.Instance.RemoveListener<Events.PlayerDefeatedEnemyEventArgs>(this, AttachWeldedWeapon);
+        //EventManager.Instance.RemoveListener<Events.PlayerDefeatedEnemyEventArgs>(this, AttachWeldedWeapon);
     }
 
     private void Start()
@@ -80,9 +88,9 @@ public class WeldedWeaponSystem : GameEventUserObject
 
     private void Update()
     {
-        if (InputHelper.Player.GetButtonDown(""))
+        if (InputHelper.Player.GetButtonDown("WeldedWeaponUse"))
         {
-
+            UseWeldedWeapon();
         }
     }
 
@@ -91,24 +99,47 @@ public class WeldedWeaponSystem : GameEventUserObject
         //GameObject obj = Instantiate(_weldedWeapons[type], gameObject.transform, false);
         if (_slots[Position.LEFT].available)
         {
-            //_slots[Position.LEFT].weapon = 
+            Attach(_slots[Position.LEFT], type);
         }
         else if(_slots[Position.RIGHT].available)
         {
-
+            Attach(_slots[Position.RIGHT], type);
         }
         else if (_slots[Position.TOP].available)
         {
-
+            Attach(_slots[Position.TOP], type);
         }
         else
         {
-
+            _slots[Position.LEFT].Clear();
+            Attach(_slots[Position.LEFT], type);
         }
+    }
+
+    private void Attach(Slot slot, WeldedWeaponType type)
+    {
+        slot.AddWeapon(_weldedWeapons[type]);
+        slot.weapon.Create(slot.localPosition);
+        slot.SetAvailability(false);
     }
 
     private void UseWeldedWeapon()
     {
-
+        if (!_slots[Position.LEFT].available)
+        {
+            _slots[Position.LEFT].weapon.Use();
+        }
+        else if (!_slots[Position.RIGHT].available)
+        {
+            _slots[Position.RIGHT].weapon.Use();
+        }
+        else if (!_slots[Position.TOP].available)
+        {
+            _slots[Position.TOP].weapon.Use();
+        }
+        else
+        {
+            return;
+        }
     }
 }

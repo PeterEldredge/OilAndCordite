@@ -28,7 +28,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private List<Transform> _attackPoints;
     [SerializeField] private List<Transform> _spinnerTransforms;
     [SerializeField] private string _defeatedCueName;
-    [SerializeField] private WeldedWeaponType _weldedWeapon;
+    [SerializeField] private WeldedWeaponType _enemyWeldedWeapon;
+
+    public WeldedWeaponType EnemyWeldedWeapon => _enemyWeldedWeapon;
 
     private EnemyData _enemyData;
 
