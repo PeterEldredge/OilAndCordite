@@ -9,7 +9,7 @@ public class EnemyColliders : MonoBehaviour
 
     private void Awake()
     {
-        _enemy = GetComponent<Enemy>();
+        _enemy = GetComponentInParent<Enemy>();
     }
 
     private void OnTriggerEnter(Collider collider)
