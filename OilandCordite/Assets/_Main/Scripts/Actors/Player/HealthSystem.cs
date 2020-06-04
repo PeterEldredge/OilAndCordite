@@ -50,6 +50,7 @@ public class HealthSystem : GameEventUserObject
 
     private void AddHealth(float amount)
     {
+        Debug.Log(amount);
         Health = Mathf.Min(_maxHealth, Health + amount);
     }
 

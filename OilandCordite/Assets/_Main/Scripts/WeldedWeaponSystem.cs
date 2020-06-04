@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeldedWeaponTypes { EXAUST, LASER, BLADEWING };
+public enum WeldedWeaponTypes { LASER, BLADEWING };
 
 namespace Events
 {

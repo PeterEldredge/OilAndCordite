@@ -6,16 +6,16 @@ namespace Events
 {
     public struct ObstacleHitEventArgs : IGameEvent
     {
-        public ContactPoint ContactPoint { get; }
+        public Vector3 CollisionNormal { get; }
 
-        public ObstacleHitEventArgs(ContactPoint contactPoint)
+        public ObstacleHitEventArgs(Vector3 collisionNormal)
         {
-            ContactPoint = contactPoint;
+            CollisionNormal = collisionNormal;
         }
     }
 }
 
-public class CollisionSystem : MonoBehaviour
+public class CollisionSystem : GameEventUserObject
 {
     public bool InSmog { get; private set; }
     public bool InGas { get; private set; }
@@ -23,13 +23,15 @@ public class CollisionSystem : MonoBehaviour
     private bool _canHitObstacles = true;
 
     private void OnCollisionEnter(Collision collision)
-    {
-        if(collision.collider.CompareTag(Tags.OBSTACLE) && _canHitObstacles)
+    { 
+
+        if (collision.collider.CompareTag(Tags.OBSTACLE) && _canHitObstacles)
         {
-            EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collision.contacts[0]));
+            EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collision.contacts[0].normal));
 
             StartCoroutine(PauseObstacleCollisions());
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
