@@ -65,6 +65,9 @@ public class Enemy : MonoBehaviour
     {
         Defeated = true;
 
+        _previousAttackBehavior = null;
+        _currentAttackBehaviour = null;
+
         foreach(Transform tr in _spinnerTransforms)
         {
             Destroy(tr.gameObject); 
@@ -72,6 +75,7 @@ public class Enemy : MonoBehaviour
 
         _renderer.enabled = false;
         _colliders.SetActive(false);
+
         _acp.PlaySound(_defeatedCueName);
 
         Instantiate(_particles, transform.position, Quaternion.Euler(Vector3.zero));
