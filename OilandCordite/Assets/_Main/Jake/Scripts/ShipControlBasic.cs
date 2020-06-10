@@ -264,7 +264,6 @@ public class ShipControlBasic : GameEventUserObject
         }
         yield return null;
         turnTorque -= new Vector3(0, 30, 0);
-        Debug.Log("Here");
         _spinningOut = false; 
         _anim.SetBool("spinningOut", _spinningOut);
     }
