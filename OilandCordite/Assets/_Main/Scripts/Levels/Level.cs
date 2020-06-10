@@ -32,4 +32,15 @@ public class Level : ScriptableObject
 
     [SerializeField] private int[] _scoreRequirements = new int[NUMBER_OF_RANKS];
     public int[] ScoreRequirements => _scoreRequirements;
+
+    [Space, Header("Saved Data")]
+
+    [SerializeField] private int _highScore = 0;
+    public int HighScore => _highScore;
+
+    [ContextMenu("RESET")]
+    public void Reset()
+    {
+        _highScore = 0;
+    }
 }
