@@ -35,10 +35,22 @@ public class Level : ScriptableObject
 
     [Space, Header("Saved Data")]
 
-    [SerializeField] private int _highScore = 0;
-    public int HighScore => _highScore;
+    [SerializeField] private int _highScore;
+    public int HighScore
+    {
+        get
+        {
+            return _highScore;
+        }
+        set
+        {
+            if (value > _highScore)
+            {
+                _highScore = value;
+            }
+        }
+    }
 
-    [ContextMenu("RESET")]
     public void Reset()
     {
         _highScore = 0;

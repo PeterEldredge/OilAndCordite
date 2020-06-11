@@ -41,11 +41,14 @@ public abstract class MissionController : GameEventUserObject
         StartCoroutine(ComboTimerRoutine());
     }
 
+    [ContextMenu("CompleteMission")]
     protected void MissionComplete()
     {
         _missionComplete = true;
 
         CalculateScore();
+
+        _levelData.HighScore = Score;
 
         EventManager.Instance.TriggerEvent(new Events.MissionCompleteEventArgs());
     }
@@ -79,7 +82,7 @@ public abstract class MissionController : GameEventUserObject
         }
     }
 
-    protected int CalculateTimeScore() => Mathf.RoundToInt(BaseScoring.PAR_TIME_SCORE * (_levelData.ParTime / Timer));        
+    protected int CalculateTimeScore() => Mathf.RoundToInt(BaseScoring.PAR_TIME_SCORE * (_levelData.ParTime / Timer));  
 
     protected IEnumerator MissionTimer()
     {

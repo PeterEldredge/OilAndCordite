@@ -55,7 +55,8 @@ public class LevelManager : MonoBehaviour
 
         //Update Later
         _rankRequirements.text =
-            $"Par Time - {_currentLevel.ParTime} seconds {System.Environment.NewLine}{System.Environment.NewLine}" +
+            $"High Score - {_currentLevel.HighScore} {System.Environment.NewLine} {System.Environment.NewLine}" +
+            $"Par Time - {_currentLevel.ParTime} seconds {System.Environment.NewLine} {System.Environment.NewLine}" +
             $"Platinum - {_currentLevel.ScoreRequirements[0]}{System.Environment.NewLine}" +
             $"Gold - {_currentLevel.ScoreRequirements[1]}{System.Environment.NewLine}" +
             $"Silver - {_currentLevel.ScoreRequirements[2]}{System.Environment.NewLine}" +
