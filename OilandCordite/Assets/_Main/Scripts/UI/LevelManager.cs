@@ -70,4 +70,15 @@ public class LevelManager : MonoBehaviour
     {
         SceneController.SwitchScene(_currentLevel.SceneName);
     }
+
+    //DEBUG
+
+    [ContextMenu("RESET")]
+    public void Reset()
+    {
+        foreach(Level level in _levels)
+        {
+            level.Reset();
+        }
+    }
 }
