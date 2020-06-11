@@ -237,6 +237,51 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &505507307027226305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8207881980285791584}
+  - component: {fileID: 572537602946626716}
+  m_Layer: 10
+  m_Name: CloudCollider
+  m_TagString: CloudCollider
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8207881980285791584
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505507307027226305}
+  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.0034144216, y: 0.0048959306, z: 0.000529141}
+  m_Children: []
+  m_Father: {fileID: 2700001333146067869}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!136 &572537602946626716
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 505507307027226305}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 37.02
+  m_Height: 13.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &545766311652491612
 GameObject:
   m_ObjectHideFlags: 0
@@ -503,7 +548,7 @@ Transform:
   m_LocalScale: {x: 0.0025010288, y: 0.004517211, z: 0.0005663248}
   m_Children: []
   m_Father: {fileID: 2700001333146067869}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -1.9290001, y: 16.066, z: -12.255}
 --- !u!96 &1590809854512343352
 TrailRenderer:
@@ -642,6 +687,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 292.8754, y: 204.25127, z: 1889.8555}
   m_Children:
+  - {fileID: 8207881980285791584}
   - {fileID: 1584855725989371168}
   - {fileID: 1584829770902482914}
   - {fileID: 8392096781480211032}
@@ -793,6 +839,8 @@ MonoBehaviour:
   _airResistance: 1
   _minSmogIgnitionHeat: 0
   _gravityMultiplier: 30
+  _smogHeatToSpeedRatio: 0.4
+  _baseGasBoost: 300
   _noGravitySpeed: 200
   _minGasIgnitionHeat: 20
   _positiveAccelerationCurve:
@@ -1087,6 +1135,8 @@ MonoBehaviour:
   _attackedRumbleTime: 0.5
   _obstacleHitLevel: 1
   _obstacleHitTime: 0.5
+  _gasCloudHitLevel: 0
+  _gasCloudHitTime: 0
 --- !u!114 &1580982561567325435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1142,7 +1192,7 @@ Transform:
   m_LocalScale: {x: 0.018993402, y: 0.027234592, z: 0.0029434524}
   m_Children: []
   m_Father: {fileID: 2700001333146067869}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!96 &1487938639314317392
 TrailRenderer:
@@ -1288,7 +1338,7 @@ Transform:
   m_LocalScale: {x: 0.0014982818, y: 0.0048959306, z: 0.0006599354}
   m_Children: []
   m_Father: {fileID: 2700001333146067869}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: -28.966002, z: 0}
 --- !u!96 &1488130610967220576
 TrailRenderer:
@@ -1848,7 +1898,7 @@ Transform:
   - {fileID: 1374225147090935209}
   - {fileID: 8904315124143488109}
   m_Father: {fileID: 2700001333146067869}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2972090763876428174
 GameObject:
@@ -2511,7 +2561,7 @@ Transform:
   m_LocalScale: {x: 0.0025010288, y: 0.004517211, z: 0.0005663248}
   m_Children: []
   m_Father: {fileID: 2700001333146067869}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -1.9290001, y: 16.066, z: -12.255}
 --- !u!96 &6355104490015389774
 TrailRenderer:
@@ -2737,7 +2787,7 @@ Transform:
   m_LocalScale: {x: 0.9791862, y: 0.9791861, z: 0.97918606}
   m_Children: []
   m_Father: {fileID: 2700001333146067869}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &4531127826227484162
 MeshFilter:
@@ -3162,7 +3212,7 @@ Transform:
   m_LocalScale: {x: 0.0025010244, y: 0.0045172162, z: 0.00056632335}
   m_Children: []
   m_Father: {fileID: 2700001333146067869}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -1.9290001, y: -21.028002, z: -12.255}
 --- !u!96 &7819872933381190385
 TrailRenderer:
@@ -3623,7 +3673,7 @@ Transform:
   - {fileID: 2850656599668666797}
   - {fileID: 4923712160759108402}
   m_Father: {fileID: 2700001333146067869}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9193220188586850482
 GameObject:
@@ -3749,7 +3799,7 @@ PrefabInstance:
     - target: {fileID: 6511938070401534595, guid: 394fb1bcedf4234429bb213a09726726,
         type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 6511938070401534595, guid: 394fb1bcedf4234429bb213a09726726,
         type: 3}
