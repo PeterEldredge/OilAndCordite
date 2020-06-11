@@ -135,7 +135,7 @@ public class UIController : GameEventUserObject
             _currentMenu.SetActive(false);
         }
         _pauseMenuUI.SetActive(true);
-        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(_pauseMenuUI);
+        EventSystem.current.SetSelectedGameObject(_pauseMenuUI);
         _currentMenu = _pauseMenuUI;
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
