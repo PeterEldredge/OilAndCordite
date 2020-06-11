@@ -8,9 +8,12 @@ using TMPro;
 public class LevelManager : MonoBehaviour
 {
     [SerializeField] private Image _levelImage;
+    [SerializeField] private Image _medalImage;
     [SerializeField] private TextMeshProUGUI _levelDescription;
     [SerializeField] private TextMeshProUGUI _missionObjective;
     [SerializeField] private TextMeshProUGUI _rankRequirements;
+
+    [SerializeField] private List<Sprite> _medals;
 
     [SerializeField] private List<Level> _levels;
 
@@ -45,19 +48,27 @@ public class LevelManager : MonoBehaviour
 
         switch(_currentLevel.Type)
         {
-            case (Level.LevelType.DestroyEnemies):
+            case Level.LevelType.DestroyEnemies:
                 _missionObjective.text = _DESTROY_ENEMIES_MISSION;
                 break;
-            case (Level.LevelType.RaceToTheFinish):
+            case Level.LevelType.RaceToTheFinish:
                 _missionObjective.text = _RACE_TO_THE_FINISH_MISSION;
                 break;
         }
+
+        //FIX LATER
+        if ((int)_currentLevel.BestMedal < _medals.Count)
+        {
+            _medalImage.enabled = true;
+            _medalImage.sprite = _medals[(int)_currentLevel.BestMedal];
+        }
+        else _medalImage.enabled = false;
 
         //Update Later
         _rankRequirements.text =
             $"High Score - {_currentLevel.HighScore} {System.Environment.NewLine} {System.Environment.NewLine}" +
             $"Par Time - {_currentLevel.ParTime} seconds {System.Environment.NewLine} {System.Environment.NewLine}" +
-            $"Platinum - {_currentLevel.ScoreRequirements[0]}{System.Environment.NewLine}" +
+            $"Emerald - {_currentLevel.ScoreRequirements[0]}{System.Environment.NewLine}" +
             $"Gold - {_currentLevel.ScoreRequirements[1]}{System.Environment.NewLine}" +
             $"Silver - {_currentLevel.ScoreRequirements[2]}{System.Environment.NewLine}" +
             $"Bronze - {_currentLevel.ScoreRequirements[3]}{System.Environment.NewLine}";

@@ -35,6 +35,9 @@ public class Level : ScriptableObject
 
     [Space, Header("Saved Data")]
 
+    [SerializeField] private BaseScoring.Rank _bestMedal = BaseScoring.Rank.None;
+    public BaseScoring.Rank BestMedal => _bestMedal;
+
     [SerializeField] private int _highScore;
     public int HighScore
     {
@@ -46,13 +49,25 @@ public class Level : ScriptableObject
         {
             if (value > _highScore)
             {
+                UpdateMedal(value);
+
                 _highScore = value;
             }
         }
     }
 
+    private void UpdateMedal(int score)
+    {
+        if (score > _scoreRequirements[(int)BaseScoring.Rank.Emerald]) _bestMedal = BaseScoring.Rank.Emerald;
+        else if (score > _scoreRequirements[(int)BaseScoring.Rank.Gold]) _bestMedal = BaseScoring.Rank.Gold;
+        else if (score > _scoreRequirements[(int)BaseScoring.Rank.Silver]) _bestMedal = BaseScoring.Rank.Silver;
+        else if (score > _scoreRequirements[(int)BaseScoring.Rank.Bronze]) _bestMedal = BaseScoring.Rank.Bronze;
+        else _bestMedal = BaseScoring.Rank.None;
+    }
+
     public void Reset()
     {
+        _bestMedal = BaseScoring.Rank.None;
         _highScore = 0;
     }
 }

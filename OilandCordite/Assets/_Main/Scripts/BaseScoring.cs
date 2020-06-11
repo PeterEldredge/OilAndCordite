@@ -1,5 +1,4 @@
-﻿
-public class BaseScoring
+﻿public class BaseScoring
 {
     //Flat Scores
     public const int PAR_TIME_SCORE = 5000;
@@ -9,10 +8,9 @@ public class BaseScoring
     public const float COMBO_TIME = 4f;
     public const int MAX_COMBO = 10;
 
-    //Ranks (replace later)
     public enum Rank
     {
-        Platnum = 0,
+        Emerald = 0,
         Gold = 1,
         Silver = 2,
         Bronze = 3,

@@ -65,7 +65,7 @@ public abstract class MissionController : GameEventUserObject
             switch(i)
             {
                 case 0:
-                    Rank = BaseScoring.Rank.Platnum;
+                    Rank = BaseScoring.Rank.Emerald;
                     break;
                 case 1:
                     Rank = BaseScoring.Rank.Gold;

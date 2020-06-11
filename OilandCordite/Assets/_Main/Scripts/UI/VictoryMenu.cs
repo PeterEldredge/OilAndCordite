@@ -15,8 +15,8 @@ public class VictoryMenu : MonoBehaviour
         //Terrible, replace later 
         switch(MissionControllerData.Instance.MissionController.Rank)
         {
-            case BaseScoring.Rank.Platnum:
-                rank = "Platinum";
+            case BaseScoring.Rank.Emerald:
+                rank = "Emerald";
                 break;
             case BaseScoring.Rank.Gold:
                 rank = "Gold";
