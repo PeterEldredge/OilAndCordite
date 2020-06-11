@@ -28,12 +28,21 @@ public class UIController : GameEventUserObject
     [SerializeField] private GameObject _deathMenuUI;
     [SerializeField] private GameObject _controlsUIDefaultSelected;
     [SerializeField] private GameObject _controlsUI;
+    [SerializeField] private GameObject _comboPanel;
+    [SerializeField] private GameObject _scorePanel;
+
+    [SerializeField] private float _maxScale;
+    [SerializeField] private AnimationCurve _uiFontAnimation;
 
     private GameObject _currentMenu;
 
     private bool _paused =  false;
     private bool _dead = false;
     private bool _uiHidden = false;
+
+    private float _uiSizeAnimTime;
+    private bool _textAnimationRunning = false;
+    private Coroutine _textAnimationRoutine;
 
     private AudioCuePlayer _acp;
     private CanvasGroup _canvasGroup;
@@ -43,7 +52,9 @@ public class UIController : GameEventUserObject
         _acp = gameObject.GetComponent<AudioCuePlayer>();
         _canvasGroup = gameObject.GetComponent<CanvasGroup>();
 
-        _comboSlider.maxValue = BaseScoring.COMBO_TIME; 
+        _comboSlider.maxValue = BaseScoring.COMBO_TIME;
+
+        _uiSizeAnimTime = _uiFontAnimation.keys[_uiFontAnimation.length - 1].time;
     }
 
     private IEnumerator ActionOnDelay(float delay, Action action)
@@ -55,16 +66,24 @@ public class UIController : GameEventUserObject
 
     private void OnPlayerDeath(Events.PlayerDeathEventArgs args) => StartCoroutine(ActionOnDelay(3f, () => OpenDeathScreen()));
     private void OnMissionCompleted(Events.MissionCompleteEventArgs args) => StartCoroutine(ActionOnDelay(.5f, () => OpenVictoryScreen()));
+    private void OnPlayerDefeatedEnemy(Events.PlayerDefeatedEnemyEventArgs args)
+    {
+        if(_textAnimationRunning) StopCoroutine(_textAnimationRoutine);
+        _textAnimationRoutine = StartCoroutine(TextAnimation());
+    }
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
         EventManager.Instance.AddListener<Events.MissionCompleteEventArgs>(this, OnMissionCompleted);
+        EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
     }
 
     public override void Unsubscribe()
     {
         EventManager.Instance.RemoveListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
+        EventManager.Instance.RemoveListener<Events.MissionCompleteEventArgs>(this, OnMissionCompleted);
+        EventManager.Instance.RemoveListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
     }
 
     // Update is called once per frame
@@ -215,5 +234,29 @@ public class UIController : GameEventUserObject
         _canvasGroup.interactable = true;
         _canvasGroup.blocksRaycasts = true;
         _uiHidden = false;
+    }
+
+    private IEnumerator TextAnimation()
+    {
+        _textAnimationRunning = true;
+
+        float timer = 0f;
+
+        float scaleDifference = _maxScale - 1f;
+
+        while(timer < _uiSizeAnimTime)
+        {
+            _comboPanel.transform.localScale = Vector3.one * (1 + _uiFontAnimation.Evaluate(timer / scaleDifference) * scaleDifference);
+            _scorePanel.transform.localScale = _comboPanel.transform.localScale;
+
+            timer += Time.deltaTime;
+
+            yield return null;
+        }
+
+        _comboPanel.transform.localScale = Vector3.one;
+        _scorePanel.transform.localScale = Vector3.one;
+
+        _textAnimationRunning = false;
     }
 }
