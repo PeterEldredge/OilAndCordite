@@ -13,7 +13,6 @@ public class CloudVolumeSimulationSpace : MonoBehaviour
 
     private void OnTriggerEnter(Collider other) 
     {
-        Debug.Log(other.tag);
         if(other.tag == "CloudCollider") 
         {
             volume.simulate = true; 
