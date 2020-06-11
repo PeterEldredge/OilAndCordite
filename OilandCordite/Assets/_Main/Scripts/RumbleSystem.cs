@@ -15,6 +15,9 @@ public class RumbleSystem : GameEventUserObject
     [SerializeField, Range(0, 1)] private float _obstacleHitLevel;
     [SerializeField] private float _obstacleHitTime;
 
+    [SerializeField, Range(0, 1)] private float _gasCloudHitLevel;
+    [SerializeField] private float _gasCloudHitTime;
+
     private bool _paused = false;
     private float _rumbleLevel = 0f;
 
@@ -25,6 +28,7 @@ public class RumbleSystem : GameEventUserObject
     private void OnPlayerDeath(Events.PlayerDeathEventArgs args) => InputHelper.Player.SetVibration(0, _explosionLevel, _explosionRumbleTime);
     private void OnPlayerAttacked(Events.PlayerAttackedEventArgs args) => InputHelper.Player.SetVibration(0, _attackedLevel, _attackedRumbleTime);
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => InputHelper.Player.SetVibration(0, _obstacleHitLevel, _obstacleHitTime);
+    private void OnGasExplosion(Events.GasExplosionEventArgs args) => InputHelper.Player.SetVibration(0, _gasCloudHitLevel, _gasCloudHitTime);
 
     protected override void OnEnable()
     {
@@ -42,6 +46,7 @@ public class RumbleSystem : GameEventUserObject
         EventManager.Instance.AddListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
         EventManager.Instance.AddListener<Events.PlayerAttackedEventArgs>(this, OnPlayerAttacked);
         EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.AddListener<Events.GasExplosionEventArgs>(this, OnGasExplosion);
     }
 
     public override void Unsubscribe()
@@ -52,6 +57,7 @@ public class RumbleSystem : GameEventUserObject
         EventManager.Instance.RemoveListener<Events.PlayerDeathEventArgs>(this, OnPlayerDeath);
         EventManager.Instance.RemoveListener<Events.PlayerAttackedEventArgs>(this, OnPlayerAttacked);
         EventManager.Instance.RemoveListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.RemoveListener<Events.GasExplosionEventArgs>(this, OnGasExplosion);
     }
 
     private IEnumerator RumbleRoutine()
