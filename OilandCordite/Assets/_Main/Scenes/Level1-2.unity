@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.0065774983, g: 0.01666398, b: 0.08724729, a: 1}
+  m_IndirectSpecularColor: {r: 0.0065122824, g: 0.016503148, b: 0.0880143, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -658,6 +658,142 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1247324132}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &96040054
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938911112}
+    m_Modifications:
+    - target: {fileID: 1309577215973584910, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa4bf35633897b41a91d584c2990f1e, type: 2}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035067, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Name
+      value: AerialGasCloudNight (15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1456
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2056
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1852
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 58
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 154.35406
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ebc188546895cb4aa9377df4c0aae32, type: 3}
+--- !u!4 &96040055 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+    type: 3}
+  m_PrefabInstance: {fileID: 96040054}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &125269155
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -710,6 +846,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (12)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -718,7 +860,7 @@ PrefabInstance:
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1577
+      value: 1570
       objectReference: {fileID: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
@@ -1255,6 +1397,142 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
     type: 3}
   m_PrefabInstance: {fileID: 144759842}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &158929879
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938911112}
+    m_Modifications:
+    - target: {fileID: 1309577215973584910, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa4bf35633897b41a91d584c2990f1e, type: 2}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035067, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Name
+      value: AerialGasCloudNight (20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1640
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1499
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 1966
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 154.35406
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ebc188546895cb4aa9377df4c0aae32, type: 3}
+--- !u!4 &158929880 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+    type: 3}
+  m_PrefabInstance: {fileID: 158929879}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &170076733
 GameObject:
@@ -1816,6 +2094,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (17)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1962,6 +2246,142 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
     type: 3}
   m_PrefabInstance: {fileID: 321021429}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &331974310
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938911112}
+    m_Modifications:
+    - target: {fileID: 1309577215973584910, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa4bf35633897b41a91d584c2990f1e, type: 2}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035067, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Name
+      value: AerialGasCloudNight (23)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1062
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 972
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3094
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 63
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 154.35406
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ebc188546895cb4aa9377df4c0aae32, type: 3}
+--- !u!4 &331974311 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+    type: 3}
+  m_PrefabInstance: {fileID: 331974310}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &362778378 stripped
 Transform:
@@ -2349,6 +2769,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (14)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2878,6 +3304,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (16)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3847,6 +4279,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4718,6 +5156,142 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _audioCues:
   - {fileID: 11400000, guid: 631b5d2f3418f6545800f8fd2d92e137, type: 2}
+--- !u!1001 &682449182
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938911112}
+    m_Modifications:
+    - target: {fileID: 1309577215973584910, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa4bf35633897b41a91d584c2990f1e, type: 2}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035067, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Name
+      value: AerialGasCloudNight (25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1699
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1862
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2643
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 154.35406
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ebc188546895cb4aa9377df4c0aae32, type: 3}
+--- !u!4 &682449183 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+    type: 3}
+  m_PrefabInstance: {fileID: 682449182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &683287767
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4770,6 +5344,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (7)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4915,6 +5495,142 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &718895117
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938911112}
+    m_Modifications:
+    - target: {fileID: 1309577215973584910, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa4bf35633897b41a91d584c2990f1e, type: 2}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035067, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Name
+      value: AerialGasCloudNight (22)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1770.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 635.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2866.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 62
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 273.19125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 273.19125
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 273.19125
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ebc188546895cb4aa9377df4c0aae32, type: 3}
+--- !u!4 &718895118 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+    type: 3}
+  m_PrefabInstance: {fileID: 718895117}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &762079156 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7614293431899421496, guid: b8050151b45bf024692959e24ec63a2a,
@@ -5078,6 +5794,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (10)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5746,6 +6468,142 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 891679525}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &893061233
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938911112}
+    m_Modifications:
+    - target: {fileID: 1309577215973584910, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa4bf35633897b41a91d584c2990f1e, type: 2}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035067, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Name
+      value: AerialGasCloudNight (24)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -622
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1305
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2312
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 154.35406
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ebc188546895cb4aa9377df4c0aae32, type: 3}
+--- !u!4 &893061234 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+    type: 3}
+  m_PrefabInstance: {fileID: 893061233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &903871397
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5873,6 +6731,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (8)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6036,6 +6900,15 @@ Transform:
   - {fileID: 1620793897}
   - {fileID: 1410905718}
   - {fileID: 362778378}
+  - {fileID: 96040055}
+  - {fileID: 1952800814}
+  - {fileID: 158929880}
+  - {fileID: 1109978308}
+  - {fileID: 718895118}
+  - {fileID: 331974311}
+  - {fileID: 893061234}
+  - {fileID: 682449183}
+  - {fileID: 1323931975}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6297,6 +7170,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (4)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6764,6 +7643,142 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1737022470}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1109978307
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938911112}
+    m_Modifications:
+    - target: {fileID: 1309577215973584910, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa4bf35633897b41a91d584c2990f1e, type: 2}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035067, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Name
+      value: AerialGasCloudNight (21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1640
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2232
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 3167
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 61
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 154.35406
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ebc188546895cb4aa9377df4c0aae32, type: 3}
+--- !u!4 &1109978308 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+    type: 3}
+  m_PrefabInstance: {fileID: 1109978307}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1117749154
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6816,6 +7831,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (18)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6905,6 +7926,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 6238409421331593029, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 7132091538953087475, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6913,7 +7939,7 @@ PrefabInstance:
     - target: {fileID: 7132091538953087475, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 770.08
+      value: 779
       objectReference: {fileID: 0}
     - target: {fileID: 7132091538953087475, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
         type: 3}
@@ -7358,6 +8384,11 @@ PrefabInstance:
       value: Building
       objectReference: {fileID: 0}
     - target: {fileID: 6098189109338627040, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6238409421331593029, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
         type: 3}
       propertyPath: m_TagString
       value: Obstacle
@@ -7849,6 +8880,142 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 466595382424290065, guid: 6157256331e832948bd56d500b975eb0,
     type: 3}
   m_PrefabInstance: {fileID: 1901499220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1323931974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938911112}
+    m_Modifications:
+    - target: {fileID: 1309577215973584910, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa4bf35633897b41a91d584c2990f1e, type: 2}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035067, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Name
+      value: AerialGasCloudNight (26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -465
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1862
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2613
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 66
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 154.35406
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 154.35406
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ebc188546895cb4aa9377df4c0aae32, type: 3}
+--- !u!4 &1323931975 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+    type: 3}
+  m_PrefabInstance: {fileID: 1323931974}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1333218777
 PrefabInstance:
@@ -8414,6 +9581,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (11)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9282,6 +10455,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9527,6 +10706,11 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Obstacle
       objectReference: {fileID: 0}
+    - target: {fileID: 6238409421331593029, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
+        type: 3}
+      propertyPath: m_TagString
+      value: Obstacle
+      objectReference: {fileID: 0}
     - target: {fileID: 7132091538953087475, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9535,7 +10719,7 @@ PrefabInstance:
     - target: {fileID: 7132091538953087475, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1972
+      value: 1987
       objectReference: {fileID: 0}
     - target: {fileID: 7132091538953087475, guid: 4b3ceeaf3b60f9a4182d32d243eca74b,
         type: 3}
@@ -9872,6 +11056,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (6)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -9996,6 +11186,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (3)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10529,6 +11725,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10807,6 +12009,142 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7614293431899421496, guid: b8050151b45bf024692959e24ec63a2a,
     type: 3}
   m_PrefabInstance: {fileID: 1948858237}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1952800813
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 938911112}
+    m_Modifications:
+    - target: {fileID: 1309577215973584910, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: material
+      value: 
+      objectReference: {fileID: 2100000, guid: 3aa4bf35633897b41a91d584c2990f1e, type: 2}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035064, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 4.3712707
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035067, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.x
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.y
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577216393035204, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: ShapeModule.m_Scale.z
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Name
+      value: AerialGasCloudNight (19)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -385.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2046.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2474.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 59
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 187.77173
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 187.77173
+      objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 187.77173
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ebc188546895cb4aa9377df4c0aae32, type: 3}
+--- !u!4 &1952800814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
+    type: 3}
+  m_PrefabInstance: {fileID: 1952800813}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &1965140472 stripped
 Transform:
@@ -11338,6 +12676,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (13)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11778,6 +13122,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight (9)
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -11908,6 +13258,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: AerialGasCloudNight
       objectReference: {fileID: 0}
+    - target: {fileID: 1309577217614140381, guid: 6ebc188546895cb4aa9377df4c0aae32,
+        type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: -5487077368411116049, guid: 0000000000000000d000000000000000,
+        type: 0}
     - target: {fileID: 1309577217614140382, guid: 6ebc188546895cb4aa9377df4c0aae32,
         type: 3}
       propertyPath: m_LocalPosition.x
