@@ -9,12 +9,16 @@ Shader "Unlit/DrawStructuredBuffer"
         _RimColor ("Rim Color", Color) = (1, 1, 1, 1)
 		_RimIntensity ("Rim Width", float) = 0.5
 		_SubtractiveLight ("Subtractive Light", float) = 1.0
+		_Alpha ("Alpha", float) = 1.0
     }
 	SubShader 
 	{
 		Pass 
 		{
-			Cull back
+			Tags { "Queue" = "Transparent" "RenderType" = "Transparent" }
+        	Blend One OneMinusSrcAlpha
+        	LOD 100
+			
 			CGPROGRAM
 			#include "UnityCG.cginc"
 			#pragma target 5.0
@@ -39,6 +43,7 @@ Shader "Unlit/DrawStructuredBuffer"
         	uniform float4 _Color;
 			uniform float _RimIntensity;
 			uniform float _SubtractiveLight;
+			uniform float _Alpha;
 			//float4 _LightColor;
 
 			v2f vert(uint id : SV_VertexID)
@@ -61,7 +66,9 @@ Shader "Unlit/DrawStructuredBuffer"
 
 			float4 frag(v2f IN) : COLOR
 			{
-				return ((IN.col + _Color) + unity_AmbientSky) * _SubtractiveLight;
+				float4 col = ((IN.col + _Color) + unity_AmbientSky) * _SubtractiveLight;
+				col.a = _Alpha;
+				return col;
 			}
 
 			ENDCG
