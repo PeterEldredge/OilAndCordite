@@ -10,6 +10,7 @@ public class Settings : MonoBehaviour
 
         QualitySettings.vSyncCount = 0;
         Application.targetFrameRate = 60;
+        AudioListener.pause = false;
     }
 
     private void Update()
