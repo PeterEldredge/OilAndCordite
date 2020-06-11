@@ -1,8 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
+﻿using UnityEngine;
+using UnityEditor;
 
 [CreateAssetMenu(menuName = "Level")]
 public class Level : ScriptableObject
@@ -69,5 +66,7 @@ public class Level : ScriptableObject
     {
         _bestMedal = BaseScoring.Rank.None;
         _highScore = 0;
+
+        EditorUtility.SetDirty(this);
     }
 }
