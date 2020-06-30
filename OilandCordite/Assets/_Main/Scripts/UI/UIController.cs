@@ -3,8 +3,8 @@
 public class UIController : BaseUIController
 {
     private bool _paused =  false;
-    private bool _dead = false;
     private bool _uiHidden = false;
+    private bool _canChangePauseState = true;
 
     private AudioCuePlayer _acp;
     private CanvasGroup _canvasGroup;
@@ -17,7 +17,7 @@ public class UIController : BaseUIController
 
     void Update()
     {
-        if ((InputHelper.Player.GetButtonDown("Start") || InputHelper.Player.GetButtonDown("UICancel")) && !_dead) 
+        if ((InputHelper.Player.GetButtonDown("Start") || InputHelper.Player.GetButtonDown("UICancel")) && _canChangePauseState) 
         {
             if (!_paused) Pause();
             else Resume();
@@ -62,7 +62,7 @@ public class UIController : BaseUIController
 
     #region Events
 
-    protected override void OnPlayerDeath(Events.PlayerDeathEventArgs args) => _dead = true;
+    protected override void OnPlayerDeath(Events.PlayerDeathEventArgs args) => _canChangePauseState = false;
     protected override void OnUIInteraction(Events.UIInteractionEventArgs args) => _acp.PlaySound("Menu_Item_Select");
 
     #endregion
@@ -80,6 +80,10 @@ public class UIController : BaseUIController
         Time.timeScale = 1f;
         SceneController.ReloadScene();
     }
+
+    public void LockPauseState() => _canChangePauseState = false;
+
+    public void UnlockPauseState() => _canChangePauseState = true;
 
     #endregion
 
