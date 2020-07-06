@@ -93,6 +93,7 @@ public class Enemy : MonoBehaviour
             _previousAttackBehavior = _currentAttackBehaviour;
 
             if (_coolDown > 0) _coolDown -= Time.deltaTime;
+
             foreach (AttackBehaviour attack in _attackBehaviours)
             {
                 if (attack.UsageCondition(PlayerData.Instance, _enemyData))
