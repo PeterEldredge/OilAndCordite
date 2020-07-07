@@ -2,38 +2,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeldedLaser : GameEventUserObject
+public class WeldedLaser : WeldedWeapon
 {
-    [SerializeField] private GameObject _Laser;
-    [SerializeField] private Transform _shotOrigin;
-    
-    private void UseLaser(Events.UseWeldedWeaponArgs args) => UseLaser();
-    private void Destroy(Events.RemoveWeldedWeaponArgs args) => Destroy();
+    [SerializeField] private GameObject _projectile; 
 
-    public override void Subscribe()
+    private Transform _shotOrigin;
+    private List<int> _creationPoints;
+
+    public override void Use()
     {
-        EventManager.Instance.AddListener<Events.UseWeldedWeaponArgs>(this, UseLaser);
-        EventManager.Instance.AddListener<Events.RemoveWeldedWeaponArgs>(this, Destroy);
+        Instantiate(_projectile, _shotOrigin);
+        EventManager.Instance.TriggerEvent(new Events.PlayerUseWeaponEventArgs(this));
     }
 
-    public void Update()
+    public override void Remove()
     {
-        if (InputHelper.Player.GetButtonDown("WeldedWeaponUse"))
+        //Later, should play destruction animation and sounds
+        foreach (GameObject weapon in _createdObjects)
         {
-            UseLaser();
+            Destroy(weapon);
         }
     }
 
-    private void UseLaser()
+    public override void Create(List<Transform> transforms)
     {
-        Instantiate(_Laser, _shotOrigin.position, _shotOrigin.rotation);
-    }
-
-    private void Destroy()
-    {
-        EventManager.Instance.RemoveListener<Events.UseWeldedWeaponArgs>(this, UseLaser);
-        EventManager.Instance.RemoveListener<Events.RemoveWeldedWeaponArgs>(this, Destroy);
-
-        Destroy(gameObject);
+        foreach(int point in _creationPoints)
+        {
+            _createdObjects.Add(Instantiate(weaponObject, transforms[point]));
+        }
     }
 }

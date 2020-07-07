@@ -5,9 +5,9 @@ using UnityEngine;
 public abstract class WeldedWeapon : ScriptableObject
 {
     public GameObject weaponObject;
-    public WeldedWeaponType weaponType;
+    protected List<GameObject> _createdObjects;
 
     public abstract void Use();
     public abstract void Remove();
-    public abstract void Create(Transform transform);
+    public abstract void Create(List<Transform> transforms);
 }

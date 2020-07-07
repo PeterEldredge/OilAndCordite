@@ -50,7 +50,7 @@ namespace Events
     public struct RemoveWeldedWeaponArgs : IGameEvent { }
 }
 
-public class WeldedWeaponSystem : GameEventUserObject
+public class WeldedWeaponSlottedSystem : GameEventUserObject
 {
     [SerializeField] private List<WeldedWeapon> _weldedWeaponList;
     [SerializeField] private Transform _leftSlotTransform;
@@ -78,7 +78,7 @@ public class WeldedWeaponSystem : GameEventUserObject
     {
         foreach (WeldedWeapon weapon in _weldedWeaponList)
         {
-            _weldedWeapons.Add(weapon.weaponType, weapon);
+            //_weldedWeapons.Add(weapon.weaponType, weapon);
         }
 
         _slots.Add(Position.LEFT, new Slot(_leftSlotTransform));
@@ -119,7 +119,7 @@ public class WeldedWeaponSystem : GameEventUserObject
     private void Attach(Slot slot, WeldedWeaponType type)
     {
         slot.AddWeapon(_weldedWeapons[type]);
-        slot.weapon.Create(slot.localPosition);
+        //slot.weapon.Create(slot.localPosition);
         slot.SetAvailability(false);
     }
 
