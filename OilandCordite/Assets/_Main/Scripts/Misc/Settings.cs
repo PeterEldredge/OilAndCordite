@@ -8,8 +8,9 @@ public class Settings : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
 
-        QualitySettings.vSyncCount = 0;
-        Application.targetFrameRate = 60;
+        Time.fixedDeltaTime = 1f / Screen.currentResolution.refreshRate;
+        QualitySettings.vSyncCount = 1;
+
         AudioListener.pause = false;
     }
 

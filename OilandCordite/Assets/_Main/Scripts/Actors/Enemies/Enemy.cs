@@ -15,6 +15,16 @@ namespace Events
             Score = score;
         }
     }
+
+    public struct PlayerGetWeaponEventArgs : IGameEvent
+    {
+        public WeldedWeapon Weapon { get; }
+
+        public PlayerGetWeaponEventArgs(WeldedWeapon weapon)
+        {
+            Weapon = weapon;
+        }
+    }
 }
 
 public class Enemy : MonoBehaviour
@@ -28,9 +38,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private List<Transform> _attackPoints;
     [SerializeField] private List<Transform> _spinnerTransforms;
     [SerializeField] private string _defeatedCueName;
-    [SerializeField] private WeldedWeaponType _enemyWeldedWeapon;
+    [SerializeField] private WeldedWeapon _enemyWeldedWeapon;
 
-    public WeldedWeaponType EnemyWeldedWeapon => _enemyWeldedWeapon;
+    public WeldedWeapon EnemyWeldedWeapon => _enemyWeldedWeapon;
 
     private EnemyData _enemyData;
 

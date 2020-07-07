@@ -30,11 +30,11 @@ public class EnemyColliders : MonoBehaviour
             }
 
             EventManager.Instance.TriggerEvent(new Events.PlayerDefeatedEnemyEventArgs(_enemy.HealthGain * attackData.HealthMod, (int)(_enemy.BaseScore * attackData.ScoreMod)));
-
-            //Replace 50 with variable
-            if(PlayerData.Instance.Heat >= 50)
+            
+            //Replace 80 with variable
+            if (PlayerData.Instance.Heat >= 80)
             {
-                EventManager.Instance.TriggerEvent(new Events.WeldedWeaponPickupArgs(_enemy.EnemyWeldedWeapon));
+                //EventManager.Instance.TriggerEvent(new Events.WeldedWeaponPickupArgs(_enemy.EnemyWeldedWeapon));
             }
 
             _enemy.OnDefeated();
