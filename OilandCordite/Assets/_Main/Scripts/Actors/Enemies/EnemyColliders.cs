@@ -34,7 +34,7 @@ public class EnemyColliders : MonoBehaviour
             //Replace 80 with variable
             if (PlayerData.Instance.Heat >= 80)
             {
-                EventManager.Instance.TriggerEvent(new Events.WeldedWeaponPickupArgs(_enemy.EnemyWeldedWeapon));
+                //EventManager.Instance.TriggerEvent(new Events.WeldedWeaponPickupArgs(_enemy.EnemyWeldedWeapon));
             }
 
             _enemy.OnDefeated();
