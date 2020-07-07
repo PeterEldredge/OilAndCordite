@@ -67,6 +67,9 @@ public class Level : ScriptableObject
         _bestMedal = BaseScoring.Rank.None;
         _highScore = 0;
 
+#if UNITY_EDITOR
         EditorUtility.SetDirty(this);
+#endif
+
     }
 }
