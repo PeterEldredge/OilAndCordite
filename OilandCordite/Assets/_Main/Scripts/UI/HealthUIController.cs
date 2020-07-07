@@ -5,12 +5,30 @@ using UnityEngine.UI;
 
 public class HealthUIController : BaseUIController
 {
-    [SerializeField] private Text _healthText;
-    [SerializeField] private Slider _healthBar;
+    [SerializeField] private GameObject _healthBar;
+    [SerializeField] private GameObject _healthMask;
+    [SerializeField] private float _minMaskSize;
+    [SerializeField] private float _maxMaskSize;
+
+    private RectTransform _maskTransform;
+
+    private float _maskRange;
+    private float _maskY;
+
+    private void Awake()
+    {
+        _maskRange = _maxMaskSize - _minMaskSize;
+
+        _maskTransform = _healthMask.GetComponent<RectTransform>();
+        _maskY = _maskTransform.sizeDelta.y;
+    }
 
     private void Update()
     {
-        _healthText.text = "Health:" + PlayerData.Instance.Health.ToString("F0");
-        _healthBar.value = PlayerData.Instance.Health > 0f ? PlayerData.Instance.Health : 0f;
+        _healthBar.transform.parent = transform;
+
+        _maskTransform.sizeDelta = new Vector2(_minMaskSize + Mathf.Clamp01(PlayerData.Instance.Health / 100) * _maskRange, _maskY);
+
+        _healthBar.transform.parent = _healthMask.transform;
     }
 }
