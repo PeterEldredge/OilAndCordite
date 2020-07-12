@@ -7925,7 +7925,7 @@ GameObject:
   - component: {fileID: 2992195593607750072}
   - component: {fileID: 9186685316022205491}
   m_Layer: 0
-  m_Name: Ship
+  m_Name: Ship(New)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7974,20 +7974,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4a469187dcf1244be4fbe4948dde41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  igniteThrust: 200
+  igniteThrust: 60
   turnTorque: {x: 60, y: 45, z: 90}
   rotateMult: 3
-  _maxAcceleration: 150
-  _minAcceleration: -100
-  _maxSpeed: 400
+  _maxAcceleration: 50
+  _minAcceleration: -33.33333
+  _maxSpeed: 100
   _minSmogSpeed: 0
-  _minAirSpeed: 50
+  _minAirSpeed: 20
   _airResistance: 2
   _minSmogIgnitionHeat: 0
-  _gravityMultiplier: 60
+  _gravityMultiplier: 30
   _smogHeatToSpeedRatio: 1
-  _baseGasBoost: 400
-  _noGravitySpeed: 300
+  _baseGasBoost: 60
+  _noGravitySpeed: 60
   _minGasIgnitionHeat: 20
   _positiveAccelerationCurve:
     serializedVersion: 2
