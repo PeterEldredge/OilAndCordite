@@ -4549,7 +4549,7 @@ PrefabInstance:
     - target: {fileID: 9122936526216339451, guid: 580abc34961ff9245832848fb5f10727,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 9122936526216339451, guid: 580abc34961ff9245832848fb5f10727,
         type: 3}
@@ -7848,6 +7848,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2186822143741279198, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2806820251778862983, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[1].time
@@ -7883,6 +7888,16 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.1661663
       objectReference: {fileID: 0}
+    - target: {fileID: 3103560010203654322, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: rotateMult
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3318882801644989247, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4218598060279728160, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7907,6 +7922,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -2015.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5877925920262287274, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6140047779004583012, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -7962,6 +7982,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].value
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7694289912585468523, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794190, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -8121,6 +8146,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBot
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _weldedWeaponType
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 264b8f1da19c7054cb57160b3c6c2a65, type: 3}
@@ -8386,7 +8416,7 @@ Transform:
   m_Children:
   - {fileID: 8622089009830841726}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8622089009521624805
 Transform:
@@ -8683,7 +8713,7 @@ PrefabInstance:
     - target: {fileID: 3025849136805095956, guid: fb88f9df03ff0724c8624fd383b9dd3c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3025849136805095956, guid: fb88f9df03ff0724c8624fd383b9dd3c,
         type: 3}
@@ -8765,7 +8795,7 @@ Transform:
   - {fileID: 739263606}
   - {fileID: 916629037}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &8622089010440032666
 Transform:

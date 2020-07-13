@@ -11,7 +11,8 @@ GameObject:
   - component: {fileID: 5150439640319713075}
   - component: {fileID: 5150439640319713086}
   - component: {fileID: 4611201125614128149}
-  - component: {fileID: 5150439640319713074}
+  - component: {fileID: -2848012311065379050}
+  - component: {fileID: -1820943367042817623}
   m_Layer: 0
   m_Name: PlayerLaser
   m_TagString: Player
@@ -42,7 +43,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5150439640319713087}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.5257623, y: 0.5399637, z: 2.8001192}
@@ -63,7 +64,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5150439640319713074
+--- !u!114 &-2848012311065379050
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -72,12 +73,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 5150439640319713087}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ded21877a2211ba4ab4224ee97de1b42, type: 3}
+  m_Script: {fileID: 11500000, guid: 516b334dfa0a44246bc6e3ffc25332ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
-  _speed: 750
+  _speed: 200
   _aliveTime: 5
+--- !u!114 &-1820943367042817623
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150439640319713087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef8ec33816f61b4987bf8e652426c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _healthMod: 0
+  _healthBonus: 0
+  _scoreMod: 1
+  _scoreBonus: 0
 --- !u!1001 &4218337406140417205
 PrefabInstance:
   m_ObjectHideFlags: 0

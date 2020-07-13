@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WeldedWeaponType { LASER, BLADEWING };
 public enum Position { LEFT, RIGHT, TOP};
 
 public struct Slot{

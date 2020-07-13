@@ -5,9 +5,9 @@ using UnityEngine;
 public class WeaponData : MonoBehaviour
 {
     [SerializeField] private List<Transform> _projectileOrigins;
-    [SerializeField] private int _scoreMod;
+    [SerializeField] private int _scoreBonus;
 
     [HideInInspector] public List<Transform> ProjectileOrigins => _projectileOrigins;
-    [HideInInspector] public int ScoreMult => _scoreMod;
+    [HideInInspector] public int ScoreBonus => _scoreBonus;
 
 }

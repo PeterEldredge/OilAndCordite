@@ -5,30 +5,53 @@ using UnityEngine;
 public class WeldedLaser : WeldedWeapon
 {
     [SerializeField] private GameObject _projectile; 
+    [SerializeField] private int shots;
+    [SerializeField] private Transform _attackPoint;
 
-    private Transform _shotOrigin;
     private List<int> _creationPoints;
+    private int _shotsRemaining;
+
+    
+
+    private AudioCuePlayer _acp; 
+
+    private void Awake()
+    {
+        _acp = GetComponent<AudioCuePlayer>();
+
+    }
 
     public override void Use()
     {
-        Instantiate(_projectile, _shotOrigin);
-        EventManager.Instance.TriggerEvent(new Events.PlayerUseWeaponEventArgs(this));
+        Instantiate(_projectile, _attackPoint.position, Quaternion.LookRotation(_attackPoint.transform.forward));
+        EventManager.Instance.TriggerEvent(new Events.PlayerUseWeaponEventArgs(_type));
+        _shotsRemaining--;
+
+        //Play animation, sound
+
+        if(_shotsRemaining == 0)
+        {
+            EventManager.Instance.TriggerEvent(new Events.PlayerRemoveWeaponEventArgs());
+        }
     }
 
     public override void Remove()
     {
-        //Later, should play destruction animation and sounds
-        foreach (GameObject weapon in _createdObjects)
-        {
-            Destroy(weapon);
-        }
+        //Play animation, sound
+
+        gameObject.SetActive(false);
     }
 
-    public override void Create(List<Transform> transforms)
+    public override void Clean()
     {
-        foreach(int point in _creationPoints)
-        {
-            _createdObjects.Add(Instantiate(weaponObject, transforms[point]));
-        }
+        _shotsRemaining = shots;
     }
+
+    //public override void Create(List<Transform> transforms)
+    //{
+    //    foreach(int point in _creationPoints)
+    //    {
+    //        _createdObjects.Add(Instantiate(weaponObject, transforms[point]));
+    //    }
+    //}
 }

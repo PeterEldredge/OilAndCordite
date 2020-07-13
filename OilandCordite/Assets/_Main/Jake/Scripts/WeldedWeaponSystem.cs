@@ -2,46 +2,92 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum WeldedWeaponType { NONE, LASER }
+
+namespace Events
+{
+
+    public struct PlayerGetWeaponEventArgs : IGameEvent
+    {
+        public WeldedWeaponType WeaponType { get; }
+
+        public PlayerGetWeaponEventArgs(WeldedWeaponType weaponType)
+        {
+            WeaponType = weaponType;
+        }
+    }
+
+    public struct PlayerUseWeaponEventArgs : IGameEvent
+    {
+
+        public WeldedWeaponType WeaponType { get; }
+
+        public PlayerUseWeaponEventArgs(WeldedWeaponType weaponType)
+        {
+            WeaponType = weaponType;
+        }
+    }
+
+    public struct PlayerRemoveWeaponEventArgs : IGameEvent { }
+}
+
 public class WeldedWeaponSystem : GameEventUserObject
 {
-    [SerializeField] private List<Transform> _creationPoints;
-    
+    [SerializeField] private List<WeldedWeapon> _weldedWeapons;
+
+    private Dictionary<WeldedWeaponType, WeldedWeapon> _weaponLibrary; 
     private WeldedWeapon _currentWeapon;
 
-    private void AttachWeldedWeapon(Events.PlayerGetWeaponEventArgs args) => AttachWeapon(args.Weapon);
-    private void RemoveWeldedWeapon(Events.PlayerUseWeaponEventArgs args) => args.Weapon.Remove();
+    private void AttachWeldedWeapon(Events.PlayerGetWeaponEventArgs args) => AttachWeapon(args.WeaponType);
+    private void RemoveWeldedWeapon(Events.PlayerRemoveWeaponEventArgs args) => RemoveWeapon();
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.PlayerGetWeaponEventArgs>(this, AttachWeldedWeapon);
+        EventManager.Instance.AddListener<Events.PlayerRemoveWeaponEventArgs>(this, RemoveWeldedWeapon);
     }
 
     public override void Unsubscribe()
     {
         EventManager.Instance.RemoveListener<Events.PlayerGetWeaponEventArgs>(this, AttachWeldedWeapon);
+        EventManager.Instance.RemoveListener<Events.PlayerRemoveWeaponEventArgs>(this, RemoveWeldedWeapon);
+    }
+
+    private void Start()
+    {
+        foreach (WeldedWeapon weapon in _weldedWeapons)
+        {
+            _weaponLibrary.Add(weapon.WeaponType, weapon);
+        }
     }
 
     private void Update()
     {
-        if (_currentWeapon != null && InputHelper.Player.GetButtonDown("WeldedWeaponUse"))
+        if (InputHelper.Player.GetButtonDown("WeldedWeaponUse") && _currentWeapon != null)
         {
             _currentWeapon.Use();
         }
     }
 
-    private void AttachWeapon( WeldedWeapon weapon )
+    private void AttachWeapon( WeldedWeaponType weapon )
     {
         if (_currentWeapon != null)
         {
-            RemoveWeapon(weapon);
+            RemoveWeapon();
         }
 
-        weapon.Create(_creationPoints);
-        _currentWeapon = weapon;
+        _currentWeapon = _weaponLibrary[weapon];
+        _currentWeapon.gameObject.SetActive(false);
     }
 
-    private void RemoveWeapon( WeldedWeapon weapon )
+    private void RemoveWeapon()
     {
+        if (_currentWeapon == null)
+        {
+            return;
+        }
+
+        _currentWeapon.Remove();
         _currentWeapon = null;
     }
 }
