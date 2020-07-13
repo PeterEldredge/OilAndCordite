@@ -213,6 +213,7 @@ GameObject:
   - component: {fileID: 6089402306166157615}
   - component: {fileID: 6089402306166157616}
   - component: {fileID: 1907999007939836951}
+  - component: {fileID: 1885922894075217809}
   m_Layer: 0
   m_Name: MeleeBot
   m_TagString: Enemy
@@ -229,7 +230,7 @@ Transform:
   m_GameObject: {fileID: 6089402306166157621}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 61, y: 440.7, z: -59}
-  m_LocalScale: {x: 2071.35, y: 2071.35, z: 2071.35}
+  m_LocalScale: {x: 700, y: 700, z: 700}
   m_Children:
   - {fileID: 2955024978760440084}
   - {fileID: 7029431097367500695}
@@ -261,7 +262,7 @@ MonoBehaviour:
   _spinnerTransforms:
   - {fileID: 7029431097367500695}
   _defeatedCueName: Laserbot_Defeat
-  _enemyWeldedWeapon: 0
+  _enemyWeldedWeapon: {fileID: 0}
 --- !u!114 &6089402306166157616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,3 +293,43 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2c47c4c61ac0c3b4f8725691849fe5be, type: 2}
   - {fileID: 11400000, guid: c63ad3288fb46a54c8911e98ca944034, type: 2}
   - {fileID: 11400000, guid: ed6aa854966c10d4eb0a3b4d5a15a341, type: 2}
+--- !u!114 &1885922894075217809
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6089402306166157621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a2d9078dbe17bc4f966c9d2310be047, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pathContainer: {fileID: 0}
+  onStart: 1
+  moveToPath: 0
+  reverse: 0
+  startPoint: 0
+  currentPoint: 0
+  closeLoop: 1
+  localType: 0
+  lookAhead: 0
+  sizeToAdd: 0
+  timeValue: 1
+  speed: 50
+  animEaseType:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  loopType: 1
+  waypoints: []
+  events: []
+  pathType: 1
+  pathMode: 1
+  easeType: 1
+  lockPosition: 0
+  lockRotation: 2
+  waypointRotation: 0
+  rotationTarget: {fileID: 0}

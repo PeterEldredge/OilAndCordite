@@ -9,6 +9,7 @@ public class ShipControlBasic : GameEventUserObject
     [Tooltip("Force to push plane forwards with")] public float igniteThrust = 1000f;
     [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(60f, 45f, 90f);
     [Tooltip("Multiplier for all forces")] public float rotateMult = 3f;
+    [SerializeField] private float _spinoutAddedTurnTorque = 120f;
     [SerializeField] private float _maxAcceleration = 150f;
     [SerializeField] private float _minAcceleration = -125f;
     [SerializeField] private float _maxSpeed = 500f;
@@ -19,6 +20,7 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _gravityMultiplier = 50f;
     [SerializeField] private float _smogHeatToSpeedRatio = .4f;
     [SerializeField] private float _baseGasBoost = 300f;
+    [SerializeField] private float _bounceMult = 20f;
     [Tooltip("The speed at which gravity stops affecting the ship")] [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")] [SerializeField] private float _minGasIgnitionHeat = 20f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
@@ -252,18 +254,21 @@ public class ShipControlBasic : GameEventUserObject
     {
         _spinningOut = true;
         _anim.SetBool("spinningOut", _spinningOut);
+        var initialVelocity = _rb.velocity;
         var targetVelocity = PlayerData.Instance.InSmog ? _minSmogSpeed : _minAirSpeed;
-        turnTorque += new Vector3(0, 30, 0);
+        turnTorque += new Vector3(0, _spinoutAddedTurnTorque, 0);
+
+        float timer = 0;
+
         //Without the +1 here, the ship will get stuck in the Smog Sea for a reason I haven't figured out yet.
-        while (_rb.velocity.magnitude > targetVelocity + 1)
+        while ( timer < .25f )
         {
-            
-            _rb.velocity = Vector3.Lerp(_rb.velocity, new Vector3(0, 0, 0), .1f);
+            timer += Time.deltaTime;
+            _rb.velocity = Vector3.Lerp(initialVelocity, new Vector3(0, 0, 0), timer/.25f);
             yield return null;
-            targetVelocity = PlayerData.Instance.InSmog ? _minSmogSpeed : _minAirSpeed;
         }
         yield return null;
-        turnTorque -= new Vector3(0, 30, 0);
+        turnTorque -= new Vector3(0, _spinoutAddedTurnTorque, 0);
         _spinningOut = false; 
         _anim.SetBool("spinningOut", _spinningOut);
     }
@@ -274,7 +279,7 @@ public class ShipControlBasic : GameEventUserObject
 
         float timer = 0;
 
-        Vector3 bounceVelocity = args.CollisionNormal * 200f;
+        Vector3 bounceVelocity = args.CollisionNormal * _bounceMult;
         Vector3 endVelocity = args.CollisionNormal * _minAirSpeed;
 
         while (timer < .75f)

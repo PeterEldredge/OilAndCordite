@@ -1432,7 +1432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3927153725400747400}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0.41}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5284237363231479431}
@@ -7976,18 +7976,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   igniteThrust: 60
   turnTorque: {x: 60, y: 45, z: 90}
-  rotateMult: 3
+  rotateMult: 2
   _maxAcceleration: 50
   _minAcceleration: -33.33333
-  _maxSpeed: 100
+  _maxSpeed: 150
   _minSmogSpeed: 0
   _minAirSpeed: 20
   _airResistance: 2
   _minSmogIgnitionHeat: 0
   _gravityMultiplier: 30
   _smogHeatToSpeedRatio: 1
-  _baseGasBoost: 60
-  _noGravitySpeed: 60
+  _baseGasBoost: 100
+  _noGravitySpeed: 80
   _minGasIgnitionHeat: 20
   _positiveAccelerationCurve:
     serializedVersion: 2
