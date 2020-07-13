@@ -53,6 +53,11 @@ public class ParticleSystemToMarchingCubes : MonoBehaviour
         return particleLoc;
     }
 
+    void OnBecameVisible()
+    {
+        volume.simulate = true;
+    }
+
     void InitializeIfNeeded()
     {
         if (m_System == null)
