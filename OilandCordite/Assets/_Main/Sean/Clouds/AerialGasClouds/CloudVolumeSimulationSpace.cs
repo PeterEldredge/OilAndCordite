@@ -17,8 +17,7 @@ public class CloudVolumeSimulationSpace : MonoBehaviour
         {
             volume.simulate = true; 
         }
-
-    }   
+    }
 
     private void OnTriggerExit(Collider other) 
     {
