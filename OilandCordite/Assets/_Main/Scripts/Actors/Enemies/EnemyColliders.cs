@@ -31,7 +31,7 @@ public class EnemyColliders : MonoBehaviour
             EventManager.Instance.TriggerEvent(new Events.PlayerDefeatedEnemyEventArgs(_enemy.HealthGain * attackData.HealthMod + attackData.HealthBonus, (int)(_enemy.BaseScore * attackData.ScoreMod) + attackData.ScoreBonus));
             
             //Replace 80 with variable
-            if (PlayerData.Instance.Heat >= 80 && _enemy.WeaponType != WeldedWeaponType.NONE)
+            if (PlayerData.Instance.Heat >= 50 && _enemy.WeaponType != WeldedWeaponType.NONE)
             {
                 EventManager.Instance.TriggerEvent(new Events.PlayerGetWeaponEventArgs(_enemy.WeaponType));
             }
