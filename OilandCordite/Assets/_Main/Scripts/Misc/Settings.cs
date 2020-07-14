@@ -1,28 +1,63 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+
+[System.Serializable]
+public class SaveableSettings
+{
+    public int VSyncCount = 1;
+    public int FramerateCap = 60;
+
+    public int ResolutionWidth;
+    public int ResolutionHeight;
+    public int ResolutionRefresh;
+}
 
 public class Settings : MonoBehaviour
 {
+    private string _filePath => Path.Combine(Application.persistentDataPath, "config.cfg");
+
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
 
-        Time.fixedDeltaTime = 1f / Screen.currentResolution.refreshRate;
-        QualitySettings.vSyncCount = 1;
+        LoadSavedSettings();
 
+        //Audio
         AudioListener.pause = false;
     }
 
-    private void Update()
+    public void SaveCurrentSettings()
     {
-        if (Input.GetKeyDown(KeyCode.V)) QualitySettings.vSyncCount = 1;
-        if (Input.GetKeyDown(KeyCode.B)) QualitySettings.vSyncCount = 2;
-        
-        if (Input.GetKeyDown(KeyCode.N))
+        SaveableSettings settings = new SaveableSettings()
         {
-            QualitySettings.vSyncCount = 0;
-            Application.targetFrameRate = 60;
-        }
+            VSyncCount = QualitySettings.vSyncCount,
+            FramerateCap = Application.targetFrameRate,
+            ResolutionWidth = Screen.currentResolution.width,
+            ResolutionHeight = Screen.currentResolution.height,
+            ResolutionRefresh = Screen.currentResolution.refreshRate,
+        };
+
+        File.WriteAllText(_filePath, JsonUtility.ToJson(settings));
+
+        Debug.Log("Settings Saved: " + _filePath);
+    }
+
+    public void LoadSavedSettings()
+    {
+        if (!File.Exists(_filePath)) SaveCurrentSettings();
+
+        string json = File.ReadAllText(_filePath);
+
+        SaveableSettings settings = JsonUtility.FromJson<SaveableSettings>(json);
+
+        //Resolution
+        Screen.SetResolution(settings.ResolutionWidth, settings.ResolutionHeight, true);
+
+        //Framerate
+        Time.fixedDeltaTime = 1f / settings.ResolutionRefresh;
+        QualitySettings.vSyncCount = settings.VSyncCount;
+        Application.targetFrameRate = settings.FramerateCap;
     }
 }
