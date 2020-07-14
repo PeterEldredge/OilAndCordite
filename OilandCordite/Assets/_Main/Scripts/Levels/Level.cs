@@ -1,16 +1,31 @@
 ﻿using UnityEngine;
 using UnityEditor;
+using System.IO;
+
+[System.Serializable]
+public class SavedLevelData
+{
+    public BaseScoring.Rank BestMedal = BaseScoring.Rank.None;
+    public int HighScore = 0;
+}
 
 [CreateAssetMenu(menuName = "Level")]
 public class Level : ScriptableObject
 {
     public const int NUMBER_OF_RANKS = 4;
 
+    private string _filePath => Path.Combine(Application.persistentDataPath, "Levels", _levelName + ".lvl");
+
     public enum LevelType
     {
         DestroyEnemies,
         RaceToTheFinish,
     }
+
+    #region Data
+
+    [SerializeField] private string _levelName;
+    public string LevelName => _levelName;
 
     [SerializeField] private string _sceneName;
     public string SceneName => _sceneName;
@@ -29,6 +44,10 @@ public class Level : ScriptableObject
 
     [SerializeField] private int[] _scoreRequirements = new int[NUMBER_OF_RANKS];
     public int[] ScoreRequirements => _scoreRequirements;
+
+    #endregion
+
+    #region Saved Data
 
     [Space, Header("Saved Data")]
 
@@ -49,9 +68,13 @@ public class Level : ScriptableObject
                 UpdateMedal(value);
 
                 _highScore = value;
+
+                Save();
             }
         }
     }
+
+    #endregion
 
     private void UpdateMedal(int score)
     {
@@ -64,12 +87,45 @@ public class Level : ScriptableObject
 
     public void Reset()
     {
-        _bestMedal = BaseScoring.Rank.None;
-        _highScore = 0;
+        SavedLevelData emptyData = new SavedLevelData();
+
+        _bestMedal = emptyData.BestMedal;
+        _highScore = emptyData.HighScore;
 
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
 #endif
 
+        Save();
+    }
+
+    public void Save()
+    {
+        if(!Directory.Exists(Path.Combine(Application.persistentDataPath, "Levels")))
+        {
+            Directory.CreateDirectory(Path.Combine(Application.persistentDataPath, "Levels"));
+        }
+
+        SavedLevelData data = new SavedLevelData()
+        {
+            BestMedal = _bestMedal,
+            HighScore = _highScore,
+        };
+
+        File.WriteAllText(_filePath, JsonUtility.ToJson(data));
+
+        Debug.Log(_levelName + " Saved: " + _filePath);
+    }
+
+    public void Load()
+    {
+        if (!File.Exists(_filePath)) Save();
+
+        string json = File.ReadAllText(_filePath);
+
+        SavedLevelData savedData = JsonUtility.FromJson<SavedLevelData>(json);
+
+        _bestMedal = savedData.BestMedal;
+        _highScore = savedData.HighScore;
     }
 }

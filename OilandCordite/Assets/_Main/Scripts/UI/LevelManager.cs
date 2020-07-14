@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using System.IO;
 
 public class LevelManager : MonoBehaviour
 {
@@ -24,8 +25,10 @@ public class LevelManager : MonoBehaviour
     private int _currentLevelIndex = 0;
     private Level _currentLevel;
 
-    private void Start()
+    private void Awake()
     {
+        LoadLevelData();
+
         UpdateCurrentLevel(_currentLevelIndex);
     }
 
@@ -80,6 +83,26 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel()
     {
         SceneController.SwitchScene(_currentLevel.SceneName);
+    }
+
+    //SAVING
+
+    [ContextMenu("Save Levels")]
+    public void SaveLevelData()
+    {
+        foreach (Level level in _levels)
+        {
+            level.Save();
+        }
+    }
+
+    [ContextMenu("Load Levels")]
+    public void LoadLevelData()
+    {
+        foreach (Level level in _levels)
+        {
+            level.Load();
+        }
     }
 
     //DEBUG
