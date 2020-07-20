@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GasCloudData : MonoBehaviour
 {
-    [SerializeField] public float _explosionMagnitude = 1f;
+    [SerializeField] private float _explosionMagnitude = 1f;
 
     public float ExplosionMagnitude => _explosionMagnitude;
 

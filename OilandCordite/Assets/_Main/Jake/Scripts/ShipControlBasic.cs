@@ -56,13 +56,16 @@ public class ShipControlBasic : GameEventUserObject
     private Action _inputCalculation;
 
     private int _invertYControl;
-    bool _shipFlipped = false;
+    private int _shipFlippedControl = 1;
+    private bool _shipFlipped = false;
 
     private float _xMousePosition;
     private float _yMousePosition;
 
     private bool _spinningOut = false;
     private bool _bouncing = false;
+
+    private Vector3 _turnTorqueCopy;
 
     #region Input Calculations 
 
@@ -83,7 +86,7 @@ public class ShipControlBasic : GameEventUserObject
     private void MouseCalculation()
     {
         _xMousePosition += Input.GetAxisRaw("Mouse X") / 100f * _xSensitivity;
-        _yMousePosition += Input.GetAxisRaw("Mouse Y") / 100f * _ySensitivity * _invertYControl;
+        _yMousePosition += Input.GetAxisRaw("Mouse Y") / 100f * _ySensitivity * _invertYControl * _shipFlippedControl;
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -99,7 +102,7 @@ public class ShipControlBasic : GameEventUserObject
 
     private void KeyboardCalculation()
     {
-        _pitch = InputHelper.Player.GetAxis("Pitch") * _invertYControl;
+        _pitch = InputHelper.Player.GetAxis("Pitch") * _invertYControl * _shipFlippedControl;
         _roll = InputHelper.Player.GetAxis("Roll Right") + InputHelper.Player.GetAxis("Roll Left");
         _turn = InputHelper.Player.GetAxis("Turn");
     }
@@ -119,6 +122,7 @@ public class ShipControlBasic : GameEventUserObject
         _rb = GetComponent<Rigidbody>();
         _shipForRotation = GetComponentsInChildren<Transform>()[1];
         _acp = GetComponent<AudioCuePlayer>();
+        _turnTorqueCopy = turnTorque;
     }
 
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
@@ -161,9 +165,9 @@ public class ShipControlBasic : GameEventUserObject
 
     private void FixedUpdate()
     {
-        transform.Rotate(new Vector3(turnTorque.x * _pitch, 0, 0) * rotateMult * Time.fixedDeltaTime, Space.Self);
-        transform.rotation = Quaternion.Euler(new Vector3(0, turnTorque.y * _turn, 0) * rotateMult * Time.fixedDeltaTime) * transform.rotation;
-        _shipForRotation.Rotate(new Vector3(0, 0, -turnTorque.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
+        transform.Rotate(new Vector3(_turnTorqueCopy.x * _pitch, 0, 0) * rotateMult * Time.fixedDeltaTime, Space.Self);
+        transform.rotation = Quaternion.Euler(new Vector3(0, _turnTorqueCopy.y * _turn, 0) * rotateMult * Time.fixedDeltaTime) * transform.rotation;
+        _shipForRotation.Rotate(new Vector3(0, 0, -_turnTorqueCopy.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
 
         float minMomentum = _minSmogSpeed;
         if (!PlayerData.Instance.InSmog)
@@ -220,11 +224,11 @@ public class ShipControlBasic : GameEventUserObject
 
         if (Mathf.Abs(InputHelper.Player.GetAxis("Pitch")) < .2)
         {
-            if (Vector3.Dot(transform.up, Vector3.down) > 0)
+            if (Vector3.Dot(transform.up, Vector3.down) > .3 * _shipFlippedControl)
             {
                 if (!_shipFlipped)
                 {
-                    _invertYControl *= -1;
+                    _shipFlippedControl *= -1;
                     _shipFlipped = true;
                 }
             }
@@ -232,10 +236,16 @@ public class ShipControlBasic : GameEventUserObject
             {
                 if (_shipFlipped)
                 {
-                    _invertYControl *= -1;
+                    _shipFlippedControl *= -1;
                     _shipFlipped = false;
                 }
             }
+        }
+
+        if (!_spinningOut)
+        {
+           _turnTorqueCopy.x = Mathf.Lerp(turnTorque.x, turnTorque.y, 1 - Mathf.Abs(Vector3.Dot(_shipForRotation.transform.up, transform.up)));
+           _turnTorqueCopy.y = Mathf.Lerp(turnTorque.y, turnTorque.x, 1 - Mathf.Abs(Vector3.Dot(_shipForRotation.transform.up, transform.up)));
         }
 
         if(transform.localEulerAngles.z < 179 || transform.localEulerAngles.z > 181) transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);
@@ -256,7 +266,7 @@ public class ShipControlBasic : GameEventUserObject
         _anim.SetBool("spinningOut", _spinningOut);
         var initialVelocity = _rb.velocity;
         var targetVelocity = PlayerData.Instance.InSmog ? _minSmogSpeed : _minAirSpeed;
-        turnTorque += new Vector3(0, _spinoutAddedTurnTorque, 0);
+        _turnTorqueCopy += new Vector3(0, _spinoutAddedTurnTorque, 0);
 
         float timer = 0;
 
@@ -268,7 +278,7 @@ public class ShipControlBasic : GameEventUserObject
             yield return null;
         }
         yield return null;
-        turnTorque -= new Vector3(0, _spinoutAddedTurnTorque, 0);
+        _turnTorqueCopy -= new Vector3(0, _spinoutAddedTurnTorque, 0);
         _spinningOut = false; 
         _anim.SetBool("spinningOut", _spinningOut);
     }
