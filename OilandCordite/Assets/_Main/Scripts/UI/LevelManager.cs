@@ -1,88 +1,78 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
-using System.IO;
 
 public class LevelManager : MonoBehaviour
 {
-    [SerializeField] private Image _levelImage;
+    //[SerializeField] private Image _levelImage;
     [SerializeField] private Image _medalImage;
+
+    [SerializeField] private TextMeshProUGUI _levelName;
     [SerializeField] private TextMeshProUGUI _levelDescription;
-    [SerializeField] private TextMeshProUGUI _missionObjective;
+    [SerializeField] private TextMeshProUGUI _levelNotifications;
     [SerializeField] private TextMeshProUGUI _rankRequirements;
+    [SerializeField] private TextMeshProUGUI _parTime;
+
+    [SerializeField] private TextMeshProUGUI _highScore;
+    [SerializeField] private TextMeshProUGUI _bestTime;
 
     [SerializeField] private List<Sprite> _medals;
+    [SerializeField] private List<LevelSelector> _levels;
 
-    [SerializeField] private List<Level> _levels;
+    [SerializeField] private LevelSelector _startingLevel;
 
-    //Mission Type Strings
-    private const string _DESTROY_ENEMIES_MISSION = "Mission Type: Destroy All Enemies";
-    private const string _RACE_TO_THE_FINISH_MISSION = "Mission Type: Race To The Finish";
-
-    private int _currentLevelIndex = 0;
-    private Level _currentLevel;
+    public Level CurrentLevel { get; private set; }
 
     private void Awake()
     {
         LoadLevelData();
-
-        UpdateCurrentLevel(_currentLevelIndex);
     }
 
-    private void UpdateCurrentLevel(int level)
+    private void Start()
     {
-        int tempIndex = level;
+        _startingLevel.OnClicked();
 
-        if (level < 0 || level >= _levels.Count) return;
+        UpdateUI();
+    }
 
-        _currentLevelIndex = tempIndex;
-        _currentLevel = _levels[_currentLevelIndex];
+    public void UpdateCurrentLevel(Level level)
+    {
+        CurrentLevel = level;
 
         UpdateUI();
     }
 
     private void UpdateUI()
     {
-        _levelImage.sprite = _currentLevel.LevelSprite;
-        _levelDescription.text = _currentLevel.LevelDescription;
-
-        switch(_currentLevel.Type)
-        {
-            case Level.LevelType.DestroyEnemies:
-                _missionObjective.text = _DESTROY_ENEMIES_MISSION;
-                break;
-            case Level.LevelType.RaceToTheFinish:
-                _missionObjective.text = _RACE_TO_THE_FINISH_MISSION;
-                break;
-        }
+        //_levelImage.sprite = _currentLevel.LevelSprite;
+        _levelName.text = CurrentLevel.LevelName;
+        _levelDescription.text = CurrentLevel.LevelDescription;
+        _levelNotifications.text = CurrentLevel.LevelNotificationText;
+        
+        _parTime.text = $"PAR TIME: {CurrentLevel.ParTime} SEC";
+        _highScore.text = $"{CurrentLevel.HighScore}";
+        _bestTime.text = $"{CurrentLevel.BestTime}";
 
         //FIX LATER
-        if ((int)_currentLevel.BestMedal < _medals.Count)
+        if ((int)CurrentLevel.BestMedal < _medals.Count)
         {
             _medalImage.enabled = true;
-            _medalImage.sprite = _medals[(int)_currentLevel.BestMedal];
+            _medalImage.sprite = _medals[(int)CurrentLevel.BestMedal];
         }
         else _medalImage.enabled = false;
 
         //Update Later
         _rankRequirements.text =
-            $"High Score - {_currentLevel.HighScore} {System.Environment.NewLine} {System.Environment.NewLine}" +
-            $"Par Time - {_currentLevel.ParTime} seconds {System.Environment.NewLine} {System.Environment.NewLine}" +
-            $"Emerald - {_currentLevel.ScoreRequirements[0]}{System.Environment.NewLine}" +
-            $"Gold - {_currentLevel.ScoreRequirements[1]}{System.Environment.NewLine}" +
-            $"Silver - {_currentLevel.ScoreRequirements[2]}{System.Environment.NewLine}" +
-            $"Bronze - {_currentLevel.ScoreRequirements[3]}{System.Environment.NewLine}";
+            $"- {CurrentLevel.ScoreRequirements[0]}{System.Environment.NewLine}" +
+            $"- {CurrentLevel.ScoreRequirements[1]}{System.Environment.NewLine}" +
+            $"- {CurrentLevel.ScoreRequirements[2]}{System.Environment.NewLine}" +
+            $"- {CurrentLevel.ScoreRequirements[3]}{System.Environment.NewLine}";
     }
-
-    public void IncrementLevel() => UpdateCurrentLevel(_currentLevelIndex + 1);
-    public void DecrementLevel() => UpdateCurrentLevel(_currentLevelIndex - 1);
 
     public void LoadLevel()
     {
-        SceneController.SwitchScene(_currentLevel.SceneName);
+        SceneController.SwitchScene(CurrentLevel.SceneName);
     }
 
     //SAVING
@@ -90,18 +80,18 @@ public class LevelManager : MonoBehaviour
     [ContextMenu("Save Levels")]
     public void SaveLevelData()
     {
-        foreach (Level level in _levels)
+        foreach (LevelSelector levelSelector in _levels)
         {
-            level.Save();
+            levelSelector.SelectorLevel.Save();
         }
     }
 
     [ContextMenu("Load Levels")]
     public void LoadLevelData()
     {
-        foreach (Level level in _levels)
+        foreach (LevelSelector levelSelector in _levels)
         {
-            level.Load();
+            levelSelector.SelectorLevel.Load();
         }
     }
 
@@ -110,9 +100,9 @@ public class LevelManager : MonoBehaviour
     [ContextMenu("RESET")]
     public void Reset()
     {
-        foreach(Level level in _levels)
+        foreach(LevelSelector levelSelector in _levels)
         {
-            level.Reset();
+            levelSelector.SelectorLevel.Reset();
         }
     }
 }

@@ -7,6 +7,7 @@ public class SavedLevelData
 {
     public BaseScoring.Rank BestMedal = BaseScoring.Rank.None;
     public int HighScore = 0;
+    public int BestTime = 999;
 }
 
 [CreateAssetMenu(menuName = "Level")]
@@ -38,6 +39,9 @@ public class Level : ScriptableObject
 
     [SerializeField, TextArea(4, 8)] private string _levelDescription;
     public string LevelDescription => _levelDescription;
+
+    [SerializeField, TextArea(4, 8)] private string _levelNotificationText;
+    public string LevelNotificationText => _levelNotificationText;
 
     [SerializeField] private float _parTime;
     public float ParTime => _parTime;
@@ -74,6 +78,24 @@ public class Level : ScriptableObject
         }
     }
 
+    [SerializeField] private int _bestTime;
+    public int BestTime
+    {
+        get
+        {
+            return _bestTime;
+        }
+        set
+        {
+            if (value < _bestTime)
+            {
+                _bestTime = value;
+
+                Save();
+            }
+        }
+    }
+
     #endregion
 
     private void UpdateMedal(int score)
@@ -91,6 +113,7 @@ public class Level : ScriptableObject
 
         _bestMedal = emptyData.BestMedal;
         _highScore = emptyData.HighScore;
+        _bestTime = 999;
 
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
@@ -110,6 +133,7 @@ public class Level : ScriptableObject
         {
             BestMedal = _bestMedal,
             HighScore = _highScore,
+            BestTime = _bestTime,
         };
 
         File.WriteAllText(_filePath, JsonUtility.ToJson(data));
@@ -127,5 +151,6 @@ public class Level : ScriptableObject
 
         _bestMedal = savedData.BestMedal;
         _highScore = savedData.HighScore;
+        _bestTime = savedData.BestTime;
     }
 }
