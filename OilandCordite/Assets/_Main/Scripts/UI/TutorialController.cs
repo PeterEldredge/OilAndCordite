@@ -16,8 +16,12 @@ namespace Events
 
 public class TutorialController : GameEventUserObject
 {
+    [SerializeField] private GameObject _textContainer;
+    [SerializeField] private GameObject _tutorialWindow;
+
+    [HideInInspector] public bool tutorialOut = false;
+
     private AudioCuePlayer _acp;
-    [SerializeField]private GameObject _textContainer;
     private TextMeshProUGUI _text;
 
     private void PopUpTutorial(Events.TutorialArgs args) => PopUpTutorial(args.Text);
@@ -39,7 +43,9 @@ public class TutorialController : GameEventUserObject
     void Continue(){
         Time.timeScale = 1f;
         _acp.PlaySound("Menu_Item_Select");
+        tutorialOut = false;
         _textContainer.SetActive(false);
+        _tutorialWindow.SetActive(false);
         CursorSetter.LockCursor();
     }
     //Idea 1, pull up a screen that pauses the game
@@ -47,7 +53,9 @@ public class TutorialController : GameEventUserObject
     {
         Time.timeScale = 0f;
         _acp.PlaySound("Pause");
+        tutorialOut = true;
         _textContainer.SetActive(true);
+        _tutorialWindow.SetActive(true);
         _text.text = text;
         CursorSetter.UnlockCursor();
     }

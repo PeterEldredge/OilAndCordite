@@ -85,7 +85,6 @@ public class WeldedWeaponSystem : GameEventUserObject
             if(weapon.WeaponType == weaponType)
             {
                 weapon.gameObject.SetActive(true);
-                Debug.Log(weapon);
                 _currentWeapons.Add(weapon);
             }
         }
