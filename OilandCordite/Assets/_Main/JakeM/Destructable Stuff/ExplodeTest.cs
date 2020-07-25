@@ -6,17 +6,21 @@ public class ExplodeTest : MonoBehaviour
 {
     [SerializeField]
     private float despawnDelay, minForce, maxForce, radius;
-
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        Explode();
-    }
+    [SerializeField]
+    private GameObject explosionParticles;
+    [SerializeField]
+    private Vector3 explosionOffset;
 
 
     public void Explode()
     {
+        if (explosionParticles != null)
+        {
+            GameObject explosionFX = Instantiate(explosionParticles, transform.position, Quaternion.identity) as GameObject;
+            Debug.Log("Particles Spawned");
+            Destroy(explosionFX, despawnDelay);
+        }
+
         foreach (Transform t in transform)
         {
             var rb = t.GetComponent<Rigidbody>();
@@ -24,10 +28,12 @@ public class ExplodeTest : MonoBehaviour
             if(rb != null)
             {
                 rb.AddExplosionForce(Random.Range(minForce, maxForce), transform.position, radius);
-                //t.GetComponent<MeshCollider>().enabled = false; DISABLE MESH COLLIDER ON PIECES
+
+                Debug.Log("EXPLOOOOSSSSSSIONNN");
             }
 
             Destroy(t.gameObject, despawnDelay);
+            Debug.Log("Destroyed");
         }
         
     }
