@@ -5251,6 +5251,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1846589945}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1896415112 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 394202188338878620, guid: 0dca9f6178850714da20590c07aa1cf6,
+    type: 3}
+  m_PrefabInstance: {fileID: 665686304903660000}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1921904825
 GameObject:
   m_ObjectHideFlags: 0
@@ -6330,6 +6336,12 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3689703530605111971, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _particles
+      value: 
+      objectReference: {fileID: 5750540886688882586, guid: d417219e225249e4ab0730b09e0d659d,
+        type: 3}
     - target: {fileID: 4218598060279728160, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6340,6 +6352,12 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -13.600098
       objectReference: {fileID: 0}
+    - target: {fileID: 4390292151384703266, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _gasExplosionParticles
+      value: 
+      objectReference: {fileID: 3943632958618462342, guid: a7f14349bc043024da30cd544d27794c,
+        type: 3}
     - target: {fileID: 5365513814971153437, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6365,6 +6383,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6380984808024421531, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _overheatingParticles
+      value: 
+      objectReference: {fileID: 1896415112}
     - target: {fileID: 6394874713682102024, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].time
@@ -6428,7 +6451,27 @@ PrefabInstance:
     - target: {fileID: 9122936525702794185, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: upFromShip
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794185, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: lookingPointFromShip
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794185, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: distanceFromShip
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794185, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: rotateSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794185, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: damping
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794190, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -6588,11 +6631,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: LaserBot
-      objectReference: {fileID: 0}
-    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
-        type: 3}
-      propertyPath: _weldedWeaponType
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 264b8f1da19c7054cb57160b3c6c2a65, type: 3}
