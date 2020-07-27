@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
@@ -24,23 +25,34 @@ public class LevelManager : MonoBehaviour
 
     public Level CurrentLevel { get; private set; }
 
+    private MapBorder _mapBorder;
+    private RightInfoBorder _rightInfoBorder;
+
     private void Awake()
     {
+        _mapBorder = GetComponentInChildren<MapBorder>();
+        _rightInfoBorder = GetComponentInChildren<RightInfoBorder>();
+
         LoadLevelData();
+
+        gameObject.SetActive(false);
     }
 
-    private void Start()
+    private void OnEnable()
     {
-        _startingLevel.OnClicked();
-
-        UpdateUI();
+        StartCoroutine(OpenAnims());
     }
 
     public void UpdateCurrentLevel(Level level)
     {
-        CurrentLevel = level;
+        if(CurrentLevel != level)
+        {
+            CurrentLevel = level;
 
-        UpdateUI();
+            UpdateUI();
+
+            if(_rightInfoBorder.gameObject.activeSelf) _rightInfoBorder.Open();
+        }
     }
 
     private void UpdateUI()
@@ -54,11 +66,11 @@ public class LevelManager : MonoBehaviour
         _highScore.text = $"{CurrentLevel.HighScore}";
         _bestTime.text = $"{CurrentLevel.BestTime}";
 
-        //FIX LATER
+        //FIX LATER BECAUSE THIS IS NOT GOOD
         if ((int)CurrentLevel.BestMedal < _medals.Count)
         {
             _medalImage.enabled = true;
-            _medalImage.sprite = _medals[(int)CurrentLevel.BestMedal];
+            _medalImage.sprite = GetMedalImage(CurrentLevel.BestMedal);
         }
         else _medalImage.enabled = false;
 
@@ -73,6 +85,26 @@ public class LevelManager : MonoBehaviour
     public void LoadLevel()
     {
         SceneController.SwitchScene(CurrentLevel.SceneName);
+    }
+
+    private IEnumerator OpenAnims()
+    {
+        _rightInfoBorder.gameObject.SetActive(false);
+
+        _startingLevel.OnClicked();
+        UpdateUI();
+
+        yield return new WaitForSeconds(_mapBorder.Open());
+
+        _rightInfoBorder.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(_rightInfoBorder.Open());
+    }
+
+    //HELPERS
+    public Sprite GetMedalImage(BaseScoring.Rank rank)
+    {
+        return _medals[(int) rank];
     }
 
     //SAVING
