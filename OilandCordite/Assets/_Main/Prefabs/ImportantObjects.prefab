@@ -1883,7 +1883,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160.8, y: -13.6}
+  m_AnchoredPosition: {x: 160.80005, y: -13.599976}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &9122936524982349606
@@ -9811,9 +9811,9 @@ MonoBehaviour:
   distanceFromShip: 1
   upFromShip: 1.5
   lookingPointFromShip: 2
-  rotateSpeed: 10
   damping: 4
   _speedRotationDivisor: 30
+  _maxDistanceFromShip: 20
 --- !u!114 &9122936525702794189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12442,16 +12442,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6089402475814798666, guid: 025246712d6e0fa4996e5a273fc0eff4,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6089402475814798666, guid: 025246712d6e0fa4996e5a273fc0eff4,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6089402475814798667, guid: 025246712d6e0fa4996e5a273fc0eff4,
         type: 3}
