@@ -121,6 +121,7 @@ public class LevelManager : MonoBehaviour
     }
 
     //HELPERS
+
     public Sprite GetMedalImage(BaseScoring.Rank rank)
     {
         return _medals[(int) rank];

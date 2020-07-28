@@ -5,7 +5,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "AttackBehaviour/LaserAttack")]
 public class LaserAttack : AttackBehaviour
 {
+    [SerializeField] int _shotsPerBurst;
+
+    [SerializeField] float _burstFireSpeed;
+    [SerializeField] float _betweenBurstFireSpeed;
+
     [SerializeField] protected GameObject _laser;
+
+    private int currentBurstShots = 0;
 
     public override bool UsageCondition(PlayerData playerData, EnemyData enemyData)
     {
@@ -24,6 +31,22 @@ public class LaserAttack : AttackBehaviour
         else
         {
             Instantiate(_laser, enemyData.WorldSpacePosition, enemyData.WorldSpaceRotation);
+        }
+
+        if(_shotsPerBurst > 0)
+        {
+            currentBurstShots += 1;
+
+            if(currentBurstShots >= _shotsPerBurst)
+            {
+                currentBurstShots = 0;
+
+                CoolDown = _betweenBurstFireSpeed;
+            }
+            else
+            {
+                CoolDown = _burstFireSpeed;
+            }
         }
     }
 
