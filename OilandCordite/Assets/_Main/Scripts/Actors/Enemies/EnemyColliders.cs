@@ -17,7 +17,8 @@ public class EnemyColliders : MonoBehaviour
         var attackData = collider.GetComponent<PlayerAttack>();
         if (attackData != null && !_enemy.Defeated)
         {
-
+            Debug.Log(collider.attachedRigidbody.velocity.magnitude);
+            Debug.Log(_enemy.PiercingSpeed);
             if (collider.CompareTag(Tags.PLAYER) && collider.attachedRigidbody.velocity.magnitude < _enemy.PiercingSpeed)
             {
                 if (_canHitPlayer)
@@ -26,6 +27,7 @@ public class EnemyColliders : MonoBehaviour
                     StartCoroutine(PauseEnemyCollisions());
                     return;
                 }
+                return;
             }
 
             EventManager.Instance.TriggerEvent(new Events.PlayerDefeatedEnemyEventArgs(_enemy.HealthGain * attackData.HealthMod + attackData.HealthBonus, (int)(_enemy.BaseScore * attackData.ScoreMod) + attackData.ScoreBonus));
