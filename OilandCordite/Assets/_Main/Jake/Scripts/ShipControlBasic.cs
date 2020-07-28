@@ -12,7 +12,9 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _spinoutAddedTurnTorque = 120f;
     [SerializeField] private float _maxAcceleration = 150f;
     [SerializeField] private float _minAcceleration = -125f;
-    [SerializeField] private float _maxSpeed = 500f;
+    [SerializeField] private float _baseMaxSpeed = 150f;
+    [SerializeField] private float _explosionMaxSpeed = 200f;
+    [SerializeField] private float _explosionSpeedLossRate = 20f;
     [SerializeField] private float _minSmogSpeed = 0f;
     [SerializeField] private float _minAirSpeed = 50f;
     [SerializeField] private float _airResistance = 1f;
@@ -64,6 +66,9 @@ public class ShipControlBasic : GameEventUserObject
 
     private bool _spinningOut = false;
     private bool _bouncing = false;
+    private bool _gasExploding = false;
+
+    private float _activeMaxSpeed;
 
     private Vector3 _turnTorqueCopy;
 
@@ -172,6 +177,10 @@ public class ShipControlBasic : GameEventUserObject
         float minMomentum = _minSmogSpeed;
         if (!PlayerData.Instance.InSmog)
             minMomentum = _minAirSpeed;
+        if (_rb.velocity.magnitude > _baseMaxSpeed)
+        {
+            _rb.velocity -= transform.forward * _explosionSpeedLossRate * Time.fixedDeltaTime;
+        }
 
         float forwardAngle = transform.forward.y;
         float acceleration;
@@ -218,7 +227,18 @@ public class ShipControlBasic : GameEventUserObject
             float gravity = -_gravityMultiplier * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f)) * Time.fixedDeltaTime;
         
             transform.Translate(new Vector3(0, gravity, 0), Space.World);
-            _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, _maxSpeed) * transform.forward;
+
+            if (_gasExploding && (_rb.velocity.magnitude > _baseMaxSpeed))
+            {
+                _activeMaxSpeed = _explosionMaxSpeed;
+            }
+            else if (_rb.velocity.magnitude <= _baseMaxSpeed)
+            {
+                _activeMaxSpeed = _baseMaxSpeed;
+                _gasExploding = false;
+            }
+                Debug.Log(_activeMaxSpeed);
+            _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, _activeMaxSpeed) * transform.forward;
 
         }
 
@@ -258,6 +278,7 @@ public class ShipControlBasic : GameEventUserObject
     {
         _rb.velocity += transform.forward * (_baseGasBoost + 100 * (PlayerData.Instance.Heat / 100) * args.ExplosionMagnitude);
         _acp.PlaySound("GasExplosion");
+        _gasExploding = true;
     }
 
     private IEnumerator SpinoutRoutine()
