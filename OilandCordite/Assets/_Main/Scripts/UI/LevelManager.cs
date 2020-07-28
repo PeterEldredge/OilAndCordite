@@ -27,11 +27,13 @@ public class LevelManager : MonoBehaviour
 
     private MapBorder _mapBorder;
     private RightInfoBorder _rightInfoBorder;
+    private FadePanel _fadePanel;
 
     private void Awake()
     {
         _mapBorder = GetComponentInChildren<MapBorder>();
         _rightInfoBorder = GetComponentInChildren<RightInfoBorder>();
+        _fadePanel = GetComponentInChildren<FadePanel>();
 
         LoadLevelData();
 
@@ -84,7 +86,7 @@ public class LevelManager : MonoBehaviour
 
     public void LoadLevel()
     {
-        SceneController.SwitchScene(CurrentLevel.SceneName);
+        StartCoroutine(CloseAnims());
     }
 
     private IEnumerator OpenAnims()
@@ -99,6 +101,23 @@ public class LevelManager : MonoBehaviour
         _rightInfoBorder.gameObject.SetActive(true);
 
         yield return new WaitForSeconds(_rightInfoBorder.Open());
+    }
+
+    private IEnumerator CloseAnims()
+    {
+        float fadeTime = _fadePanel.FadeOut();
+
+        float rightInfoTime = _rightInfoBorder.Close();
+        yield return new WaitForSeconds(rightInfoTime);
+
+        _rightInfoBorder.gameObject.SetActive(false);
+
+        float mapBorderTime = _mapBorder.Close();
+        yield return new WaitForSeconds(mapBorderTime);
+
+        yield return new WaitForSeconds(Mathf.Max(fadeTime - rightInfoTime - mapBorderTime, 0));
+
+        SceneController.SwitchScene(CurrentLevel.SceneName);
     }
 
     //HELPERS
