@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4591138376292164725}
   - component: {fileID: 4591138376292164726}
   - component: {fileID: 4591138376292164721}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4591138376723759246}
   - component: {fileID: 4591138376723759247}
   - component: {fileID: 4591138376723759242}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 4591138376448313635}
   - component: {fileID: 4591138376448313692}
   - component: {fileID: 4591138376448313695}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -641,7 +641,7 @@ GameObject:
   - component: {fileID: 4591138376903345146}
   - component: {fileID: 4591138376903345147}
   - component: {fileID: 4591138376903345142}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,7 +850,7 @@ GameObject:
   - component: {fileID: 4591138377204896689}
   - component: {fileID: 4591138377204896690}
   - component: {fileID: 4591138377204896685}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1059,7 +1059,7 @@ GameObject:
   - component: {fileID: 4591138376503420281}
   - component: {fileID: 4591138376503420282}
   - component: {fileID: 4591138376503420277}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1268,7 +1268,7 @@ GameObject:
   - component: {fileID: 4591138377011089972}
   - component: {fileID: 4591138377011089973}
   - component: {fileID: 4591138377011089968}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1477,7 +1477,7 @@ GameObject:
   - component: {fileID: 4591138376672153156}
   - component: {fileID: 4591138376672153157}
   - component: {fileID: 4591138376672153152}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1682,7 +1682,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4052599175315887091}
   - component: {fileID: 4591138376149020546}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: LaserBot_Explode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1744,10 +1744,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnDelay: 3
-  minForce: 50
-  maxForce: 100
-  radius: 1
-  explosionParticles: {fileID: 6076327722709058151, guid: daae003cce6a34e449d5490a3d8e4f3f,
+  minForce: 1200
+  maxForce: 1500
+  radius: 50
+  explosionParticles: {fileID: 5750540886688882586, guid: d417219e225249e4ab0730b09e0d659d,
     type: 3}
   explosionOffset: {x: 0, y: 0, z: 0}
 --- !u!1 &3747064905352580301
@@ -1764,7 +1764,7 @@ GameObject:
   - component: {fileID: 4591138377332097818}
   - component: {fileID: 4591138377332097819}
   - component: {fileID: 4591138377332097814}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1973,7 +1973,7 @@ GameObject:
   - component: {fileID: 4591138375456951582}
   - component: {fileID: 4591138375456951583}
   - component: {fileID: 4591138375456951578}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2182,7 +2182,7 @@ GameObject:
   - component: {fileID: 4591138375888835550}
   - component: {fileID: 4591138375888835551}
   - component: {fileID: 4591138375888835546}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2391,7 +2391,7 @@ GameObject:
   - component: {fileID: 4591138375194791443}
   - component: {fileID: 4591138375194791436}
   - component: {fileID: 4591138375194791439}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2600,7 +2600,7 @@ GameObject:
   - component: {fileID: 4591138376384433165}
   - component: {fileID: 4591138376384433166}
   - component: {fileID: 4591138376384433161}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2809,7 +2809,7 @@ GameObject:
   - component: {fileID: 4591138377094655024}
   - component: {fileID: 4591138377094655025}
   - component: {fileID: 4591138377094655020}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3018,7 +3018,7 @@ GameObject:
   - component: {fileID: 4591138375496379052}
   - component: {fileID: 4591138375496379053}
   - component: {fileID: 4591138375496379048}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3227,7 +3227,7 @@ GameObject:
   - component: {fileID: 4591138376093573050}
   - component: {fileID: 4591138376093573051}
   - component: {fileID: 4591138376093573046}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3436,7 +3436,7 @@ GameObject:
   - component: {fileID: 4591138375913891050}
   - component: {fileID: 4591138375913891051}
   - component: {fileID: 4591138375913891046}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3645,7 +3645,7 @@ GameObject:
   - component: {fileID: 4591138375860838701}
   - component: {fileID: 4591138375860838702}
   - component: {fileID: 4591138375860838697}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3854,7 +3854,7 @@ GameObject:
   - component: {fileID: 4591138376013285196}
   - component: {fileID: 4591138376013285197}
   - component: {fileID: 4591138376013285192}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4063,7 +4063,7 @@ GameObject:
   - component: {fileID: 4591138375700497039}
   - component: {fileID: 4591138375700497032}
   - component: {fileID: 4591138375700497035}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4272,7 +4272,7 @@ GameObject:
   - component: {fileID: 4591138376499696828}
   - component: {fileID: 4591138376499696829}
   - component: {fileID: 4591138376499696824}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4481,7 +4481,7 @@ GameObject:
   - component: {fileID: 4591138376235171364}
   - component: {fileID: 4591138376235171365}
   - component: {fileID: 4591138376235171360}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4690,7 +4690,7 @@ GameObject:
   - component: {fileID: 4591138375356805996}
   - component: {fileID: 4591138375356805997}
   - component: {fileID: 4591138375356805992}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4899,7 +4899,7 @@ GameObject:
   - component: {fileID: 4591138375927405309}
   - component: {fileID: 4591138375927405310}
   - component: {fileID: 4591138375927405305}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5108,7 +5108,7 @@ GameObject:
   - component: {fileID: 4591138375618699303}
   - component: {fileID: 4591138375618699296}
   - component: {fileID: 4591138375618699299}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5317,7 +5317,7 @@ GameObject:
   - component: {fileID: 4591138375631643041}
   - component: {fileID: 4591138375631643042}
   - component: {fileID: 4591138375631643101}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5526,7 +5526,7 @@ GameObject:
   - component: {fileID: 4591138377018950290}
   - component: {fileID: 4591138377018950291}
   - component: {fileID: 4591138377018950286}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5735,7 +5735,7 @@ GameObject:
   - component: {fileID: 4591138376964763031}
   - component: {fileID: 4591138376964763024}
   - component: {fileID: 4591138376964763027}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: shard6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
