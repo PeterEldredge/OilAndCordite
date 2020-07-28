@@ -10,10 +10,11 @@ public class FlightCam : MonoBehaviour
     [SerializeField] private float distanceFromShip = 20f;
     [SerializeField] private float upFromShip = 15f;
     [SerializeField] private float lookingPointFromShip = 15f;
-    //[SerializeField] private float rotateSpeed = 100f;
+    [SerializeField] private float rotateSpeed = 100f;
     [SerializeField] private float damping = 1f;
     [SerializeField] private float _speedRotationDivisor = 30f;
     [SerializeField] private float _maxDistanceFromShip = 20f;
+    [SerializeField] private float _minDistanceFromShip = 5f;
 
     void Start()
     {
@@ -26,14 +27,22 @@ public class FlightCam : MonoBehaviour
         Vector3 moveCamTo = ship.position - ship.forward * distanceFromShip + Vector3.up * upFromShip;
         Vector3 newPosition = transform.position * springBias + moveCamTo * (1f - springBias);
         //transform.position = transform.position * springBias + moveCamTo * (1f - springBias);
+        var newDistance = Vector3.Distance(PlayerData.Instance.WorldSpacePosition, newPosition);
 
-        if (Vector3.Distance(PlayerData.Instance.WorldSpacePosition, newPosition) <= _maxDistanceFromShip)
+        if (newDistance <= _maxDistanceFromShip)
         {
-            transform.position = newPosition;
+            if (newDistance >= _minDistanceFromShip)
+            {
+                transform.position = newPosition;
+            }
+            else
+            {
+                transform.position = ship.position + (transform.position - ship.position).normalized * _minDistanceFromShip;
+            }
         }
         else
         {
-            transform.position = ship.position + (transform.position - ship.position).normalized * _maxDistanceFromShip ;
+            transform.position = ship.position + (transform.position - ship.position).normalized * _maxDistanceFromShip;
         }
 
         var newRotation = Quaternion.LookRotation((ship.position + ship.forward * (PlayerData.Instance.Speed / _speedRotationDivisor) * lookingPointFromShip) - transform.position);
