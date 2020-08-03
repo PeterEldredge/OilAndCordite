@@ -119,7 +119,8 @@ Shader "Hidden/CloudsRaymarch"
 
                 float baseShapeDensity = (shapeFBM + _DensityOffset) * 0.1;
 
-                if (baseShapeDensity > 0.01) {
+                if (baseShapeDensity > 0.01)
+                {
                     float4 detailNoise = _DecompositionTexture.SampleLevel(sampler_DecompositionTexture, noiseSamplePosition, 0);
                     float4 normDecomWeight = decompositionWeight / dot(decompositionWeight, 1);
                     float detailFBM = dot(detailNoise, normDecomWeight);
@@ -148,7 +149,8 @@ Shader "Hidden/CloudsRaymarch"
 
                 float transmittance = -exp(totalDensity * _CloudLightAbsorptionFactor);
                 float lightTrans = _DarknessThreshold - transmittance * (1-_DarknessThreshold); 
-                if (lightTrans > 0 ) {
+                if (lightTrans > 0 )
+                {
                     return lightTrans;
                 }
                 return 0.1f;
@@ -183,7 +185,7 @@ Shader "Hidden/CloudsRaymarch"
 
                 // determine ray steps depending how far camera is away from render volume
                 // TODO: Refactor into fade away 
-                if(distanceToVolume > 100.0f) 
+                if (distanceToVolume > 100.0f) 
                 {
                     step = distanceToVolumeInner / _RaymarchSteps;
                     _CloudLightAbsorptionFactor = _CloudLightAbsorptionFactor;
@@ -199,7 +201,7 @@ Shader "Hidden/CloudsRaymarch"
                 float3 ambientLight = float3(0.0, 0.0, 0.0);
                 float lightTrans = 0.0;
 
-                while(distanceTraveled < maxDistance) 
+                while (distanceTraveled < maxDistance) 
                 {
                     rayPos = volumeEntryPoint + rayDirection * distanceTraveled;
                     float cloudDensity = getNoise(rayPos);
@@ -207,7 +209,8 @@ Shader "Hidden/CloudsRaymarch"
                     totalLight += cloudDensity * step * lightTrans * lightTransmittance;
                     lightTransmittance *= exp(-cloudDensity * step * _CloudLightAbsorptionFactor);
                     distanceTraveled += step;
-                    if(lightTransmittance < 0.1) {
+                    if (lightTransmittance < 0.1)
+                    {
                         break;
                     }
                 }
@@ -215,7 +218,7 @@ Shader "Hidden/CloudsRaymarch"
                 float3 bgCol = tex2D(_MainTex,i.uv);
                 float3 cloudCol = (0.0,0.0,0.0);
 
-                if(totalLight > 0)
+                if (totalLight > 0)
                 {
                     cloudCol = totalLight * _LightColor0 * lerp((unity_AmbientSky * _AmbientSky * _SkyIntensity), (unity_AmbientEquator * _AmbientSky * _EquatorIntensity), totalLight);
                 }
