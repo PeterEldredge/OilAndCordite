@@ -1,4 +1,6 @@
-﻿// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
+﻿// Upgrade NOTE: replaced tex2D unity_Lightmap with UNITY_SAMPLE_TEX2D
+
+// Upgrade NOTE: replaced 'mul(UNITY_MATRIX_MVP,*)' with 'UnityObjectToClipPos(*)'
 
 Shader "Hidden/CloudsRaymarch"
 {
@@ -16,6 +18,7 @@ Shader "Hidden/CloudsRaymarch"
         Pass
         {
             Tags {"Queue"="Transparent" "RenderType"="Transparent" }
+
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -26,6 +29,7 @@ Shader "Hidden/CloudsRaymarch"
             {
                 float4 vertex : POSITION;
                 float2 uv : TEXCOORD0;
+                float3 lm : TEXCOORD2;
             };
 
             struct v2f
@@ -33,6 +37,7 @@ Shader "Hidden/CloudsRaymarch"
                 float2 uv : TEXCOORD0;
                 float4 vertex : SV_POSITION;
                 float3 viewDir : TEXCOORD1;
+                float3 lm : TEXCOORD2;
             };
 
             v2f vert (appdata v)
@@ -42,10 +47,12 @@ Shader "Hidden/CloudsRaymarch"
                 o.uv = mul(v.uv, unity_ObjectToWorld);
                 float3 viewVector = mul(unity_CameraInvProjection, float4(v.uv * 2 - 1, 0, -1));
                 o.viewDir = mul(unity_CameraToWorld, float4(viewVector,0));
+                o.lm = v.lm;
                 return o;
             }
 
             Texture3D<float> _NoiseTexture;
+            Texture3D<float> _DecompositionTexture;
             Texture2D<float> _WeatherMap;
             Texture2D<float> _OffsetNoise;
 
@@ -55,16 +62,26 @@ Shader "Hidden/CloudsRaymarch"
             SamplerState sampler_NoiseTexture;
             SamplerState sampler_WeatherMap;
             SamplerState sampler_OffsetNoise;
+            SamplerState sampler_DecompositionTexture;
             float3 _VolumeBoundaryMin;
             float3 _VolumeBoundaryMax;
+            float _DarknessThreshold;
             float4 noiseWeight;
+            float4 decompositionWeight;
+            float detailNoiseWeight;
             float _InternalNoiseSpeed;
             float _WindSpeed;
             int _RaymarchSteps;
+            int _lightMarchSteps;
             float4 _LightColor0;
             float _DensityOffset;
             float _CloudLightAbsorptionFactor;
             float _CloudScale;
+            float _DensityMultiplier;
+
+            float _AmbientSky;
+            float _EquatorIntensity;
+            float _SkyIntensity;
 
             float4 _CloudPeakColor;
             float4 _CloudBaseColor;
@@ -86,8 +103,7 @@ Shader "Hidden/CloudsRaymarch"
             float getNoise(float3 pos) 
             {
                 float3 volumeSize = _VolumeBoundaryMax - _VolumeBoundaryMin;
-                float noiseSamplePosition = pos + float3(_Time.x * _InternalNoiseSpeed,_Time.x * _InternalNoiseSpeed,_Time.x * _InternalNoiseSpeed);
-                float4 samp = _NoiseTexture.SampleLevel(sampler_NoiseTexture, noiseSamplePosition, 0);
+                float noiseSamplePosition = mul(pos, unity_ObjectToWorld) + float3(_Time.x  * _WindSpeed, _Time.x * _WindSpeed, _Time.x * _WindSpeed);
 
                 float3 weatherUVLoc = mul(pos, unity_ObjectToWorld);
                 float2 weatherUV = (volumeSize.xz + (weatherUVLoc.xz)) / max(volumeSize.x,volumeSize.z) + float3(_Time.x  * _WindSpeed, _Time.x * _WindSpeed, _Time.x * _WindSpeed);
@@ -96,14 +112,46 @@ Shader "Hidden/CloudsRaymarch"
                 float heightRatio = (_VolumeBoundaryMax.y - pos.y) / volumeSize.y;
                 float heightGradient = (weatherMap * heightRatio);
 
+                float4 samp = _NoiseTexture.SampleLevel(sampler_NoiseTexture, noiseSamplePosition , 0);
                 //TODO: Noise decomposition to give clouds better shapes
-                
-                float baseShapeDensity = (samp + _DensityOffset) * heightGradient;
+                float4 normalizedShapeWeights = noiseWeight / dot(noiseWeight, 1);
+                float shapeFBM = samp * heightGradient;
 
-                // dense clouds at heigher altitudes to unify shape
-                if(heightGradient > 0.5)
-                    baseShapeDensity += 10.0;
-                return baseShapeDensity;  
+                float baseShapeDensity = (shapeFBM + _DensityOffset) * 0.1;
+
+                if (baseShapeDensity > 0.01) {
+                    float4 detailNoise = _DecompositionTexture.SampleLevel(sampler_DecompositionTexture, noiseSamplePosition, 0);
+                    float4 normDecomWeight = decompositionWeight / dot(decompositionWeight, 1);
+                    float detailFBM = dot(detailNoise, normDecomWeight);
+
+                    float oneMinusShape = 1 - shapeFBM;
+                    float detailErodeWeight = oneMinusShape * oneMinusShape * oneMinusShape;
+
+                    float cloudDensity = baseShapeDensity - (1-detailFBM) * detailErodeWeight * detailNoiseWeight;
+    
+                    return cloudDensity * _DensityMultiplier * 0.08;
+                }
+                return 0;  
+            }
+
+            float marchLighting(float3 position) {
+                float3 dirToLight =  -1 * _WorldSpaceLightPos0.xyz;
+                float dstInsideBox = rayBoxDest(_VolumeBoundaryMin, _VolumeBoundaryMax, position, 1/dirToLight).y;
+                
+                float stepSize = dstInsideBox/ _lightMarchSteps;
+                float totalDensity = 0;
+
+                for (int step = 0; step < _lightMarchSteps; step ++) {
+                    position += dirToLight * stepSize;
+                    totalDensity += max(0, getNoise(position) * stepSize);
+                }
+
+                float transmittance = -exp(totalDensity * _CloudLightAbsorptionFactor);
+                float lightTrans = _DarknessThreshold - transmittance * (1-_DarknessThreshold); 
+                if (lightTrans > 0 ) {
+                    return lightTrans;
+                }
+                return 0.1f;
             }
 
             // simple volumetric raymarcher to get noise coordinates
@@ -149,20 +197,30 @@ Shader "Hidden/CloudsRaymarch"
                 float distanceTraveled = randomOffset;
                 float maxDistance = min(linearDepth- distanceToVolume, distanceToVolumeInner);
                 float3 ambientLight = float3(0.0, 0.0, 0.0);
+                float lightTrans = 0.0;
 
                 while(distanceTraveled < maxDistance) 
                 {
                     rayPos = volumeEntryPoint + rayDirection * distanceTraveled;
                     float cloudDensity = getNoise(rayPos);
+                    lightTrans = marchLighting(rayPos);
+                    totalLight += cloudDensity * step * lightTrans * lightTransmittance;
                     lightTransmittance *= exp(-cloudDensity * step * _CloudLightAbsorptionFactor);
-                    totalLight += cloudDensity * step * lightTransmittance; 
-                    ambientLight = lerp(_CloudPeakColor, _CloudBaseColor, sqrt(abs(saturate(cloudDensity))));
                     distanceTraveled += step;
+                    if(lightTransmittance < 0.1) {
+                        break;
+                    }
                 }
 
                 float3 bgCol = tex2D(_MainTex,i.uv);
-                float3 cloudCol = totalLight * _LightColor0 * ambientLight;
-                float3 col = bgCol * lightTransmittance + cloudCol;
+                float3 cloudCol = (0.0,0.0,0.0);
+
+                if(totalLight > 0)
+                {
+                    cloudCol = totalLight * _LightColor0 * lerp((unity_AmbientSky * _AmbientSky * _SkyIntensity), (unity_AmbientEquator * _AmbientSky * _EquatorIntensity), totalLight);
+                }
+
+                float3 col = bgCol + cloudCol * lightTrans;
                 return float4(col,0);
             }
             ENDCG

@@ -11,6 +11,7 @@ public class CloudsController : MonoBehaviour
     public Transform cloudContainer;
     private Material material;
     public Texture3D noiseMap;
+    public Texture3D detailMap;
     public Texture2D weatherMap;
     public Texture2D OffsetNoiseMap;
     public Color upperGradient;
@@ -22,9 +23,23 @@ public class CloudsController : MonoBehaviour
     [Range(0, 100)]
     public int raySteps = 1;
 
+    [Range(0,20)]
+    public int lightSteps = 1;
+
     public float cloudScale = 1;
+    public float cloudDensity = 1;
+
+    public Vector4 noiseWeight;
+    public Vector4 decompositionWeight;
+    public float detailNoiseWeight;
 
     public float lightAbsorptionThroughCloud;
+    public float darknessFactor;
+
+    public float equatorIntensity = 1.0f;
+    public float skyIntensity = 1.0f;
+
+    public float tintAmount = 1.0f;
     [ImageEffectOpaque]
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
@@ -36,6 +51,7 @@ public class CloudsController : MonoBehaviour
         material.SetVector("_VolumeBoundaryMax", cloudContainer.position + cloudContainer.localScale / 2);
         material.SetInt("_RaymarchSteps", raySteps);
         material.SetTexture("_NoiseTexture", noiseMap);
+        material.SetTexture("_DecompositionTexture", detailMap);
         material.SetVector("_CloudPeakColor", upperGradient);
         material.SetVector("_CloudBaseColor", lowerGradient);
         material.SetFloat("_DensityOffset", densityOffset);
@@ -45,8 +61,18 @@ public class CloudsController : MonoBehaviour
         material.SetTexture("_OffsetNoise", OffsetNoiseMap);
         material.SetFloat("_CloudLightAbsorptionFactor", lightAbsorptionThroughCloud);
         material.SetFloat("_CloudScale", cloudScale);
+        material.SetFloat("_DarknessThreshold", darknessFactor);
+        material.SetVector("noiseWeight", noiseWeight);
+        material.SetVector("decompositionWeight", decompositionWeight);
+        material.SetFloat("_AmbientSky", RenderSettings.ambientIntensity);
+        material.SetFloat("detailNoiseWeight", detailNoiseWeight);
+        material.SetFloat("_DensityMultiplier", cloudDensity);
+        material.SetInt("_lightMarchSteps", lightSteps);
+        material.SetFloat("_TintAmount", tintAmount);
+        material.SetFloat("_SkyIntensity", skyIntensity);
+        material.SetFloat("_EquatorIntensity", equatorIntensity);
 
-        Graphics.Blit(src, dest, material);        
+        Graphics.Blit(src, dest, material);
    }
 
    public static float Perlin3D(float x, float y, float z) {
