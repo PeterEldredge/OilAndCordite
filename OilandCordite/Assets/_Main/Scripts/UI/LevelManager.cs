@@ -9,6 +9,9 @@ public class LevelManager : MonoBehaviour
     //[SerializeField] private Image _levelImage;
     [SerializeField] private Image _medalImage;
 
+    [SerializeField] private GameObject _mainMenuObj;
+    [SerializeField] private GameObject _settingsMenuObj;
+
     [SerializeField] private TextMeshProUGUI _levelName;
     [SerializeField] private TextMeshProUGUI _levelDescription;
     [SerializeField] private TextMeshProUGUI _levelNotifications;
@@ -29,11 +32,17 @@ public class LevelManager : MonoBehaviour
     private RightInfoBorder _rightInfoBorder;
     private FadePanel _fadePanel;
 
+    private MainMenuManager _mainMenuManager;
+    private SettingsManager _settingsMenuManager;
+
     private void Awake()
     {
         _mapBorder = GetComponentInChildren<MapBorder>();
         _rightInfoBorder = GetComponentInChildren<RightInfoBorder>();
         _fadePanel = GetComponentInChildren<FadePanel>();
+
+        _mainMenuManager = _mainMenuObj.GetComponent<MainMenuManager>();
+        _settingsMenuManager = _settingsMenuObj.GetComponent<SettingsManager>();
 
         LoadLevelData();
 
@@ -89,6 +98,17 @@ public class LevelManager : MonoBehaviour
         StartCoroutine(CloseAnims());
     }
 
+    //I know this is bad
+    public void CloseAndOpenSettings()
+    {
+        StartCoroutine(CloseAndOpenSettingsAnims());
+    }
+
+    public void CloseAndOpenMenu()
+    {
+        StartCoroutine(CloseAndOpenMenuAnims());
+    }
+
     private IEnumerator OpenAnims()
     {
         _rightInfoBorder.gameObject.SetActive(false);
@@ -118,6 +138,36 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSeconds(Mathf.Max(fadeTime - rightInfoTime - mapBorderTime, 0));
 
         SceneController.SwitchScene(CurrentLevel.SceneName);
+    }
+
+    private IEnumerator CloseAndOpenSettingsAnims()
+    {
+        float rightInfoTime = _rightInfoBorder.Close();
+        yield return new WaitForSeconds(rightInfoTime);
+
+        _rightInfoBorder.gameObject.SetActive(false);
+
+        float mapBorderTime = _mapBorder.Close();
+        yield return new WaitForSeconds(mapBorderTime);
+
+        _settingsMenuObj.SetActive(true);
+        _settingsMenuManager.Open(gameObject);
+        gameObject.SetActive(false);
+    }
+
+    private IEnumerator CloseAndOpenMenuAnims()
+    {
+        float rightInfoTime = _rightInfoBorder.Close();
+        yield return new WaitForSeconds(rightInfoTime);
+
+        _rightInfoBorder.gameObject.SetActive(false);
+
+        float mapBorderTime = _mapBorder.Close();
+        yield return new WaitForSeconds(mapBorderTime);
+
+        _mainMenuObj.gameObject.SetActive(true);
+        _mainMenuManager.Open();
+        gameObject.SetActive(false);
     }
 
     //HELPERS

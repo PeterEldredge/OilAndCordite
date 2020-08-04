@@ -14,7 +14,7 @@ public class RaceToTheFinishController : MissionController
     {
         for (int i = 1; i < _checkpoints.Count; i++)
         {
-            _checkpoints[i].gameObject.SetActive(false);
+            //_checkpoints[i].gameObject.SetActive(false);
         }
 
         _audioCuePlayer = GetComponent<AudioCuePlayer>();
@@ -22,7 +22,7 @@ public class RaceToTheFinishController : MissionController
 
     public void TickCheckpoint()
     {
-        _audioCuePlayer.PlayRandomSound("Goal");
+        _audioCuePlayer?.PlayRandomSound("Goal");
 
         _currentPoint += 1;
 
