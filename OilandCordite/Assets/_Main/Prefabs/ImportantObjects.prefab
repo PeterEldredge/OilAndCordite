@@ -3157,7 +3157,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _weldedWeapons:
-  - {fileID: 3204191839042150862}
+  - {fileID: 2615921791667759415}
 --- !u!1 &5994698142930706841
 GameObject:
   m_ObjectHideFlags: 0
@@ -9866,7 +9866,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147484983
+    m_Bits: 2147489079
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -12575,18 +12575,12 @@ TrailRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 2943430727480718934}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &3204191839042150862 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 337410597411166104, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
+--- !u!1 &3318882801644989247 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 492617442649365865, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
     type: 3}
   m_PrefabInstance: {fileID: 2943430727480718934}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3318882801644989247}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 844cf7987c5c09748bdd49e7e991bfbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!96 &3044878603818727502 stripped
 TrailRenderer:
   m_CorrespondingSourceObject: {fileID: 187108652400266776, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
@@ -12599,12 +12593,18 @@ TrailRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 2943430727480718934}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &3318882801644989247 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 492617442649365865, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
+--- !u!114 &2615921791667759415 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 906549142413270881, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
     type: 3}
   m_PrefabInstance: {fileID: 2943430727480718934}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844cf7987c5c09748bdd49e7e991bfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!96 &3475489351576233291 stripped
 TrailRenderer:
   m_CorrespondingSourceObject: {fileID: 1793067621423223581, guid: 5be933958fa2e6d4ea715fcb5d4c0254,

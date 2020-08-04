@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 9030095031906450263}
   - component: {fileID: 6601013202812803451}
   - component: {fileID: 498129703746316455}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube25
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -90,7 +90,7 @@ GameObject:
   - component: {fileID: 5210605212120365232}
   - component: {fileID: 6463384518605077080}
   - component: {fileID: 8665186792030397045}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube28
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 4036616806061128942}
   - component: {fileID: 7158308391568536830}
   - component: {fileID: 7823940027794449708}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube12
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 3498585718925569914}
   - component: {fileID: 5608810658597377356}
   - component: {fileID: 2227864513029663157}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SalvagedBlaster
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -317,6 +317,36 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &535421729675580074
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6834882271268135363}
+  m_Layer: 12
+  m_Name: SalvagedSaw
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6834882271268135363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 535421729675580074}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4972978006240370210}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &541920387057816223
 GameObject:
   m_ObjectHideFlags: 0
@@ -328,7 +358,7 @@ GameObject:
   - component: {fileID: 8103083075592189934}
   - component: {fileID: 2719206722308938141}
   - component: {fileID: 7702237538104649484}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -407,7 +437,7 @@ GameObject:
   - component: {fileID: 499876372002817358}
   - component: {fileID: 8377189115634168240}
   - component: {fileID: 4659644590150989883}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -486,7 +516,7 @@ GameObject:
   - component: {fileID: 6240053280268126396}
   - component: {fileID: 596689255494816115}
   - component: {fileID: 5023867908928676394}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube16
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -563,7 +593,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8472876267808590692}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Armor_Plates
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -604,7 +634,7 @@ GameObject:
   - component: {fileID: 5992883255642007919}
   - component: {fileID: 7746764751210763789}
   - component: {fileID: 6611439254196571621}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube17
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -682,7 +712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4191181618955626993}
   - component: {fileID: 8099163236748980574}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TrailMid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -828,7 +858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2982804285946810690}
   - component: {fileID: 1793067621423223581}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TrailRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -974,7 +1004,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3817595413286653682}
   - component: {fileID: 906549142413270881}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Salvaged Blasters
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1009,12 +1039,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844cf7987c5c09748bdd49e7e991bfbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _type: 0
   _projectile: {fileID: 5150439640319713087, guid: 0a2918ccbba57fb428074bb5fe531da6,
     type: 3}
   shots: 10
   _attackPoints:
   - {fileID: 3287321620955084756}
   - {fileID: 8396998863158671209}
+  _rangeX: 2
+  _rangeY: 2
+  _shotTimer: 0.2
 --- !u!1 &1589573728235202408
 GameObject:
   m_ObjectHideFlags: 0
@@ -1026,7 +1060,7 @@ GameObject:
   - component: {fileID: 565408525383604830}
   - component: {fileID: 1431096594574369606}
   - component: {fileID: 7608368964227666047}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube8
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1103,7 +1137,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3287321620955084756}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1135,7 +1169,7 @@ GameObject:
   - component: {fileID: 9033165910102406855}
   - component: {fileID: 5474453210509254059}
   - component: {fileID: 5154909200751951296}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube21
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1212,7 +1246,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4972978006240370210}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeldedWeapons
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1231,6 +1265,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3817595413286653682}
+  - {fileID: 6834882271268135363}
   m_Father: {fileID: 5284237363231479431}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1243,7 +1278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4761101750361422339}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Cage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1295,7 +1330,7 @@ GameObject:
   - component: {fileID: 879411275530057400}
   - component: {fileID: 5700676240596837955}
   - component: {fileID: 7427518608534804567}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube22
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1372,7 +1407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8396998863158671209}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: AttackPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1404,7 +1439,7 @@ GameObject:
   - component: {fileID: 2149858110490739628}
   - component: {fileID: 5512942799912190310}
   - component: {fileID: 3556261095957147867}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube23
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1483,7 +1518,7 @@ GameObject:
   - component: {fileID: 3253567540008250713}
   - component: {fileID: 8688797858029834223}
   - component: {fileID: 6927554256847169248}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube18
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1562,7 +1597,7 @@ GameObject:
   - component: {fileID: 4461026344648946618}
   - component: {fileID: 6389903668904855591}
   - component: {fileID: 2508498960222807191}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube26
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1639,7 +1674,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1080440451583452757}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ShipHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1672,7 +1707,7 @@ GameObject:
   - component: {fileID: 6199529738442997526}
   - component: {fileID: 1217257344769457968}
   - component: {fileID: 6988974035727789828}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube19
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1750,7 +1785,7 @@ GameObject:
   m_Component:
   - component: {fileID: 39932311020957658}
   - component: {fileID: 1020908104211233233}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HeatTrailRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1891,7 +1926,7 @@ GameObject:
   - component: {fileID: 1999635201970919141}
   - component: {fileID: 5373181591051876891}
   - component: {fileID: 5370161402281275932}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ShipObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2010,7 +2045,7 @@ GameObject:
   - component: {fileID: 2036877765813209025}
   - component: {fileID: 8995652554182228951}
   - component: {fileID: 7283128153503971341}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: ShipBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2089,7 +2124,7 @@ GameObject:
   - component: {fileID: 2209195824376497277}
   - component: {fileID: 7115072243964796505}
   - component: {fileID: 8090461519568138579}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2168,7 +2203,7 @@ GameObject:
   - component: {fileID: 5653135166515334985}
   - component: {fileID: 8444993537005399051}
   - component: {fileID: 7981074889314004647}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube13
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2247,7 +2282,7 @@ GameObject:
   - component: {fileID: 3604850021789361896}
   - component: {fileID: 7307167173582765170}
   - component: {fileID: 6082090631186807357}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube24
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2326,7 +2361,7 @@ GameObject:
   - component: {fileID: 3452629281568461409}
   - component: {fileID: 659067185894204177}
   - component: {fileID: 7269678610491737033}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: SalvagedBlaster (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2406,7 +2441,7 @@ GameObject:
   - component: {fileID: 6448157429964022832}
   - component: {fileID: 517002472525005329}
   - component: {fileID: 1012541240593201599}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube9
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2485,7 +2520,7 @@ GameObject:
   - component: {fileID: 4372598924698094888}
   - component: {fileID: 2038934471818216322}
   - component: {fileID: 2062482524270976457}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2564,7 +2599,7 @@ GameObject:
   - component: {fileID: 1665602593627535347}
   - component: {fileID: 6218344707219696121}
   - component: {fileID: 7145979012675714295}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube11
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2643,7 +2678,7 @@ GameObject:
   - component: {fileID: 5000228149842629563}
   - component: {fileID: 2397148557408262810}
   - component: {fileID: 5006955088519835349}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube20
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2722,7 +2757,7 @@ GameObject:
   - component: {fileID: 2896167368674615633}
   - component: {fileID: 6640785402707537689}
   - component: {fileID: 8326697594142555575}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube15
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2801,7 +2836,7 @@ GameObject:
   - component: {fileID: 7368612836856497253}
   - component: {fileID: 2621734854751818906}
   - component: {fileID: 4234407631247572745}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2880,7 +2915,7 @@ GameObject:
   - component: {fileID: 4778372885869148857}
   - component: {fileID: 8748183784032845610}
   - component: {fileID: 9199772532405104435}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube10
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2959,7 +2994,7 @@ GameObject:
   - component: {fileID: 6616566579052186067}
   - component: {fileID: 3737551177405916915}
   - component: {fileID: 2171196351338696597}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Embers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7712,7 +7747,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5921995823407555056}
   - component: {fileID: 6875700849490552387}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: TrailLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7859,7 +7894,7 @@ GameObject:
   - component: {fileID: 150882830185862696}
   - component: {fileID: 8586946657988011011}
   - component: {fileID: 4469986708244241022}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7937,7 +7972,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6658836171912514439}
   - component: {fileID: 2487262804074504248}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: CloudCollider
   m_TagString: CloudCollider
   m_Icon: {fileID: 0}
@@ -7983,7 +8018,7 @@ GameObject:
   - component: {fileID: 2955448632717094936}
   - component: {fileID: 6834699544133777405}
   - component: {fileID: 2681320432315595891}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube7
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8062,7 +8097,7 @@ GameObject:
   - component: {fileID: 7121117379644662270}
   - component: {fileID: 1542633908412304756}
   - component: {fileID: 4857202181482438539}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube30
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8141,7 +8176,7 @@ GameObject:
   - component: {fileID: 7654529524577850205}
   - component: {fileID: 8991854113312458178}
   - component: {fileID: 3312285509927961809}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube27
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8230,7 +8265,7 @@ GameObject:
   - component: {fileID: 2992195593607750072}
   - component: {fileID: 9186685316022205491}
   - component: {fileID: 3765628077235668914}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Ship(New)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8715,7 +8750,7 @@ GameObject:
   - component: {fileID: 7817201215412280542}
   - component: {fileID: 7959720152454858811}
   - component: {fileID: 2802177471664994157}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: pCube4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8793,7 +8828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3411019963398102452}
   - component: {fileID: 187108652400266776}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: HeatTrailLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}

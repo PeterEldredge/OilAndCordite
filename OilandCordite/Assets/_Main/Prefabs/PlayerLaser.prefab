@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4611201125614128149}
   - component: {fileID: -2848012311065379050}
   - component: {fileID: -1820943367042817623}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: PlayerLaser
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -94,6 +94,7 @@ MonoBehaviour:
   _healthBonus: 0
   _scoreMod: 2
   _scoreBonus: 0
+  _takesWeapon: 0
 --- !u!1001 &4218337406140417205
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -180,6 +181,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Bolt
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6a04a91e2117d6040b710b75179a8a1f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a04a91e2117d6040b710b75179a8a1f, type: 3}

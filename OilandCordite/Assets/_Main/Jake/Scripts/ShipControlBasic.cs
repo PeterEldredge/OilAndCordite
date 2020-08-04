@@ -28,8 +28,10 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _smogHeatToSpeedRatio = .4f;
     [SerializeField] private float _baseGasBoost = 300f;
     [SerializeField] private float _bounceMult = 20f;
-    [Tooltip("The speed at which gravity stops affecting the ship")] [SerializeField] private float _noGravitySpeed = 200f;
-    [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")] [SerializeField] private float _minGasIgnitionHeat = 20f;
+    [Tooltip("The speed at which gravity stops affecting the ship")]
+    [SerializeField] private float _noGravitySpeed = 200f;
+    [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")]
+    [SerializeField] private float _minGasIgnitionHeat = 20f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
     [SerializeField] private AnimationCurve _gravityAccelerationCurve;

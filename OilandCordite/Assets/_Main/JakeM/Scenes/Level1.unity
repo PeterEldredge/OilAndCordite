@@ -4286,6 +4286,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1988466288, guid: 0dca9f6178850714da20590c07aa1cf6, type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 1050066344594263826, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -4315,6 +4319,26 @@ PrefabInstance:
         type: 3}
       propertyPath: _type
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615921791667759415, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _rangeX
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615921791667759415, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _rangeY
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615921791667759415, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: shots
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2615921791667759415, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _shotTimer
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4218598060279728160, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -4420,6 +4444,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794191, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 2147489079
       objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}

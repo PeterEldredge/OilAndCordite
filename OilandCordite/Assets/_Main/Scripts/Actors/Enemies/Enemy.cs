@@ -33,7 +33,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private WeldedWeaponType _weldedWeaponType;
     [SerializeField] private GameObject _UIElement;
     [SerializeField] private float _minDistance=5000;
-    [HideInInspector] public WeldedWeaponType WeaponType => _weldedWeaponType;
+
     private EnemyData _enemyData;
 
     private MeshRenderer _renderer;
@@ -50,6 +50,7 @@ public class Enemy : MonoBehaviour
     public float HealthGain => _healthGain;
     public int BaseScore => _baseScore;
     public bool Defeated { get; private set; } = false;
+    public WeldedWeaponType WeaponType => _weldedWeaponType;
 
     private void Awake()
     {
@@ -88,6 +89,8 @@ public class Enemy : MonoBehaviour
         _acp.PlaySound(_defeatedCueName);
 
         Instantiate(_particles, transform.position, Quaternion.Euler(Vector3.zero));
+
+        _UIElement.SetActive(false);
 
         Destroy(gameObject, 5f);
     }

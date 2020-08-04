@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class WeldedLaser : WeldedWeapon
 {
-    [SerializeField] private GameObject _projectile; 
-    [SerializeField] private int shots;
+    [SerializeField] private GameObject _projectile;
+    [SerializeField] private int shots = 20;
     [SerializeField] private List<Transform> _attackPoints;
+    [SerializeField] private float _rangeX = 2f;
+    [SerializeField] private float _rangeY = 2f;
+    [SerializeField] private float _shotTimer = .2f;
 
     private List<int> _creationPoints;
     private int _shotsRemaining;
@@ -23,6 +26,7 @@ public class WeldedLaser : WeldedWeapon
     {
         //Play Animations and Sounds
 
+        Clean();
         gameObject.SetActive(true);
     }
 
@@ -45,6 +49,7 @@ public class WeldedLaser : WeldedWeapon
     public override void Clean()
     {
         _shotsRemaining = shots;
+        _used = false;
     }
 
     private IEnumerator ScatterShots()
@@ -57,9 +62,14 @@ public class WeldedLaser : WeldedWeapon
         while (_shotsRemaining >= 0)
         {
             ap = _attackPoints[count++ % 2];
-            Instantiate(_projectile, ap.position, Quaternion.LookRotation(ap.transform.forward));
+
+            Vector3 euler = new Vector3(0, 0, 0);
+            euler.x = Random.Range(-_rangeX, _rangeX);
+            euler.y = Random.Range(-_rangeY, _rangeY);
+
+            Instantiate(_projectile, ap.position, Quaternion.LookRotation(ap.transform.forward + euler));
             _shotsRemaining--;
-            yield return new WaitForSeconds(.2f);
+            yield return new WaitForSeconds(_shotTimer);
         }
 
         EventManager.Instance.TriggerEvent(new Events.PlayerRemoveWeaponEventArgs());
