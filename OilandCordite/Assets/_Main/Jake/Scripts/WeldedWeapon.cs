@@ -4,9 +4,7 @@ using UnityEngine;
 
 public abstract class WeldedWeapon : MonoBehaviour
 {
-    //public GameObject weaponObject;
-    protected WeldedWeaponType _type;
-    //protected List<GameObject> _createdObjects;
+    [SerializeField] private WeldedWeaponType _type;
 
     public WeldedWeaponType WeaponType => _type;
 

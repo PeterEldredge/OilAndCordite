@@ -12,13 +12,10 @@ public class WeldedLaser : WeldedWeapon
     private int _shotsRemaining;
     private bool _used = false;
 
-    
-
     private AudioCuePlayer _acp; 
 
     private void Awake()
     {
-        _type = WeldedWeaponType.LASER; 
         _acp = GetComponent<AudioCuePlayer>();
     }
 
@@ -62,7 +59,7 @@ public class WeldedLaser : WeldedWeapon
             ap = _attackPoints[count++ % 2];
             Instantiate(_projectile, ap.position, Quaternion.LookRotation(ap.transform.forward));
             _shotsRemaining--;
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.2f);
         }
 
         EventManager.Instance.TriggerEvent(new Events.PlayerRemoveWeaponEventArgs());

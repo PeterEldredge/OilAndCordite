@@ -2733,6 +2733,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a95f61af3b5c7d4a848d96a514117a7, type: 3}
+--- !u!114 &1085558776 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2615921791667759415, guid: 0dca9f6178850714da20590c07aa1cf6,
+    type: 3}
+  m_PrefabInstance: {fileID: 1645358010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 844cf7987c5c09748bdd49e7e991bfbd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1091096519 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
@@ -4274,6 +4286,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1050066344594263826, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 160.7998
+      objectReference: {fileID: 0}
     - target: {fileID: 1135842381469260130, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -4294,15 +4311,20 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2615921791667759415, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _type
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4218598060279728160, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 160.80005
+      value: 160.7998
       objectReference: {fileID: 0}
     - target: {fileID: 4218598060279728160, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -13.599976
+      value: -13.600098
       objectReference: {fileID: 0}
     - target: {fileID: 5365513814971153437, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -4344,6 +4366,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 90
       objectReference: {fileID: 0}
+    - target: {fileID: 5517578659161198241, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _weldedWeapons.Array.data[0]
+      value: 
+      objectReference: {fileID: 1085558776}
     - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: cloudContainer

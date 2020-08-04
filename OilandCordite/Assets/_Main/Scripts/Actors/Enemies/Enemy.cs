@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Events
 {
@@ -30,9 +31,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private List<Transform> _spinnerTransforms;
     [SerializeField] private string _defeatedCueName;
     [SerializeField] private WeldedWeaponType _weldedWeaponType;
-    [HideInInspector] public WeldedWeaponType WeaponType => _weldedWeaponType;
     [SerializeField] private GameObject _UIElement;
     [SerializeField] private float _minDistance=5000;
+    [HideInInspector] public WeldedWeaponType WeaponType => _weldedWeaponType;
     private EnemyData _enemyData;
 
     private MeshRenderer _renderer;

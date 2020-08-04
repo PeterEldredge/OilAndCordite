@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-public enum WeldedWeaponType { NONE, LASER }
+public enum WeldedWeaponType { NONE, LASER, SAW};
 
 namespace Events
 {
@@ -55,11 +56,9 @@ public class WeldedWeaponSystem : GameEventUserObject
 
     private void Start()
     {
-        Debug.Log(_weldedWeapons.Count);
         foreach (WeldedWeapon weapon in _weldedWeapons)
         {
-            Debug.Log(weapon);
-            _weaponDictionary.Add(weapon.WeaponType, weapon);
+            _weaponDictionary.Add( weapon.WeaponType, weapon);
         }
     }
 
@@ -70,15 +69,15 @@ public class WeldedWeaponSystem : GameEventUserObject
             _currentWeapon?.Use();
         }
     }
-
-    private void AttachWeapon( WeldedWeaponType weaponType )
+    
+    private void AttachWeapon( WeldedWeaponType type )
     {
         if (_currentWeapon != null)
         {
             RemoveWeapon();
         }
-
-        _currentWeapon = _weaponDictionary[weaponType];
+        Debug.Log(type);
+        _currentWeapon = _weaponDictionary[type];
         _currentWeapon.Create();
     }
 
