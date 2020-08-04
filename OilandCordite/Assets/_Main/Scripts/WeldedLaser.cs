@@ -6,10 +6,11 @@ public class WeldedLaser : WeldedWeapon
 {
     [SerializeField] private GameObject _projectile; 
     [SerializeField] private int shots;
-    [SerializeField] private Transform _attackPoint;
+    [SerializeField] private List<Transform> _attackPoints;
 
     private List<int> _creationPoints;
     private int _shotsRemaining;
+    private bool _used = false;
 
     
 
@@ -17,21 +18,23 @@ public class WeldedLaser : WeldedWeapon
 
     private void Awake()
     {
+        _type = WeldedWeaponType.LASER; 
         _acp = GetComponent<AudioCuePlayer>();
+    }
 
+    public override void Create()
+    {
+        //Play Animations and Sounds
+
+        gameObject.SetActive(true);
     }
 
     public override void Use()
     {
-        Instantiate(_projectile, _attackPoint.position, Quaternion.LookRotation(_attackPoint.transform.forward));
-        EventManager.Instance.TriggerEvent(new Events.PlayerUseWeaponEventArgs(_type));
-        _shotsRemaining--;
-
-        //Play animation, sound
-
-        if(_shotsRemaining == 0)
+        if (!_used)
         {
-            EventManager.Instance.TriggerEvent(new Events.PlayerRemoveWeaponEventArgs());
+            StartCoroutine(ScatterShots());
+            _used = true;
         }
     }
 
@@ -47,11 +50,22 @@ public class WeldedLaser : WeldedWeapon
         _shotsRemaining = shots;
     }
 
-    //public override void Create(List<Transform> transforms)
-    //{
-    //    foreach(int point in _creationPoints)
-    //    {
-    //        _createdObjects.Add(Instantiate(weaponObject, transforms[point]));
-    //    }
-    //}
+    private IEnumerator ScatterShots()
+    {
+
+        //EventManager.Instance.TriggerEvent(new Events.PlayerUseWeaponEventArgs(_type));
+        int count = 0;
+        Transform ap;
+
+        while (_shotsRemaining >= 0)
+        {
+            ap = _attackPoints[count++ % 2];
+            Instantiate(_projectile, ap.position, Quaternion.LookRotation(ap.transform.forward));
+            _shotsRemaining--;
+            yield return new WaitForSeconds(.5f);
+        }
+
+        EventManager.Instance.TriggerEvent(new Events.PlayerRemoveWeaponEventArgs());
+    }
+
 }

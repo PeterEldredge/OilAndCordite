@@ -35,8 +35,8 @@ public class WeldedWeaponSystem : GameEventUserObject
 {
     [SerializeField] private List<WeldedWeapon> _weldedWeapons;
 
-    private Dictionary<WeldedWeaponType, WeldedWeapon> _weaponLibrary; 
-    private List<WeldedWeapon> _currentWeapons = new List<WeldedWeapon>();
+    private Dictionary<WeldedWeaponType, WeldedWeapon> _weaponDictionary = new Dictionary<WeldedWeaponType, WeldedWeapon>(); 
+    private WeldedWeapon _currentWeapon;
 
     private void AttachWeldedWeapon(Events.PlayerGetWeaponEventArgs args) => AttachWeapon(args.WeaponType);
     private void RemoveWeldedWeapon(Events.PlayerRemoveWeaponEventArgs args) => RemoveWeapon();
@@ -53,60 +53,39 @@ public class WeldedWeaponSystem : GameEventUserObject
         EventManager.Instance.RemoveListener<Events.PlayerRemoveWeaponEventArgs>(this, RemoveWeldedWeapon);
     }
 
-    private void Awake()
+    private void Start()
     {
-        //foreach (WeldedWeapon weapon in _weldedWeapons)
-        //{
-        //    _weaponLibrary.Add(weapon.WeaponType, weapon);
-        //}
+        Debug.Log(_weldedWeapons.Count);
+        foreach (WeldedWeapon weapon in _weldedWeapons)
+        {
+            Debug.Log(weapon);
+            _weaponDictionary.Add(weapon.WeaponType, weapon);
+        }
     }
 
     private void Update()
     {
-        if (InputHelper.Player.GetButtonDown("WeldedWeaponUse") && _currentWeapons != null)
+        if (InputHelper.Player.GetButtonDown("WeldedWeaponUse"))
         {
-            //_currentWeapon.Use();
-            foreach (WeldedWeapon weapon in _currentWeapons)
-            {
-                weapon.Use();
-            }
+            _currentWeapon?.Use();
         }
     }
 
     private void AttachWeapon( WeldedWeaponType weaponType )
     {
-        if (_currentWeapons != null)
+        if (_currentWeapon != null)
         {
             RemoveWeapon();
         }
 
-        foreach (WeldedWeapon weapon in _weldedWeapons)
-        {
-            if(weapon.WeaponType == weaponType)
-            {
-                weapon.gameObject.SetActive(true);
-                _currentWeapons.Add(weapon);
-            }
-        }
-
-        //_currentWeapons = _weaponLibrary[weaponType];
-        //_currentWeapons.gameObject.SetActive(true);
+        _currentWeapon = _weaponDictionary[weaponType];
+        _currentWeapon.Create();
     }
 
     private void RemoveWeapon()
     {
-        if (_currentWeapons == null)
-        {
-            return;
-        }
 
-        foreach (WeldedWeapon weapon in _currentWeapons)
-        {
-            weapon.Remove();
-        }
-        _currentWeapons.Clear();
-
-        //_currentWeapons.Remove();
-        //_currentWeapons = null;
+        _currentWeapon?.Remove();
+        _currentWeapon = null;
     }
 }
