@@ -5,6 +5,9 @@ using UnityEngine;
 public class CameraEffectSystem : MonoBehaviour
 {
     public Material IgniteImageEffectMaterial;
+    public CloudFadeImageEffect cloudFadeImageEffect;
+
+#region Ignition Effect Settings
 
     [SerializeField] private float ignitionMaxSoftness = 0.65f;
     [SerializeField] private float ignitionMinSoftness = 0.32f;
@@ -15,10 +18,16 @@ public class CameraEffectSystem : MonoBehaviour
     [SerializeField] private float fovMaxDecrease = 5.0f;
     [SerializeField] private float fovStep = 0.1f;
 
+#endregion
+
+#region FOV can Cam Settings
+
     private float currentFov;
     private float maxFov;
     private float minFov;
     private Camera _main;
+
+#endregion
 
     public void UpdateIgniteEffectColor() 
     {

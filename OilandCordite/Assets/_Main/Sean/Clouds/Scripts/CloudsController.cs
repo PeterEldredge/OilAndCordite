@@ -29,8 +29,6 @@ public class CloudsController : MonoBehaviour
     public float cloudScale = 1;
     public float cloudDensity = 1;
 
-    public Vector4 noiseWeight;
-    public Vector4 decompositionWeight;
     public float detailNoiseWeight;
 
     public float lightAbsorptionThroughCloud;
@@ -40,6 +38,17 @@ public class CloudsController : MonoBehaviour
     public float skyIntensity = 1.0f;
 
     public float tintAmount = 1.0f;
+
+    [Header("Cloud Fade Effect Settings")]
+    public float maxCameraDistance;
+    public float minCameraDistance;
+
+    private float currentDistanceToClouds;
+    private CloudFadeImageEffect _cloudFade;
+    private Color _skyColor;
+    private Color _equatorColor;
+    private Transform _main;
+
     [ImageEffectOpaque]
     private void OnRenderImage(RenderTexture src, RenderTexture dest)
     {
@@ -62,8 +71,6 @@ public class CloudsController : MonoBehaviour
         material.SetFloat("_CloudLightAbsorptionFactor", lightAbsorptionThroughCloud);
         material.SetFloat("_CloudScale", cloudScale);
         material.SetFloat("_DarknessThreshold", darknessFactor);
-        material.SetVector("noiseWeight", noiseWeight);
-        material.SetVector("decompositionWeight", decompositionWeight);
         material.SetFloat("_AmbientSky", RenderSettings.ambientIntensity);
         material.SetFloat("detailNoiseWeight", detailNoiseWeight);
         material.SetFloat("_DensityMultiplier", cloudDensity);
@@ -73,18 +80,41 @@ public class CloudsController : MonoBehaviour
         material.SetFloat("_EquatorIntensity", equatorIntensity);
 
         Graphics.Blit(src, dest, material);
-   }
+    }
 
-   public static float Perlin3D(float x, float y, float z) {
-       float AB = Mathf.PerlinNoise(x, y);
-       float BC = Mathf.PerlinNoise(y, z);
-       float AC = Mathf.PerlinNoise(x, z);
+    private void Start()
+    {
+        _cloudFade = this.GetComponent<CloudFadeImageEffect>();
+        _main = this.transform;
+    }
 
-       float BA = Mathf.PerlinNoise(y, x);
-       float CB = Mathf.PerlinNoise(z, y);
-       float CA = Mathf.PerlinNoise(z, x);
+    private void Update() 
+    {
+        if(Application.isPlaying) 
+        {
+            if (_skyColor == null)
+            {
+                _skyColor = RenderSettings.ambientSkyColor;
+            }
 
-       float ABC = AB + BC + AC + BA + CB + CA;
-       return ABC / 6.0f;
-   }
+            if (_equatorColor == null)
+            {
+                _equatorColor = RenderSettings.ambientEquatorColor;
+            }
+
+            float distanceToCloudVolume = Vector3.Distance(_main.position, cloudContainer.position);
+            Debug.Log(distanceToCloudVolume);
+
+            if (distanceToCloudVolume < maxCameraDistance && distanceToCloudVolume > minCameraDistance)
+            {
+                float normalizedDistance = (distanceToCloudVolume - minCameraDistance) / (maxCameraDistance - minCameraDistance);
+                Debug.Log(normalizedDistance);
+                _cloudFade.UpdateCloudFade(normalizedDistance);
+            }
+            else 
+            {
+                _cloudFade.ClearCloudFade();
+            }
+        }
+    }
 }

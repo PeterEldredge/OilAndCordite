@@ -87,7 +87,7 @@ Shader "Hidden/CloudsRaymarch"
             float4 _CloudBaseColor;
 
             //Src: https://medium.com/@bromanz/another-view-on-the-classic-ray-aabb-intersection-algorithm-for-bvh-traversal-41125138b525
-             float2 rayBoxDest(float3 boundsMin, float3 boundsMax, float3 rayOrigin, float3 rayDirection) 
+             float2 rayBoxDest (float3 boundsMin, float3 boundsMax, float3 rayOrigin, float3 rayDirection) 
              {
                 float3 t0 = (boundsMin - rayOrigin) / rayDirection;
                 float3 t1 = (boundsMax - rayOrigin) / rayDirection;
@@ -100,7 +100,7 @@ Shader "Hidden/CloudsRaymarch"
                 return float2(distanceToVolume, distanceOfInnerVolume);
             }
 
-            float getNoise(float3 pos) 
+            float getNoise (float3 pos) 
             {
                 float3 volumeSize = _VolumeBoundaryMax - _VolumeBoundaryMin;
                 float noiseSamplePosition = mul(pos, unity_ObjectToWorld) + float3(_Time.x  * _WindSpeed, _Time.x * _WindSpeed, _Time.x * _WindSpeed);
@@ -135,7 +135,7 @@ Shader "Hidden/CloudsRaymarch"
                 return 0;  
             }
 
-            float marchLighting(float3 position) {
+            float marchLighting (float3 position) {
                 float3 dirToLight =  -1 * _WorldSpaceLightPos0.xyz;
                 float dstInsideBox = rayBoxDest(_VolumeBoundaryMin, _VolumeBoundaryMax, position, 1/dirToLight).y;
                 
@@ -157,7 +157,7 @@ Shader "Hidden/CloudsRaymarch"
             }
 
             // simple volumetric raymarcher to get noise coordinates
-            float4 getNoiseSimple(float3 pos) 
+            float4 getNoiseSimple (float3 pos) 
             {
                 float4 samp = _NoiseTexture.SampleLevel(sampler_NoiseTexture, pos, 0);
                 return samp;
@@ -204,11 +204,14 @@ Shader "Hidden/CloudsRaymarch"
                 while (distanceTraveled < maxDistance) 
                 {
                     rayPos = volumeEntryPoint + rayDirection * distanceTraveled;
+
                     float cloudDensity = getNoise(rayPos);
+
                     lightTrans = marchLighting(rayPos);
                     totalLight += cloudDensity * step * lightTrans * lightTransmittance;
                     lightTransmittance *= exp(-cloudDensity * step * _CloudLightAbsorptionFactor);
                     distanceTraveled += step;
+
                     if (lightTransmittance < 0.1)
                     {
                         break;

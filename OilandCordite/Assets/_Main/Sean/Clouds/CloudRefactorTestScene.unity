@@ -20,10 +20,10 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.7735849, g: 0.33205768, b: 0.33205768, a: 1}
-  m_AmbientEquatorColor: {r: 0.8301887, g: 0.3613079, b: 0.21537916, a: 1}
-  m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
-  m_AmbientIntensity: 0.63
+  m_AmbientSkyColor: {r: 0.53925556, g: 0.11974903, b: 0.6509434, a: 1}
+  m_AmbientEquatorColor: {r: 0.37951076, g: 0.33842117, b: 0.6132076, a: 1}
+  m_AmbientGroundColor: {r: 0.7735849, g: 0.67749494, b: 0.48531505, a: 1}
+  m_AmbientIntensity: 0.99
   m_AmbientMode: 1
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 2100000, guid: f803720b2eb265340899c821f25d5c0e, type: 2}
@@ -767,8 +767,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6623014522746504489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 249.97, z: 0}
-  m_LocalScale: {x: 30000, y: 787.2911, z: 30000}
+  m_LocalPosition: {x: 0, y: 418.53, z: 0}
+  m_LocalScale: {x: 30000, y: 1111.4081, z: 30000}
   m_Children: []
   m_Father: {fileID: 6623014523525983921}
   m_RootOrder: 2
@@ -814,13 +814,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7406093716020444478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c88f1c9d0e47874b8db63e8e315fd36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   IgniteImageEffectMaterial: {fileID: 2100000, guid: eedddca579c3e7c448fad77863ad69fb,
     type: 2}
+  cloudFadeImageEffect: {fileID: 7406093716020444479}
   ignitionMaxSoftness: 0.55
   ignitionMinSoftness: 0.2
   ignitionStepSize: 0.1
@@ -889,21 +890,21 @@ MonoBehaviour:
   OffsetNoiseMap: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
   upperGradient: {r: 1, g: 1, b: 1, a: 1}
   lowerGradient: {r: 1, g: 1, b: 1, a: 1}
-  internalWindSpeed: 4
+  internalWindSpeed: 9
   windSpeed: 0.54
-  densityOffset: 7.6
-  raySteps: 40
-  lightSteps: 4
-  cloudScale: 1.62
-  cloudDensity: 0.06
+  densityOffset: 9.3
+  raySteps: 49
+  lightSteps: 3
+  cloudScale: 10
+  cloudDensity: 0.39
   noiseWeight: {x: 0, y: 1, z: 0, w: 0}
   decompositionWeight: {x: 0, y: 1, z: 1, w: 0}
   detailNoiseWeight: 0.69
-  lightAbsorptionThroughCloud: 0.77
-  darknessFactor: -0.35
-  equatorIntensity: 0.71
-  skyIntensity: 0.36
-  tintAmount: -0.09
+  lightAbsorptionThroughCloud: 0.81
+  darknessFactor: 0.75
+  equatorIntensity: 0.88
+  skyIntensity: 0.4
+  tintAmount: 2.5
 --- !u!4 &7406093716020444474
 Transform:
   m_ObjectHideFlags: 0
@@ -1005,6 +1006,7 @@ GameObject:
   - component: {fileID: 7406093716020444423}
   - component: {fileID: 7406093716020444472}
   - component: {fileID: 7646953268865285202}
+  - component: {fileID: 7406093716020444479}
   m_Layer: 31
   m_Name: Camera
   m_TagString: MainCamera
@@ -1012,6 +1014,28 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7406093716020444479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7406093716020444478}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dde5fd669949a13469b75d100ad636e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cloudDistortionShader: {fileID: 4800000, guid: 34d7391017eb25648b4aaa8bc32f7e23,
+    type: 3}
+  mainTex: {fileID: 2800000, guid: aee17d64a89925d43bd3934b8fd83f37, type: 2}
+  distortionMap: {fileID: 2800000, guid: aee17d64a89925d43bd3934b8fd83f37, type: 2}
+  overlayTex: {fileID: 2800000, guid: 06019f91fb868284a9b333fd11079548, type: 2}
+  vignetteColor: {r: 1, g: 1, b: 1, a: 1}
+  vignetteRadius: 0.65
+  vignetteSoftness: 0.14
+  distortionMultiplier: 0.36
+  overlayMultiplier: 0
 --- !u!1 &7406093716611049728
 GameObject:
   m_ObjectHideFlags: 0
