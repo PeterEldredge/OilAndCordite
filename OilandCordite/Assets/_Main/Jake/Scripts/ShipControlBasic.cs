@@ -141,11 +141,13 @@ public class ShipControlBasic : GameEventUserObject
 
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
     private void OnGasExplosion(Events.GasExplosionEventArgs args) => GasExplosion(args);
+    private void OnSawBladeBoost(Events.SawBladeBoostEventArgs args) => SawBladeBoost(args);
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
         EventManager.Instance.AddListener<Events.GasExplosionEventArgs>(this, OnGasExplosion);
+        EventManager.Instance.AddListener<Events.SawBladeBoostEventArgs>(this, OnSawBladeBoost);
     }
 
     private void Start()
@@ -289,6 +291,12 @@ public class ShipControlBasic : GameEventUserObject
     {
         _rb.velocity += transform.forward * (_baseGasBoost + 100 * (PlayerData.Instance.Heat / 100) * args.ExplosionMagnitude);
         _acp.PlaySound("GasExplosion");
+        _gasExploding = true;
+    }
+
+    private void SawBladeBoost(Events.SawBladeBoostEventArgs args)
+    {
+        _rb.velocity = transform.forward * (args.BoostSpeed);
         _gasExploding = true;
     }
 
