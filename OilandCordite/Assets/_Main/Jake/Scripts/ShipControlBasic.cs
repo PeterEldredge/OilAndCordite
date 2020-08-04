@@ -6,9 +6,14 @@ using UnityEngine;
 public class ShipControlBasic : GameEventUserObject
 {
     [Header("Physics")]
-    [Tooltip("Force to push plane forwards with")] public float igniteThrust = 1000f;
-    [Tooltip("Pitch, Yaw, Roll")] public Vector3 turnTorque = new Vector3(60f, 45f, 90f);
-    [Tooltip("Multiplier for all forces")] public float rotateMult = 3f;
+    [Tooltip("Force to push plane forwards with")]
+    [SerializeField] public float _igniteThrust = 1000f;
+    [Tooltip("Pitch, Yaw, Roll")]
+    [SerializeField] private Vector3 _turnTorque = new Vector3(60f, 45f, 90f);
+    [Tooltip("Multiplier for all forces")]
+    [SerializeField] private float _rotateMult = 3f;
+    [Tooltip("Amount the multiplier will decrease by at max speed")]
+    [SerializeField] private float _rotateMultDecrease = 1.5f;
     [SerializeField] private float _spinoutAddedTurnTorque = 120f;
     [SerializeField] private float _maxAcceleration = 150f;
     [SerializeField] private float _minAcceleration = -125f;
@@ -28,6 +33,7 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
     [SerializeField] private AnimationCurve _gravityAccelerationCurve;
+    [SerializeField] private AnimationCurve _rotateMultSpeedCurve;
 
     [Header("Options")]
     [SerializeField] private bool _startInverted = false;
@@ -48,6 +54,7 @@ public class ShipControlBasic : GameEventUserObject
 
     //Public
     public int Speed { get; private set; }
+    public float MaxSpeed => _explosionMaxSpeed;
     public bool SpinningOut { get; private set; }
 
     //Private
@@ -127,7 +134,7 @@ public class ShipControlBasic : GameEventUserObject
         _rb = GetComponent<Rigidbody>();
         _shipForRotation = GetComponentsInChildren<Transform>()[1];
         _acp = GetComponent<AudioCuePlayer>();
-        _turnTorqueCopy = turnTorque;
+        _turnTorqueCopy = _turnTorque;
     }
 
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
@@ -170,9 +177,11 @@ public class ShipControlBasic : GameEventUserObject
 
     private void FixedUpdate()
     {
-        transform.Rotate(new Vector3(_turnTorqueCopy.x * _pitch, 0, 0) * rotateMult * Time.fixedDeltaTime, Space.Self);
-        transform.rotation = Quaternion.Euler(new Vector3(0, _turnTorqueCopy.y * _turn, 0) * rotateMult * Time.fixedDeltaTime) * transform.rotation;
-        _shipForRotation.Rotate(new Vector3(0, 0, -_turnTorqueCopy.z * _roll) * rotateMult * Time.fixedDeltaTime, Space.Self);
+        var newRotateMult = _rotateMult - _rotateMultSpeedCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude / _explosionMaxSpeed, 0, 1)) * _rotateMultDecrease;
+
+        transform.Rotate(new Vector3(_turnTorqueCopy.x * _pitch, 0, 0) * newRotateMult * Time.fixedDeltaTime, Space.Self);
+        transform.rotation = Quaternion.Euler(new Vector3(0, _turnTorqueCopy.y * _turn, 0) * newRotateMult * Time.fixedDeltaTime) * transform.rotation;
+        _shipForRotation.Rotate(new Vector3(0, 0, -_turnTorqueCopy.z * _roll) * _rotateMult * Time.fixedDeltaTime, Space.Self);
 
         float minMomentum = _minSmogSpeed;
         if (!PlayerData.Instance.InSmog)
@@ -212,11 +221,11 @@ public class ShipControlBasic : GameEventUserObject
 
             if (PlayerData.Instance.InGas)
             {
-                //_rb.velocity += transform.forward * igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minGasIgnitionHeat * (PlayerData.Instance.IsIgniting ? 1 : 0), 100) / 100);
+                //_rb.velocity += transform.forward * _igniteThrust * (Mathf.Clamp(PlayerData.Instance.Heat, _minGasIgnitionHeat * (PlayerData.Instance.IsIgniting ? 1 : 0), 100) / 100);
             }
             else if (PlayerData.Instance.InSmog)
             {
-                _rb.velocity += transform.forward * igniteThrust * _smogHeatToSpeedRatio * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
+                _rb.velocity += transform.forward * _igniteThrust * _smogHeatToSpeedRatio * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
             }
 
             if (transform.position.y <= 15)
@@ -225,7 +234,7 @@ public class ShipControlBasic : GameEventUserObject
             }
 
             float gravity = -_gravityMultiplier * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f)) * Time.fixedDeltaTime;
-        
+            
             transform.Translate(new Vector3(0, gravity, 0), Space.World);
 
             if (_gasExploding && (_rb.velocity.magnitude > _baseMaxSpeed))
@@ -237,7 +246,7 @@ public class ShipControlBasic : GameEventUserObject
                 _activeMaxSpeed = _baseMaxSpeed;
                 _gasExploding = false;
             }
-                Debug.Log(_activeMaxSpeed);
+
             _rb.velocity = Mathf.Clamp(_rb.velocity.magnitude, minMomentum, _activeMaxSpeed) * transform.forward;
 
         }
@@ -264,8 +273,8 @@ public class ShipControlBasic : GameEventUserObject
 
         if (!_spinningOut)
         {
-           _turnTorqueCopy.x = Mathf.Lerp(turnTorque.x, turnTorque.y, 1 - Mathf.Abs(Vector3.Dot(_shipForRotation.transform.up, transform.up)));
-           _turnTorqueCopy.y = Mathf.Lerp(turnTorque.y, turnTorque.x, 1 - Mathf.Abs(Vector3.Dot(_shipForRotation.transform.up, transform.up)));
+           _turnTorqueCopy.x = Mathf.Lerp(_turnTorque.x, _turnTorque.y, 1 - Mathf.Abs(Vector3.Dot(_shipForRotation.transform.up, transform.up)));
+           _turnTorqueCopy.y = Mathf.Lerp(_turnTorque.y, _turnTorque.x, 1 - Mathf.Abs(Vector3.Dot(_shipForRotation.transform.up, transform.up)));
         }
 
         if(transform.localEulerAngles.z < 179 || transform.localEulerAngles.z > 181) transform.localEulerAngles = new Vector3(transform.localEulerAngles.x, transform.localEulerAngles.y, 0);

@@ -53,7 +53,7 @@ public class HeatEffectSystem : GameEventUserObject
             UpdateThrusterWidth(widthMultiplier);
             _cam?.IncreaseIgnitionSoftness();
             _cam?.UpdateIgitionColor();
-            _cam?.IncreaseCameraFov();
+            //_cam?.IncreaseCameraFov();
             yield return null;
         }        
     }
@@ -69,7 +69,7 @@ public class HeatEffectSystem : GameEventUserObject
             UpdateThrusterWidth(widthMultiplier);
             _cam?.DecreaseIgnitionSoftness();
             _cam?.UpdateIgitionColor();
-            _cam?.DecreaseCameraFov();
+            //_cam?.DecreaseCameraFov();
             yield return null;
         }
     }

@@ -4294,16 +4294,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3103560010203654322, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: _minAirSpeed
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 3103560010203654322, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: _minSmogSpeed
-      value: 40
-      objectReference: {fileID: 0}
     - target: {fileID: 4218598060279728160, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -6603,6 +6593,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelData: {fileID: 11400000, guid: bafc73c084b53b0499ced60bf57afcd7, type: 2}
   _enemiesToBeKilled: 20
+  _enemyRemainingUIThreshold: 0
+  UIElement: {fileID: 0}
 --- !u!1001 &2190337787098721388
 PrefabInstance:
   m_ObjectHideFlags: 0

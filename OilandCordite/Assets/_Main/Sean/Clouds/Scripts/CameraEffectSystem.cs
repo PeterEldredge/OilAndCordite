@@ -14,8 +14,11 @@ public class CameraEffectSystem : MonoBehaviour
     [SerializeField] private float fovMaxIncrease = 5.0f;
     [SerializeField] private float fovMaxDecrease = 5.0f;
     [SerializeField] private float fovStep = 0.1f;
+    [SerializeField] private float _fovSpeed = 10f;
 
-    private float currentFov;
+    [SerializeField] private AnimationCurve _speedToFOVCurve;
+
+    private float initialFov;
     private float maxFov;
     private float minFov;
     private Camera _main;
@@ -32,16 +35,23 @@ public class CameraEffectSystem : MonoBehaviour
         IgniteImageEffectMaterial.SetFloat("_VignetteSoftness", softness);
     }
 
-    public void IncreaseCameraFov() 
-    {
-        float fov = _main.fieldOfView;
-        _main.fieldOfView = (fov < maxFov) ? (fov += fovStep * Time.deltaTime) : maxFov; 
-    }
+    //public void IncreaseCameraFov() 
+    //{
+    //    float fov = _main.fieldOfView;
+    //    _main.fieldOfView = (fov < maxFov) ? (fov += fovStep * Time.deltaTime) : maxFov; 
+    //}
 
-    public void DecreaseCameraFov() 
+    //public void DecreaseCameraFov() 
+    //{
+    //    float fov = _main.fieldOfView;
+    //    _main.fieldOfView = (fov > currentFov) ? (fov -= fovStep * Time.deltaTime) : currentFov; 
+    //}
+
+    private void UpdateCameraFOV()
     {
-        float fov = _main.fieldOfView;
-        _main.fieldOfView = (fov > currentFov) ? (fov -= fovStep * Time.deltaTime) : currentFov; 
+        var currentFOV = _main.fieldOfView;
+        var targetFOV = initialFov + _speedToFOVCurve.Evaluate(PlayerData.Instance.Speed / PlayerData.Instance.MaxSpeed) * fovMaxIncrease;
+        _main.fieldOfView = Mathf.Lerp(currentFOV, Mathf.Clamp(targetFOV, initialFov, maxFov), _fovSpeed * Time.fixedDeltaTime);
     }
 
     public void DecreaseIgnitionSoftness() 
@@ -62,15 +72,15 @@ public class CameraEffectSystem : MonoBehaviour
     private void Awake()
     {
         _main = this.GetComponent<Camera>();
-        currentFov = _main.fieldOfView;
-        maxFov = currentFov + fovMaxIncrease;
-        minFov = currentFov - fovMaxDecrease;
+        initialFov = _main.fieldOfView;
+        maxFov = initialFov + fovMaxIncrease;
+        minFov = initialFov - fovMaxDecrease;
         IgniteImageEffectMaterial.SetFloat("_VignetteSoftness", ignitionMinSoftness);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        UpdateCameraFOV();
     }
 }

@@ -24,6 +24,8 @@ public class FlightCam : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        
+
         Vector3 moveCamTo = ship.position - ship.forward * distanceFromShip + Vector3.up * upFromShip;
         Vector3 newPosition = transform.position * springBias + moveCamTo * (1f - springBias);
         //transform.position = transform.position * springBias + moveCamTo * (1f - springBias);
