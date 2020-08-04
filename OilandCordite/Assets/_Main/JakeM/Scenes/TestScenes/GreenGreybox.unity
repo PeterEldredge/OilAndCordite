@@ -20,8 +20,8 @@ RenderSettings:
   m_FogDensity: 0.0005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientSkyColor: {r: 0.48235294, g: 0.17525862, b: 0.1529412, a: 1}
+  m_AmbientEquatorColor: {r: 0.6784314, g: 0.25882357, b: 0.2624811, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
@@ -35,10 +35,10 @@ RenderSettings:
   m_DefaultReflectionMode: 0
   m_DefaultReflectionResolution: 128
   m_ReflectionBounces: 1
-  m_ReflectionIntensity: 1
+  m_ReflectionIntensity: 0.94
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.21108511, g: 0.058137402, b: 0.036019113, a: 1}
+  m_IndirectSpecularColor: {r: 0.19842, g: 0.05464916, b: 0.033857968, a: 0.94}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -752,6 +752,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ebd75adaec961945a4b6db64fabdca5, type: 3}
+--- !u!4 &156009576 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6623014521683786482, guid: 0ebd75adaec961945a4b6db64fabdca5,
+    type: 3}
+  m_PrefabInstance: {fileID: 156009575}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -3730,6 +3736,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelData: {fileID: 11400000, guid: 1eb1a31a491375c4a8f69bfe339c7ea4, type: 2}
   _enemiesToBeKilled: 0
+  _enemyRemainingUIThreshold: 0
+  UIElement: {fileID: 0}
 --- !u!114 &697469478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11587,13 +11595,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cloudContainer
       value: 
-      objectReference: {fileID: 4202755939904732691, guid: ac6c32d7ce52b194bb40729814150459,
-        type: 3}
-    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 156009576}
     - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: upperGradient.r
@@ -11628,6 +11630,31 @@ PrefabInstance:
         type: 3}
       propertyPath: lowerGradient.a
       value: 0.7372549
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: densityOffset
+      value: 32
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: lightAbsorptionThroughCloud
+      value: 0.97
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: darknessFactor
+      value: 0.88
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: equatorIntensity
+      value: 0.57
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: skyIntensity
+      value: 0.11
       objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794190, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -11686,20 +11713,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
-      propertyPath: bMat
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
       propertyPath: isDirty
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
-      propertyPath: _sun
+      propertyPath: bMat
       value: 
-      objectReference: {fileID: 4202755941216234074, guid: ac6c32d7ce52b194bb40729814150459,
-        type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794227, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_Enabled

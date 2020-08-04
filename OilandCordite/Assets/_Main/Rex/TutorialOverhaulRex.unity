@@ -20,8 +20,8 @@ RenderSettings:
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientSkyColor: {r: 0.29067284, g: 0.491456, b: 0.8679245, a: 1}
+  m_AmbientEquatorColor: {r: 0.63318795, g: 0.77883357, b: 0.8773585, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
@@ -6941,6 +6941,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b71a2b93e6266d64f9dd7943b31c28ba, type: 3}
+--- !u!4 &2144344133 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6623014521683786482, guid: 0ebd75adaec961945a4b6db64fabdca5,
+    type: 3}
+  m_PrefabInstance: {fileID: 448515979}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &665686304903660000
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7011,6 +7017,46 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: cloudContainer
+      value: 
+      objectReference: {fileID: 2144344133}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: detailNoiseWeight
+      value: 1.47
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: densityOffset
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: lightSteps
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: lightAbsorptionThroughCloud
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: darknessFactor
+      value: 0.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: equatorIntensity
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: skyIntensity
+      value: 0.89
+      objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794190, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7029,7 +7075,7 @@ PrefabInstance:
     - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: isDirty
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -7923,6 +7969,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelData: {fileID: 11400000, guid: fe74533eb74941b449202bbf1d1ef8c7, type: 2}
   _enemiesToBeKilled: 0
+  _enemyRemainingUIThreshold: 0
+  UIElement: {fileID: 0}
 --- !u!4 &8622089010123171031
 Transform:
   m_ObjectHideFlags: 0

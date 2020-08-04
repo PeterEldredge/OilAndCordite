@@ -21,7 +21,7 @@ Material:
     m_TexEnvs:
     - _CooledNoise:
         m_Texture: {fileID: 2800000, guid: c51ac95356f5b4a129042df08e58c84d, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _DistortionMap:
         m_Texture: {fileID: 0}
@@ -29,11 +29,11 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 2800000, guid: 5a61261df51695147986428a579809c8, type: 3}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _SurfaceDistortion:
         m_Texture: {fileID: 0}
@@ -46,17 +46,17 @@ Material:
     m_Floats:
     - _CutoffMultiplier: 4.22
     - _DepthMaxDistance: 4
-    - _EdgeCutoff: 0.66
-    - _EdgeDistance: 0.77
+    - _EdgeCutoff: 0.22
+    - _EdgeDistance: 3.26
     - _FoamMaxDistance: 0.4
     - _FoamMinDistance: 0.04
     - _GradientMiddle: 24.95
     - _NoiseSpeed: 1.84
     - _SurfaceDistortionAmount: 0.15
     - _SurfaceNoiseCutoff: 0.777
-    - _VertexAmplitude: 0.56
-    - _VertexMovementSpeed: 0.88
-    - _VertexWavelength: 3.14
+    - _VertexAmplitude: 4.04
+    - _VertexMovementSpeed: 1
+    - _VertexWavelength: 1.46
     m_Colors:
     - _DepthGradientDeep: {r: 0.08599999, g: 0.40699998, b: 1, a: 0.749}
     - _DepthGradientShallow: {r: 0.32499996, g: 0.807, b: 0.971, a: 0.725}

@@ -4192,6 +4192,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelData: {fileID: 11400000, guid: 1eb1a31a491375c4a8f69bfe339c7ea4, type: 2}
   _enemiesToBeKilled: 0
+  _enemyRemainingUIThreshold: 0
+  UIElement: {fileID: 0}
 --- !u!114 &697469478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16672,7 +16674,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d445cb8753b8c9f46851e82f2a0c72d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followTarget: {fileID: 4563114451573410}
+  followTarget: {fileID: 0}
 --- !u!114 &2018983538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17369,12 +17371,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2145951708}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &4563114451573410 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 9118408602417558961, guid: 0dca9f6178850714da20590c07aa1cf6,
-    type: 3}
-  m_PrefabInstance: {fileID: 9122936524982349587}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2064915251088990855
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17717,6 +17713,21 @@ PrefabInstance:
     - target: {fileID: 1135842381469260130, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149811657975308807, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149811657975308807, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2149811657975308807, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3868752769072686303, guid: 0dca9f6178850714da20590c07aa1cf6,
