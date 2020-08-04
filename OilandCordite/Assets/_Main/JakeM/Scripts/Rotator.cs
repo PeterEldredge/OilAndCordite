@@ -14,9 +14,9 @@ public class Rotator : MonoBehaviour
     [SerializeField]
     private Vector3 rotation;
 
-    // Update is called once per frame
+
     void Update()
     {
-        transform.Rotate( rotation * speed * direction * Time.deltaTime);
+        transform.Rotate(rotation * speed * direction * Time.deltaTime);
     }
 }
