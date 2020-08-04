@@ -660,7 +660,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6623014522746504489}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d445cb8753b8c9f46851e82f2a0c72d3, type: 3}
   m_Name: 
@@ -707,7 +707,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6623014522746504489}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3fb8a72a7ddcbe348b881addd414b211, type: 3}
   m_Name: 
@@ -767,8 +767,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6623014522746504489}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 418.53, z: 0}
-  m_LocalScale: {x: 30000, y: 1111.4081, z: 30000}
+  m_LocalPosition: {x: 0, y: 136.29, z: 0}
+  m_LocalScale: {x: 30000, y: 568.6853, z: 30000}
   m_Children: []
   m_Father: {fileID: 6623014523525983921}
   m_RootOrder: 2
@@ -888,23 +888,19 @@ MonoBehaviour:
   detailMap: {fileID: 11700000, guid: e4a755d802925244d831f712bb01dbf7, type: 2}
   weatherMap: {fileID: 2800000, guid: dbe99f3f3c8e3d94185a276415ac4be0, type: 3}
   OffsetNoiseMap: {fileID: 10307, guid: 0000000000000000f000000000000000, type: 0}
-  upperGradient: {r: 1, g: 1, b: 1, a: 1}
-  lowerGradient: {r: 1, g: 1, b: 1, a: 1}
-  internalWindSpeed: 9
   windSpeed: 0.54
-  densityOffset: 9.3
+  cloudScale: 10
+  cloudDensity: 0.23
+  detailNoiseWeight: 0.91
+  densityOffset: 9.2
   raySteps: 49
   lightSteps: 3
-  cloudScale: 10
-  cloudDensity: 0.39
-  noiseWeight: {x: 0, y: 1, z: 0, w: 0}
-  decompositionWeight: {x: 0, y: 1, z: 1, w: 0}
-  detailNoiseWeight: 0.69
-  lightAbsorptionThroughCloud: 0.81
-  darknessFactor: 0.75
-  equatorIntensity: 0.88
-  skyIntensity: 0.4
-  tintAmount: 2.5
+  lightAbsorptionThroughCloud: 0.67
+  darknessFactor: 0.88
+  equatorIntensity: 0.57
+  skyIntensity: 0.3
+  maxCameraDistance: 9307
+  minCameraDistance: 9300
 --- !u!4 &7406093716020444474
 Transform:
   m_ObjectHideFlags: 0
@@ -913,7 +909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7406093716020444478}
   m_LocalRotation: {x: 0.06894967, y: -0, z: -0, w: 0.99762017}
-  m_LocalPosition: {x: 3073, y: -560, z: -9992}
+  m_LocalPosition: {x: 3073, y: -1113, z: -9992}
   m_LocalScale: {x: 1, y: -1, z: 1}
   m_Children:
   - {fileID: 1755441309030588571}
@@ -978,7 +974,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7406093716020444478}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7ebe90f0182e1d646a16a1918c39f680, type: 3}
   m_Name: 
@@ -1021,7 +1017,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7406093716020444478}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dde5fd669949a13469b75d100ad636e1, type: 3}
   m_Name: 
@@ -1031,10 +1027,10 @@ MonoBehaviour:
   mainTex: {fileID: 2800000, guid: aee17d64a89925d43bd3934b8fd83f37, type: 2}
   distortionMap: {fileID: 2800000, guid: aee17d64a89925d43bd3934b8fd83f37, type: 2}
   overlayTex: {fileID: 2800000, guid: 06019f91fb868284a9b333fd11079548, type: 2}
-  vignetteColor: {r: 1, g: 1, b: 1, a: 1}
-  vignetteRadius: 0.65
-  vignetteSoftness: 0.14
-  distortionMultiplier: 0.36
+  vignetteColor: {r: 0.87993926, g: 0.17697577, b: 0.9150943, a: 1}
+  vignetteRadius: 1
+  vignetteSoftness: 0.27
+  distortionMultiplier: 0
   overlayMultiplier: 0
 --- !u!1 &7406093716611049728
 GameObject:
