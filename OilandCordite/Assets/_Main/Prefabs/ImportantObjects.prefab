@@ -448,7 +448,7 @@ Camera:
   m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 544
+    m_Bits: 512
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -3158,6 +3158,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _weldedWeapons:
   - {fileID: 2615921791667759415}
+  - {fileID: 2865120419342988967}
 --- !u!1 &5994698142930706841
 GameObject:
   m_ObjectHideFlags: 0
@@ -12598,9 +12599,9 @@ PrefabInstance:
     - {fileID: 3765628077235668914, guid: 5be933958fa2e6d4ea715fcb5d4c0254, type: 3}
     - {fileID: 7818900201248287428, guid: 5be933958fa2e6d4ea715fcb5d4c0254, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 5be933958fa2e6d4ea715fcb5d4c0254, type: 3}
---- !u!96 &2806820251778862983 stripped
-TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: 1020908104211233233, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
+--- !u!114 &2865120419342988967 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1088702817345798385, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
     type: 3}
   m_PrefabInstance: {fileID: 2943430727480718934}
   m_PrefabAsset: {fileID: 0}

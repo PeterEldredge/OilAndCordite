@@ -15,10 +15,8 @@ public class EnemyColliders : MonoBehaviour
     private void OnTriggerEnter(Collider collider)
     {
         var attackData = collider.GetComponent<PlayerAttack>();
-        if (attackData != null && !_enemy.Defeated)
+        if (attackData != null && !_enemy.Defeated && (collider.CompareTag(Tags.PLAYER) || collider.CompareTag("PlayerAttack")))
         {
-            Debug.Log(collider.attachedRigidbody.velocity.magnitude);
-            Debug.Log(_enemy.PiercingSpeed);
             if (collider.CompareTag(Tags.PLAYER) && collider.attachedRigidbody.velocity.magnitude < _enemy.PiercingSpeed)
             {
                 if (_canHitPlayer)

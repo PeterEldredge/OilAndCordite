@@ -28,7 +28,7 @@ public class RaceToTheFinishController : MissionController
 
         if (_currentPoint < _checkpoints.Count)
         {
-            _checkpoints[_currentPoint].gameObject.SetActive(true);
+            //_checkpoints[_currentPoint].gameObject.SetActive(true);
         }
         else
         {
