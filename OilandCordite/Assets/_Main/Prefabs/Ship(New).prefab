@@ -8056,15 +8056,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b4a469187dcf1244be4fbe4948dde41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  igniteThrust: 60
-  turnTorque: {x: 60, y: 45, z: 90}
-  rotateMult: 2.5
+  _igniteThrust: 60
+  _turnTorque: {x: 60, y: 45, z: 90}
+  _rotateMult: 2.5
+  _rotateMultDecrease: 1.5
   _spinoutAddedTurnTorque: 90
   _maxAcceleration: 50
   _minAcceleration: -33.33333
-  _maxSpeed: 150
-  _minSmogSpeed: 0
-  _minAirSpeed: 20
+  _baseMaxSpeed: 150
+  _explosionMaxSpeed: 200
+  _explosionSpeedLossRate: 20
+  _minSmogSpeed: 40
+  _minAirSpeed: 40
   _airResistance: 2
   _minSmogIgnitionHeat: 0
   _gravityMultiplier: 30
@@ -8174,6 +8177,48 @@ MonoBehaviour:
       value: 0
       inSlope: -1
       outSlope: -1
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  _rotateMultSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.47779512
+      outSlope: 0.47779512
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 0.5014145
+      value: 0.23957339
+      inSlope: 0.7081858
+      outSlope: 0.7081858
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.32716918
+    - serializedVersion: 3
+      time: 0.75
+      value: 0.75
+      inSlope: 2.7830863
+      outSlope: 2.7830863
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.19660544
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 1
+      outSlope: 1
       tangentMode: 34
       weightedMode: 0
       inWeight: 0.33333334

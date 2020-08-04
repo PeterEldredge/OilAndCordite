@@ -30,9 +30,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private List<Transform> _spinnerTransforms;
     [SerializeField] private string _defeatedCueName;
     [SerializeField] private WeldedWeaponType _weldedWeaponType;
-
     [HideInInspector] public WeldedWeaponType WeaponType => _weldedWeaponType;
-
+    [SerializeField] private GameObject _UIElement;
+    [SerializeField] private float _minDistance=5000;
     private EnemyData _enemyData;
 
     private MeshRenderer _renderer;
@@ -64,7 +64,11 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(Attack());
     }
-
+    //This makes it so when the player is moving fast enough and is close enough a UI target appears
+    private void ShowTargetUI()
+    {
+            _UIElement.SetActive(PlayerData.Instance.Speed >= _piercingSpeed && Vector3.Distance(PlayerData.Instance.transform.position, transform.position) <= _minDistance);
+    }
     public void OnDefeated()
     {
         Defeated = true;
@@ -125,7 +129,7 @@ public class Enemy : MonoBehaviour
                     break;
                 }
             }
-
+            ShowTargetUI();
             yield return null;
         }
     }
