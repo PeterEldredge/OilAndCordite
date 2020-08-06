@@ -6,8 +6,9 @@ public class DestoyEnemiesController : MissionController
 {
     [SerializeField] private int _enemiesToBeKilled = 0;
     [SerializeField] private int _enemyRemainingUIThreshold;
+    [SerializeField] private GameObject _uiElement;
+
     private bool _enemyRemainingUIEnabled = false;
-    [SerializeField] private GameObject UIElement;
     private int _childrenToWin;
 
     private void Awake()
@@ -20,7 +21,7 @@ public class DestoyEnemiesController : MissionController
     {
         for (int i = 0; i < WorkingTransform.childCount; i++)
         {
-            GameObject Temp = Instantiate(UIElement);
+            GameObject Temp = Instantiate(_uiElement);
             Temp.transform.SetParent(WorkingTransform.GetChild(i));
             Temp.transform.localPosition = new Vector3(0, 0, 0);
         }
@@ -46,9 +47,12 @@ public class DestoyEnemiesController : MissionController
             else
             {
                 int temp = 0;
-                for (int i = 0; i < transform.childCount; i++) {
+
+                for (int i = 0; i < transform.childCount; i++)
+                {
                     temp += transform.GetChild(i).childCount;
-                    }
+                }
+
                 if (temp <= _enemyRemainingUIThreshold && !_enemyRemainingUIEnabled)
                 {
                     _enemyRemainingUIEnabled = true;

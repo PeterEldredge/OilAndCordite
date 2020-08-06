@@ -9,13 +9,12 @@ namespace Events
     public struct EndIgniteEventArgs : IGameEvent { }
 }
 
-public class HeatSystem : MonoBehaviour
+public class HeatSystem : GameEventUserObject
 {
     [SerializeField] private float _maxHeat = 100f;
     [SerializeField] private float _timeToOverheat = 5f;
     [SerializeField] private float _timeToResetFromMax = 1f;
     [SerializeField] private float _overheatedTimePenalty = 2f;
-    [SerializeField] private AnimationCurve _heatCurve;
     [SerializeField] private ParticleSystem _overheatingParticles;
 
     //Public
@@ -23,12 +22,25 @@ public class HeatSystem : MonoBehaviour
     public bool OverHeated { get; private set; }
     public bool IsIgniting = false;
 
-    private void Update()
+    //Private
+    public float _heatToBeApplied;
+
+    public void Start()
     {
-        if (!IsIgniting && !PlayerData.Instance.SpinningOut && InputHelper.Player.GetAxis("Ignite") > 0 ) StartHeating();
+        StartCoroutine(HeatRoutine());
     }
 
-    private void StartHeating() => StartCoroutine(HeatRoutine());
+    public override void Subscribe()
+    {
+        EventManager.Instance.AddListener<Events.PlayerInHeatTriggerEventArgs>(this, OnPlayerInHeatTrigger);
+    }
+
+    public override void Unsubscribe()
+    {
+        EventManager.Instance.RemoveListener<Events.PlayerInHeatTriggerEventArgs>(this, OnPlayerInHeatTrigger);
+    }
+
+    private void OnPlayerInHeatTrigger(Events.PlayerInHeatTriggerEventArgs args) => _heatToBeApplied += args.Heat;
 
     public void InstantCool() => Heat = 0;
 
@@ -38,57 +50,69 @@ public class HeatSystem : MonoBehaviour
         float timer = 0f;
         float coolingSpeed = _maxHeat / _timeToResetFromMax;
 
-        IsIgniting = true;
-        EventManager.Instance.TriggerEvent(new Events.BeginIgniteEventArgs());
+        _heatToBeApplied = 0f;
 
-        while(InputHelper.Player.GetAxis("Ignite") > 0 && !PlayerData.Instance.SpinningOut)
+        while(true)
         {
-            if (!OverHeated)
+            while (InputHelper.Player.GetAxis("Ignite") <= 0 && _heatToBeApplied <= 0) yield return null;
+
+            IsIgniting = true;
+
+            EventManager.Instance.TriggerEvent(new Events.BeginIgniteEventArgs());
+
+            while ((InputHelper.Player.GetAxis("Ignite") > 0 && !PlayerData.Instance.SpinningOut) ||
+                 _heatToBeApplied > 0f)
             {
+                if (!OverHeated)
+                {
+                    if (Heat >= _maxHeat)
+                    {
+                        OverHeated = true;
+
+                        _overheatingParticles.Play();
+
+                        EventManager.Instance.TriggerEvent(new Events.OverheatedEventArgs());
+
+                        Heat = _maxHeat;
+                    }
+                    else
+                    {
+                        Heat += (_maxHeat / _timeToOverheat) * Time.deltaTime + _heatToBeApplied;
+                    }
+                }
+
+                _heatToBeApplied = 0f;
+
+                yield return null;
+
                 timer += Time.deltaTime;
-
-                if (timer > _timeToOverheat)
-                {
-                    OverHeated = true;
-
-                    _overheatingParticles.Play();
-
-                    EventManager.Instance.TriggerEvent(new Events.OverheatedEventArgs());
-
-                    Heat = _maxHeat;
-                }
-                else
-                {
-                    float heatingPercentage = timer / _timeToOverheat;
-
-                    Heat = _heatCurve.Evaluate(heatingPercentage) * _maxHeat;
-                }
             }
 
-            yield return null;
+            EventManager.Instance.TriggerEvent(new Events.EndIgniteEventArgs());
+
+            if (OverHeated)
+            {
+                yield return new WaitForSeconds(_overheatedTimePenalty);
+            }
+
+            OverHeated = false;
+
+            _overheatingParticles.Stop();
+
+            while (Heat > 0)
+            {
+                Heat = Mathf.Max(0, Heat - coolingSpeed * Time.deltaTime) + _heatToBeApplied;
+
+                Debug.LogError(_heatToBeApplied);
+
+                _heatToBeApplied = 0f;
+
+                yield return null;
+            }
+
+            Heat = 0;
+
+            IsIgniting = false;
         }
-
-        EventManager.Instance.TriggerEvent(new Events.EndIgniteEventArgs());
-
-        if(OverHeated)
-        {
-            yield return new WaitForSeconds(_overheatedTimePenalty);
-        }
-
-        OverHeated = false;
-
-        _overheatingParticles.Stop();
-
-        while (Heat > 0)
-        {
-            Heat = Mathf.Max(0, Heat - coolingSpeed * Time.deltaTime);
-
-            yield return null;
-        }
-
-        Heat = 0;
-
-        IsIgniting = false;
     }
-
 }
