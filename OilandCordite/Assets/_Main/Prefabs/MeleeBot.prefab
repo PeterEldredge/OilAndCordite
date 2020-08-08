@@ -401,7 +401,6 @@ GameObject:
   - component: {fileID: 6089402306166157616}
   - component: {fileID: 1907999007939836951}
   - component: {fileID: 1885922894075217809}
-  - component: {fileID: 539911545152028622}
   m_Layer: 0
   m_Name: MeleeBot
   m_TagString: Untagged
@@ -508,46 +507,6 @@ MonoBehaviour:
   sizeToAdd: 0
   timeValue: 1
   speed: 50
-  animEaseType:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  loopType: 1
-  waypoints: []
-  events: []
-  pathType: 1
-  pathMode: 1
-  easeType: 1
-  lockPosition: 0
-  lockRotation: 2
-  waypointRotation: 0
-  rotationTarget: {fileID: 0}
---- !u!114 &539911545152028622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6089402306166157621}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4a2d9078dbe17bc4f966c9d2310be047, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pathContainer: {fileID: 0}
-  onStart: 1
-  moveToPath: 0
-  reverse: 0
-  startPoint: 0
-  currentPoint: 0
-  closeLoop: 1
-  localType: 0
-  lookAhead: 0
-  sizeToAdd: 0
-  timeValue: 1
-  speed: 100
   animEaseType:
     serializedVersion: 2
     m_Curve: []
