@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class UISelect : MonoBehaviour
 {
-    [SerializeField]private GameObject _selectUI;
+    [SerializeField] private GameObject _selectUI;
 
-    void Start()
-    {
-        SelectFirst();
-    }
-
-    public void SelectFirst()
+    public void Select()
     {
         UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(_selectUI);
     }
