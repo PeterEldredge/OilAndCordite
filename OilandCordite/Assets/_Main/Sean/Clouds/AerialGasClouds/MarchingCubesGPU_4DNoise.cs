@@ -198,11 +198,7 @@ public class MarchingCubesGPU_4DNoise : MonoBehaviour
 
     void OnDestroy()
     {
-        m_noiseBuffer.Release();
-        m_meshBuffer.Release();
-        m_cubeEdgeFlags.Release();
-        m_triangleConnectionTable.Release();
-        m_controlPoints.Release();
+        TryReleaseBuffers();
         PostRenderEvent.RemoveEvent(Camera.main, DrawClouds);
     }
 
@@ -223,27 +219,27 @@ public class MarchingCubesGPU_4DNoise : MonoBehaviour
 
     private void TryReleaseBuffers() 
     {
-        if(m_controlPoints != null) 
+        if (m_controlPoints != null) 
         {
             m_controlPoints.Release();
         }
 
-        if(m_noiseBuffer != null) 
+        if (m_noiseBuffer != null) 
         {
             m_noiseBuffer.Release();
         }
 
-        if(m_meshBuffer != null) 
+        if (m_meshBuffer != null) 
         {
             m_meshBuffer.Release();
         }
 
-        if(m_cubeEdgeFlags != null) 
+        if (m_cubeEdgeFlags != null) 
         {
             m_cubeEdgeFlags.Release();
         }
 
-        if(m_triangleConnectionTable != null) 
+        if (m_triangleConnectionTable != null) 
         {
             m_triangleConnectionTable.Release();
         }
