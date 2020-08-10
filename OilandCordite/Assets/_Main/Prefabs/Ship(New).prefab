@@ -8659,32 +8659,9 @@ MonoBehaviour:
   _timeToOverheat: 5
   _timeToResetFromMax: 1
   _overheatedTimePenalty: 2
-  _heatCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
   _overheatingParticles: {fileID: 0}
   IsIgniting: 0
+  _heatToBeApplied: 0
 --- !u!114 &6160545799523275746
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8701,7 +8678,7 @@ MonoBehaviour:
   upperHeatThreshold: 0
   minimumHeatThreshold: 0.1
   HeatTrailObjects:
-  - {fileID: 0}
+  - {fileID: 1020908104211233233}
   - {fileID: 0}
   ThrustTrailObjects:
   - {fileID: 0}
