@@ -17,6 +17,7 @@ public class DestoyEnemiesController : MissionController
 
         StartCoroutine(CheckMissionComplete());
     }
+
     private void InstantiateUI(Transform WorkingTransform)
     {
         for (int i = 0; i < WorkingTransform.childCount; i++)
@@ -26,6 +27,7 @@ public class DestoyEnemiesController : MissionController
             Temp.transform.localPosition = new Vector3(0, 0, 0);
         }
     }
+
     private IEnumerator CheckMissionComplete()
     {
         while (true)
@@ -36,6 +38,7 @@ public class DestoyEnemiesController : MissionController
 
                 break;
             }
+
             if (transform.GetChild(0).gameObject.CompareTag("Enemy"))
             {
                 if (transform.childCount <= _enemyRemainingUIThreshold && !_enemyRemainingUIEnabled)

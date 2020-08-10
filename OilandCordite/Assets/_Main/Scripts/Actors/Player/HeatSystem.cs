@@ -103,8 +103,6 @@ public class HeatSystem : GameEventUserObject
             {
                 Heat = Mathf.Max(0, Heat - coolingSpeed * Time.deltaTime) + _heatToBeApplied;
 
-                Debug.LogError(_heatToBeApplied);
-
                 _heatToBeApplied = 0f;
 
                 yield return null;

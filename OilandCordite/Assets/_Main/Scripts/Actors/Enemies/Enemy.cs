@@ -31,8 +31,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private List<Transform> _spinnerTransforms;
     [SerializeField] private string _defeatedCueName;
     [SerializeField] private WeldedWeaponType _weldedWeaponType;
-    [SerializeField] private GameObject _UIElement;
-    [SerializeField] private float _minDistance=5000;
+    [SerializeField] private GameObject _uiElement;
+    [SerializeField] private float _minDistance = 5000;
 
     private EnemyData _enemyData;
 
@@ -66,11 +66,13 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(Attack());
     }
+
     //This makes it so when the player is moving fast enough and is close enough a UI target appears
     private void ShowTargetUI()
     {
-            _UIElement.SetActive(PlayerData.Instance.Speed >= _piercingSpeed && Vector3.Distance(PlayerData.Instance.transform.position, transform.position) <= _minDistance);
+            //_uiElement.SetActive(PlayerData.Instance.Speed >= _piercingSpeed && Vector3.Distance(PlayerData.Instance.transform.position, transform.position) <= _minDistance);
     }
+
     public void OnDefeated()
     {
         Defeated = true;
@@ -90,7 +92,7 @@ public class Enemy : MonoBehaviour
 
         Instantiate(_particles, transform.position, Quaternion.Euler(Vector3.zero));
 
-        _UIElement.SetActive(false);
+        //_uiElement.SetActive(false);
 
         Destroy(gameObject, 5f);
     }
@@ -105,6 +107,8 @@ public class Enemy : MonoBehaviour
 
             foreach (AttackBehaviour attack in _attackBehaviours)
             {
+                attack.InitializeDataForFrame(PlayerData.Instance, _enemyData);
+
                 if (attack.UsageCondition(PlayerData.Instance, _enemyData))
                 {
                     _currentAttackBehaviour = attack;
@@ -133,7 +137,9 @@ public class Enemy : MonoBehaviour
                     break;
                 }
             }
+
             ShowTargetUI();
+
             yield return null;
         }
     }

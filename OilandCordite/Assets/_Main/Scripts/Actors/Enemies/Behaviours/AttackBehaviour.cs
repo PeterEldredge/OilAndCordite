@@ -12,12 +12,18 @@ public abstract class AttackBehaviour : ScriptableObject
     [SerializeField] protected float _maxRange;
 
     [SerializeField] protected float _lookSpeed = 1f;
+    [SerializeField] protected AnimationCurve _lookSpeedModifier;
+
+    protected float _distanceToPlayer = 0f;
+
+    public virtual void InitializeDataForFrame(PlayerData playerData, EnemyData enemyData)
+    {
+        _distanceToPlayer = Vector3.Distance(playerData.WorldSpacePosition, enemyData.WorldSpacePosition);
+    }
 
     public virtual bool UsageCondition(PlayerData playerData, EnemyData enemyData)
     {
-        float distance = Vector3.Distance(playerData.WorldSpacePosition, enemyData.WorldSpacePosition);
-
-        return  distance >= _minRange && distance <= _maxRange;
+        return _distanceToPlayer >= _minRange && _distanceToPlayer <= _maxRange;
     }
 
     public abstract void Attack(EnemyData enemyData);

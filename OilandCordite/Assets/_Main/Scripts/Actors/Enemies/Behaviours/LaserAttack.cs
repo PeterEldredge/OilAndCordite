@@ -51,8 +51,10 @@ public class LaserAttack : AttackBehaviour
     }
 
     public override void Track(EnemyData enemyData)
-    {
-        Quaternion lookRotation = Quaternion.LookRotation(PlayerData.Instance.WorldSpacePosition - enemyData.WorldSpacePosition);
-        enemyData.Object.transform.rotation = Quaternion.Lerp(enemyData.WorldSpaceRotation, lookRotation, _lookSpeed * Time.deltaTime);
+    {      
+        enemyData.Object.transform.rotation = 
+            Quaternion.Lerp(enemyData.WorldSpaceRotation,
+                            Quaternion.LookRotation(PlayerData.Instance.WorldSpacePosition - enemyData.WorldSpacePosition), 
+                            _lookSpeed * _lookSpeedModifier.Evaluate((_distanceToPlayer - _minRange) / (_maxRange - _minRange)) * Time.deltaTime);
     }
 }
