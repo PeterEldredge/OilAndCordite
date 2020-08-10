@@ -110,7 +110,7 @@ public class CloudsController : MonoBehaviour
 
     private void Update() 
     {
-        if(Application.isPlaying && _cloudFade != null) 
+        if(Application.isPlaying && _cloudFade != null && cloudContainer != null) 
         {
             float distanceToCloudVolume = Vector3.Distance(_main.position, cloudContainer.position);
             
