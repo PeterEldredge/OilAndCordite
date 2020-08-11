@@ -1946,6 +1946,7 @@ GameObject:
   - component: {fileID: 1999635201970919141}
   - component: {fileID: 5373181591051876891}
   - component: {fileID: 5370161402281275932}
+  - component: {fileID: 7620123515282459240}
   m_Layer: 12
   m_Name: ShipObject
   m_TagString: Untagged
@@ -1989,8 +1990,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.6042837, y: 0.17810583, z: 2.1913793}
-  m_Center: {x: 0.8585358, y: 0.035975933, z: -0.59568965}
+  m_Size: {x: 0.25609195, y: 0.17810583, z: 2.7920444}
+  m_Center: {x: 0.48594278, y: 0.035975933, z: -0.7378868}
 --- !u!65 &8823320728991207649
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2002,8 +2003,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.61705256, y: 0.1767956, z: 2.1998816}
-  m_Center: {x: -0.8205646, y: 0.044298768, z: -0.5999408}
+  m_Size: {x: 0.20274651, y: 0.1767956, z: 2.7837262}
+  m_Center: {x: -0.5132013, y: 0.044298768, z: -0.75315744}
 --- !u!136 &1999635201970919141
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2014,10 +2015,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.583567
-  m_Height: 3.981589
+  m_Radius: 0.44756335
+  m_Height: 2.7308767
   m_Direction: 2
-  m_Center: {x: 0, y: 0.08356702, z: -0.39606154}
+  m_Center: {x: 2.185677e-15, y: 0.11536378, z: -0.8461964}
 --- !u!95 &5373181591051876891
 Animator:
   serializedVersion: 3
@@ -2054,6 +2055,20 @@ MonoBehaviour:
   _scoreMod: 1
   _scoreBonus: 0
   _takesWeapon: 0
+--- !u!136 &7620123515282459240
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4764440404822199357}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.3103088
+  m_Height: 1.5880303
+  m_Direction: 2
+  m_Center: {x: -0.008854926, y: -0.008028865, z: 0.8288567}
 --- !u!1 &5091486430080224905
 GameObject:
   m_ObjectHideFlags: 0
