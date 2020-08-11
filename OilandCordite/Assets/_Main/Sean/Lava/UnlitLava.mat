@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _CooledNoise:
-        m_Texture: {fileID: 2800000, guid: c51ac95356f5b4a129042df08e58c84d, type: 3}
+        m_Texture: {fileID: 2800000, guid: f7992440e52d6df4787a20a6d88b218f, type: 3}
         m_Scale: {x: 15, y: 15}
         m_Offset: {x: 0, y: 0}
     - _DistortionMap:
@@ -33,7 +33,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
         m_Texture: {fileID: 2800000, guid: 5a61261df51695147986428a579809c8, type: 3}
-        m_Scale: {x: 15, y: 15}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SurfaceDistortion:
         m_Texture: {fileID: 0}
@@ -44,25 +44,25 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _CutoffMultiplier: 4.22
+    - _CutoffMultiplier: 0
     - _DepthMaxDistance: 4
-    - _EdgeCutoff: 0.22
-    - _EdgeDistance: 3.26
+    - _EdgeCutoff: 0
+    - _EdgeDistance: 0
     - _FoamMaxDistance: 0.4
     - _FoamMinDistance: 0.04
     - _GradientMiddle: 24.95
-    - _NoiseSpeed: 1.84
+    - _NoiseSpeed: 1
     - _SurfaceDistortionAmount: 0.15
     - _SurfaceNoiseCutoff: 0.777
-    - _VertexAmplitude: 4.04
-    - _VertexMovementSpeed: 1
-    - _VertexWavelength: 1.46
+    - _VertexAmplitude: 0
+    - _VertexMovementSpeed: 0
+    - _VertexWavelength: 1.07
     m_Colors:
     - _DepthGradientDeep: {r: 0.08599999, g: 0.40699998, b: 1, a: 0.749}
     - _DepthGradientShallow: {r: 0.32499996, g: 0.807, b: 0.971, a: 0.725}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
-    - _LavaCooledColor: {r: 0.4627451, g: 0.35039848, b: 0.27450982, a: 1}
-    - _LavaEdgeColor: {r: 1, g: 0.62702686, b: 0.33333337, a: 1}
-    - _LavaInnerColor: {r: 0.8392157, g: 0.07376595, b: 0, a: 1}
+    - _LavaCooledColor: {r: 1, g: 1, b: 1, a: 1}
+    - _LavaEdgeColor: {r: 1, g: 0.6072419, b: 0.2971698, a: 1}
+    - _LavaInnerColor: {r: 1, g: 0.020209333, b: 0, a: 1}
     - _LavaVeryHotColor: {r: 0, g: 0, b: 1, a: 1}
     - _SurfaceNoiseScroll: {r: 0.09, g: 0.03, b: 0, a: 0}
