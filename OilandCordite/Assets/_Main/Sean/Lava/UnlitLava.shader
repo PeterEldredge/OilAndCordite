@@ -126,15 +126,15 @@
                 float3 col = _LavaInnerColor;
 
                 st += noise(st * 2.0) * t;
-                col = float3(1.0, 1.0, 1.0) * _LavaInnerColor * smoothstep(.18,.2,noise(st)); // Big black drops
-                col += smoothstep(.15,.2,noise(st*10.0)); // Black splatter
-                col -= smoothstep(.35,.4,noise(st*10.0 * gritNoise)); // Holes on splatter
+                col = float3(1.0, 1.0, 1.0) * smoothstep(0.1, 1.0, noise(st)); // Big black drops
+                //col += smoothstep(.15,.2,noise(st*10.0)); // Black splatter
+                col -= smoothstep(.35,.4,noise(st * 10.0 * gritNoise)); // Holes on splatter
                 
                 col += (surfaceNoiseCutoff);
 
                 float4 surfaceNoise = col.r > 0 ? lerp(_LavaInnerColor, _LavaEdgeColor, gritNoise) : _LavaCooledColor * cooledNoise;
 
-                return surfaceNoise;
+                return float4(col, 0);
             }
             ENDCG
         }
