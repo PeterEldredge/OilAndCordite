@@ -6,7 +6,7 @@ public abstract class AttackBehaviour : ScriptableObject
 {
     public float CoolDown;
     public string AttackAudio;
-    public bool LoopAttackAudio;
+    public bool IsLoopingAttack;
 
     [SerializeField] protected float _minRange;
     [SerializeField] protected float _maxRange;
@@ -25,6 +25,8 @@ public abstract class AttackBehaviour : ScriptableObject
     {
         return _distanceToPlayer >= _minRange && _distanceToPlayer <= _maxRange;
     }
+
+    public virtual void CleanUp(PlayerData playerData, EnemyData enemyData) { }
 
     public abstract void Attack(EnemyData enemyData);
     public abstract void Track(EnemyData enemyData);

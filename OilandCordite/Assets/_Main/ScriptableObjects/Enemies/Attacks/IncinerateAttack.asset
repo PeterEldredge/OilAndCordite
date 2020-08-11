@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d804c0af758c744b8ec941c154e7095, type: 3}
-  m_Name: SlowLaser
+  m_Script: {fileID: 11500000, guid: 19a51f9089c026d49a1470411ca247b3, type: 3}
+  m_Name: IncinerateAttack
   m_EditorClassIdentifier: 
-  CoolDown: 0.2
-  AttackAudio: Laserbot_Attack
-  IsLoopingAttack: 0
+  CoolDown: 0
+  AttackAudio: SpinnerBot_FastSpin
+  IsLoopingAttack: 1
   _minRange: 0
   _maxRange: 500
-  _lookSpeed: 20
+  _lookSpeed: 0.75
   _lookSpeedModifier:
     serializedVersion: 2
     m_Curve:
@@ -51,7 +51,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _shotsPerBurst: 4
-  _burstFireSpeed: 0.2
-  _betweenBurstFireSpeed: 0.8
-  _laser: {fileID: 363295530575159796, guid: 028c8233cfde93249b194d06fbb6e777, type: 3}
+  _heatTrigger: {fileID: 8465517893458176780, guid: c2da9baa9d43b1a4cb709fddfa0e8565,
+    type: 3}

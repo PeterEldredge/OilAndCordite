@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float _healthGain = 30f;
     [SerializeField] private int _baseScore = 250;
     [SerializeField] private GameObject _colliders;
+    [SerializeField] private List<GameObject> _obstacles;
     [SerializeField] private GameObject _particles;
     [SerializeField] private List<AttackBehaviour> _attackBehaviours;
     [SerializeField] private List<Transform> _attackPoints;
@@ -80,6 +81,11 @@ public class Enemy : MonoBehaviour
         _previousAttackBehavior = null;
         _currentAttackBehaviour = null;
 
+        foreach(GameObject obstacle in _obstacles)
+        {
+            Destroy(obstacle);
+        }
+
         foreach(Transform tr in _spinnerTransforms)
         {
             Destroy(tr.gameObject); 
@@ -117,7 +123,7 @@ public class Enemy : MonoBehaviour
                     {
                         attack.Attack(_enemyData);
 
-                        if(!attack.LoopAttackAudio)
+                        if(!attack.IsLoopingAttack)
                         {
                             _acp.PlaySound(attack.AttackAudio);
                         }
@@ -126,6 +132,8 @@ public class Enemy : MonoBehaviour
                             if(_currentAttackBehaviour != _previousAttackBehavior)
                             {
                                 StartCoroutine(AttackSoundLoop(_currentAttackBehaviour));
+
+                                if (_previousAttackBehavior?.IsLoopingAttack == true) _previousAttackBehavior.CleanUp(PlayerData.Instance, _enemyData);
                             }
                         }
                         
