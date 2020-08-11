@@ -22,7 +22,7 @@ public class EnemyBob : MonoBehaviour
 
     private IEnumerator EnemyBobRoutine()
     {
-        float timer = 0;
+        float timer = Random.Range(0f, 1f);
 
         while(true)
         {

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 2955024978760440084}
   - component: {fileID: 2164983741206608325}
   - component: {fileID: 1222544419899411629}
-  - component: {fileID: 8692819907112298130}
   - component: {fileID: 1194723777971676802}
+  - component: {fileID: 9186061710926905532}
   m_Layer: 0
   m_Name: Saucer
   m_TagString: Untagged
@@ -81,20 +81,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8692819907112298130
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1851319275585766667}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 1
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 7116198487031641612, guid: d4e4f3571cff6974cbc01b05f1d0bf76, type: 3}
 --- !u!114 &1194723777971676802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -107,6 +93,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc7386aff2b2f50459f67680315e57d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &9186061710926905532
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1851319275585766667}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.032596283
+  m_Center: {x: -0.00000006146729, y: 0, z: 0}
 --- !u!1 &3526563540310425465
 GameObject:
   m_ObjectHideFlags: 0
@@ -306,7 +305,7 @@ GameObject:
   - component: {fileID: 8902336773368716652}
   - component: {fileID: 8959265890400275100}
   - component: {fileID: 4410511839143983613}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: Saw
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -441,6 +440,7 @@ MonoBehaviour:
   _healthGain: 30
   _baseScore: 250
   _colliders: {fileID: 1851319275585766667}
+  _obstacles: []
   _particles: {fileID: 5750540886688882586, guid: d417219e225249e4ab0730b09e0d659d,
     type: 3}
   _attackBehaviours:
@@ -451,7 +451,7 @@ MonoBehaviour:
   - {fileID: 7029431097367500695}
   _defeatedCueName: Laserbot_Defeat
   _weldedWeaponType: 2
-  _UIElement: {fileID: 3526563540310425465}
+  _uiElement: {fileID: 0}
   _minDistance: 500
 --- !u!114 &6089402306166157616
 MonoBehaviour:

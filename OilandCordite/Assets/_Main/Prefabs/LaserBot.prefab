@@ -9,9 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1197756394214903232}
-  - component: {fileID: 4954355062521206119}
   - component: {fileID: 4376979728815297191}
-  - component: {fileID: 1318502051597399246}
   - component: {fileID: 2040899517751013913}
   m_Layer: 0
   m_Name: Colliders
@@ -34,20 +32,6 @@ Transform:
   m_Father: {fileID: 5691272156240179817}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!136 &4954355062521206119
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2996464564004443566}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.008064314
-  m_Height: 0.03046809
-  m_Direction: 2
-  m_Center: {x: 0.03395875, y: -0.00040828958, z: 0.003031461}
 --- !u!136 &4376979728815297191
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -58,23 +42,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.007465402
-  m_Height: 0.030857965
-  m_Direction: 2
-  m_Center: {x: -0.03216317, y: 0.00025636068, z: 0.0037932717}
---- !u!135 &1318502051597399246
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2996464564004443566}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.021183034
-  m_Center: {x: 0.0000880087, y: -0.0005713995, z: 0.00096714764}
+  m_Radius: 0.023759054
+  m_Height: 0.080399044
+  m_Direction: 0
+  m_Center: {x: 0.00057094573, y: 0.0012595622, z: 0.0037932715}
 --- !u!114 &2040899517751013913
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -316,6 +287,7 @@ GameObject:
   - component: {fileID: 5691272156240179831}
   - component: {fileID: 5691272156240179816}
   - component: {fileID: 766721871}
+  - component: {fileID: 1219578174}
   m_Layer: 0
   m_Name: LaserBot
   m_TagString: Enemy
@@ -369,7 +341,7 @@ MonoBehaviour:
   _spinnerTransforms: []
   _defeatedCueName: Laserbot_Defeat
   _weldedWeaponType: 1
-  _UIElement: {fileID: 3139266093858885288}
+  _uiElement: {fileID: 0}
   _minDistance: 500
 --- !u!114 &5691272156240179816
 MonoBehaviour:
@@ -400,6 +372,53 @@ MonoBehaviour:
   _audioCues:
   - {fileID: 11400000, guid: 2c47c4c61ac0c3b4f8725691849fe5be, type: 2}
   - {fileID: 11400000, guid: 39186c40153f8f94eafc06d4fb33c89d, type: 2}
+--- !u!114 &1219578174
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5691272156240179821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83f8660c35b236545bf066cf7104766c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movementDelta: 20
+  _movementSpeed: 0.2
+  _movementCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0.11770343
+      outSlope: 0.11770343
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.08015028
+    - serializedVersion: 3
+      time: 0.5
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 34
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -0.06383904
+      outSlope: -0.06383904
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.07388866
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &7094360462761638352
 GameObject:
   m_ObjectHideFlags: 0
