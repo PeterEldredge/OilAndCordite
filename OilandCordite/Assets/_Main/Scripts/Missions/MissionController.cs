@@ -49,6 +49,7 @@ public abstract class MissionController : GameEventUserObject
         CalculateScore();
 
         _levelData.HighScore = Score;
+        _levelData.BestTime = Mathf.RoundToInt(Timer);
 
         EventManager.Instance.TriggerEvent(new Events.MissionCompleteEventArgs());
     }
