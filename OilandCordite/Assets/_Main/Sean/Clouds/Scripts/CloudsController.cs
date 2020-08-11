@@ -73,6 +73,10 @@ public class CloudsController : MonoBehaviour
         {
            material = new Material(shader);
         }
+
+        if (cloudContainer == null)
+            return;
+
         material.SetVector("_VolumeBoundaryMin", cloudContainer.position - cloudContainer.localScale / 2);
         material.SetVector("_VolumeBoundaryMax", cloudContainer.position + cloudContainer.localScale / 2);
         material.SetInt("_RaymarchSteps", raySteps);
@@ -106,7 +110,7 @@ public class CloudsController : MonoBehaviour
 
     private void Update() 
     {
-        if(Application.isPlaying) 
+        if(Application.isPlaying && _cloudFade != null && cloudContainer != null) 
         {
             float distanceToCloudVolume = Vector3.Distance(_main.position, cloudContainer.position);
             

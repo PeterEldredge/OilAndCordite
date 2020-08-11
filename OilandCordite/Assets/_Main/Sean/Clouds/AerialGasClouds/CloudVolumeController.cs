@@ -13,7 +13,7 @@
 
         public void ToggleGizmos() 
         {
-            if(!drawActivationRadius && !drawActivationRadius) 
+            if (!drawActivationRadius && !drawActivationRadius) 
             {
                 drawSimulationSpace = !drawSimulationSpace;
                 drawActivationRadius = !drawActivationRadius;
@@ -44,16 +44,19 @@
 
         void OnDrawGizmos()
         {
-            if(drawSimulationSpace) 
+            if (drawSimulationSpace) 
             {
                 // Note: Does not update with scale lol
                 Gizmos.color = new Color(1, 0, 0, 0.5f);
                 Gizmos.DrawWireCube(transform.position + Vector3.Scale(new Vector3(20.0f, 20.0f, 20.0f), transform.lossyScale), Vector3.Scale(new Vector3(40.0f, 40.0f, 40.0f), transform.lossyScale));
             }
-            if(drawActivationRadius) 
+            if (drawActivationRadius) 
             {
                 Gizmos.color = new Color(0, 1, 0, 0.5f);
-                Gizmos.DrawWireSphere(transform.position + Vector3.Scale(col.center, transform.lossyScale), col.radius * transform.lossyScale.x);
+                if (col != null)
+                {
+                    Gizmos.DrawWireSphere(transform.position + Vector3.Scale(col.center, transform.lossyScale), col.radius * transform.lossyScale.x);
+                }
             }
         }
     }

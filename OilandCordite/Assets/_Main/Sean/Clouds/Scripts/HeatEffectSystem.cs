@@ -124,10 +124,13 @@ public class HeatEffectSystem : GameEventUserObject
 
     private void DisableHeatTrails() 
     {
-        foreach(TrailRenderer trail in HeatTrailObjects) 
+        if (HeatTrailObjects != null)
         {
-            trail.enabled = false;
-            trail.Clear();
+            foreach(TrailRenderer trail in HeatTrailObjects) 
+            {
+                trail.enabled = false;
+                trail.Clear();
+            }
         }
     }
 
