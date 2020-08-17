@@ -11,8 +11,11 @@ public class LaserAttack : AttackBehaviour
     [SerializeField] float _betweenBurstFireSpeed;
 
     [SerializeField] protected GameObject _laser;
+    [SerializeField] protected GameObject _muzzleFlash;
 
     private int currentBurstShots = 0;
+
+    private Vector3 currentLookRotation;
 
     public override bool UsageCondition(PlayerData playerData, EnemyData enemyData)
     {
@@ -25,12 +28,11 @@ public class LaserAttack : AttackBehaviour
         {
             foreach(Transform attackPoint in enemyData.AttackPoints)
             {
-                Instantiate(_laser, attackPoint.position, Quaternion.LookRotation(PlayerData.Instance.WorldSpacePosition - attackPoint.position));
+                currentLookRotation = PlayerData.Instance.WorldSpacePosition - attackPoint.position;
+
+                Instantiate(_laser, attackPoint.position, Quaternion.LookRotation(currentLookRotation));
+                Instantiate(_muzzleFlash, attackPoint.position, Quaternion.LookRotation(currentLookRotation));
             }
-        }
-        else
-        {
-            Instantiate(_laser, enemyData.WorldSpacePosition, enemyData.WorldSpaceRotation);
         }
 
         if(_shotsPerBurst > 0)

@@ -9868,7 +9868,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 2147489079
+    m_Bits: 2147499319
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -10308,7 +10308,7 @@ MonoBehaviour:
   _pixelateDownscale: 0
   _antialiasStrength: 5
   _antialiasDepthThreshold: 0.001
-  isDirty: 1
+  isDirty: 0
   bMat: {fileID: 0}
 --- !u!114 &8233701526253537958
 MonoBehaviour:
@@ -12327,6 +12327,11 @@ PrefabInstance:
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[0].value
       value: 0.1661663
       objectReference: {fileID: 0}
+    - target: {fileID: 273353726654078692, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
+        type: 3}
+      propertyPath: _igniteThrust
+      value: 120
+      objectReference: {fileID: 0}
     - target: {fileID: 1020908104211233233, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
         type: 3}
       propertyPath: m_Time
@@ -12583,6 +12588,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Parameters.widthCurve.m_Curve.Array.data[2].time
       value: 0.4888916
+      objectReference: {fileID: 0}
+    - target: {fileID: 8108382963330985689, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8740287161518938620, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
         type: 3}
