@@ -12,6 +12,11 @@ public class CameraShake : GameEventUserObject
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => ScreenShake();
     private FlightCam _flightCam;
 
+    private void Start()
+    {
+        _flightCam = GetComponent<FlightCam>();
+    }
+
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnEnemyDefeated);
@@ -20,6 +25,19 @@ public class CameraShake : GameEventUserObject
 
     private void ScreenShake()
     {
-        transform.gameObject.GetComponent<Camera>().DOShakePosition(1f);
+        transform.gameObject.GetComponent<Camera>().DOShakeRotation(_duration, _magnitude);
+        StartCoroutine(Shake());
+    }
+
+    private IEnumerator Shake()
+    {
+        float _timer = 0f;
+
+
+        while (_timer < _duration)
+        {
+            _timer += Time.deltaTime;
+            yield return null;
+        }
     }
 }

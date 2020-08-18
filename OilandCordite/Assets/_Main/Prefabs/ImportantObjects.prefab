@@ -3166,60 +3166,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &5332180795821549668
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2490610091598457339}
-  - component: {fileID: 1758089792077287381}
-  m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2490610091598457339
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5332180795821549668}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 9122936525702794190}
-  m_Father: {fileID: 9122936526216339451}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1758089792077287381
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5332180795821549668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ebe90f0182e1d646a16a1918c39f680, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ship: {fileID: 5365513814971153437}
-  springBias: 0.96
-  distanceFromShip: 2
-  upFromShip: 2
-  lookingPointFromShip: 2
-  rotateSpeed: 10
-  damping: 4
-  _speedRotationDivisor: 30
-  _maxDistanceFromShip: 15
-  _minDistanceFromShip: 3
 --- !u!1 &5527907579841906047
 GameObject:
   m_ObjectHideFlags: 0
@@ -4513,6 +4459,60 @@ MonoBehaviour:
   - {fileID: 0}
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &6872217862654434652
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5629479974912669396}
+  - component: {fileID: 2951560010774911877}
+  m_Layer: 0
+  m_Name: CameraHolder
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5629479974912669396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872217862654434652}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 9122936525702794190}
+  m_Father: {fileID: 9122936526216339451}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2951560010774911877
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6872217862654434652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ebe90f0182e1d646a16a1918c39f680, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ship: {fileID: 5365513814971153437}
+  springBias: 0.96
+  distanceFromShip: 2
+  upFromShip: 2
+  lookingPointFromShip: 2
+  rotateSpeed: 10
+  damping: 4
+  _speedRotationDivisor: 30
+  _maxDistanceFromShip: 15
+  _minDistanceFromShip: 3
 --- !u!1 &6970944135507507387
 GameObject:
   m_ObjectHideFlags: 0
@@ -11223,14 +11223,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9122936525702794186}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 517.8401, y: -1227.07, z: -811.17}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1988466287}
-  m_Father: {fileID: 2490610091598457339}
+  m_Father: {fileID: 5629479974912669396}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &9122936525702794191
 Camera:
   m_ObjectHideFlags: 0
@@ -11680,7 +11680,7 @@ MonoBehaviour:
   _pixelateDownscale: 0
   _antialiasStrength: 5
   _antialiasDepthThreshold: 0.001
-  isDirty: 0
+  isDirty: 1
   bMat: {fileID: 0}
 --- !u!114 &8233701526253537958
 MonoBehaviour:
@@ -11741,7 +11741,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _duration: 1
-  _magnitude: 1
+  _magnitude: 5
 --- !u!1 &9122936525737876826
 GameObject:
   m_ObjectHideFlags: 0
@@ -12831,7 +12831,7 @@ Transform:
   - {fileID: 9122936526444033259}
   - {fileID: 9122936525271774562}
   - {fileID: 9122936524987965222}
-  - {fileID: 2490610091598457339}
+  - {fileID: 5629479974912669396}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13308,7 +13308,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _flightCam
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2951560010774911877}
     - target: {fileID: 2012369514025311477, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
         type: 3}
       propertyPath: _particles
