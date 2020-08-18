@@ -25,14 +25,14 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 2800000, guid: 06019f91fb868284a9b333fd11079548, type: 2}
-        m_Scale: {x: 1, y: 1}
+        m_Scale: {x: 10, y: 10}
         m_Offset: {x: 0, y: 0}
     - _VertexNoiseMap:
         m_Texture: {fileID: 2800000, guid: 93092410bbc6f4ccba773578db5832d9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _Alpha: 1
+    - _Alpha: 0.951
     - _Amount: 0.17
     - _EmissionScale: 42.9
     - _Glossiness: 0
@@ -42,7 +42,7 @@ Material:
     - _Ramp: 0.9
     - _ScrollSpeed: 1
     - _SheildHealth: 1
-    - _ShieldHealth: 0
+    - _ShieldHealth: 0.02
     m_Colors:
-    - _Color: {r: 0, g: 1, b: 0.9489832, a: 1}
-    - _LowColor: {r: 0.9528302, g: 0.26517445, b: 0.42530334, a: 1}
+    - _Color: {r: 0, g: 0.58708096, b: 1, a: 1}
+    - _LowColor: {r: 0.63164073, g: 0.26666668, b: 0.9529412, a: 1}
