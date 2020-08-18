@@ -2,8 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
-public class ToggleButton : MonoBehaviour
+namespace Events
+{
+    public struct MotionBlurToggledEventArgs : IGameEvent
+    {
+        public bool MotionBlur { get; private set; }
+
+        public MotionBlurToggledEventArgs(bool motionBlur)
+        {
+            MotionBlur = motionBlur;
+        }
+    }
+}
+
+public class ToggleButton : GameEventUserObject
 {
     [SerializeField] private float _toggleTime;
 
@@ -33,6 +47,40 @@ public class ToggleButton : MonoBehaviour
         _zPosition = transform.localPosition.z;
     }
 
+    public override void Subscribe()
+    {
+        EventManager.Instance.AddListener<Events.RefreshSettingsUIArgs>(this, Refresh);
+    }
+
+    public override void Unsubscribe()
+    {
+        EventManager.Instance.AddListener<Events.RefreshSettingsUIArgs>(this, Refresh);
+    }
+
+    private void Refresh(Events.RefreshSettingsUIArgs args)
+    {
+        if (Settings.Instance.MotionBlur)
+        {
+            transform.localPosition = new Vector3(_onXPosition, _yPosition, _zPosition);
+
+            _toggleImage.color = _onColor;
+
+            _toggleButton.interactable = true;
+
+            IsOn = true;
+        }
+        else
+        {
+            transform.localPosition = new Vector3(_offXPosition, _yPosition, _zPosition);
+
+            _toggleImage.color = _offColor;
+
+            _toggleButton.interactable = true;
+
+            IsOn = false;
+        }
+    }
+
     public void Toggle() => StartCoroutine(ToggleRoutine());
 
     private IEnumerator ToggleRoutine()
@@ -48,6 +96,8 @@ public class ToggleButton : MonoBehaviour
         float timer = 0f;
 
         IsOn = !IsOn;
+
+        EventManager.Instance.TriggerEvent(new Events.MotionBlurToggledEventArgs(IsOn));
 
         if(IsOn)
         {

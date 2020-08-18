@@ -150,6 +150,8 @@ public class LevelManager : MonoBehaviour
         float mapBorderTime = _mapBorder.Close();
         yield return new WaitForSeconds(mapBorderTime);
 
+        Settings.Instance.LoadSavedSettings();
+
         _settingsMenuObj.SetActive(true);
         _settingsMenuManager.Open(gameObject);
         gameObject.SetActive(false);

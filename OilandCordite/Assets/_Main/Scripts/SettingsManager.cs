@@ -15,6 +15,11 @@ public class SettingsManager : MonoBehaviour
         _optionsBorder = GetComponentInChildren<MapBorder>();
     }
 
+    private void OnEnable()
+    {
+        Settings.Instance.LoadSavedSettings();
+    }
+
     public void Open(GameObject panel)
     {
         _previousPanel = panel;
