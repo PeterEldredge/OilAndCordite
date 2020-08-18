@@ -9,11 +9,15 @@ namespace Events
     {
         public float HealthGain { get; }
         public int Score { get; }
+        public float ShakeMagnitude { get; }
+        public float ShakeDuration { get; }
 
-        public PlayerDefeatedEnemyEventArgs(float healthGain, int score)
+        public PlayerDefeatedEnemyEventArgs(float healthGain, int score, float magnitude, float duration)
         {
             HealthGain = healthGain;
             Score = score;
+            ShakeMagnitude = magnitude;
+            ShakeDuration = duration;
         }
     }
 
@@ -34,6 +38,10 @@ public class Enemy : MonoBehaviour
     [SerializeField] private WeldedWeaponType _weldedWeaponType;
     [SerializeField] private GameObject _uiElement;
     [SerializeField] private float _minDistance = 5000;
+    [SerializeField] private float _destroyedShakeMagnitude = 5f;
+    [SerializeField] private float _destroyedShakeDuration = 1f;
+    [SerializeField] private float _bouncedShakeMagnitude = 5f;
+    [SerializeField] private float _bouncedShakeDuration = 1f;
 
     private EnemyData _enemyData;
 
@@ -52,6 +60,11 @@ public class Enemy : MonoBehaviour
     public int BaseScore => _baseScore;
     public bool Defeated { get; private set; } = false;
     public WeldedWeaponType WeaponType => _weldedWeaponType;
+    public float DestroyedShakeMagnitude => _destroyedShakeMagnitude;
+    public float DestroyedShakeDuration => _destroyedShakeDuration;
+    public float BouncedShakeMagnitude => _bouncedShakeMagnitude;
+    public float BouncedShakeDuration => _bouncedShakeDuration;
+
 
     private void Awake()
     {

@@ -11680,7 +11680,7 @@ MonoBehaviour:
   _pixelateDownscale: 0
   _antialiasStrength: 5
   _antialiasDepthThreshold: 0.001
-  isDirty: 0
+  isDirty: 1
   bMat: {fileID: 0}
 --- !u!114 &8233701526253537958
 MonoBehaviour:
@@ -11740,8 +11740,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7e18a13348e7ff458aab3b6278f993e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _duration: 1
-  _magnitude: 5
 --- !u!1 &9122936525737876826
 GameObject:
   m_ObjectHideFlags: 0
@@ -13455,6 +13453,11 @@ PrefabInstance:
         type: 3}
       propertyPath: _takesWeapon
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5490953492912323149, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
+        type: 3}
+      propertyPath: _scoreBonus
+      value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6160545799523275746, guid: 5be933958fa2e6d4ea715fcb5d4c0254,
         type: 3}

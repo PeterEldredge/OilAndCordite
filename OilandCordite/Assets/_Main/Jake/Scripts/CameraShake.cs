@@ -5,39 +5,20 @@ using DG.Tweening;
 
 public class CameraShake : GameEventUserObject
 {
-    [SerializeField] float _duration = 1f;
-    [SerializeField] float _magnitude = 1f;
 
-    private void OnEnemyDefeated(Events.PlayerDefeatedEnemyEventArgs args) => ScreenShake();
-    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => ScreenShake();
-    private FlightCam _flightCam;
-
-    private void Start()
-    {
-        _flightCam = GetComponent<FlightCam>();
-    }
+    private void OnEnemyDefeated(Events.PlayerDefeatedEnemyEventArgs args) => ScreenShake(args.ShakeDuration, args.ShakeMagnitude);
+    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => ScreenShake(args.ShakeDuration, args.ShakeMagnitude);
+    private void OnGasCloudExplosion(Events.GasExplosionEventArgs args) => ScreenShake(args.ShakeDuration, args.ShakeMagnitude);
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnEnemyDefeated);
         EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.AddListener<Events.GasExplosionEventArgs>(this, OnGasCloudExplosion);
     }
 
-    private void ScreenShake()
+    private void ScreenShake(float duration, float magnitude)
     {
-        transform.gameObject.GetComponent<Camera>().DOShakeRotation(_duration, _magnitude);
-        StartCoroutine(Shake());
-    }
-
-    private IEnumerator Shake()
-    {
-        float _timer = 0f;
-
-
-        while (_timer < _duration)
-        {
-            _timer += Time.deltaTime;
-            yield return null;
-        }
+        transform.gameObject.GetComponent<Camera>().DOShakeRotation(duration, magnitude);
     }
 }

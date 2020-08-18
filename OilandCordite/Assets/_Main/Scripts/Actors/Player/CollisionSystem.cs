@@ -7,20 +7,28 @@ namespace Events
     public struct ObstacleHitEventArgs : IGameEvent
     {
         public Vector3 CollisionNormal { get; }
+        public float ShakeMagnitude { get; }
+        public float ShakeDuration { get; }
 
-        public ObstacleHitEventArgs(Vector3 collisionNormal)
+        public ObstacleHitEventArgs(Vector3 collisionNormal, float magnitude, float duration)
         {
             CollisionNormal = collisionNormal;
+            ShakeMagnitude = magnitude;
+            ShakeDuration = duration;
         }   
     }
 
     public struct GasExplosionEventArgs : IGameEvent
     {
         public float ExplosionMagnitude { get; }
+        public float ShakeMagnitude { get; }
+        public float ShakeDuration { get; }
 
-        public GasExplosionEventArgs(float explosionMagnitude)
+        public GasExplosionEventArgs(float explosionMagnitude, float magnitude, float duration)
         {
             ExplosionMagnitude = explosionMagnitude;
+            ShakeMagnitude = magnitude;
+            ShakeDuration = duration;
         }
     }
 }
@@ -31,6 +39,10 @@ public class CollisionSystem : GameEventUserObject
     public bool InGas { get; private set; }
 
     [SerializeField] private GameObject _gasExplosionParticles;
+    [SerializeField] private float _obstacleShakeMagnitude = 5f;
+    [SerializeField] private float _obstacleShakeDuration = 1f;
+    [SerializeField] private float _gasShakeMagnitude = 3f;
+    [SerializeField] private float _gasShakeDuration = .5f;
 
     private bool _canHitObstacles = true;
 
@@ -39,7 +51,7 @@ public class CollisionSystem : GameEventUserObject
 
         if (collision.collider.CompareTag(Tags.OBSTACLE) && _canHitObstacles)
         {
-            EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collision.contacts[0].normal));
+            EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collision.contacts[0].normal, _obstacleShakeMagnitude, _obstacleShakeDuration));
 
             StartCoroutine(PauseObstacleCollisions());
         }
@@ -83,7 +95,7 @@ public class CollisionSystem : GameEventUserObject
             {
                 Instantiate(_gasExplosionParticles, transform.position, Quaternion.Euler(transform.rotation.eulerAngles));
 
-                EventManager.Instance.TriggerEventImmediate(new Events.GasExplosionEventArgs(gasCloudData.ExplosionMagnitude));
+                EventManager.Instance.TriggerEventImmediate(new Events.GasExplosionEventArgs(gasCloudData.ExplosionMagnitude, _gasShakeMagnitude, _gasShakeDuration));
 
                 gasCloudData.SetCloudActive(false);
             }

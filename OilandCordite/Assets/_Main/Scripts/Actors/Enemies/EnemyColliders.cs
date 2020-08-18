@@ -21,14 +21,14 @@ public class EnemyColliders : MonoBehaviour
             {
                 if (_canHitPlayer)
                 {
-                    EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collider.transform.eulerAngles.normalized));
+                    EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collider.transform.eulerAngles.normalized, _enemy.BouncedShakeMagnitude, _enemy.BouncedShakeDuration));
                     StartCoroutine(PauseEnemyCollisions());
                     return;
                 }
                 return;
             }
 
-            EventManager.Instance.TriggerEvent(new Events.PlayerDefeatedEnemyEventArgs(_enemy.HealthGain * attackData.HealthMod + attackData.HealthBonus, (int)(_enemy.BaseScore * attackData.ScoreMod) + attackData.ScoreBonus));
+            EventManager.Instance.TriggerEvent(new Events.PlayerDefeatedEnemyEventArgs(_enemy.HealthGain * attackData.HealthMod + attackData.HealthBonus, (int)(_enemy.BaseScore * attackData.ScoreMod) + attackData.ScoreBonus, _enemy.DestroyedShakeMagnitude, _enemy.DestroyedShakeDuration));
             
             //Replace 50 with variable
             if ((PlayerData.Instance.Heat >= 50 && attackData.TakeWeapon) && _enemy.WeaponType != WeldedWeaponType.NONE)
