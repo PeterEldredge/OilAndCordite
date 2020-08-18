@@ -4279,11 +4279,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2058862663533495522, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2149811657975308807, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_AnchorMin.x
@@ -6865,8 +6860,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdde7a7800b2edd47b2496ee80a67ff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelData: {fileID: 0}
-  _enemiesToBeKilled: 20
+  _levelData: {fileID: 11400000, guid: 719ee698c60191b4592e5cbb8701ad89, type: 2}
+  _enemiesToBeKilled: 0
   _enemyRemainingUIThreshold: 0
   _uiElement: {fileID: 0}
 --- !u!1001 &2190337787098721388

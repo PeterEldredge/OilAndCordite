@@ -28,6 +28,7 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _smogHeatToSpeedRatio = .4f;
     [SerializeField] private float _baseGasBoost = 300f;
     [SerializeField] private float _bounceMult = 20f;
+    [SerializeField] private float _bounceTime = .75f;
     [Tooltip("The speed at which gravity stops affecting the ship")]
     [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")]
@@ -57,6 +58,7 @@ public class ShipControlBasic : GameEventUserObject
     //Public
     public int Speed { get; private set; }
     public float MaxSpeed => _explosionMaxSpeed;
+    public float BounceTime => _bounceTime;
     public bool SpinningOut { get; private set; }
 
     //Private
@@ -332,10 +334,10 @@ public class ShipControlBasic : GameEventUserObject
         Vector3 bounceVelocity = args.CollisionNormal * _bounceMult;
         Vector3 endVelocity = args.CollisionNormal * _minAirSpeed;
 
-        while (timer < .75f)
+        while (timer < _bounceTime)
         {
             timer += Time.deltaTime;
-            _rb.velocity = Vector3.Lerp(bounceVelocity, endVelocity,  timer/.75f);
+            _rb.velocity = Vector3.Lerp(bounceVelocity, endVelocity,  timer/_bounceTime);
             yield return null;
         }
 
