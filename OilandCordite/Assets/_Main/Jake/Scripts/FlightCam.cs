@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FlightCam : MonoBehaviour
+public class FlightCam : GameEventUserObject
 {
 
     [SerializeField] private Transform ship;
@@ -16,15 +16,24 @@ public class FlightCam : MonoBehaviour
     [SerializeField] private float _maxDistanceFromShip = 20f;
     [SerializeField] private float _minDistanceFromShip = 5f;
 
+    private bool _bouncing = false;
+
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceWithRoutine());
+
+    public override void Subscribe()
+    {
+        EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
-        
+        if (_bouncing) return;
 
         Vector3 moveCamTo = ship.position - ship.forward * distanceFromShip + Vector3.up * upFromShip;
         Vector3 newPosition = transform.position * springBias + moveCamTo * (1f - springBias);
@@ -49,7 +58,21 @@ public class FlightCam : MonoBehaviour
 
         var newRotation = Quaternion.LookRotation((ship.position + ship.forward * (PlayerData.Instance.Speed / _speedRotationDivisor) * lookingPointFromShip) - transform.position);
         newRotation = newRotation * Quaternion.Euler(new Vector3(-InputHelper.Player.GetAxis("Camera Pan Vertical") * 45, InputHelper.Player.GetAxis("Camera Pan Horizontal") * 60, 0));
-        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * damping);
-        
+        transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * damping);   
+    }
+
+    private IEnumerator BounceWithRoutine()
+    {
+        _bouncing = true;
+        float timer = 0f;
+
+        while (timer < PlayerData.Instance.BounceTime)
+        {
+            timer += Time.deltaTime;
+            transform.LookAt(ship);
+            yield return null;
+        }
+
+        _bouncing = false;
     }
 }
