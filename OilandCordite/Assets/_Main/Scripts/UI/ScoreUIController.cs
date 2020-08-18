@@ -13,7 +13,6 @@ public class ScoreUIController : BaseUIController
     [SerializeField] private GameObject _comboPanel;
     [SerializeField] private GameObject _staticScorePanel;
     [SerializeField] private GameObject _scorePanel;
-    [SerializeField] private GameObject _comboBarPanel;
 
     [SerializeField] private float _maxScale;
     [SerializeField] private AnimationCurve _uiFontAnimation;
@@ -57,7 +56,6 @@ public class ScoreUIController : BaseUIController
             _comboPanel.transform.localScale = Vector3.one * (1 + _uiFontAnimation.Evaluate(timer / scaleDifference) * scaleDifference);
             _staticScorePanel.transform.localScale = _comboPanel.transform.localScale;
             _scorePanel.transform.localScale = _comboPanel.transform.localScale;
-            _comboBarPanel.transform.localScale = _comboPanel.transform.localScale;
 
             timer += Time.deltaTime;
 
@@ -67,7 +65,6 @@ public class ScoreUIController : BaseUIController
         _comboPanel.transform.localScale = Vector3.one;
         _staticScorePanel.transform.localScale = Vector3.one;
         _scorePanel.transform.localScale = Vector3.one;
-        _comboBarPanel.transform.localScale = Vector3.one;
 
         _textAnimationRunning = false;
     }
