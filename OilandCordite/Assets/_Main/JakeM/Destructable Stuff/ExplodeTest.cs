@@ -16,7 +16,7 @@ public class ExplodeTest : MonoBehaviour
     {
         if (explosionParticles != null)
         {
-            GameObject explosionFX = Instantiate(explosionParticles, transform.position, Quaternion.identity) as GameObject;
+            GameObject explosionFX = Instantiate(explosionParticles, transform.position, Quaternion.identity);
             Debug.Log("Particles Spawned");
             Destroy(explosionFX, despawnDelay);
         }
