@@ -25,10 +25,10 @@ public class HealthUIController : BaseUIController
 
     private void Update()
     {
-        _healthBar.transform.parent = transform;
+        _healthBar.transform.SetParent(transform, true);
 
         _maskTransform.sizeDelta = new Vector2(_minMaskSize + Mathf.Clamp01(PlayerData.Instance.Health / 100) * _maskRange, _maskY);
 
-        _healthBar.transform.parent = _healthMask.transform;
+        _healthBar.transform.SetParent(_healthMask.transform, true);
     }
 }

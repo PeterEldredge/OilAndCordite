@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public enum WeldedWeaponType { NONE, LASER, SAW, HEATSHIELD};
+public enum WeldedWeaponType { NONE, LASER, SAW, HEATSHIELD };
 
 namespace Events
 {

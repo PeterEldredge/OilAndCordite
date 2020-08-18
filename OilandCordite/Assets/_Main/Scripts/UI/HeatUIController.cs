@@ -37,13 +37,13 @@ public class HeatUIController : BaseUIController
 
     private void Update()
     {
-        _heatBar.transform.parent = transform;
-        _heatSlider.transform.parent = transform;
+        _heatBar.transform.SetParent(transform, true);
+        _heatSlider.transform.SetParent(transform, true);
 
         _maskTransform.sizeDelta = new Vector2(_minMaskSize + PlayerData.Instance.Heat / 100 * _maskRange, _maskY);
 
-        _heatBar.transform.parent = _heatMask.transform;
-        _heatSlider.transform.parent = _heatMask.transform;
+        _heatBar.transform.SetParent(_heatMask.transform, true);
+        _heatSlider.transform.SetParent(_heatMask.transform, true);
 
         _sliderComp.value = PlayerData.Instance.Heat;
 

@@ -14,18 +14,25 @@ public class Laser : Attack
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
         _rigidbody.velocity = transform.forward * _speed;
 
-        Destroy(gameObject, _aliveTime);
+        StartCoroutine(Disable(_aliveTime));
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag(Tags.OBSTACLE))
         {
-            Destroy(gameObject);
+            StartCoroutine(Disable(0f));
         }
+    }
+
+    private IEnumerator Disable(float time)
+    {
+        yield return new WaitForSeconds(time);
+
+        gameObject.SetActive(false);
     }
 }
