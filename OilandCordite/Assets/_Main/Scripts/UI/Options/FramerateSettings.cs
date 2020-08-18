@@ -4,7 +4,20 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class FramerateSettings : MonoBehaviour
+namespace Events
+{
+    public struct FramerateChangedEventArgs : IGameEvent
+    {
+        public int FramerateCap { get; private set; }
+
+        public FramerateChangedEventArgs(int framerateCap)
+        {
+            FramerateCap = framerateCap;
+        }
+    }
+}
+
+public class FramerateSettings : GameEventUserObject
 {
     private const float _TRANSITION_TIME = .16f; 
 
@@ -19,16 +32,29 @@ public class FramerateSettings : MonoBehaviour
     [SerializeField] private Color _enabledColor;
     [SerializeField] private Color _disabledColor;
 
+    private int _framerateCap;
 
-    private void Start()
+    public override void Subscribe()
     {
-        _slider.value = Application.targetFrameRate;
-        _value.text = Application.targetFrameRate.ToString();
+        EventManager.Instance.AddListener<Events.RefreshSettingsUIArgs>(this, Refresh);
+    }
+
+    public override void Unsubscribe()
+    {
+        EventManager.Instance.AddListener<Events.RefreshSettingsUIArgs>(this, Refresh);
+    }
+
+    private void Refresh(Events.RefreshSettingsUIArgs args)
+    {
+        _framerateCap = Application.targetFrameRate;
+
+        _slider.value = _framerateCap;
+        _value.text = _framerateCap.ToString();
     }
 
     private void Update()
     {
-        if(QualitySettings.vSyncCount > 0)
+        if(Settings.Instance.VSyncCount > 0)
         {
             if(_slider.interactable)
             {
@@ -37,7 +63,7 @@ public class FramerateSettings : MonoBehaviour
                 DisableTrasition();
             }
 
-            _value.text = (Screen.currentResolution.refreshRate / QualitySettings.vSyncCount).ToString();
+            _value.text = (Screen.currentResolution.refreshRate / Settings.Instance.VSyncCount).ToString();
         }
         else
         {
@@ -48,17 +74,17 @@ public class FramerateSettings : MonoBehaviour
                 EnableTransition();
             }
 
-            _value.text = Application.targetFrameRate.ToString();
+            _value.text = _framerateCap.ToString();
         }
     }
 
     public void UpdateFramerateCap(float cap)
     {
-        Application.targetFrameRate = (int)cap;
+        _framerateCap = (int)cap;
 
-        Time.fixedDeltaTime = 1f / Application.targetFrameRate;
+        _value.text = _framerateCap.ToString();
 
-        _value.text = Application.targetFrameRate.ToString();
+        EventManager.Instance.TriggerEvent(new Events.FramerateChangedEventArgs(_framerateCap));
     }
 
     private void EnableTransition() => StartCoroutine(TransitionRoutine(_disabledColor, _enabledColor));
