@@ -198,6 +198,7 @@ GameObject:
   - component: {fileID: 3036712218356984841}
   - component: {fileID: 3291613256691838179}
   - component: {fileID: 3291613256691838180}
+  - component: {fileID: 1127198738529412319}
   m_Layer: 0
   m_Name: Checkpoint_Spire
   m_TagString: Untagged
@@ -252,6 +253,20 @@ MonoBehaviour:
   _onHitEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1127198738529412319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2409215798199580339}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9effe8631f9850543b317c9e35147751, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  particles: {fileID: 8749620774309765072, guid: 3465052599eeda94a948d6ac7e486013,
+    type: 3}
 --- !u!1 &5186783636210962925
 GameObject:
   m_ObjectHideFlags: 0
