@@ -4623,18 +4623,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b177b038022bbfc46a70ef640de7e176, type: 3}
---- !u!114 &1225000344 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2615921791667759415, guid: 0dca9f6178850714da20590c07aa1cf6,
-    type: 3}
-  m_PrefabInstance: {fileID: 665686304903660000}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 844cf7987c5c09748bdd49e7e991bfbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1289078135 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1555007230655116497, guid: b71a2b93e6266d64f9dd7943b31c28ba,
@@ -7029,11 +7017,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -2015.31
       objectReference: {fileID: 0}
-    - target: {fileID: 5517578659161198241, guid: 0dca9f6178850714da20590c07aa1cf6,
+    - target: {fileID: 5365513814971153437, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
-      propertyPath: _weldedWeapons.Array.data[0]
-      value: 
-      objectReference: {fileID: 1225000344}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365513814971153437, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365513814971153437, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365513814971153437, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5365513814971153437, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5877925920262287274, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_TagString
@@ -7084,25 +7092,10 @@ PrefabInstance:
       propertyPath: skyIntensity
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9122936525702794190, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 1424
-      objectReference: {fileID: 0}
-    - target: {fileID: 9122936525702794190, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -1319.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 9122936525702794190, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2020.52
-      objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: isDirty
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -7997,7 +7990,7 @@ MonoBehaviour:
   _levelData: {fileID: 11400000, guid: fe74533eb74941b449202bbf1d1ef8c7, type: 2}
   _enemiesToBeKilled: 0
   _enemyRemainingUIThreshold: 0
-  UIElement: {fileID: 0}
+  _uiElement: {fileID: 0}
 --- !u!4 &8622089010123171031
 Transform:
   m_ObjectHideFlags: 0

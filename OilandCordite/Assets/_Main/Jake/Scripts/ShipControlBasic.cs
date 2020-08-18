@@ -29,6 +29,7 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _baseGasBoost = 300f;
     [SerializeField] private float _bounceMult = 20f;
     [SerializeField] private float _bounceTime = .75f;
+    [SerializeField] private float _noSpinOutTime = 1f;
     [Tooltip("The speed at which gravity stops affecting the ship")]
     [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")]
@@ -78,6 +79,7 @@ public class ShipControlBasic : GameEventUserObject
     private bool _spinningOut = false;
     private bool _bouncing = false;
     private bool _gasExploding = false;
+    private bool _noSpinning = false;
 
     private float _activeMaxSpeed;
 
@@ -201,7 +203,7 @@ public class ShipControlBasic : GameEventUserObject
         float acceleration;
         AnimationCurve accelerationCurve;
 
-        if (InputHelper.Player.GetButtonDown("Spin Out") && !_spinningOut)
+        if (InputHelper.Player.GetButtonDown("Spin Out") && !_spinningOut && !_noSpinning)
         {
             StartCoroutine(SpinoutRoutine());
         }
@@ -291,9 +293,17 @@ public class ShipControlBasic : GameEventUserObject
 
     private void GasExplosion(Events.GasExplosionEventArgs args)
     {
-        _rb.velocity += transform.forward * (_baseGasBoost + 100 * (PlayerData.Instance.Heat / 100) * args.ExplosionMagnitude);
+        _rb.velocity += transform.forward * (_baseGasBoost + 100 * ((PlayerData.Instance.IsHeatShielded ? 100 : PlayerData.Instance.Heat) / 100) * args.ExplosionMagnitude);
         _acp.PlaySound("GasExplosion");
         _gasExploding = true;
+        StartCoroutine(NoSpinningRoutine(_noSpinOutTime));
+    }
+
+    private IEnumerator NoSpinningRoutine(float time)
+    {
+        _noSpinning = true;
+        yield return new WaitForSeconds(time);
+        _noSpinning = false;
     }
 
     private void SawBladeBoost(Events.SawBladeBoostEventArgs args)
@@ -312,14 +322,12 @@ public class ShipControlBasic : GameEventUserObject
 
         float timer = 0;
 
-        //Without the +1 here, the ship will get stuck in the Smog Sea for a reason I haven't figured out yet.
         while ( timer < .25f )
         {
             timer += Time.deltaTime;
             _rb.velocity = Vector3.Lerp(initialVelocity, new Vector3(0, 0, 0), timer/.25f);
             yield return null;
         }
-        yield return null;
         _turnTorqueCopy -= new Vector3(0, _spinoutAddedTurnTorque, 0);
         _spinningOut = false; 
         _anim.SetBool("spinningOut", _spinningOut);

@@ -111,6 +111,8 @@ public class HeatSystem : GameEventUserObject
             Heat = 0;
 
             IsIgniting = false;
+
+            yield return null;
         }
     }
 }

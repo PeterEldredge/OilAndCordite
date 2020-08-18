@@ -91,7 +91,7 @@ public class CollisionSystem : GameEventUserObject
         var gasCloudData = other.GetComponent<GasCloudData>();
         if (gasCloudData != null && other.CompareTag(Tags.GAS_CLOUD))
         {
-            if (PlayerData.Instance.IsIgniting && gasCloudData.active)
+            if ((PlayerData.Instance.IsIgniting || PlayerData.Instance.IsHeatShielded) && !PlayerData.Instance.SpinningOut && gasCloudData.active)
             {
                 Instantiate(_gasExplosionParticles, transform.position, Quaternion.Euler(transform.rotation.eulerAngles));
 
