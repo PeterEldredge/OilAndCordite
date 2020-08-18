@@ -71,7 +71,7 @@ public class Enemy : MonoBehaviour
     //This makes it so when the player is moving fast enough and is close enough a UI target appears
     private void ShowTargetUI()
     {
-            //_uiElement.SetActive(PlayerData.Instance.Speed >= _piercingSpeed && Vector3.Distance(PlayerData.Instance.transform.position, transform.position) <= _minDistance);
+        _uiElement.SetActive(PlayerData.Instance.Speed >= (PlayerData.Instance.IsHeatShielded ? 0 : _piercingSpeed ) && Vector3.Distance(PlayerData.Instance.transform.position, transform.position) <= _minDistance);
     }
 
     public void OnDefeated()
@@ -98,7 +98,7 @@ public class Enemy : MonoBehaviour
 
         Instantiate(_particles, transform.position, Quaternion.Euler(Vector3.zero));
 
-        //_uiElement.SetActive(false);
+        _uiElement.SetActive(false);
 
         Destroy(gameObject, 5f);
     }

@@ -21,11 +21,14 @@ public class PlayerData : ActorData
     public bool InSmog => _collisionSystem.InSmog;
     public bool InGas => _collisionSystem.InGas;
 
+    public bool IsHeatShielded => _weldedFlameThrower.HeatShielded;
+
     //Private
     private ShipControlBasic _shipControl;
     private HealthSystem _healthSystem;
     private HeatSystem _heatSystem;
     private CollisionSystem _collisionSystem;
+    private WeldedFlameThrower _weldedFlameThrower;
 
     private void Awake()
     {
@@ -36,6 +39,7 @@ public class PlayerData : ActorData
         _healthSystem = GetComponent<HealthSystem>();
         _heatSystem = GetComponent<HeatSystem>();
         _collisionSystem = GetComponentInChildren<CollisionSystem>();
+        _weldedFlameThrower = GetComponentInChildren<WeldedFlameThrower>(true);
     }
 
 }

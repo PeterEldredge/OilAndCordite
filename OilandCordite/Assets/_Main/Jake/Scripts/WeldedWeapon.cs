@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class WeldedWeapon : MonoBehaviour
+public abstract class WeldedWeapon : GameEventUserObject
 {
     [SerializeField] private WeldedWeaponType _type;
 
@@ -10,6 +10,7 @@ public abstract class WeldedWeapon : MonoBehaviour
 
     private void OnEnable()
     {
+        base.OnEnable();
         Clean();
     }
 
