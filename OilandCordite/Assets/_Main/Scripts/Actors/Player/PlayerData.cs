@@ -9,6 +9,7 @@ public class PlayerData : ActorData
     //Public
     public float Speed => _shipControl.Speed;
     public float MaxSpeed => _shipControl.MaxSpeed;
+    public float BounceTime => _shipControl.BounceTime;
     public bool SpinningOut => _shipControl.SpinningOut;
 
     public float Health => _healthSystem.Health;
