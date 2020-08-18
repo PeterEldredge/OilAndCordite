@@ -3,6 +3,7 @@
     Properties
     {
         _Color ("Color", Color) = (1,1,1,1)
+        _AdditiveColor ("Additive Color", Color) = (0.0, 0.0, 0.0, 0.0)
         _HotColor ("Heat Color", Color) = (1,1,1,1)
         _VeryHotColor ("Very Hot Color", Color) = (1,1,1,1)
         _NuclearColor ("Nucelar Color", Color) = (1,1,1,1)
@@ -52,6 +53,7 @@
         half _Glossiness;
         half _Metallic;
         fixed4 _Color;
+        fixed4 _AdditiveColor;
 
         float _Amount;
         float3 _HeatPoint;
@@ -109,7 +111,7 @@
         void surf (Input IN, inout SurfaceOutputStandard o)
         {
             // Albedo comes from a texture tinted by color
-            fixed3 col = tex2D (_MainTex, IN.uv_MainTex) * _Color;
+            fixed3 col = (tex2D (_MainTex, IN.uv_MainTex) * _Color) + _AdditiveColor;
             float3 localPos = IN.objPos;
             float heatAmout = (_HeatPoint * (1 / _HeatRadius) * _FalloffAmount * _Temperature);
            // col += lerp(col, _HotColor, heatAmout);
@@ -117,7 +119,7 @@
             // Metallic and smoothness come from slider variables
             o.Metallic = _Metallic;
             // o.Emission = _Temperature * lerp(_VeryHotColor.rgb, _HotColor.rgb, localPos.z) * tex2D(_VertexNoise, IN.uv_MainTex);
-            o.Emission = buildHeatGradient(localPos);
+            o.Emission = buildHeatGradient(localPos) + _AdditiveColor;
             o.Smoothness = _Glossiness;
             o.Alpha = fixed4(col, 1);
         }

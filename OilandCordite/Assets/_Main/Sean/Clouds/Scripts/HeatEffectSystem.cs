@@ -18,10 +18,14 @@ public class HeatEffectSystem : GameEventUserObject
 
     private void OnBeginIgnition(Events.BeginIgniteEventArgs args) => StartCoroutine(BeginIgnition());
     private void OnEndIgnition(Events.EndIgniteEventArgs args) => StartCoroutine(EndIgnition());
+    private void OnBeginInvincibility(Events.BeginInvincibilityArgs args) => StartCoroutine(BeginInvincibility());
+    private void OnEndInvincibility(Events.EndInvincibilityArgs args) => EndInvincibility();
     
-    private bool isIgniting;
-     [SerializeField] private float ignitionTimer = 1.0f;
+    [SerializeField] private float ignitionTimer = 1.0f;
+
     private float stepSize = 2.0f;
+    private bool isIgniting;
+    private bool isInvincible;
     private Material _playerShipMaterial;
 
 
@@ -40,6 +44,8 @@ public class HeatEffectSystem : GameEventUserObject
     {
         EventManager.Instance.AddListener<Events.BeginIgniteEventArgs>(this, OnBeginIgnition);
         EventManager.Instance.AddListener<Events.EndIgniteEventArgs>(this, OnEndIgnition);
+        EventManager.Instance.AddListener<Events.BeginInvincibilityArgs>(this, OnBeginInvincibility);
+        EventManager.Instance.AddListener<Events.EndInvincibilityArgs>(this, OnEndInvincibility);
     }
 
     private IEnumerator BeginIgnition() 
@@ -72,6 +78,28 @@ public class HeatEffectSystem : GameEventUserObject
             //_cam?.DecreaseCameraFov();
             yield return null;
         }
+    }
+
+    private IEnumerator BeginInvincibility() 
+    {
+        isInvincible = true;
+        while (isInvincible)
+        {
+            this._playerShipMaterial.SetColor("_AdditiveColor", Color.white);
+            
+            yield return new WaitForSeconds(0.1f);
+
+            this._playerShipMaterial.SetColor("_AdditiveColor", Color.black);
+
+            yield return new WaitForSeconds(0.1f);
+
+        }
+    }
+
+    private void EndInvincibility()
+    {
+        isInvincible = false;
+        this._playerShipMaterial.SetColor("_AdditiveColor", Color.black);
     }
 
     private void UpdateHeat() 

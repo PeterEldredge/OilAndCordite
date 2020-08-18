@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;
 namespace Events
 {
     public struct PlayerDeathEventArgs : IGameEvent { }
+    public struct BeginInvincibilityArgs : IGameEvent { }
+    public struct EndInvincibilityArgs : IGameEvent { }
 }
 
 public class HealthSystem : GameEventUserObject
@@ -74,9 +76,13 @@ public class HealthSystem : GameEventUserObject
     {
         _invincible = true;
 
+        EventManager.Instance.TriggerEvent(new Events.BeginInvincibilityArgs());
+
         yield return new WaitForSeconds(_invincibilityWindow);
 
         _invincible = false;
+
+        EventManager.Instance.TriggerEvent(new Events.EndInvincibilityArgs());
     }
 
     private IEnumerator OverheatRoutine()
