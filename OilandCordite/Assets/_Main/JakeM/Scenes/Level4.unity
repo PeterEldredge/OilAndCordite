@@ -151,6 +151,29 @@ Transform:
   m_Father: {fileID: 1025357121}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &30831306 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
+    type: 3}
+  m_PrefabInstance: {fileID: 268961323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &30831307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30831306}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c068e4b976d8b4ea2e57cc5f8c1975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldFullColor: {r: 0, g: 1, b: 0.94898313, a: 1}
+  ShieldDamageColor: {r: 0.95283014, g: 0.26517442, b: 0.4253033, a: 1}
+  ShieldDamage: 0
+  ShieldInstanceShader: {fileID: 4800000, guid: c4a4bd045a4313a44bd70ac94229a82a,
+    type: 3}
 --- !u!4 &53618046 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1555007230655116497, guid: b71a2b93e6266d64f9dd7943b31c28ba,
@@ -1360,6 +1383,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheild_Laser_Arch
       objectReference: {fileID: 0}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3104e1b3b14011a41ab0a3c8a8aed0a2, type: 2}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 40
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 821858f8accd1f24d81fb00fbd0873e6, type: 3}
 --- !u!4 &388007321 stripped
@@ -1627,6 +1660,29 @@ Transform:
   m_Father: {fileID: 1994646687}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &438352756 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
+    type: 3}
+  m_PrefabInstance: {fileID: 3291613256401604783}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &438352757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 438352756}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c068e4b976d8b4ea2e57cc5f8c1975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldFullColor: {r: 0, g: 1, b: 0.94898313, a: 1}
+  ShieldDamageColor: {r: 0.95283014, g: 0.26517442, b: 0.4253033, a: 1}
+  ShieldDamage: 0
+  ShieldInstanceShader: {fileID: 4800000, guid: c4a4bd045a4313a44bd70ac94229a82a,
+    type: 3}
 --- !u!4 &439575897 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1555007230655116497, guid: b71a2b93e6266d64f9dd7943b31c28ba,
@@ -1890,7 +1946,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 497037396}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1005314597}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 357a5075c3c270845b66aa16008e26c8, type: 3}
@@ -2447,6 +2503,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheild_Laser_Cave
       objectReference: {fileID: 0}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3104e1b3b14011a41ab0a3c8a8aed0a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 821858f8accd1f24d81fb00fbd0873e6, type: 3}
 --- !u!1001 &578645318
@@ -3343,6 +3409,52 @@ Transform:
   m_Father: {fileID: 2005838837694052559}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &845373004 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1668527481}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &845373005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 845373004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c068e4b976d8b4ea2e57cc5f8c1975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldFullColor: {r: 0, g: 1, b: 0.94898313, a: 1}
+  ShieldDamageColor: {r: 0.95283014, g: 0.26517442, b: 0.4253033, a: 1}
+  ShieldDamage: 0
+  ShieldInstanceShader: {fileID: 4800000, guid: c4a4bd045a4313a44bd70ac94229a82a,
+    type: 3}
+--- !u!1 &846527842 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1589918837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &846527843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 846527842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c068e4b976d8b4ea2e57cc5f8c1975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldFullColor: {r: 0, g: 1, b: 0.94898313, a: 1}
+  ShieldDamageColor: {r: 0.95283014, g: 0.26517442, b: 0.4253033, a: 1}
+  ShieldDamage: 0
+  ShieldInstanceShader: {fileID: 4800000, guid: c4a4bd045a4313a44bd70ac94229a82a,
+    type: 3}
 --- !u!1001 &855403276
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3865,6 +3977,29 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2673316300547245081}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1005314597 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
+    type: 3}
+  m_PrefabInstance: {fileID: 497037396}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1005314598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005314597}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 77c068e4b976d8b4ea2e57cc5f8c1975, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShieldFullColor: {r: 0, g: 1, b: 0.94898313, a: 1}
+  ShieldDamageColor: {r: 0.95283014, g: 0.26517442, b: 0.4253033, a: 1}
+  ShieldDamage: 0
+  ShieldInstanceShader: {fileID: 4800000, guid: c4a4bd045a4313a44bd70ac94229a82a,
+    type: 3}
 --- !u!1001 &1005801029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4031,6 +4166,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheild_Laser_Cave
       objectReference: {fileID: 0}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3104e1b3b14011a41ab0a3c8a8aed0a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 821858f8accd1f24d81fb00fbd0873e6, type: 3}
 --- !u!1001 &1018957586
@@ -4256,6 +4401,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheild_Laser_Cave
       objectReference: {fileID: 0}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3104e1b3b14011a41ab0a3c8a8aed0a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 821858f8accd1f24d81fb00fbd0873e6, type: 3}
 --- !u!1 &1033607603
@@ -6405,7 +6560,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1589918837}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 846527842}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 357a5075c3c270845b66aa16008e26c8, type: 3}
@@ -6804,7 +6959,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 1668527481}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 845373004}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 357a5075c3c270845b66aa16008e26c8, type: 3}
@@ -6892,6 +7047,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Sheild_Laser_Plateau
       objectReference: {fileID: 0}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Parameters.widthMultiplier
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 814529549531359609, guid: 821858f8accd1f24d81fb00fbd0873e6,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3104e1b3b14011a41ab0a3c8a8aed0a2, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 821858f8accd1f24d81fb00fbd0873e6, type: 3}
 --- !u!1001 &1721308024
@@ -9082,7 +9247,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 3291613256401604783}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 438352756}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 357a5075c3c270845b66aa16008e26c8, type: 3}
