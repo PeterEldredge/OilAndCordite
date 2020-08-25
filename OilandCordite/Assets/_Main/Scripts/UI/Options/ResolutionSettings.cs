@@ -40,11 +40,14 @@ public class ResolutionSettings : GameEventUserObject
 
     private void SetCurrentSetting()
     {
+        //I'm sorry god
+        string currentResolution = Screen.currentResolution.ToString();
+        string currentResolutionMinusOne = $"{currentResolution.Substring(0, currentResolution.Length - 5)}{int.Parse(currentResolution.Substring(currentResolution.Length - 5, 3)) - 1}Hz";
+
         for (int i = 0; i < _dropdown.options.Count; i++)
         {
-            //I'm sorry god
-            if (Screen.currentResolution.ToString() == _dropdown.options[i].text ||
-                Screen.currentResolution.ToString() == $"{_dropdown.options[i].text.Substring(0, _dropdown.options[i].text.Length - 5)}{int.Parse(_dropdown.options[i].text.Substring(_dropdown.options[i].text.Length - 5, 3)) - 1}Hz")
+            if (currentResolution == _dropdown.options[i].text ||
+                currentResolutionMinusOne == _dropdown.options[i].text)
             {
                 _dropdown.value = i;
                 break;
