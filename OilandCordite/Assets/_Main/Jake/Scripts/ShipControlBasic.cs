@@ -61,6 +61,7 @@ public class ShipControlBasic : GameEventUserObject
     public float MaxSpeed => _explosionMaxSpeed;
     public float BounceTime => _bounceTime;
     public bool SpinningOut { get; private set; }
+    public Vector3 ForwardVector => _forwardVector;
 
     //Private
     private Rigidbody _rb;
@@ -84,6 +85,7 @@ public class ShipControlBasic : GameEventUserObject
     private float _activeMaxSpeed;
 
     private Vector3 _turnTorqueCopy;
+    private Vector3 _forwardVector;
 
     #region Input Calculations 
 
@@ -200,6 +202,7 @@ public class ShipControlBasic : GameEventUserObject
         }
 
         float forwardAngle = transform.forward.y;
+        _forwardVector = transform.forward;
         float acceleration;
         AnimationCurve accelerationCurve;
 
@@ -335,22 +338,30 @@ public class ShipControlBasic : GameEventUserObject
 
     private IEnumerator BounceBackRoutine(Events.ObstacleHitEventArgs args)
     {
-        _bouncing = true;
-
-        float timer = 0;
-
-        Vector3 bounceVelocity = args.CollisionNormal * _bounceMult;
-        Vector3 endVelocity = args.CollisionNormal * _minAirSpeed;
-
-        while (timer < _bounceTime)
+        if (args.Bounce)
         {
-            timer += Time.deltaTime;
-            _rb.velocity = Vector3.Lerp(bounceVelocity, endVelocity,  timer/_bounceTime);
-            yield return null;
-        }
+            _bouncing = true;
 
-        _bouncing = false;
-        _rb.velocity = endVelocity;
+            float timer = 0;
+
+            Vector3 bounceVelocity = args.CollisionNormal * _bounceMult;
+            Vector3 endVelocity = args.CollisionNormal * _minAirSpeed;
+
+            while (timer < _bounceTime)
+            {
+                timer += Time.deltaTime;
+                _rb.velocity = Vector3.Lerp(bounceVelocity, endVelocity, timer / _bounceTime);
+                yield return null;
+            }
+
+            _bouncing = false;
+            _rb.velocity = endVelocity;
+        }
+        else
+        {
+            transform.forward = (transform.forward + args.CollisionNormal).normalized;
+        }
+        
 
         yield return null;
     }

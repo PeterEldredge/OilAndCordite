@@ -9,12 +9,14 @@ namespace Events
         public Vector3 CollisionNormal { get; }
         public float ShakeMagnitude { get; }
         public float ShakeDuration { get; }
+        public bool Bounce;
 
-        public ObstacleHitEventArgs(Vector3 collisionNormal, float magnitude, float duration)
+        public ObstacleHitEventArgs(Vector3 collisionNormal, float magnitude, float duration, bool bounce)
         {
             CollisionNormal = collisionNormal;
             ShakeMagnitude = magnitude;
             ShakeDuration = duration;
+            Bounce = bounce;
         }   
     }
 
@@ -39,10 +41,15 @@ public class CollisionSystem : GameEventUserObject
     public bool InGas { get; private set; }
 
     [SerializeField] private GameObject _gasExplosionParticles;
-    [SerializeField] private float _obstacleShakeMagnitude = 5f;
-    [SerializeField] private float _obstacleShakeDuration = 1f;
+    [SerializeField] private float _obstacleBounceShakeMagnitude = 5f;
+    [SerializeField] private float _obstacleBounceShakeDuration = 1f;
+    [SerializeField] private float _obstacleBumpShakeMagnitude = 5f;
+    [SerializeField] private float _obstacleBumpShakeDuration = .5f;
     [SerializeField] private float _gasShakeMagnitude = 3f;
     [SerializeField] private float _gasShakeDuration = .5f;
+    [SerializeField] private float _bumpTolerance = -.7f;
+
+    [SerializeField] private GameObject _sparksPrefab;
 
     private bool _canHitObstacles = true;
 
@@ -51,9 +58,17 @@ public class CollisionSystem : GameEventUserObject
 
         if (collision.collider.CompareTag(Tags.OBSTACLE) && _canHitObstacles)
         {
-            EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collision.contacts[0].normal, _obstacleShakeMagnitude, _obstacleShakeDuration));
+            bool shouldBounce = Vector3.Dot(collision.contacts[0].normal, PlayerData.Instance.ForwardVector) < _bumpTolerance;
+            Debug.Log(shouldBounce);
+            Debug.Log(collision.contacts[0].normal);
+            Debug.Log(Vector3.Dot(collision.contacts[0].normal, PlayerData.Instance.ForwardVector));
+            EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collision.contacts[0].normal, shouldBounce ? _obstacleBounceShakeMagnitude : _obstacleBumpShakeMagnitude, shouldBounce ? _obstacleBounceShakeDuration : _obstacleBumpShakeDuration, shouldBounce));
+
+            //Add to the pooling system
+            Instantiate(_sparksPrefab, collision.contacts[0].point, Quaternion.Euler(PlayerData.Instance.ForwardVector));
 
             StartCoroutine(PauseObstacleCollisions());
+
         }
 
     }

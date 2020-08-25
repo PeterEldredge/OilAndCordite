@@ -11,6 +11,7 @@ public class PlayerData : ActorData
     public float MaxSpeed => _shipControl.MaxSpeed;
     public float BounceTime => _shipControl.BounceTime;
     public bool SpinningOut => _shipControl.SpinningOut;
+    public Vector3 ForwardVector => _shipControl.ForwardVector;
 
     public float Health => _healthSystem.Health;
     public bool IsDead => _healthSystem.IsDead;

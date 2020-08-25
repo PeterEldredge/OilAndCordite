@@ -21,7 +21,7 @@ public class EnemyColliders : MonoBehaviour
             {
                 if (_canHitPlayer)
                 {
-                    EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collider.transform.eulerAngles.normalized, _enemy.BouncedShakeMagnitude, _enemy.BouncedShakeDuration));
+                    EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collider.transform.eulerAngles.normalized, _enemy.BouncedShakeMagnitude, _enemy.BouncedShakeDuration, true));
                     StartCoroutine(PauseEnemyCollisions());
                     return;
                 }

@@ -23,7 +23,7 @@ public class FlightCam : GameEventUserObject
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceWithRoutine());
+    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceWithRoutine(args.Bounce));
 
     public override void Subscribe()
     {
@@ -61,8 +61,9 @@ public class FlightCam : GameEventUserObject
         transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * damping);   
     }
 
-    private IEnumerator BounceWithRoutine()
+    private IEnumerator BounceWithRoutine(bool bouncing)
     {
+        if (!bouncing) yield break;
         _bouncing = true;
         float timer = 0f;
 
