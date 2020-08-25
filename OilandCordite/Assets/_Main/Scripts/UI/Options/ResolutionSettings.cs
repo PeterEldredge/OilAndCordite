@@ -42,7 +42,9 @@ public class ResolutionSettings : GameEventUserObject
     {
         for (int i = 0; i < _dropdown.options.Count; i++)
         {
-            if (Screen.currentResolution.ToString() == _dropdown.options[i].text)
+            //I'm sorry god
+            if (Screen.currentResolution.ToString() == _dropdown.options[i].text ||
+                Screen.currentResolution.ToString() == $"{_dropdown.options[i].text.Substring(0, _dropdown.options[i].text.Length - 5)}{int.Parse(_dropdown.options[i].text.Substring(_dropdown.options[i].text.Length - 5, 3)) - 1}Hz")
             {
                 _dropdown.value = i;
                 break;
