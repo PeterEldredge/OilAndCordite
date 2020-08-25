@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "AttackBehaviour/IncinerateAttack")]
-public class IncinerateAttack : AttackBehaviour
+[CreateAssetMenu(menuName = "AttackBehaviour/VerticleFollowAttack")]
+public class VerticalFollowAttack : AttackBehaviour
 {
-    [SerializeField] protected GameObject _heatTrigger;
+    [SerializeField] private float _moveSpeed;
+    [SerializeField] private float _verticalSafetyBuffer;
+
+    private Vector3 _moveDirection;
 
     public override bool UsageCondition(PlayerData playerData, EnemyData enemyData)
     {
@@ -14,14 +17,11 @@ public class IncinerateAttack : AttackBehaviour
 
     public override void Attack(EnemyData enemyData)
     {
-        if (enemyData.AttackPoints.Count > 0)
-        {
-            if (enemyData.AttackPoints[0].childCount > 0) return;
+        _moveDirection = Vector3.up * _moveSpeed * Time.deltaTime * Mathf.Sign(PlayerData.Instance.WorldSpacePosition.y - enemyData.transform.position.y);
 
-            foreach (Transform attackPoint in enemyData.AttackPoints)
-            {
-                Instantiate(_heatTrigger, attackPoint).GetComponent<HeatTrigger>();
-            }
+        if (!Physics.Raycast(enemyData.transform.position + Vector3.up * 5f * Mathf.Sign(_moveDirection.y), _moveDirection, out RaycastHit hit, _verticalSafetyBuffer))
+        {
+            enemyData.transform.Translate(_moveDirection, Space.World);
         }
     }
 
@@ -34,19 +34,5 @@ public class IncinerateAttack : AttackBehaviour
 
         //Terrible
         enemyData.Object.transform.eulerAngles = new Vector3(0, enemyData.Object.transform.eulerAngles.y, 0);
-    }
-
-    public override void CleanUp(PlayerData playerData, EnemyData enemyData)
-    {
-        if (enemyData.AttackPoints.Count > 0)
-        {
-            foreach (Transform attackPoint in enemyData.AttackPoints)
-            {
-                foreach (Transform child in attackPoint)
-                {
-                    Destroy(child.gameObject);
-                }
-            }
-        }
     }
 }

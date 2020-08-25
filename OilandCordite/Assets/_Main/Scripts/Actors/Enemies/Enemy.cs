@@ -146,7 +146,7 @@ public class Enemy : MonoBehaviour
                             {
                                 StartCoroutine(AttackSoundLoop(_currentAttackBehaviour));
 
-                                if (_previousAttackBehavior?.IsLoopingAttack == true) _previousAttackBehavior.CleanUp(PlayerData.Instance, _enemyData);
+                                _previousAttackBehavior?.CleanUp(PlayerData.Instance, _enemyData);
                             }
                         }
                         
