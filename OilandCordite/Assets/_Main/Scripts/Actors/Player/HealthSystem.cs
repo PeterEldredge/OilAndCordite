@@ -18,7 +18,8 @@ public class HealthSystem : GameEventUserObject
     [SerializeField] private float _overheatDamage = 5f;
     [SerializeField] private float _overheatDamageRate = 1f;
 
-    [SerializeField] private float _damageOnCollision = 20f;
+    [SerializeField] private float _damageOnBump = 20f;
+    [SerializeField] private float _damageOnBounce = 40f;
 
     //Public
     public float Health { get; private set; }
@@ -40,7 +41,7 @@ public class HealthSystem : GameEventUserObject
     private void OnOverheat(Events.OverheatedEventArgs args) => StartCoroutine(OverheatRoutine());
     private void OnAttacked(Events.PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
     private void OnPlayerDefeatedEnemy(Events.PlayerDefeatedEnemyEventArgs args) => AddHealth(args.HealthGain);
-    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => TakeDamage(_damageOnCollision, true);
+    private void OnObstacleHit(Events.ObstacleHitEventArgs args) => TakeDamage(args.Bounce ? _damageOnBounce : _damageOnBump, true);
 
     public override void Subscribe()
     {

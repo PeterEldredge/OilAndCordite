@@ -30,6 +30,7 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _bounceMult = 20f;
     [SerializeField] private float _bounceTime = .75f;
     [SerializeField] private float _noSpinOutTime = 1f;
+    [SerializeField] private float _updraftTime = 1f;
     [Tooltip("The speed at which gravity stops affecting the ship")]
     [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")]
@@ -78,6 +79,7 @@ public class ShipControlBasic : GameEventUserObject
     private bool _bouncing = false;
     private bool _gasExploding = false;
     private bool _noSpinning = false;
+    private bool _updrafting = false;
 
     private float _activeMaxSpeed;
 
@@ -145,12 +147,14 @@ public class ShipControlBasic : GameEventUserObject
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => StartCoroutine(BounceBackRoutine(args));
     private void OnGasExplosion(Events.GasExplosionEventArgs args) => GasExplosion(args);
     private void OnSawBladeBoost(Events.SawBladeBoostEventArgs args) => SawBladeBoost(args);
+    private void OnSmokeUpdraft(Events.SmokeUpdraftEventArgs args) => SmokeUpdraft(args.VelocityUp, args.UpdraftDirection);
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
         EventManager.Instance.AddListener<Events.GasExplosionEventArgs>(this, OnGasExplosion);
         EventManager.Instance.AddListener<Events.SawBladeBoostEventArgs>(this, OnSawBladeBoost);
+        EventManager.Instance.AddListener<Events.SmokeUpdraftEventArgs>(this, OnSmokeUpdraft);
     }
 
     private void Start()
@@ -202,6 +206,8 @@ public class ShipControlBasic : GameEventUserObject
         _forwardVector = transform.forward;
         float acceleration;
         AnimationCurve accelerationCurve;
+
+        if(_updrafting) return;
 
         if (InputHelper.Player.GetButtonDown("Spin Out") && !_spinningOut && !_noSpinning)
         {
@@ -299,6 +305,12 @@ public class ShipControlBasic : GameEventUserObject
         StartCoroutine(NoSpinningRoutine(_noSpinOutTime));
     }
 
+    private void SmokeUpdraft(float velocityUp, Vector3 plumeUp)
+    {
+        StartCoroutine(SmokeUpdraftRoutine(velocityUp, plumeUp));
+        StartCoroutine(NoSpinningRoutine(_noSpinOutTime));
+    }
+
     private IEnumerator NoSpinningRoutine(float time)
     {
         _noSpinning = true;
@@ -359,6 +371,22 @@ public class ShipControlBasic : GameEventUserObject
             transform.forward = (transform.forward + args.CollisionNormal).normalized;
         }
         
+
+        yield return null;
+    }
+
+    private IEnumerator SmokeUpdraftRoutine(float velocityUp, Vector3 plumeDirection)
+    {
+        float timer = 0;
+        while (timer < _updraftTime)
+        {
+            timer += Time.deltaTime;
+            transform.position += Vector3.up * velocityUp * Time.deltaTime;
+
+            _rb.velocity += transform.forward * velocityUp * Vector3.Dot(plumeDirection.normalized, transform.forward.normalized);
+            
+            yield return null;
+        }
 
         yield return null;
     }

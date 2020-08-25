@@ -59,9 +59,6 @@ public class CollisionSystem : GameEventUserObject
         if (collision.collider.CompareTag(Tags.OBSTACLE) && _canHitObstacles)
         {
             bool shouldBounce = Vector3.Dot(collision.contacts[0].normal, PlayerData.Instance.ForwardVector) < _bumpTolerance;
-            Debug.Log(shouldBounce);
-            Debug.Log(collision.contacts[0].normal);
-            Debug.Log(Vector3.Dot(collision.contacts[0].normal, PlayerData.Instance.ForwardVector));
             EventManager.Instance.TriggerEvent(new Events.ObstacleHitEventArgs(collision.contacts[0].normal, shouldBounce ? _obstacleBounceShakeMagnitude : _obstacleBumpShakeMagnitude, shouldBounce ? _obstacleBounceShakeDuration : _obstacleBumpShakeDuration, shouldBounce));
 
             //Add to the pooling system
