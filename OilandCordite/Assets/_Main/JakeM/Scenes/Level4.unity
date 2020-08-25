@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.21108511, g: 0.058137402, b: 0.036019113, a: 1}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1602,6 +1602,11 @@ PrefabInstance:
       propertyPath: fracturedObject
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7343358418177963619, guid: e98fa58418d354440947a05905b4544d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
         type: 3}
       propertyPath: m_IsActive
@@ -1896,7 +1901,7 @@ PrefabInstance:
     - target: {fileID: 4219993232834623490, guid: 6c7b92cd083af2e4fb833f483d03cc97,
         type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4219993232834623490, guid: 6c7b92cd083af2e4fb833f483d03cc97,
         type: 3}
@@ -2521,6 +2526,11 @@ PrefabInstance:
     - target: {fileID: 7343358418177963619, guid: e98fa58418d354440947a05905b4544d,
         type: 3}
       propertyPath: ShieldDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343358418177963619, guid: e98fa58418d354440947a05905b4544d,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
@@ -3287,7 +3297,7 @@ PrefabInstance:
     - target: {fileID: 9122936526216339451, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 9122936526216339451, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -3869,6 +3879,11 @@ PrefabInstance:
     - target: {fileID: 7343358418177963619, guid: e98fa58418d354440947a05905b4544d,
         type: 3}
       propertyPath: ShieldDamage
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343358418177963619, guid: e98fa58418d354440947a05905b4544d,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
@@ -4765,6 +4780,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Incinerator
       objectReference: {fileID: 0}
+    - target: {fileID: 7131221627662644029, guid: ab6d637c0671ebd4a818932b587e4a18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7423649327113869672, guid: ab6d637c0671ebd4a818932b587e4a18,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -5494,7 +5514,7 @@ GameObject:
   - component: {fileID: 900018790}
   m_Layer: 0
   m_Name: LavaRiver_Plateau_tall
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -6662,6 +6682,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Incinerator (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7131221627662644029, guid: ab6d637c0671ebd4a818932b587e4a18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7423649327113869672, guid: ab6d637c0671ebd4a818932b587e4a18,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -6932,6 +6957,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Incinerator (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131221627662644029, guid: ab6d637c0671ebd4a818932b587e4a18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7423649327113869672, guid: ab6d637c0671ebd4a818932b587e4a18,
         type: 3}
@@ -8181,6 +8211,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Incinerator (5)
       objectReference: {fileID: 0}
+    - target: {fileID: 7131221627662644029, guid: ab6d637c0671ebd4a818932b587e4a18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7423649327113869672, guid: ab6d637c0671ebd4a818932b587e4a18,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -9056,6 +9091,11 @@ PrefabInstance:
       propertyPath: ShieldDamage
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7343358418177963619, guid: e98fa58418d354440947a05905b4544d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
         type: 3}
       propertyPath: m_Layer
@@ -9493,6 +9533,11 @@ PrefabInstance:
         type: 3}
       propertyPath: fracturedObject
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343358418177963619, guid: e98fa58418d354440947a05905b4544d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
         type: 3}
@@ -11014,7 +11059,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2023501311
 Transform:
   m_ObjectHideFlags: 0
@@ -11186,6 +11231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Incinerator (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7131221627662644029, guid: ab6d637c0671ebd4a818932b587e4a18,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7423649327113869672, guid: ab6d637c0671ebd4a818932b587e4a18,
         type: 3}
@@ -11754,7 +11804,7 @@ GameObject:
   - component: {fileID: 530193204037532201}
   m_Layer: 0
   m_Name: LavaRiver_Archway_Single
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -11915,7 +11965,7 @@ GameObject:
   - component: {fileID: 801710608202328272}
   m_Layer: 0
   m_Name: Logo
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -11948,7 +11998,7 @@ GameObject:
   - component: {fileID: 897643454669567958}
   m_Layer: 0
   m_Name: Building
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -12098,6 +12148,80 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1001 &1119273761416731531
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6102526511380276646, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_Name
+      value: Incinerator_wColliders
+      objectReference: {fileID: 0}
+    - target: {fileID: 6102526511380276646, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -153.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 153.76
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1984.99
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6916217495314104092, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7c8dce56929dd1d4aae9fd8f8386f1fd, type: 3}
 --- !u!23 &1204468361788125219
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12342,7 +12466,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -64.896, y: -49.247, z: 70.278}
 --- !u!108 &2005838837480830841
 Light:
@@ -12546,7 +12670,7 @@ Transform:
   - {fileID: 810779771}
   - {fileID: 427935640}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2005838837715752104
 Transform:
@@ -12779,7 +12903,7 @@ PrefabInstance:
     - target: {fileID: 3025849136805095956, guid: fb88f9df03ff0724c8624fd383b9dd3c,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 3025849136805095956, guid: fb88f9df03ff0724c8624fd383b9dd3c,
         type: 3}
@@ -12842,7 +12966,7 @@ Transform:
   - {fileID: 1668527482}
   - {fileID: 3036712218307471054}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2005838838056589156
 GameObject:
@@ -12965,7 +13089,7 @@ Transform:
   - {fileID: 1912702895}
   - {fileID: 2005838838857868081}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2005838838666982737
 Transform:
@@ -13169,7 +13293,7 @@ GameObject:
   - component: {fileID: 2177326819714048538}
   m_Layer: 0
   m_Name: ArmorRim1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13202,7 +13326,7 @@ GameObject:
   - component: {fileID: 2381300990636364051}
   m_Layer: 0
   m_Name: LavaRiver_Mountain
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13439,7 +13563,7 @@ GameObject:
   - component: {fileID: 2764192802011724365}
   m_Layer: 0
   m_Name: LavaRiver_Caldera
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13467,7 +13591,7 @@ Transform:
   m_GameObject: {fileID: 3826822500041462592}
   m_LocalRotation: {x: -0, y: 0.61263067, z: -0, w: 0.79036933}
   m_LocalPosition: {x: 803, y: 505, z: -1384}
-  m_LocalScale: {x: 1.8741364, y: 1.8741364, z: 1.8741364}
+  m_LocalScale: {x: 2.3957088, y: 2.3957088, z: 2.3957088}
   m_Children: []
   m_Father: {fileID: 395667556}
   m_RootOrder: 7
@@ -13758,6 +13882,11 @@ PrefabInstance:
       propertyPath: fracturedObject
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 7343358418177963619, guid: e98fa58418d354440947a05905b4544d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7608970549643760149, guid: e98fa58418d354440947a05905b4544d,
         type: 3}
       propertyPath: m_Layer
@@ -13807,7 +13936,7 @@ GameObject:
   - component: {fileID: 3326836081427071212}
   m_Layer: 0
   m_Name: ArmorSmall
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13868,7 +13997,7 @@ GameObject:
   - component: {fileID: 3826822500041462593}
   m_Layer: 0
   m_Name: LavaRiver_LargeSpire
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -13962,7 +14091,7 @@ GameObject:
   - component: {fileID: 4463887873454710530}
   m_Layer: 0
   m_Name: TunnelArmor
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14183,7 +14312,7 @@ GameObject:
   - component: {fileID: 6170116942154327017}
   m_Layer: 0
   m_Name: LavaRiver_Plateau
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14216,7 +14345,7 @@ GameObject:
   - component: {fileID: 6222587560900648045}
   m_Layer: 0
   m_Name: LavaRiver_Plateau_Small
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14249,7 +14378,7 @@ GameObject:
   - component: {fileID: 6233461165121563776}
   m_Layer: 0
   m_Name: ArmorSmall1
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14519,7 +14648,7 @@ GameObject:
   - component: {fileID: 7470921652802861439}
   m_Layer: 0
   m_Name: LavaRiver_Archway_Double
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14552,7 +14681,7 @@ GameObject:
   - component: {fileID: 7624346481572929190}
   m_Layer: 0
   m_Name: ArmorRim
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -14693,7 +14822,7 @@ GameObject:
   - component: {fileID: 8734193493772266393}
   m_Layer: 0
   m_Name: ArmorLarge
-  m_TagString: Untagged
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295

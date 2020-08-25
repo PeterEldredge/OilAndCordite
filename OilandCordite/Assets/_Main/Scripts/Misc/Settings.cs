@@ -19,11 +19,12 @@ public class SaveableSettings
     public int ResolutionRefresh;
 
     public bool MotionBlurOn = true;
+    public bool InvertYOn = false;
 }
 
 public class Settings : GameEventUserObject
 {
-    private static string _CONFIG_PATH => Path.Combine(Application.persistentDataPath, "config.cfg");
+    private static string _CONFIG_PATH => Path.Combine(Application.persistentDataPath, "config_new.cfg");
 
     public static Settings Instance;
 
@@ -32,6 +33,7 @@ public class Settings : GameEventUserObject
     public int VSyncCount { get; private set; }
 
     public bool MotionBlur { get; private set; }
+    public bool InvertY { get; private set; }
 
     private void Awake()
     {
@@ -57,12 +59,14 @@ public class Settings : GameEventUserObject
     private void SetFramerateCap(Events.FramerateChangedEventArgs args) => FramerateCap = args.FramerateCap;
     private void SetVSyncCount(Events.VSyncChangedEventArgs args) => VSyncCount = args.VSyncCount;
     private void SetMotionBlur(Events.MotionBlurToggledEventArgs args) => MotionBlur = args.MotionBlur;
+    private void SetInvertY(Events.InvertYToggledEventArgs args) => InvertY = args.InvertY;
 
     public override void Subscribe()
     {
         EventManager.Instance.AddListener<Events.FramerateChangedEventArgs>(this, SetFramerateCap);
         EventManager.Instance.AddListener<Events.VSyncChangedEventArgs>(this, SetVSyncCount);
         EventManager.Instance.AddListener<Events.MotionBlurToggledEventArgs>(this, SetMotionBlur);
+        EventManager.Instance.AddListener<Events.InvertYToggledEventArgs>(this, SetInvertY);
     }
 
     public override void Unsubscribe()
@@ -70,6 +74,7 @@ public class Settings : GameEventUserObject
         EventManager.Instance.RemoveListener<Events.FramerateChangedEventArgs>(this, SetFramerateCap);
         EventManager.Instance.RemoveListener<Events.VSyncChangedEventArgs>(this, SetVSyncCount);
         EventManager.Instance.RemoveListener<Events.MotionBlurToggledEventArgs>(this, SetMotionBlur);
+        EventManager.Instance.RemoveListener<Events.InvertYToggledEventArgs>(this, SetInvertY);
     }
 
     private void SetDefaults()
@@ -77,6 +82,7 @@ public class Settings : GameEventUserObject
         FramerateCap = 60;
         VSyncCount = 1;
         MotionBlur = true;
+        InvertY = false;
     }
 
     public void SaveCurrentSettings()
@@ -86,6 +92,7 @@ public class Settings : GameEventUserObject
             VSyncCount = VSyncCount,
             FramerateCap = FramerateCap,
             MotionBlurOn = MotionBlur,
+            InvertYOn = InvertY, 
 
             ResolutionWidth = Screen.currentResolution.width,
             ResolutionHeight = Screen.currentResolution.height,
@@ -124,6 +131,7 @@ public class Settings : GameEventUserObject
         FramerateCap = Application.targetFrameRate;
         VSyncCount = QualitySettings.vSyncCount;
         MotionBlur = settings.MotionBlurOn;
+        InvertY = settings.InvertYOn;
 
         EventManager.Instance.TriggerEvent(new Events.RefreshSettingsUIArgs());
     }

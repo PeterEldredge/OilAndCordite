@@ -15,10 +15,22 @@ namespace Events
             MotionBlur = motionBlur;
         }
     }
+
+    public struct InvertYToggledEventArgs : IGameEvent
+    {
+        public bool InvertY { get; private set; }
+
+        public InvertYToggledEventArgs(bool invertY)
+        {
+            InvertY = invertY;
+        }
+    }
 }
 
 public class ToggleButton : GameEventUserObject
 {
+    [SerializeField] private bool _isMotionBlutToggle;
+
     [SerializeField] private float _toggleTime;
 
     [SerializeField] private float _offXPosition;
@@ -59,26 +71,56 @@ public class ToggleButton : GameEventUserObject
 
     private void Refresh(Events.RefreshSettingsUIArgs args)
     {
-        if (Settings.Instance.MotionBlur)
+        //I know how bad this is
+        //Just put a shotgun to my face and pull the trigger
+        //Then pump it and do it again
+        if(_isMotionBlutToggle)
         {
-            transform.localPosition = new Vector3(_onXPosition, _yPosition, _zPosition);
+            if (Settings.Instance.MotionBlur)
+            {
+                transform.localPosition = new Vector3(_onXPosition, _yPosition, _zPosition);
 
-            _toggleImage.color = _onColor;
+                _toggleImage.color = _onColor;
 
-            _toggleButton.interactable = true;
+                _toggleButton.interactable = true;
 
-            IsOn = true;
+                IsOn = true;
+            }
+            else
+            {
+                transform.localPosition = new Vector3(_offXPosition, _yPosition, _zPosition);
+
+                _toggleImage.color = _offColor;
+
+                _toggleButton.interactable = true;
+
+                IsOn = false;
+            }
         }
         else
         {
-            transform.localPosition = new Vector3(_offXPosition, _yPosition, _zPosition);
+            if (Settings.Instance.InvertY)
+            {
+                transform.localPosition = new Vector3(_onXPosition, _yPosition, _zPosition);
 
-            _toggleImage.color = _offColor;
+                _toggleImage.color = _onColor;
 
-            _toggleButton.interactable = true;
+                _toggleButton.interactable = true;
 
-            IsOn = false;
+                IsOn = true;
+            }
+            else
+            {
+                transform.localPosition = new Vector3(_offXPosition, _yPosition, _zPosition);
+
+                _toggleImage.color = _offColor;
+
+                _toggleButton.interactable = true;
+
+                IsOn = false;
+            }
         }
+
     }
 
     public void Toggle() => StartCoroutine(ToggleRoutine());
@@ -97,7 +139,14 @@ public class ToggleButton : GameEventUserObject
 
         IsOn = !IsOn;
 
-        EventManager.Instance.TriggerEvent(new Events.MotionBlurToggledEventArgs(IsOn));
+        if(_isMotionBlutToggle)
+        {
+            EventManager.Instance.TriggerEvent(new Events.MotionBlurToggledEventArgs(IsOn));
+        }
+        else
+        {
+            EventManager.Instance.TriggerEvent(new Events.InvertYToggledEventArgs(IsOn));
+        }
 
         if(IsOn)
         {
