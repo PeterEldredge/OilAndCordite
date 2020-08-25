@@ -6167,7 +6167,7 @@ MonoBehaviour:
   m_Elasticity: 0.1
   m_Inertia: 1
   m_DecelerationRate: 0.135
-  m_ScrollSensitivity: 1
+  m_ScrollSensitivity: 10
   m_Viewport: {fileID: 1032077245}
   m_HorizontalScrollbar: {fileID: 0}
   m_VerticalScrollbar: {fileID: 753398062}
@@ -8401,6 +8401,7 @@ GameObject:
   - component: {fileID: 1061010021}
   - component: {fileID: 1061010020}
   - component: {fileID: 1061010023}
+  - component: {fileID: 1061010024}
   m_Layer: 5
   m_Name: Apply
   m_TagString: Untagged
@@ -8471,17 +8472,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1482713390}
-        m_MethodName: SaveCurrentSettings
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 189980845}
         m_MethodName: Close
         m_Mode: 1
@@ -8555,6 +8545,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _selectUI: {fileID: 626887404}
+--- !u!114 &1061010024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1061010018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01e36f193aed1ca44a4f28707669524b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _resolutionSettings: {fileID: 1241775284}
 --- !u!1 &1062628239
 GameObject:
   m_ObjectHideFlags: 0
@@ -20659,18 +20662,7 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1241775284}
-        m_MethodName: UpdateResolution
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &2089575712
 MonoBehaviour:
   m_ObjectHideFlags: 0

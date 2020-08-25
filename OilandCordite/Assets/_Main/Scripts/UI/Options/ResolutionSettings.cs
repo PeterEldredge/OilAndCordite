@@ -5,11 +5,23 @@ using UnityEngine.UI;
 using TMPro;
 using System.Linq;
 
-public class ResolutionSettings : MonoBehaviour
+public class ResolutionSettings : GameEventUserObject
 {
     [SerializeField] private TMP_Dropdown _dropdown;
 
     private List<Resolution> _availableResolutions = new List<Resolution>();
+
+    private void Refresh(Events.RefreshSettingsUIArgs args) => SetCurrentSetting();
+
+    public override void Subscribe()
+    {
+        EventManager.Instance.AddListener<Events.RefreshSettingsUIArgs>(this, Refresh);
+    }
+
+    public override void Unsubscribe()
+    {
+        EventManager.Instance.RemoveListener<Events.RefreshSettingsUIArgs>(this, Refresh);
+    }
 
     private void Start()
     {
@@ -23,6 +35,11 @@ public class ResolutionSettings : MonoBehaviour
             _availableResolutions.Insert(0, resolution);
         }
 
+        SetCurrentSetting();
+    }
+
+    private void SetCurrentSetting()
+    {
         for (int i = 0; i < _dropdown.options.Count; i++)
         {
             if (Screen.currentResolution.ToString() == _dropdown.options[i].text)
@@ -33,8 +50,10 @@ public class ResolutionSettings : MonoBehaviour
         }
     }
 
-    public void UpdateResolution(int option)
+    public void UpdateResolution()
     {
-        Screen.SetResolution(_availableResolutions[option].width, _availableResolutions[option].height, true, _availableResolutions[option].refreshRate);
+        Screen.SetResolution(_availableResolutions[_dropdown.value].width, _availableResolutions[_dropdown.value].height, true, _availableResolutions[_dropdown.value].refreshRate);
+
+        Settings.Instance.SaveCurrentSettingsOnDelay();
     }
 }

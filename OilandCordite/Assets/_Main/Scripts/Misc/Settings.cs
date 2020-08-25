@@ -106,6 +106,11 @@ public class Settings : GameEventUserObject
         LoadSavedSettings();
     }
 
+    public void SaveCurrentSettingsOnDelay()
+    {
+        Invoke("SaveCurrentSettings", .2f);
+    }
+
     public void LoadSavedSettings()
     {
         if (!File.Exists(_CONFIG_PATH))
@@ -120,7 +125,7 @@ public class Settings : GameEventUserObject
         SaveableSettings settings = JsonUtility.FromJson<SaveableSettings>(json);
 
         //Resolution
-        Screen.SetResolution(settings.ResolutionWidth, settings.ResolutionHeight, true);
+        Screen.SetResolution(settings.ResolutionWidth, settings.ResolutionHeight, true, settings.ResolutionRefresh);
 
         //Framerate
         QualitySettings.vSyncCount = settings.VSyncCount;
