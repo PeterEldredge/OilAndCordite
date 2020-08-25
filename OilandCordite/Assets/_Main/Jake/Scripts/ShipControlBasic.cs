@@ -39,9 +39,6 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private AnimationCurve _gravityAccelerationCurve;
     [SerializeField] private AnimationCurve _rotateMultSpeedCurve;
 
-    [Header("Options")]
-    [SerializeField] private bool _startInverted = false;
-
     [Header("Input")]
     [SerializeField] private bool _mouseMovement = false;
     [SerializeField] [Range(-1f, 1f)] private float _pitch = 0f;
@@ -156,7 +153,7 @@ public class ShipControlBasic : GameEventUserObject
 
     private void Start()
     {
-        _invertYControl = _startInverted ? 1 : -1;
+        _invertYControl = Settings.Instance?.InvertY == true ? 1 : -1;
 
         SetInputType();
     }
