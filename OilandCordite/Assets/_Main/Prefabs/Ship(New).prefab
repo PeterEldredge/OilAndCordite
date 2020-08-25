@@ -8893,6 +8893,7 @@ MonoBehaviour:
   _baseGasBoost: 80
   _bounceMult: 20
   _bounceTime: 0.75
+  _noSpinOutTime: 1
   _noGravitySpeed: 80
   _minGasIgnitionHeat: 20
   _positiveAccelerationCurve:
@@ -9045,7 +9046,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  _startInverted: 0
   _mouseMovement: 0
   _pitch: 0
   _roll: 0
@@ -9175,10 +9175,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gasExplosionParticles: {fileID: 8577053942079436274, guid: 42a013cb2a72989459ef19d17abfb0b1,
     type: 3}
-  _obstacleShakeMagnitude: 5
-  _obstacleShakeDuration: 1
+  _obstacleBounceShakeMagnitude: 5
+  _obstacleBounceShakeDuration: 1
+  _obstacleBumpShakeMagnitude: 5
+  _obstacleBumpShakeDuration: 0.5
   _gasShakeMagnitude: 3
   _gasShakeDuration: 0.5
+  _bumpTolerance: -0.7
+  _sparksPrefab: {fileID: 5750540886688882586, guid: fcc121028cb107549b459a2eb0cf53b8,
+    type: 3}
 --- !u!114 &2012369514025311477
 MonoBehaviour:
   m_ObjectHideFlags: 0
