@@ -9,24 +9,23 @@ public class ResolutionSettings : MonoBehaviour
 {
     [SerializeField] private TMP_Dropdown _dropdown;
 
-    private void Awake()
+    private List<Resolution> _availableResolutions = new List<Resolution>();
+
+    private void Start()
     {
         _dropdown.options = new List<TMP_Dropdown.OptionData>();
 
-        IEnumerable<Resolution> availableResolutions = Screen.resolutions.AsEnumerable()
-            .Where(r => r.refreshRate == Screen.currentResolution.refreshRate);
+        //IEnumerable<Resolution> availableResolutions = Screen.resolutions.AsEnumerable().Where(r => r.refreshRate == Screen.currentResolution.refreshRate);
 
-        foreach (Resolution resolution in availableResolutions)
+        foreach (Resolution resolution in Screen.resolutions)
         {
-            _dropdown.options.Insert(0, new TMP_Dropdown.OptionData(resolution.width + " x " + resolution.height));
+            _dropdown.options.Insert(0, new TMP_Dropdown.OptionData(resolution.ToString()));
+            _availableResolutions.Insert(0, resolution);
         }
 
-        for(int i = 0; i < _dropdown.options.Count; i++)
+        for (int i = 0; i < _dropdown.options.Count; i++)
         {
-            string[] option = _dropdown.options[i].text.Split(' ');
-
-            if (int.Parse(option[0]) == Screen.currentResolution.width &&
-               int.Parse(option[2]) == Screen.currentResolution.height)
+            if (Screen.currentResolution.ToString() == _dropdown.options[i].text)
             {
                 _dropdown.value = i;
                 break;
@@ -36,8 +35,6 @@ public class ResolutionSettings : MonoBehaviour
 
     public void UpdateResolution(int option)
     {
-        string[] selectedOptions = _dropdown.options[option].text.Split(' ');
-
-        Screen.SetResolution(int.Parse(selectedOptions[0]), int.Parse(selectedOptions[2]), true);
+        Screen.SetResolution(_availableResolutions[option].width, _availableResolutions[option].height, true, _availableResolutions[option].refreshRate);
     }
 }
