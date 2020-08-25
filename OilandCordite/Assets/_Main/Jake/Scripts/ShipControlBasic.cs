@@ -378,6 +378,7 @@ public class ShipControlBasic : GameEventUserObject
     private IEnumerator SmokeUpdraftRoutine(float velocityUp, Vector3 plumeDirection)
     {
         float timer = 0;
+        _gasExploding = true;
         while (timer < _updraftTime)
         {
             timer += Time.deltaTime;
