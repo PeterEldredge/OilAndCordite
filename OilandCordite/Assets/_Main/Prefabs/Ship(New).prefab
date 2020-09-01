@@ -1062,6 +1062,8 @@ MonoBehaviour:
   _type: 1
   _projectile: {fileID: 5150439640319713087, guid: 0a2918ccbba57fb428074bb5fe531da6,
     type: 3}
+  _muzzleFlash: {fileID: 812560410063175347, guid: 58b4c370eabd6764e946b7ae6edb5702,
+    type: 3}
   shots: 40
   _attackPoints:
   - {fileID: 3287321620955084756}
@@ -8894,8 +8896,10 @@ MonoBehaviour:
   _bounceMult: 20
   _bounceTime: 0.75
   _noSpinOutTime: 1
+  _updraftTime: 1
   _noGravitySpeed: 80
   _minGasIgnitionHeat: 20
+  _smogHeight: 15
   _positiveAccelerationCurve:
     serializedVersion: 2
     m_Curve:
@@ -9070,7 +9074,8 @@ MonoBehaviour:
   _invincibilityWindow: 1
   _overheatDamage: 5
   _overheatDamageRate: 1
-  _damageOnCollision: 20
+  _damageOnBump: 20
+  _damageOnBounce: 40
 --- !u!114 &7818900201248287428
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9087,7 +9092,8 @@ MonoBehaviour:
   _invincibilityWindow: 1
   _overheatDamage: 5
   _overheatDamageRate: 1
-  _damageOnCollision: 20
+  _damageOnBump: 20
+  _damageOnBounce: 40
 --- !u!114 &8094346738866881229
 MonoBehaviour:
   m_ObjectHideFlags: 0
