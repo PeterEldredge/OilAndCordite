@@ -66,7 +66,7 @@ Shader "Unlit/DrawStructuredBuffer"
 
 			float4 frag(v2f IN) : COLOR
 			{
-				float4 col = ((IN.col + _Color) + unity_AmbientSky) * _SubtractiveLight;
+				float4 col = ((IN.col + unity_AmbientSky) + unity_AmbientEquator) * _SubtractiveLight;
 				col.a = _Alpha;
 				return col;
 			}

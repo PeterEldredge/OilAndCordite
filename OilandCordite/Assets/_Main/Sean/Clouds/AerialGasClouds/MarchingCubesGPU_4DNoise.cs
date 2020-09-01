@@ -38,6 +38,8 @@ public class MarchingCubesGPU_4DNoise : MonoBehaviour
 
     [Header("Materials")]
     [SerializeField] private Material material;
+    [SerializeField] private Shader drawBufferShader;
+    [SerializeField, Range(0, 1)] private float cloudAlpha = 1.0f;
 
     [Header("Compute Shaders")]
     [SerializeField] private ComputeShader perlinCompute;
@@ -143,7 +145,7 @@ public class MarchingCubesGPU_4DNoise : MonoBehaviour
     void Start()
     {
         PostRenderEvent.AddEvent(Camera.main, DrawClouds);
-        //UpdateBuffers();
+        material = new Material(drawBufferShader);
     }
 
     void Update()
@@ -204,17 +206,21 @@ public class MarchingCubesGPU_4DNoise : MonoBehaviour
 
     private void OnRenderObject() 
     {
+        material.SetBuffer("_Buffer", m_meshBuffer);
+        material.SetPass(0);
+        Graphics.DrawProcedural(material, this.gameObject.GetComponent<Collider>().bounds, MeshTopology.Triangles, SIZE, camera: Camera.main);
+        // GL.Clear();
+
         // material.SetBuffer("_Buffer", m_meshBuffer);
         // material.SetPass(0);
-
-        // Graphics.DrawProceduralNow(MeshTopology.Triangles, SIZE);    
+        // Graphics.DrawProceduralNow(MeshTopology.Triangles, SIZE);
     }
 
     void DrawClouds(Camera camera)
     {
-        material.SetBuffer("_Buffer", m_meshBuffer);
-        material.SetPass(0);
-        Graphics.DrawProceduralNow(MeshTopology.Triangles, SIZE);    
+        // material.SetBuffer("_Buffer", m_meshBuffer);
+        // material.SetPass(0);
+        // Graphics.DrawProceduralNow(MeshTopology.Triangles, SIZE);
     }
 
     private void TryReleaseBuffers() 
