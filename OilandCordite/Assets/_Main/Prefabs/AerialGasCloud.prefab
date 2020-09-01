@@ -76,11 +76,12 @@ MonoBehaviour:
   simulate: 0
   numberOfControlPoints: 100
   distanceThreshold: 3.5
-  noiseSpeed: 2
-  noiseGain: 1.64
-  noiseFrequency: 0.04
-  noiseLacunarity: 1.5
+  noiseSpeed: 0.8
+  noiseGain: 0.1
+  noiseFrequency: 0.1
+  noiseLacunarity: 0.5
   material: {fileID: 2100000, guid: 06055a705f7a5154e9345976c46102b4, type: 2}
+  drawBufferShader: {fileID: 4800000, guid: 17700f65ba316f74e9e805ce059e438d, type: 3}
   perlinCompute: {fileID: 7200000, guid: f48c8ba9db381a04fbf42f516ae78cca, type: 3}
   marchingCubes: {fileID: 7200000, guid: 1220ae05f0622e54281e7fae7798226a, type: 3}
   normalCompute: {fileID: 7200000, guid: 9768e319764ab5f4081e33e7b5dc402c, type: 3}

@@ -35,6 +35,7 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")]
     [SerializeField] private float _minGasIgnitionHeat = 20f;
+    [SerializeField] private float _smogHeight = 15f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
     [SerializeField] private AnimationCurve _gravityAccelerationCurve;
@@ -242,9 +243,9 @@ public class ShipControlBasic : GameEventUserObject
                 _rb.velocity += transform.forward * _igniteThrust * _smogHeatToSpeedRatio * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
             }
 
-            if (transform.position.y <= 15)
+            if (transform.position.y <= _smogHeight)
             {
-                transform.position = new Vector3(transform.position.x, 15, transform.position.z);
+                transform.position = new Vector3(transform.position.x, _smogHeight, transform.position.z);
             }
 
             float gravity = -_gravityMultiplier * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f)) * Time.fixedDeltaTime;

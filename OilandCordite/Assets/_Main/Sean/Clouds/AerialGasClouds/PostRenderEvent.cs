@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Camera))]
-    public class PostRenderEvent : CameraEvent
+public class PostRenderEvent : CameraEvent
     {
-
         public CameraEventHandler OnEvent = delegate { };
 
         void OnPostRender()
