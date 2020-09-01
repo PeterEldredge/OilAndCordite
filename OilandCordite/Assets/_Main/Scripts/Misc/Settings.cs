@@ -20,6 +20,9 @@ public class SaveableSettings
 
     public bool MotionBlurOn = true;
     public bool InvertYOn = false;
+
+    public int MusicVolume = 10;
+    public int SFXVolume = 10;
 }
 
 public class Settings : GameEventUserObject
@@ -34,6 +37,9 @@ public class Settings : GameEventUserObject
 
     public bool MotionBlur { get; private set; }
     public bool InvertY { get; private set; }
+
+    public int MusicVolume { get; private set; }
+    public int SFXVolume { get; private set; }
 
     private void Awake()
     {
@@ -60,6 +66,8 @@ public class Settings : GameEventUserObject
     private void SetVSyncCount(Events.VSyncChangedEventArgs args) => VSyncCount = args.VSyncCount;
     private void SetMotionBlur(Events.MotionBlurToggledEventArgs args) => MotionBlur = args.MotionBlur;
     private void SetInvertY(Events.InvertYToggledEventArgs args) => InvertY = args.InvertY;
+    private void SetMusicVolume(Events.MusicVolumeChangedEventArgs args) => MusicVolume = args.MusicVolume;
+    private void SetSFXVolume(Events.SFXVolumeChangedEventArgs args) => SFXVolume = args.SFXVolume;
 
     public override void Subscribe()
     {
@@ -67,6 +75,8 @@ public class Settings : GameEventUserObject
         EventManager.Instance.AddListener<Events.VSyncChangedEventArgs>(this, SetVSyncCount);
         EventManager.Instance.AddListener<Events.MotionBlurToggledEventArgs>(this, SetMotionBlur);
         EventManager.Instance.AddListener<Events.InvertYToggledEventArgs>(this, SetInvertY);
+        EventManager.Instance.AddListener<Events.MusicVolumeChangedEventArgs>(this, SetMusicVolume);
+        EventManager.Instance.AddListener<Events.SFXVolumeChangedEventArgs>(this, SetSFXVolume);
     }
 
     public override void Unsubscribe()
@@ -75,6 +85,8 @@ public class Settings : GameEventUserObject
         EventManager.Instance.RemoveListener<Events.VSyncChangedEventArgs>(this, SetVSyncCount);
         EventManager.Instance.RemoveListener<Events.MotionBlurToggledEventArgs>(this, SetMotionBlur);
         EventManager.Instance.RemoveListener<Events.InvertYToggledEventArgs>(this, SetInvertY);
+        EventManager.Instance.RemoveListener<Events.MusicVolumeChangedEventArgs>(this, SetMusicVolume);
+        EventManager.Instance.RemoveListener<Events.SFXVolumeChangedEventArgs>(this, SetSFXVolume);
     }
 
     private void SetDefaults()
@@ -83,6 +95,8 @@ public class Settings : GameEventUserObject
         VSyncCount = 1;
         MotionBlur = true;
         InvertY = false;
+        MusicVolume = 10;
+        SFXVolume = 10;
     }
 
     public void SaveCurrentSettings()
@@ -92,11 +106,14 @@ public class Settings : GameEventUserObject
             VSyncCount = VSyncCount,
             FramerateCap = FramerateCap,
             MotionBlurOn = MotionBlur,
-            InvertYOn = InvertY, 
+            InvertYOn = InvertY,
 
             ResolutionWidth = Screen.currentResolution.width,
             ResolutionHeight = Screen.currentResolution.height,
             ResolutionRefresh = Screen.currentResolution.refreshRate,
+
+            MusicVolume = MusicVolume,
+            SFXVolume = SFXVolume,
         };
 
         File.WriteAllText(_CONFIG_PATH, JsonUtility.ToJson(settings));
@@ -137,6 +154,9 @@ public class Settings : GameEventUserObject
         VSyncCount = QualitySettings.vSyncCount;
         MotionBlur = settings.MotionBlurOn;
         InvertY = settings.InvertYOn;
+
+        MusicVolume = settings.MusicVolume;
+        SFXVolume = settings.SFXVolume;
 
         EventManager.Instance.TriggerEvent(new Events.RefreshSettingsUIArgs());
     }
