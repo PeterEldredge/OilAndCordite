@@ -13,6 +13,15 @@ public class AudioCuePlayer : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
+        float musicMultiplier = 1f;
+        float sfxMultiplier = 1f;
+
+        if(Settings.Instance)
+        {
+            musicMultiplier = Settings.Instance.MusicVolume / 10f;
+            sfxMultiplier = Settings.Instance.SFXVolume / 10f;
+        }
+
         _audioSourceDictionary = new Dictionary<string, AudioSource>();
 
         foreach(AudioCue cue in _audioCues)
@@ -23,7 +32,7 @@ public class AudioCuePlayer : MonoBehaviour
 
             _audioSourceDictionary[cue.cueName].clip = cue.clips[0];
             _audioSourceDictionary[cue.cueName].priority = cue.priority;
-            _audioSourceDictionary[cue.cueName].volume = cue.volume;
+            _audioSourceDictionary[cue.cueName].volume = cue.volume * (cue.isMusic ? musicMultiplier : sfxMultiplier);
             _audioSourceDictionary[cue.cueName].pitch = cue.pitch;
             _audioSourceDictionary[cue.cueName].panStereo = cue.stereoPan;
             _audioSourceDictionary[cue.cueName].spatialBlend = cue.spatialBlend;
