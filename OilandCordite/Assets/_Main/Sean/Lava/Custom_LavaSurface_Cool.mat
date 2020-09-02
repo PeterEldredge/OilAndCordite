@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Custom_LavaSurface_Cool
+  m_Shader: {fileID: 4800000, guid: b895681b71ca21246902479e5865c1a1, type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _CrackTexture:
+        m_Texture: {fileID: 2800000, guid: 346495c9e94f1a8428b375d152a76f28, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 93092410bbc6f4ccba773578db5832d9, type: 3}
+        m_Scale: {x: 30, y: 30}
+        m_Offset: {x: 0, y: 0}
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: 5a61261df51695147986428a579809c8, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _Glossiness: 0
+    - _LavaCoolSpeed: 10
+    - _LavaCrackCoolSpeed: 30
+    - _LavaCrackScale: 0.5
+    - _LavaDepthFade: 50
+    - _Metallic: 0
+    - _NoiseSpeed: 1.5
+    - _VertexAmplitude: 0.025
+    - _VertexMovementSpeed: 0.125
+    - _VertexWavelength: 2
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _LavaCooledColor: {r: 0.039215688, g: 0.03364706, b: 0.03364706, a: 1}
+    - _LavaCrackColor: {r: 0.732, g: 0.4347793, b: 0.27816, a: 1}
+    - _LavaCrackCooledColor: {r: 0.49056602, g: 0.2410209, b: 0.030081892, a: 1}
+    - _LavaEdgeColor: {r: 0.6509434, g: 0.22232531, b: 0, a: 1}
+    - _LavaInnerColor: {r: 0.739, g: 0.31588632, b: 0, a: 1}
+    - _LavaVeryHotColor: {r: 0.5754717, g: 0.25516197, b: 0.25516197, a: 1}
