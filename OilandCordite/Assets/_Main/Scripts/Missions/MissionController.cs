@@ -14,6 +14,7 @@ public abstract class MissionController : GameEventUserObject
 
     public float Timer { get; private set; } = 0f;
     public float ComboTimer { get; private set; } = -1f;
+    public float ExposedMissionTimer => Mathf.Round(_missionTimer) / 100f;
 
     public int Score { get; private set; } = 0;
     public int Combo { get; private set; } = 0;
@@ -43,7 +44,9 @@ public abstract class MissionController : GameEventUserObject
 
     protected void Start()
     {
-        InvokeRepeating("MissionTimer", 0f, 16.66f);
+        _missionTimer *= 100;
+
+        InvokeRepeating("MissionTimer", 0f, .04166666f);
 
         StartCoroutine(ComboTimerRoutine());
     }
@@ -96,11 +99,11 @@ public abstract class MissionController : GameEventUserObject
     {
         if(!_missionComplete)
         {
-            Timer += 16.66f;
+            Timer += 4.166666f;
 
             if(_missionTimer > 0f)
             {
-                _missionTimer -= 16.66f;
+                _missionTimer -= 4.166666f;
 
                 if(_missionTimer <= 0f)
                 {

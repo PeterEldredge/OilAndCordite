@@ -21,6 +21,7 @@ public abstract class BaseUIController : GameEventUserObject
         EventManager.Instance.AddListener<Events.GamePausedEventArgs>(this, OnGamePaused);
         EventManager.Instance.AddListener<Events.GameUnpausedEventArgs>(this, OnGameUnpaused);
         EventManager.Instance.AddListener<Events.UIInteractionEventArgs>(this, OnUIInteraction);
+        EventManager.Instance.AddListener<Events.MissionFailedEventArgs>(this, OnMissionFailed);
     }
 
     public override void Unsubscribe()
@@ -31,6 +32,7 @@ public abstract class BaseUIController : GameEventUserObject
         EventManager.Instance.RemoveListener<Events.GamePausedEventArgs>(this, OnGamePaused);
         EventManager.Instance.RemoveListener<Events.GameUnpausedEventArgs>(this, OnGameUnpaused);
         EventManager.Instance.RemoveListener<Events.UIInteractionEventArgs>(this, OnUIInteraction);
+        EventManager.Instance.RemoveListener<Events.MissionFailedEventArgs>(this, OnMissionFailed);
     }
 
     protected virtual void OnPlayerDeath(Events.PlayerDeathEventArgs args) { }
@@ -39,6 +41,7 @@ public abstract class BaseUIController : GameEventUserObject
     protected virtual void OnGamePaused(Events.GamePausedEventArgs args) { }
     protected virtual void OnGameUnpaused(Events.GameUnpausedEventArgs args) { }
     protected virtual void OnUIInteraction(Events.UIInteractionEventArgs args) { }
+    protected virtual void OnMissionFailed(Events.MissionFailedEventArgs args) { }
 
     #endregion
 

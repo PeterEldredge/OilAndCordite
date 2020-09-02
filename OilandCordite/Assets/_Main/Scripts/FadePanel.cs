@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FadePanel : MonoBehaviour
+public class FadePanel : BaseUIController
 {
     [SerializeField] private float _fadeSpeed;
 
@@ -13,6 +13,8 @@ public class FadePanel : MonoBehaviour
     [SerializeField] private bool _fadeInOnAwake;
 
     private Image _image;
+
+    protected override void OnMissionFailed(Events.MissionFailedEventArgs args) => StartCoroutine(FadeOutAnim(2f));
 
     private void Awake()
     {
@@ -58,6 +60,22 @@ public class FadePanel : MonoBehaviour
         while(timer < _fadeSpeed)
         {
             _image.color = Color.Lerp(_inColor, _outColor, timer / _fadeSpeed);
+
+            timer += Time.deltaTime;
+
+            yield return null;
+        }
+
+        _image.color = _outColor;
+    }
+
+    private IEnumerator FadeOutAnim(float time)
+    {
+        float timer = 0;
+
+        while (timer < time)
+        {
+            _image.color = Color.Lerp(_inColor, _outColor, timer / time);
 
             timer += Time.deltaTime;
 

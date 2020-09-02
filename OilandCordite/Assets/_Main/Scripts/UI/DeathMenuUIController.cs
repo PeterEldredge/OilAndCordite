@@ -9,6 +9,7 @@ public class DeathMenuUIController : BaseUIController
     #region Events
 
     protected override void OnPlayerDeath(Events.PlayerDeathEventArgs args) => StartCoroutine(ActionOnDelay(3f, () => OpenDeathScreen()));
+    protected override void OnMissionFailed(Events.MissionFailedEventArgs args) => StartCoroutine(ActionOnDelay(3f, () => OpenDeathScreen()));
 
     public void OpenDeathScreen()
     {
