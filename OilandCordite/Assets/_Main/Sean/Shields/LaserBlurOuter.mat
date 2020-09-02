@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: IgnitionEffect
-  m_Shader: {fileID: 4800000, guid: 53f6874af9ae03e40bbc7b399709b120, type: 3}
+  m_Name: LaserBlurOuter
+  m_Shader: {fileID: 4800000, guid: 5c926a59b8d9b6f4baa16fa5e630463d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,17 +19,17 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - _DistortionMap:
-        m_Texture: {fileID: 2800000, guid: 26ec03a69967b7b43be04e055bcb2b7b, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _MainTex:
+    - _NoiseTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _DistortionMultiplier: 0.1
-    - _VignetteRadius: 1
-    - _VignetteSoftness: 0.5045108
+    - _AlphaOffset: 1
+    - _Fade: 1
+    - _Fresnel: 1
+    - _VertexAmplitude: 1
+    - _VertexMovementSpeed: 1
+    - _VertexWavelength: 1
     m_Colors:
-    - _VignetteColor: {r: 1, g: 0.32211593, b: 0, a: 1}
+    - _InnerColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OuterColor: {r: 1, g: 1, b: 1, a: 1}
