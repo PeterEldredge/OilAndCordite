@@ -18,13 +18,22 @@ Material:
   disabledShaderPasses: []
   m_SavedProperties:
     serializedVersion: 3
-    m_TexEnvs: []
+    m_TexEnvs:
+    - _NoiseTex:
+        m_Texture: {fileID: 2800000, guid: 93092410bbc6f4ccba773578db5832d9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaOffset: 1
-    - _Ambient: 0.3
-    - _Fade: 1
-    - _Fresnel: 1
-    - _Intensity: 0.2
-    - _NoiseSpeed: 0.5
-    - _Wind: 0.1
-    m_Colors: []
+    - _AlphaOffset: 15.7
+    - _Ambient: 0
+    - _Fade: 1.35
+    - _Fresnel: 1.54
+    - _Intensity: 0
+    - _NoiseSpeed: 0
+    - _VertexAmplitude: 50
+    - _VertexMovementSpeed: 500
+    - _VertexWavelength: 300
+    - _Wind: 0
+    m_Colors:
+    - _InnerColor: {r: 1, g: 0.07058823, b: 0.123669885, a: 1}
+    - _OuterColor: {r: 1, g: 0, b: 0.6156459, a: 1}

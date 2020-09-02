@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LaserInner
+  m_Name: GlowSphere
   m_Shader: {fileID: 4800000, guid: 5c926a59b8d9b6f4baa16fa5e630463d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -48,7 +48,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NoiseTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: 93092410bbc6f4ccba773578db5832d9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -60,13 +60,13 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaOffset: 20
+    - _AlphaOffset: 1
     - _BumpScale: 1
     - _Cutoff: 0.5
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
-    - _Fade: 1.2
-    - _Fresnel: 1.77
+    - _Fade: 0
+    - _Fresnel: 4.71
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
@@ -78,12 +78,12 @@ Material:
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _UVSec: 0
-    - _VertexAmplitude: 50
-    - _VertexMovementSpeed: 500
-    - _VertexWavelength: 300
+    - _VertexAmplitude: 1
+    - _VertexMovementSpeed: 1
+    - _VertexWavelength: 1
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _InnerColor: {r: 0.8301887, g: 0.27020293, b: 0.2791626, a: 1}
-    - _OuterColor: {r: 1, g: 0.19320282, b: 0, a: 1}
+    - _InnerColor: {r: 0.99215686, g: 0.21176472, b: 0.8765031, a: 1}
+    - _OuterColor: {r: 0.7998471, g: 0, b: 1, a: 1}

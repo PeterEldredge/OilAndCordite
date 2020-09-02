@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: LaserBlurOuter
+  m_Name: PrepLaser
   m_Shader: {fileID: 4800000, guid: 5c926a59b8d9b6f4baa16fa5e630463d, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
@@ -24,12 +24,12 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - _AlphaOffset: 1
-    - _Fade: 1
-    - _Fresnel: 3.76
-    - _VertexAmplitude: 1
-    - _VertexMovementSpeed: 1
-    - _VertexWavelength: 1
+    - _AlphaOffset: 20
+    - _Fade: 2.4
+    - _Fresnel: 2.63
+    - _VertexAmplitude: 50
+    - _VertexMovementSpeed: 500
+    - _VertexWavelength: 300
     m_Colors:
-    - _InnerColor: {r: 1, g: 1, b: 1, a: 1}
-    - _OuterColor: {r: 1, g: 0, b: 0.45336103, a: 1}
+    - _InnerColor: {r: 1, g: 0, b: 0.5098562, a: 1}
+    - _OuterColor: {r: 1, g: 0, b: 0.6459122, a: 1}
