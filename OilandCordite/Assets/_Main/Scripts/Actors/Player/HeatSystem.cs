@@ -54,13 +54,12 @@ public class HeatSystem : GameEventUserObject
 
         while(true)
         {
-            while (InputHelper.Player.GetAxis("Ignite") <= 0 && _heatToBeApplied <= 0) yield return null;
-
+            while (!InputHelper.Player.GetButton("Ignite") && _heatToBeApplied <= 0) yield return null;
             IsIgniting = true;
 
             EventManager.Instance.TriggerEvent(new Events.BeginIgniteEventArgs());
 
-            while ((InputHelper.Player.GetAxis("Ignite") > 0 && !PlayerData.Instance.SpinningOut) ||
+            while ((InputHelper.Player.GetButton("Ignite") && !PlayerData.Instance.SpinningOut) ||
                  _heatToBeApplied > 0f)
             {
                 if (!OverHeated)

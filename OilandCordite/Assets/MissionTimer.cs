@@ -18,6 +18,14 @@ public class MissionTimer : MonoBehaviour
         _text = GetComponent<TMP_Text>();
     }
 
+    private void Start()
+    {
+        if (MissionControllerData.Instance.MissionController.ExposedMissionTimer <= 0)
+        {
+            transform.parent.gameObject.SetActive(false);
+        }
+    }
+
     private void Update()
     {
         _missionTime = MissionControllerData.Instance.MissionController.ExposedMissionTimer;

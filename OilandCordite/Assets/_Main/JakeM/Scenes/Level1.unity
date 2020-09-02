@@ -6859,6 +6859,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _levelData: {fileID: 11400000, guid: 719ee698c60191b4592e5cbb8701ad89, type: 2}
+  _missionTimer: 0
   _enemiesToBeKilled: 21
   _enemyRemainingUIThreshold: 5
   _uiElement: {fileID: 6036540926978231358, guid: b1dcea8e59db49146b379866debc9f24,
@@ -6929,11 +6930,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rewired Input Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 3025849136805095958, guid: fb88f9df03ff0724c8624fd383b9dd3c,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb88f9df03ff0724c8624fd383b9dd3c, type: 3}
