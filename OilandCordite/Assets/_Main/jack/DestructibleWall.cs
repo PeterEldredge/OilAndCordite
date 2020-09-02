@@ -12,7 +12,7 @@ public class DestructibleWall : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag(Tags.PLAYER) && useTrigger)
+        if ((collider.CompareTag(Tags.PLAYER) || collider.CompareTag("PlayerAttack")) && useTrigger)
         {
             SwapObjects();
         }

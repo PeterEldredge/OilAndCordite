@@ -3612,12 +3612,6 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2615921791667759415, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: _muzzleFlash
-      value: 
-      objectReference: {fileID: 812560410063175347, guid: 961e056584f29db48833af2e20131e38,
-        type: 3}
     - target: {fileID: 5365513814971153437, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3658,11 +3652,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.y
       value: 176.052
       objectReference: {fileID: 0}
-    - target: {fileID: 5517578659161198241, guid: 0dca9f6178850714da20590c07aa1cf6,
-        type: 3}
-      propertyPath: _weldedWeapons.Array.data[0]
-      value: 
-      objectReference: {fileID: 1898324636}
     - target: {fileID: 5629479974912669396, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -15064,18 +15053,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1893891308}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1898324636 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2615921791667759415, guid: 0dca9f6178850714da20590c07aa1cf6,
-    type: 3}
-  m_PrefabInstance: {fileID: 359794323}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 844cf7987c5c09748bdd49e7e991bfbd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1898875953
 PrefabInstance:
   m_ObjectHideFlags: 0
