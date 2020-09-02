@@ -28,7 +28,7 @@ public class CameraShake : GameEventUserObject
         {
             transform.gameObject.GetComponent<Camera>().DOShakeRotation(duration, magnitude);
             _shaking = true;
-            StartCoroutine(ShakeWaitRoutine(duration));
+            StartCoroutine(ShakeWaitRoutine(duration + .1f));
             _shaking = false;
         }
     }
