@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeldedLaser : WeldedWeapon
 {
     [SerializeField] private GameObject _projectile;
+    [SerializeField] protected GameObject _muzzleFlash;
     [SerializeField] private int shots = 20;
     [SerializeField] private List<Transform> _attackPoints;
     [SerializeField] private float _rangeX = 2f;
@@ -68,6 +69,8 @@ public class WeldedLaser : WeldedWeapon
             euler.y = Random.Range(-_rangeY, _rangeY);
 
             Instantiate(_projectile, ap.position, Quaternion.LookRotation(ap.transform.forward + euler));
+            Instantiate(_muzzleFlash, ap.position, Quaternion.LookRotation(ap.transform.forward + euler));
+
             _shotsRemaining--;
             yield return new WaitForSeconds(_shotTimer);
         }

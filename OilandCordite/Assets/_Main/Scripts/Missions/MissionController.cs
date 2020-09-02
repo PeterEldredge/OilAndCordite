@@ -2,12 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Events
+{
+    public struct MissionFailedEventArgs : IGameEvent { }
+}
+
 public abstract class MissionController : GameEventUserObject
 {
     [SerializeField] protected Level _levelData;
+    [SerializeField] protected float _missionTimer = 0;
 
     public float Timer { get; private set; } = 0f;
     public float ComboTimer { get; private set; } = -1f;
+    public float ExposedMissionTimer => Mathf.Round(_missionTimer) / 100f;
 
     public int Score { get; private set; } = 0;
     public int Combo { get; private set; } = 0;
@@ -37,7 +44,10 @@ public abstract class MissionController : GameEventUserObject
 
     protected void Start()
     {
-        StartCoroutine(MissionTimer());
+        _missionTimer *= 100;
+
+        InvokeRepeating("MissionTimer", 0f, .04166666f);
+
         StartCoroutine(ComboTimerRoutine());
     }
 
@@ -85,13 +95,21 @@ public abstract class MissionController : GameEventUserObject
 
     protected int CalculateTimeScore() => Mathf.RoundToInt(BaseScoring.PAR_TIME_SCORE * (_levelData.ParTime / Timer));  
 
-    protected IEnumerator MissionTimer()
+    protected void MissionTimer()
     {
-        while(!_missionComplete)
+        if(!_missionComplete)
         {
-            yield return null;
+            Timer += 4.166666f;
 
-            Timer += Time.deltaTime;
+            if(_missionTimer > 0f)
+            {
+                _missionTimer -= 4.166666f;
+
+                if(_missionTimer <= 0f)
+                {
+                    EventManager.Instance.TriggerEvent(new Events.MissionFailedEventArgs());
+                }
+            }
         }
     }
 

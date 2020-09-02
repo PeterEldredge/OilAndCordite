@@ -12,7 +12,7 @@ public class DestructibleWall : MonoBehaviour
 
     private void OnTriggerEnter(Collider collider)
     {
-        if (collider.CompareTag(Tags.PLAYER) && useTrigger)
+        if ((collider.CompareTag(Tags.PLAYER) || collider.CompareTag("PlayerAttack")) && useTrigger)
         {
             SwapObjects();
         }
@@ -20,7 +20,15 @@ public class DestructibleWall : MonoBehaviour
 
     public void SwapObjects()
     {
-        fracturedObject.SetActive(true);
-        originalObject.SetActive(false);
+        if (fracturedObject != null)
+        {
+            fracturedObject.SetActive(true);
+        }
+
+        if (originalObject != null)
+        {
+            originalObject.SetActive(false);
+        }
+        
     }
 }

@@ -59,6 +59,7 @@ public class DestoyEnemiesController : MissionController
                 if (temp <= _enemyRemainingUIThreshold && !_enemyRemainingUIEnabled)
                 {
                     _enemyRemainingUIEnabled = true;
+
                     for (int i = 0; i < transform.childCount; i++)
                     {
                         InstantiateUI(transform.GetChild(i));

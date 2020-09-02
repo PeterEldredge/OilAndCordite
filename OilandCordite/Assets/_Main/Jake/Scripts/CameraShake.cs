@@ -5,6 +5,7 @@ using DG.Tweening;
 
 public class CameraShake : GameEventUserObject
 {
+    private bool _shaking = false;
 
     private void OnEnemyDefeated(Events.PlayerDefeatedEnemyEventArgs args) => ScreenShake(args.ShakeDuration, args.ShakeMagnitude);
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => ScreenShake(args.ShakeDuration, args.ShakeMagnitude);
@@ -23,6 +24,19 @@ public class CameraShake : GameEventUserObject
 
     private void ScreenShake(float duration, float magnitude)
     {
-        transform.gameObject.GetComponent<Camera>().DOShakeRotation(duration, magnitude);
+        if (!_shaking)
+        {
+            _shaking = true;
+            transform.gameObject.GetComponent<Camera>().DOShakeRotation(duration, magnitude);
+            StartCoroutine(ShakeWaitRoutine(duration));
+            
+        }
+    }
+
+    private IEnumerator ShakeWaitRoutine(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        _shaking = false;
     }
 }
+

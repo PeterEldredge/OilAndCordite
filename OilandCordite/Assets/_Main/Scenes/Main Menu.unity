@@ -236,7 +236,7 @@ RectTransform:
   m_Children:
   - {fileID: 233719184}
   m_Father: {fileID: 256203232}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -369,7 +369,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.5, y: -33.4}
+  m_AnchoredPosition: {x: 1, y: -42}
   m_SizeDelta: {x: 31, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &65789079
@@ -2497,7 +2497,6 @@ RectTransform:
   - {fileID: 1350110894}
   - {fileID: 2011567828}
   - {fileID: 1635107553}
-  - {fileID: 1805096460}
   - {fileID: 61373513}
   - {fileID: 2050866973}
   m_Father: {fileID: 997547356}
@@ -4430,7 +4429,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.5, y: -65.9}
+  m_AnchoredPosition: {x: 1.0000362, y: -74.49999}
   m_SizeDelta: {x: 31, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &430835715
@@ -5162,6 +5161,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 548271281}
+  - component: {fileID: 548271282}
   m_Layer: 5
   m_Name: MusicVolume
   m_TagString: Untagged
@@ -5191,6 +5191,20 @@ RectTransform:
   m_AnchoredPosition: {x: -29.565197, y: -136.6}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &548271282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 548271280}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df1e79fa2e249da41abb04a123e519d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 685355623}
+  _slider: {fileID: 2088652041}
 --- !u!1 &565994483
 GameObject:
   m_ObjectHideFlags: 0
@@ -5939,8 +5953,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateFramerateCap
+      - m_Target: {fileID: 1152918991}
+        m_MethodName: UpdateSFXVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9451,6 +9465,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1152918990}
+  - component: {fileID: 1152918991}
   m_Layer: 5
   m_Name: SFXVolume
   m_TagString: Untagged
@@ -9480,6 +9495,20 @@ RectTransform:
   m_AnchoredPosition: {x: -29.565197, y: -82.69563}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1152918991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1152918989}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d04ae174d20be174d8fc320f2cd833a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _text: {fileID: 1956130474}
+  _slider: {fileID: 682811802}
 --- !u!1 &1159075440
 GameObject:
   m_ObjectHideFlags: 0
@@ -13497,7 +13526,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.5, y: -128.6}
+  m_AnchoredPosition: {x: 1.0000362, y: -137.2}
   m_SizeDelta: {x: 31, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602549874
@@ -14289,6 +14318,7 @@ RectTransform:
   - {fileID: 1615526947}
   - {fileID: 1436205258}
   - {fileID: 1900749598}
+  - {fileID: 1805096460}
   m_Father: {fileID: 102350039}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -14326,7 +14356,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1635107553
 RectTransform:
   m_ObjectHideFlags: 0
@@ -15266,7 +15296,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 210, y: -50}
+  m_AnchoredPosition: {x: 216.50003, y: -58.59999}
   m_SizeDelta: {x: 189.38824, y: 69.10121}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1675869965
@@ -16031,7 +16061,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.5, y: -97.3}
+  m_AnchoredPosition: {x: 1.0000362, y: -105.899994}
   m_SizeDelta: {x: 31, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1758962594
@@ -16641,12 +16671,12 @@ RectTransform:
   - {fileID: 1758962593}
   - {fileID: 1602549873}
   - {fileID: 1675869964}
-  m_Father: {fileID: 256203232}
-  m_RootOrder: 5
+  m_Father: {fileID: 1631818161}
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 167.09, y: -27.3}
+  m_AnchoredPosition: {x: -39, y: -37}
   m_SizeDelta: {x: 668.7, y: 560}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1808516381
@@ -17647,7 +17677,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 17.3, y: -5.8}
+  m_AnchoredPosition: {x: 23.800035, y: -14.399991}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1860038884
@@ -18313,7 +18343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1900051059
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18330,8 +18360,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 45.2, y: -72.4}
-  m_SizeDelta: {x: 204, y: 182}
+  m_AnchoredPosition: {x: 41, y: -72.4}
+  m_SizeDelta: {x: 312.5, y: 162.08}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1900051060
 MonoBehaviour:
@@ -19988,7 +20018,7 @@ RectTransform:
   - {fileID: 1324478616}
   - {fileID: 1016606594}
   m_Father: {fileID: 256203232}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -20559,8 +20589,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: UpdateFramerateCap
+      - m_Target: {fileID: 548271282}
+        m_MethodName: UpdateMusicVolume
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
