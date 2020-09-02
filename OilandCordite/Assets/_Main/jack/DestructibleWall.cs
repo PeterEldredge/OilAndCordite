@@ -20,7 +20,15 @@ public class DestructibleWall : MonoBehaviour
 
     public void SwapObjects()
     {
-        fracturedObject.SetActive(true);
-        originalObject.SetActive(false);
+        if (fracturedObject != null)
+        {
+            fracturedObject.SetActive(true);
+        }
+
+        if (originalObject != null)
+        {
+            originalObject.SetActive(false);
+        }
+        
     }
 }
