@@ -600,7 +600,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _text
       value: 'Destroy Enemies with greater than 50% heat to steal their weapons for
-        a one time use. Press SPACE to activate a stolen weapon. '
+        a one time use. Press SPACE or A to activate a stolen weapon. '
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eab4f28dd114dc543ac626050a12724b, type: 3}
@@ -766,10 +766,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5691272156240179821, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
       propertyPath: m_Name
       value: LaserBot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c07c06a0c02f3df4ab8f8be21181cdda,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 937926bc8e9b289409e484d98615cd9d,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _piercingSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _healthGain
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 264b8f1da19c7054cb57160b3c6c2a65, type: 3}
@@ -4085,10 +4122,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5691272156240179821, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
       propertyPath: m_Name
       value: LaserBot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c07c06a0c02f3df4ab8f8be21181cdda,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 937926bc8e9b289409e484d98615cd9d,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _piercingSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _healthGain
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 264b8f1da19c7054cb57160b3c6c2a65, type: 3}
@@ -4638,10 +4712,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5691272156240179821, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
       propertyPath: m_Name
       value: LaserBot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c07c06a0c02f3df4ab8f8be21181cdda,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 937926bc8e9b289409e484d98615cd9d,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _piercingSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _healthGain
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 264b8f1da19c7054cb57160b3c6c2a65, type: 3}
@@ -6978,17 +7089,17 @@ PrefabInstance:
     - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 2.4683
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 2.4683
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 2.9792383
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5691272156240179821, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
@@ -6998,7 +7109,24 @@ PrefabInstance:
     - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
       propertyPath: _piercingSpeed
-      value: 50
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c07c06a0c02f3df4ab8f8be21181cdda,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 937926bc8e9b289409e484d98615cd9d,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _healthGain
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 264b8f1da19c7054cb57160b3c6c2a65, type: 3}
@@ -7284,10 +7412,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5691272156240179821, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
       propertyPath: m_Name
       value: LaserBot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c07c06a0c02f3df4ab8f8be21181cdda,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 937926bc8e9b289409e484d98615cd9d,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _piercingSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _healthGain
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 264b8f1da19c7054cb57160b3c6c2a65, type: 3}
@@ -7359,10 +7524,47 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179817, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 5691272156240179821, guid: 264b8f1da19c7054cb57160b3c6c2a65,
         type: 3}
       propertyPath: m_Name
       value: LaserBot (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: c07c06a0c02f3df4ab8f8be21181cdda,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 937926bc8e9b289409e484d98615cd9d,
+        type: 2}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _piercingSpeed
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 5691272156240179831, guid: 264b8f1da19c7054cb57160b3c6c2a65,
+        type: 3}
+      propertyPath: _healthGain
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 264b8f1da19c7054cb57160b3c6c2a65, type: 3}
@@ -7963,6 +8165,31 @@ PrefabInstance:
       propertyPath: m_textInfo.pageCount
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3103560010203654322, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _xLowerBound
+      value: 1110
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103560010203654322, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _xUpperBound
+      value: 2452
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103560010203654322, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _zUpperBound
+      value: 5326
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103560010203654322, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _zLowerBound
+      value: -1715
+      objectReference: {fileID: 0}
+    - target: {fileID: 3103560010203654322, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _yUpperBound
+      value: 1236
+      objectReference: {fileID: 0}
     - target: {fileID: 4218598060279728160, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -7976,7 +8203,22 @@ PrefabInstance:
     - target: {fileID: 4682229258037788702, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: _maxHealth
-      value: 334.28
+      value: 125
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682229258037788702, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _invincibilityWindow
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682229258037788702, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _damageOnBump
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4682229258037788702, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: _damageOnBounce
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 5365513814971153437, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
@@ -8913,6 +9155,23 @@ PrefabInstance:
       propertyPath: _weldedWeapon
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6089402306166157615, guid: 7a95f61af3b5c7d4a848d96a514117a7,
+        type: 3}
+      propertyPath: _healthGain
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6089402306166157615, guid: 7a95f61af3b5c7d4a848d96a514117a7,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 40141e9143ede1948bae348fc02efbca,
+        type: 2}
+    - target: {fileID: 6089402306166157615, guid: 7a95f61af3b5c7d4a848d96a514117a7,
+        type: 3}
+      propertyPath: _attackBehaviours.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: 5af53603f9efb5b4b8be31e8ffb5e8ed,
+        type: 2}
     - target: {fileID: 6089402306166157617, guid: 7a95f61af3b5c7d4a848d96a514117a7,
         type: 3}
       propertyPath: m_LocalPosition.x
