@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.1104213, y: 0.9754605, z: 6.3196955}
-  m_Center: {x: 0.021769106, y: -0.020747542, z: -1.137074}
+  m_Size: {x: 1.0770439, y: 1.2114162, z: 7.163217}
+  m_Center: {x: -0.08881897, y: 0.029198647, z: -0.7153275}
 --- !u!54 &-4905586786104818012
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -79,6 +79,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 15
+  _shakeMagnitude: 2
+  _shakeDuration: 0.5
   _speed: 650
   _aliveTime: 5
 --- !u!114 &4186490172893988937
@@ -5131,7 +5133,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -9578,7 +9580,7 @@ ParticleSystemRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_RenderMode: 0
+  m_RenderMode: 3
   m_SortMode: 0
   m_MinParticleSize: 0
   m_MaxParticleSize: 0.5
