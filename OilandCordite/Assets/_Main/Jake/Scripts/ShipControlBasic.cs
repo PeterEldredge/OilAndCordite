@@ -35,7 +35,12 @@ public class ShipControlBasic : GameEventUserObject
     [SerializeField] private float _noGravitySpeed = 200f;
     [Tooltip("When calculating the amount of thrust to receive, Gas Clouds should give a substantial boost even if the player's heat is 0")]
     [SerializeField] private float _minGasIgnitionHeat = 20f;
-    [SerializeField] private float _smogHeight = 15f;
+    [SerializeField] private float _yLowerBound = 15f;
+    [SerializeField] private float _yUpperBound = 30f;
+    [SerializeField] private float _xLowerBound = 15f;
+    [SerializeField] private float _xUpperBound = 30f;
+    [SerializeField] private float _zLowerBound = 15f;
+    [SerializeField] private float _zUpperBound = 30f;
     [SerializeField] private AnimationCurve _positiveAccelerationCurve;
     [SerializeField] private AnimationCurve _negativeAccelerationCurve;
     [SerializeField] private AnimationCurve _gravityAccelerationCurve;
@@ -243,9 +248,31 @@ public class ShipControlBasic : GameEventUserObject
                 _rb.velocity += transform.forward * _igniteThrust * _smogHeatToSpeedRatio * (Mathf.Clamp(PlayerData.Instance.Heat, _minSmogIgnitionHeat, 100) / 100) * Time.fixedDeltaTime;
             }
 
-            if (transform.position.y <= _smogHeight)
+            if (transform.position.y <= _yLowerBound)
             {
-                transform.position = new Vector3(transform.position.x, _smogHeight, transform.position.z);
+                transform.position = new Vector3(transform.position.x, _yLowerBound, transform.position.z);
+            }
+            else if (transform.position.y >= _yUpperBound)
+            {
+                transform.position = new Vector3(transform.position.x, _yUpperBound, transform.position.z);
+            }
+
+            if (transform.position.x <= _xLowerBound)
+            {
+                transform.position = new Vector3(_xLowerBound, transform.position.y, transform.position.z);
+            }
+            else if (transform.position.x >= _xUpperBound)
+            {
+                transform.position = new Vector3(_xUpperBound, transform.position.y, transform.position.z);
+            }
+
+            if (transform.position.z <= _zLowerBound)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, _zLowerBound);
+            }
+            else if (transform.position.z >= _zUpperBound)
+            {
+                transform.position = new Vector3(transform.position.x, transform.position.y, _zUpperBound);
             }
 
             float gravity = -_gravityMultiplier * _gravityAccelerationCurve.Evaluate(Mathf.Clamp(_rb.velocity.magnitude/_noGravitySpeed, 0f, 1f)) * Time.fixedDeltaTime;
@@ -391,5 +418,21 @@ public class ShipControlBasic : GameEventUserObject
         }
 
         yield return null;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.cyan;
+        /*
+        Gizmos.DrawWireCube(new Vector3(0, _yLowerBound, 0), new Vector3(Math.Abs(_xUpperBound) - Math.Abs(_xLowerBound), 1, Math.Abs(_zUpperBound) - Math.Abs(_zLowerBound)));
+        Gizmos.DrawWireCube(new Vector3(0, _yUpperBound, 0), new Vector3(Math.Abs(_xUpperBound) - Math.Abs(_xLowerBound), 1, Math.Abs(_zUpperBound) - Math.Abs(_zLowerBound)));
+
+        Gizmos.DrawWireCube(new Vector3(_xLowerBound, (_yUpperBound - _yLowerBound) + _yLowerBound, 0), new Vector3(1, Math.Abs(_yUpperBound) - Math.Abs(_yLowerBound), Math.Abs(_zUpperBound) - Math.Abs(_zLowerBound)));
+        Gizmos.DrawWireCube(new Vector3(_xUpperBound, (_yUpperBound - _yLowerBound) + _yLowerBound, 0), new Vector3(1, Math.Abs(_yUpperBound) - Math.Abs(_yLowerBound), Math.Abs(_zUpperBound) - Math.Abs(_zLowerBound)));
+
+        Gizmos.DrawWireCube(new Vector3(0, _yUpperBound - _yLowerBound, _zLowerBound / 2f), new Vector3(Math.Abs(_xUpperBound) - Math.Abs(_xLowerBound), Math.Abs(_yUpperBound) - Math.Abs(_yLowerBound), 1));
+        Gizmos.DrawWireCube(new Vector3(0, _yUpperBound - _yLowerBound, _zUpperBound / 2f), new Vector3(Math.Abs(_xUpperBound) - Math.Abs(_xLowerBound), Math.Abs(_yUpperBound) - Math.Abs(_yLowerBound), 1));
+        */
+
     }
 }
