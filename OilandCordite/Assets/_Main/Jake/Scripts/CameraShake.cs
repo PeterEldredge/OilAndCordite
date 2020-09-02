@@ -26,16 +26,17 @@ public class CameraShake : GameEventUserObject
     {
         if (!_shaking)
         {
-            transform.gameObject.GetComponent<Camera>().DOShakeRotation(duration, magnitude);
             _shaking = true;
-            StartCoroutine(ShakeWaitRoutine(duration + .1f));
-            _shaking = false;
+            transform.gameObject.GetComponent<Camera>().DOShakeRotation(duration, magnitude);
+            StartCoroutine(ShakeWaitRoutine(duration));
+            
         }
     }
 
     private IEnumerator ShakeWaitRoutine(float duration)
     {
         yield return new WaitForSeconds(duration);
+        _shaking = false;
     }
 }
 
