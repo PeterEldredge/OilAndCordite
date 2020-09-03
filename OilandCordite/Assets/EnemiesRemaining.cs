@@ -5,7 +5,7 @@ using TMPro;
 
 public class EnemiesRemaining : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _text;
+    private TMP_Text _text;
 
     private DestoyEnemiesController _missionController;
     
