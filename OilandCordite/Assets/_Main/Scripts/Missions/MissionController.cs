@@ -99,7 +99,7 @@ public abstract class MissionController : GameEventUserObject
     {
         if(!_missionComplete)
         {
-            Timer += 4.166666f;
+            Timer += .04166666f;
 
             if(_missionTimer > 0f)
             {

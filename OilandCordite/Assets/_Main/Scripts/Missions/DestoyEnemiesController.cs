@@ -8,6 +8,8 @@ public class DestoyEnemiesController : MissionController
     [SerializeField] private int _enemyRemainingUIThreshold;
     [SerializeField] private GameObject _uiElement;
 
+    public int EnemiesRemaining { get; private set; }
+
     private bool _enemyRemainingUIEnabled = false;
     private int _childrenToWin;
 
@@ -15,7 +17,25 @@ public class DestoyEnemiesController : MissionController
     {
         _childrenToWin = _enemiesToBeKilled == 0 ? 0 : transform.childCount - _enemiesToBeKilled;
 
+        EnemiesRemaining = transform.childCount - _childrenToWin;
+
         StartCoroutine(CheckMissionComplete());
+    }
+
+    private void OnPlayerDefeatedEnemy(Events.PlayerDefeatedEnemyEventArgs args) => EnemiesRemaining -= 1;
+
+    public override void Subscribe()
+    {
+        base.Subscribe();
+
+        EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
+    }
+
+    public override void Unsubscribe()
+    {
+        base.Unsubscribe();
+
+        EventManager.Instance.RemoveListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
     }
 
     private void InstantiateUI(Transform WorkingTransform)
