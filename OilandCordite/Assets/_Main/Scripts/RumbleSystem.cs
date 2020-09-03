@@ -29,6 +29,7 @@ public class RumbleSystem : GameEventUserObject
     private void OnPlayerAttacked(Events.PlayerAttackedEventArgs args) => InputHelper.Player.SetVibration(0, _attackedLevel, _attackedRumbleTime);
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => InputHelper.Player.SetVibration(0, _obstacleHitLevel, _obstacleHitTime);
     private void OnGasExplosion(Events.GasExplosionEventArgs args) => InputHelper.Player.SetVibration(0, _gasCloudHitLevel, _gasCloudHitTime);
+    private void OnDestructibleWall(Events.DestructibleWallHitEventArgs args) => InputHelper.Player.SetVibration(0, _obstacleHitLevel, _obstacleHitTime);
 
     protected override void OnEnable()
     {
@@ -47,6 +48,7 @@ public class RumbleSystem : GameEventUserObject
         EventManager.Instance.AddListener<Events.PlayerAttackedEventArgs>(this, OnPlayerAttacked);
         EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
         EventManager.Instance.AddListener<Events.GasExplosionEventArgs>(this, OnGasExplosion);
+        EventManager.Instance.AddListener<Events.DestructibleWallHitEventArgs>(this, OnDestructibleWall);
     }
 
     public override void Unsubscribe()
@@ -58,6 +60,7 @@ public class RumbleSystem : GameEventUserObject
         EventManager.Instance.RemoveListener<Events.PlayerAttackedEventArgs>(this, OnPlayerAttacked);
         EventManager.Instance.RemoveListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
         EventManager.Instance.RemoveListener<Events.GasExplosionEventArgs>(this, OnGasExplosion);
+        EventManager.Instance.RemoveListener<Events.DestructibleWallHitEventArgs>(this, OnDestructibleWall);
     }
 
     private IEnumerator RumbleRoutine()

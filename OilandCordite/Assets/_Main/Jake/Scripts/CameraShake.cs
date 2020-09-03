@@ -12,6 +12,7 @@ public class CameraShake : GameEventUserObject
     private void OnGasCloudExplosion(Events.GasExplosionEventArgs args) => ScreenShake(args.ShakeDuration, args.ShakeMagnitude);
     private void OnSmokeUpdraft(Events.SmokeUpdraftEventArgs args) => ScreenShake(args.ShakeDuration, args.ShakeMagnitude);
     private void OnAttacked(Events.PlayerAttackedEventArgs args) => ScreenShake(args.ShakeDuration, args.ShakeMagnitude);
+    private void OnDestructibleWall(Events.DestructibleWallHitEventArgs args) => ScreenShake(args.ShakeDuration, args.ShakeMagnitude);
 
     public override void Subscribe()
     {
@@ -20,6 +21,7 @@ public class CameraShake : GameEventUserObject
         EventManager.Instance.AddListener<Events.GasExplosionEventArgs>(this, OnGasCloudExplosion);
         EventManager.Instance.AddListener<Events.SmokeUpdraftEventArgs>(this, OnSmokeUpdraft);
         EventManager.Instance.AddListener<Events.PlayerAttackedEventArgs>(this, OnAttacked);
+        EventManager.Instance.AddListener<Events.DestructibleWallHitEventArgs>(this, OnDestructibleWall);
     }
 
     private void ScreenShake(float duration, float magnitude)
@@ -28,8 +30,7 @@ public class CameraShake : GameEventUserObject
         {
             _shaking = true;
             transform.gameObject.GetComponent<Camera>().DOShakeRotation(duration, magnitude);
-            StartCoroutine(ShakeWaitRoutine(duration));
-            
+            StartCoroutine(ShakeWaitRoutine(duration));           
         }
     }
 
