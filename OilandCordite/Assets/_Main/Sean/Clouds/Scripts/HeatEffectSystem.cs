@@ -6,14 +6,19 @@ using UnityEngine;
 /// Cross thresholds, update effects and shaders, etc
 public class HeatEffectSystem : GameEventUserObject
 {
-    [SerializeField] private GameObject PlayerShipBody;
+    [SerializeField] private GameObject playerShipBody;
     [SerializeField] private float upperHeatThreshold;
     [SerializeField] private float minimumHeatThreshold;
-    [SerializeField] private List<TrailRenderer> HeatTrailObjects;
-    [SerializeField] private List<TrailRenderer> ThrustTrailObjects;
-    [SerializeField] private Gradient ThrustHeatGradient;
+    [SerializeField] private List<TrailRenderer> heatTrailObjects;
+    [SerializeField] private List<TrailRenderer> thrustTrailObjects;
+    [SerializeField] private Gradient thrustHeatGradient;
     [SerializeField] private float maxThrusterWidthScale;
     [SerializeField] private float minThrusterWidthScale;
+
+    [SerializeField] private ParticleSystem _heatTrailParticles;
+    [SerializeField] private AnimationCurve _heatCurve;
+    [SerializeField] private float _minLifetime, _maxLifetime;
+    [SerializeField] private float _minSize, _maxSize;
 
 
     private void OnBeginIgnition(Events.BeginIgniteEventArgs args) => StartCoroutine(BeginIgnition());
@@ -27,6 +32,9 @@ public class HeatEffectSystem : GameEventUserObject
     private bool isIgniting;
     private bool isInvincible;
     private Material _playerShipMaterial;
+    private float _currentHeatCurve;
+    private float _lifetimeDifference;
+    private float _sizeDifference;
 
 
     private HeatSystem _hs;
@@ -36,8 +44,11 @@ public class HeatEffectSystem : GameEventUserObject
     {
         _hs = this.GetComponent<HeatSystem>();
         _cam = Camera.main.GetComponent<CameraEffectSystem>();
-        _playerShipMaterial = this.PlayerShipBody.GetComponent<MeshRenderer>().material;
+        _playerShipMaterial = this.playerShipBody.GetComponent<MeshRenderer>().material;
 
+        _currentHeatCurve = _maxLifetime;
+        _lifetimeDifference = _maxLifetime - _minLifetime;
+        _sizeDifference = _maxSize - _minSize;
     }
 
     public override void Subscribe()
@@ -120,7 +131,7 @@ public class HeatEffectSystem : GameEventUserObject
 
     private void UpdateThrusterWidth(float amount) 
     {
-       foreach(TrailRenderer trail in ThrustTrailObjects) 
+       foreach(TrailRenderer trail in thrustTrailObjects) 
         {
             trail.widthMultiplier = amount;
         } 
@@ -128,38 +139,47 @@ public class HeatEffectSystem : GameEventUserObject
 
     private void UpdateThrustTrails(float heat) 
     {
-        foreach(TrailRenderer trail in ThrustTrailObjects) 
+        foreach(TrailRenderer trail in thrustTrailObjects) 
         {
-            trail.startColor = ThrustHeatGradient.Evaluate(heat / 2);
+            trail.startColor = thrustHeatGradient.Evaluate(heat / 2);
         }
     }
 
     private void EnableHeatTrails() 
     {
-        foreach(TrailRenderer trail in HeatTrailObjects) 
+        foreach(TrailRenderer trail in heatTrailObjects) 
         {
             trail.enabled = true;
         }
+
     }
 
     private void UpdateHeatTrailWidth(float heat) 
     {
-        foreach(TrailRenderer trail in HeatTrailObjects) 
+        
+        foreach (TrailRenderer trail in heatTrailObjects) 
         {
             trail.widthMultiplier = heat;
         }
+
+        _currentHeatCurve = _heatCurve.Evaluate(heat / 2f);
+
+        _heatTrailParticles.startLifetime = _currentHeatCurve * _lifetimeDifference + _minLifetime;
+        _heatTrailParticles.startSize = _currentHeatCurve * _sizeDifference + _minSize;
     }
 
     private void DisableHeatTrails() 
     {
-        if (HeatTrailObjects != null)
+        if (heatTrailObjects != null)
         {
-            foreach(TrailRenderer trail in HeatTrailObjects) 
+            foreach(TrailRenderer trail in heatTrailObjects) 
             {
                 trail.enabled = false;
                 trail.Clear();
             }
         }
+
+         
     }
 
     // Update is called once per frame
