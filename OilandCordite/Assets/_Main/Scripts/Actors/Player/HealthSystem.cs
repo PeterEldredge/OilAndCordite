@@ -42,6 +42,7 @@ public class HealthSystem : GameEventUserObject
     private void OnAttacked(Events.PlayerAttackedEventArgs args) => TakeDamage(args.Damage);
     private void OnPlayerDefeatedEnemy(Events.PlayerDefeatedEnemyEventArgs args) => AddHealth(args.HealthGain);
     private void OnObstacleHit(Events.ObstacleHitEventArgs args) => TakeDamage(args.Bounce ? _damageOnBounce : _damageOnBump, true);
+    private void OnPlayerInDamageTrigger(Events.PlayerInDamageTriggerEventArgs args) => TakeDamage(args.Damage, true);
 
     public override void Subscribe()
     {
@@ -49,6 +50,7 @@ public class HealthSystem : GameEventUserObject
         EventManager.Instance.AddListener<Events.PlayerAttackedEventArgs>(this, OnAttacked);
         EventManager.Instance.AddListener<Events.PlayerDefeatedEnemyEventArgs>(this, OnPlayerDefeatedEnemy);
         EventManager.Instance.AddListener<Events.ObstacleHitEventArgs>(this, OnObstacleHit);
+        EventManager.Instance.AddListener<Events.PlayerInDamageTriggerEventArgs>(this, OnPlayerInDamageTrigger);
     }
 
     private void AddHealth(float amount)
