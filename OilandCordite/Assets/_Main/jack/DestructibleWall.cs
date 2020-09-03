@@ -2,6 +2,22 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Events
+{
+
+    public struct DestructibleWallHitEventArgs : IGameEvent
+    {
+        public float ShakeMagnitude { get; }
+        public float ShakeDuration { get; }
+
+        public DestructibleWallHitEventArgs(float magnitude, float duration)
+        {
+            ShakeMagnitude = magnitude;
+            ShakeDuration = duration;
+        }
+    }
+}
+
 public class DestructibleWall : MonoBehaviour
 {
     [SerializeField]
@@ -10,10 +26,14 @@ public class DestructibleWall : MonoBehaviour
     [SerializeField]
     private bool useTrigger;
 
+    [SerializeField] private float _shakeMagnitude = 5f;
+    [SerializeField] private float _shakeDuration = 1f;
+
     private void OnTriggerEnter(Collider collider)
     {
         if ((collider.CompareTag(Tags.PLAYER) || collider.CompareTag("PlayerAttack")) && useTrigger)
         {
+            EventManager.Instance.TriggerEvent(new Events.DestructibleWallHitEventArgs(_shakeMagnitude, _shakeDuration));
             SwapObjects();
         }
     }
