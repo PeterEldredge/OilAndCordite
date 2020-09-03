@@ -6,6 +6,7 @@ public class Laser : Attack
 {
     [SerializeField] private float _speed;
     [SerializeField] private float _aliveTime = 5f;
+    [SerializeField] private LayerMask myLayerMask;
 
     private Rigidbody _rigidbody;
 
@@ -16,9 +17,16 @@ public class Laser : Attack
 
     private void OnEnable()
     {
+        float tempAliveTime = _aliveTime;
+
+        if(Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 10000f, myLayerMask))
+        {
+            _aliveTime = hit.distance / _speed;
+        }
+
         _rigidbody.velocity = transform.forward * _speed;
 
-        StartCoroutine(Disable(_aliveTime));
+        StartCoroutine(Disable(tempAliveTime));
     }
 
     private void OnTriggerEnter(Collider other)
