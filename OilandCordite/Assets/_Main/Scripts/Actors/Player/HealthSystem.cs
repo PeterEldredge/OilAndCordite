@@ -58,7 +58,7 @@ public class HealthSystem : GameEventUserObject
 
     private void TakeDamage(float amount, bool ignoreInvincibility = false)
     {
-        if ((_invincible && !ignoreInvincibility) || IsDead) return;
+        if (((_invincible || PlayerData.Instance.IsHeatShielded) && !ignoreInvincibility) || IsDead) return;
 
         Health -= amount;
 
