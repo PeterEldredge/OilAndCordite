@@ -893,8 +893,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 9.254456, y: 3.1721191, z: 7.324066}
-  m_Center: {x: 0, y: -0.92674255, z: 0.6710434}
+  m_Size: {x: 7.6135864, y: 1.7143917, z: 6.6728687}
+  m_Center: {x: -0.08093262, y: -1.403794, z: 0.0715704}
 --- !u!114 &3720523844350751580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -947,6 +947,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3924560983605085167}
   - component: {fileID: 3924560983605085166}
+  - component: {fileID: 7470571545417498396}
+  - component: {fileID: 8702360945441064234}
+  - component: {fileID: 2179589578583750633}
   m_Layer: 0
   m_Name: Armor
   m_TagString: Obstacle
@@ -979,8 +982,48 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.247059, y: 0.5161948, z: 5.0710545}
-  m_Center: {x: -0.02427673, y: 0.22539274, z: 0.53566474}
+  m_Size: {x: 8.247059, y: 0.5578348, z: 3.801669}
+  m_Center: {x: -0.02427673, y: 0.24621277, z: -0.09902857}
+--- !u!65 &7470571545417498396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924560983605085160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.1395084, y: 1.6045113, z: 3.8002415}
+  m_Center: {x: 3.5791507, y: -0.30225563, z: -0.12975627}
+--- !u!65 &8702360945441064234
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924560983605085160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0157119, y: 1.6066068, z: 3.8195906}
+  m_Center: {x: -3.613509, y: -0.30330342, z: -0.12008363}
+--- !u!136 &2179589578583750633
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3924560983605085160}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.50596535
+  m_Height: 4.8342094
+  m_Direction: 2
+  m_Center: {x: 0, y: 0.29585326, z: 0.21924174}
 --- !u!1 &4167346719435025257
 GameObject:
   m_ObjectHideFlags: 0
