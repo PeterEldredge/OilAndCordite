@@ -9,6 +9,8 @@ public class FadePanel : BaseUIController
 
     [SerializeField] private Color _inColor;
     [SerializeField] private Color _outColor;
+    [SerializeField] private Color _inWhite;
+    [SerializeField] private Color _outWhite;
 
     [SerializeField] private bool _fadeInOnAwake;
 
@@ -35,6 +37,11 @@ public class FadePanel : BaseUIController
         StartCoroutine(FadeOutAnim());
 
         return _fadeSpeed;
+    }
+
+    public void FadeToWhite()
+    {
+        StartCoroutine(FadeOutWhiteAnim(.5f));
     }
 
     private IEnumerator FadeInAnim()
@@ -83,5 +90,21 @@ public class FadePanel : BaseUIController
         }
 
         _image.color = _outColor;
+    }
+
+    private IEnumerator FadeOutWhiteAnim(float time)
+    {
+        float timer = 0;
+
+        while (timer < time)
+        {
+            _image.color = Color.Lerp(_inWhite, _outWhite, timer / time);
+
+            timer += Time.deltaTime;
+
+            yield return null;
+        }
+
+        _image.color = _outWhite;
     }
 }

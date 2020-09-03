@@ -77,7 +77,7 @@ public class WeldedFlameThrower : WeldedWeapon
         while (_timer >= 0)
         {
             _timer -= Time.deltaTime;
-            Debug.Log(_timer);
+
             yield return null;
         }
 
