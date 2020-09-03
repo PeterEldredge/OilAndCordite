@@ -55,9 +55,11 @@ public class CoreController : MonoBehaviour
         StopAllCoroutines();
     }
 
-    void Start()
+    private void Start()
     {
         _anim = this.GetComponent<Animator>();
+
+        StartLasers();
     }
 
 
