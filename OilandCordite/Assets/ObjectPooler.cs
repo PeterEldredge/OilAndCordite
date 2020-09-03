@@ -57,6 +57,8 @@ public class ObjectPooler : MonoBehaviour
     {
         GameObject temp = _projectilePools[type].Dequeue();
 
+        temp.SetActive(false);
+
         _projectilePools[type].Enqueue(temp);
 
         return temp;
