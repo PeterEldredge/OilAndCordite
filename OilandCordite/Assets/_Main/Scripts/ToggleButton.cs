@@ -127,7 +127,7 @@ public class ToggleButton : GameEventUserObject
 
     private IEnumerator ToggleRoutine()
     {
-        _toggleButton.interactable = false;
+        //_toggleButton.interactable = false;
 
         float startXPosition;
         float endXPosition;
@@ -180,6 +180,6 @@ public class ToggleButton : GameEventUserObject
 
         _toggleImage.color = endColor;
 
-        _toggleButton.interactable = true;
+        //_toggleButton.interactable = true;
     }
 }
