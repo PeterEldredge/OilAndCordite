@@ -3156,7 +3156,8 @@ PrefabInstance:
     - target: {fileID: 8596030105938833030, guid: eab4f28dd114dc543ac626050a12724b,
         type: 3}
       propertyPath: _text
-      value: Charge up your heat while in the smog or gas to increase your speed.
+      value: Charge up your heat while in the smog layer or floating clouds to boost
+        your speed.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eab4f28dd114dc543ac626050a12724b, type: 3}
@@ -7232,7 +7233,7 @@ PrefabInstance:
         type: 3}
       propertyPath: _text
       value: Destroy Enemies by ramming them with enough speed. A ring will appear
-        when you are moving fast enough. Destroy all the enemies to drop the shield.
+        when you are moving fast enough. Destroy all the enemies to drop the forcefield.
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: eab4f28dd114dc543ac626050a12724b, type: 3}
@@ -8107,6 +8108,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 722056892, guid: 0dca9f6178850714da20590c07aa1cf6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1606363355, guid: 0dca9f6178850714da20590c07aa1cf6, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -8280,6 +8285,61 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 5994698142930706841, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244252485766669126, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244252485766669126, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244252485766669126, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6244252485766669126, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033271097482601801, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_textInfo.characterCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033271097482601801, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_textInfo.spaceCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033271097482601801, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_textInfo.wordCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033271097482601801, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_textInfo.lineCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033271097482601801, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_textInfo.pageCount
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7943048586007481938, guid: 0dca9f6178850714da20590c07aa1cf6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794189, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: cloudContainer
@@ -8328,7 +8388,7 @@ PrefabInstance:
     - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
       propertyPath: isDirty
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9122936525702794224, guid: 0dca9f6178850714da20590c07aa1cf6,
         type: 3}
